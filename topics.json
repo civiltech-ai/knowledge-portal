@@ -1,0 +1,34 @@
+{
+  "categories": [
+    { "id": "sales", "name": "Sales & Revenue", "icon": "💰", "color": "#14B8A6" },
+    { "id": "ops", "name": "Operations", "icon": "⚙️", "color": "#3B82F6" },
+    { "id": "finance", "name": "Finance & Cash Flow", "icon": "💵", "color": "#F59E0B" },
+    { "id": "marketing", "name": "Marketing & Growth", "icon": "📢", "color": "#8B5CF6" },
+    { "id": "team", "name": "Team & Leadership", "icon": "👥", "color": "#EC4899" },
+    { "id": "systems", "name": "Systems & Processes", "icon": "🔄", "color": "#06B6D4" },
+    { "id": "customers", "name": "Customers & Retention", "icon": "🤝", "color": "#10B981" },
+    { "id": "strategy", "name": "Strategy & Planning", "icon": "🎯", "color": "#EF4444" }
+  ],
+  "topics": [
+    {
+      "id": "system-driven-business",
+      "title": "Building a System-Driven Business",
+      "description": "How to create predictable growth without depending on daily motivation. A comprehensive interactive guide covering systems for sales, operations, finance, and team management.",
+      "category": "systems",
+      "file": "system-driven-business.html",
+      "tags": ["systems", "growth", "processes", "automation", "KPIs"],
+      "dateAdded": "2026-05-01",
+      "visible": true
+    },
+    {
+      "id": "customer-drift",
+      "title": "Customers Don't Leave, They Drift Away",
+      "description": "Most customers don't suddenly stop buying — they slowly reduce interaction. Learn how to identify drift early, reconnect with your top clients, and build lasting retention.",
+      "category": "customers",
+      "file": "customer-drift.html",
+      "tags": ["customers", "retention", "follow-up", "reconnect"],
+      "dateAdded": "2026-05-05",
+      "visible": true
+    }
+  ]
+}
