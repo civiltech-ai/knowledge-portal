@@ -30,5 +30,15 @@
       "dateAdded": "2026-05-05",
       "visible": true
     }
+    {
+  "id": "what-gets-measured-gets-improved",
+  "title": "What gets measured, gets improved",
+  "description": "AAAAAAAAAA",
+  "category": "sales",
+  "file": "what-gets-measured-gets-improved.html",
+  "tags": ["relevant", "keywords"],
+  "dateAdded": "2026-05-06",
+  "visible": true
+}
   ]
 }
