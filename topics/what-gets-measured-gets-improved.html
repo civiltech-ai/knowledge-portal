@@ -1,0 +1,1922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Gets Measured Gets Improved — Civil-Tech.ai Knowledge Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --teal-50: #f0fdfa;
+            --teal-100: #ccfbf1;
+            --teal-200: #99f6e4;
+            --teal-300: #5eead4;
+            --teal-400: #2dd4bf;
+            --teal-500: #14b8a6;
+            --teal-600: #0d9488;
+            --teal-700: #0f766e;
+            --teal-800: #115e59;
+            --teal-900: #134e4a;
+            --cyan-400: #22d3ee;
+            --cyan-500: #06b6d4;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+            --white: #ffffff;
+            --amber-400: #fbbf24;
+            --amber-500: #f59e0b;
+            --red-400: #f87171;
+            --red-500: #ef4444;
+            --green-400: #4ade80;
+            --green-500: #22c55e;
+            --blue-400: #60a5fa;
+            --blue-500: #3b82f6;
+            --orange-400: #fb923c;
+            --orange-500: #f97316;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── NAV ── */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--gray-200);
+            padding: 0 2rem;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+        .nav-brand-text {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--teal-700);
+        }
+        .nav-brand-text span { color: var(--gray-800); }
+        .nav-pill {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--teal-700);
+            border: 2px solid var(--teal-400);
+            border-radius: 999px;
+            padding: 0.25rem 0.85rem;
+            text-decoration: none;
+        }
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .nav-back {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--gray-600);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.4rem 1rem;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        .nav-back:hover { background: var(--gray-100); color: var(--teal-700); }
+        .theme-toggle {
+            width: 38px; height: 38px;
+            border-radius: 50%;
+            border: 1px solid var(--gray-200);
+            background: var(--white);
+            cursor: pointer;
+            display: grid; place-items: center;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+        }
+        .theme-toggle:hover { border-color: var(--teal-400); }
+
+        /* ── HERO ── */
+        .hero {
+            background: linear-gradient(135deg, var(--teal-600) 0%, var(--teal-500) 40%, var(--cyan-500) 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 3.5rem 2rem 3rem;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px; right: -80px;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -120px; right: 80px;
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-breadcrumb {
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 1rem;
+        }
+        .hero-breadcrumb a { color: rgba(255,255,255,0.7); text-decoration: none; }
+        .hero-breadcrumb a:hover { color: #fff; }
+        .hero h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2rem, 5vw, 2.85rem);
+            color: var(--white);
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+        .hero-desc {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.85);
+            max-width: 680px;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--white);
+            background: rgba(255,255,255,0.18);
+            border: 1px solid rgba(255,255,255,0.25);
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+        }
+
+        /* ── PROGRESS BAR ── */
+        .progress-bar-container {
+            position: sticky;
+            top: 64px;
+            z-index: 90;
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            padding: 0;
+        }
+        .progress-track {
+            height: 4px;
+            background: var(--gray-100);
+        }
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--teal-500), var(--cyan-400));
+            transition: width 0.3s ease;
+        }
+
+        /* ── MAIN LAYOUT ── */
+        .page-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 4rem;
+        }
+
+        /* ── TABLE OF CONTENTS ── */
+        .toc-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 16px;
+            padding: 1.75rem 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+        .toc-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--teal-700);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .toc-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.4rem 1.5rem;
+        }
+        .toc-list li a {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.45rem 0.6rem;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        .toc-list li a:hover {
+            background: var(--teal-50);
+            color: var(--teal-700);
+        }
+        .toc-num {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.75rem;
+            color: var(--teal-500);
+            background: var(--teal-50);
+            width: 24px; height: 24px;
+            border-radius: 6px;
+            display: inline-grid;
+            place-items: center;
+            flex-shrink: 0;
+        }
+
+        /* ── SECTIONS ── */
+        .section {
+            margin-bottom: 3rem;
+            scroll-margin-top: 80px;
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+        .section-icon {
+            width: 44px; height: 44px;
+            border-radius: 12px;
+            display: grid; place-items: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+        .section-icon.teal { background: var(--teal-100); color: var(--teal-700); }
+        .section-icon.amber { background: #fef3c7; color: var(--amber-500); }
+        .section-icon.blue { background: #dbeafe; color: var(--blue-500); }
+        .section-icon.green { background: #dcfce7; color: var(--green-500); }
+        .section-icon.orange { background: #ffedd5; color: var(--orange-500); }
+        .section-icon.red { background: #fee2e2; color: var(--red-500); }
+        .section-label {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.45rem;
+            color: var(--gray-900);
+        }
+
+        /* ── CONTENT CARDS ── */
+        .content-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 1.5rem;
+        }
+        .content-card h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--gray-900);
+            margin-bottom: 0.75rem;
+        }
+        .content-card p {
+            font-size: 0.95rem;
+            color: var(--gray-600);
+            margin-bottom: 1rem;
+        }
+        .content-card p:last-child { margin-bottom: 0; }
+
+        /* ── HIGHLIGHT BOX ── */
+        .highlight-box {
+            background: linear-gradient(135deg, var(--teal-50), #f0f9ff);
+            border-left: 4px solid var(--teal-500);
+            border-radius: 0 12px 12px 0;
+            padding: 1.5rem 1.75rem;
+            margin: 1.25rem 0;
+        }
+        .highlight-box p {
+            font-size: 0.95rem;
+            color: var(--gray-700);
+            font-style: italic;
+        }
+        .highlight-box strong { color: var(--teal-800); }
+
+        /* ── COMPARISON TABLE ── */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 1.25rem 0;
+            border-radius: 12px;
+            border: 1px solid var(--gray-200);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        thead th {
+            background: linear-gradient(135deg, var(--teal-600), var(--teal-500));
+            color: var(--white);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.85rem 1rem;
+            text-align: left;
+        }
+        thead th:first-child { border-radius: 11px 0 0 0; }
+        thead th:last-child { border-radius: 0 11px 0 0; }
+        tbody td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid var(--gray-100);
+            color: var(--gray-700);
+        }
+        tbody tr:last-child td { border-bottom: none; }
+        tbody tr:hover { background: var(--teal-50); }
+        .badge-up {
+            display: inline-flex; align-items: center; gap: 0.25rem;
+            font-size: 0.78rem; font-weight: 600;
+            color: var(--green-500);
+            background: #dcfce7; padding: 0.2rem 0.5rem; border-radius: 6px;
+        }
+        .badge-down {
+            display: inline-flex; align-items: center; gap: 0.25rem;
+            font-size: 0.78rem; font-weight: 600;
+            color: var(--red-500);
+            background: #fee2e2; padding: 0.2rem 0.5rem; border-radius: 6px;
+        }
+
+        /* ── COMPARISON GRID ── */
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin: 1.25rem 0;
+        }
+        .compare-col {
+            border-radius: 14px;
+            padding: 1.5rem;
+        }
+        .compare-col.negative {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+        }
+        .compare-col.positive {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+        }
+        .compare-col h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .compare-col.negative h4 { color: var(--red-500); }
+        .compare-col.positive h4 { color: var(--green-500); }
+        .compare-col ul {
+            list-style: none;
+            font-size: 0.9rem;
+        }
+        .compare-col ul li {
+            padding: 0.35rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.4rem;
+            color: var(--gray-700);
+        }
+        .compare-col ul li::before {
+            flex-shrink: 0;
+            margin-top: 0.15rem;
+        }
+        .compare-col.negative ul li::before { content: '✗'; color: var(--red-400); font-weight: 700; }
+        .compare-col.positive ul li::before { content: '✓'; color: var(--green-500); font-weight: 700; }
+
+        /* ── INTERACTIVE ELEMENTS ── */
+        .interactive-card {
+            background: var(--white);
+            border: 2px solid var(--teal-200);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .interactive-card::before {
+            content: '⚡ INTERACTIVE';
+            position: absolute;
+            top: 0; right: 0;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: var(--white);
+            background: linear-gradient(135deg, var(--teal-500), var(--cyan-500));
+            padding: 0.35rem 1rem;
+            border-radius: 0 14px 0 10px;
+        }
+        .interactive-card h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--gray-900);
+            margin-bottom: 0.5rem;
+        }
+        .interactive-card > p {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            margin-bottom: 1.25rem;
+        }
+
+        /* ── QUIZ ── */
+        .quiz-question {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--gray-800);
+            margin-bottom: 0.75rem;
+        }
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            padding: 0.75rem 1rem;
+            border: 1.5px solid var(--gray-200);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+            color: var(--gray-700);
+            background: var(--white);
+        }
+        .quiz-option:hover { border-color: var(--teal-400); background: var(--teal-50); }
+        .quiz-option.selected { border-color: var(--teal-500); background: var(--teal-50); color: var(--teal-800); }
+        .quiz-option.correct { border-color: var(--green-500); background: #f0fdf4; color: var(--green-500); }
+        .quiz-option.wrong { border-color: var(--red-500); background: #fef2f2; color: var(--red-500); }
+        .quiz-radio {
+            width: 18px; height: 18px;
+            border-radius: 50%;
+            border: 2px solid var(--gray-300);
+            flex-shrink: 0;
+            display: grid; place-items: center;
+            transition: all 0.2s;
+        }
+        .quiz-option.selected .quiz-radio { border-color: var(--teal-500); }
+        .quiz-option.selected .quiz-radio::after {
+            content: '';
+            width: 10px; height: 10px;
+            background: var(--teal-500);
+            border-radius: 50%;
+        }
+        .quiz-option.correct .quiz-radio { border-color: var(--green-500); }
+        .quiz-option.correct .quiz-radio::after {
+            content: '✓'; font-size: 0.7rem; color: var(--green-500); font-weight: 700;
+        }
+        .quiz-option.wrong .quiz-radio { border-color: var(--red-500); }
+        .quiz-option.wrong .quiz-radio::after {
+            content: '✗'; font-size: 0.7rem; color: var(--red-500); font-weight: 700;
+        }
+        .quiz-feedback {
+            padding: 0.85rem 1rem;
+            border-radius: 10px;
+            font-size: 0.88rem;
+            display: none;
+        }
+        .quiz-feedback.correct-feedback {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: var(--green-500);
+            display: block;
+        }
+        .quiz-feedback.wrong-feedback {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: var(--red-500);
+            display: block;
+        }
+
+        /* ── TRACKER TOOL ── */
+        .tracker-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        .tracker-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+        .tracker-input-group label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .tracker-input-group input {
+            padding: 0.65rem 0.85rem;
+            border: 1.5px solid var(--gray-200);
+            border-radius: 10px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            color: var(--gray-800);
+            background: var(--gray-50);
+            transition: all 0.2s;
+            width: 100%;
+        }
+        .tracker-input-group input:focus {
+            outline: none;
+            border-color: var(--teal-400);
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(20,184,166,0.1);
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.7rem 1.5rem;
+            background: linear-gradient(135deg, var(--teal-600), var(--teal-500));
+            color: var(--white);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.88rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(13,148,136,0.35);
+        }
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.7rem 1.5rem;
+            background: var(--white);
+            color: var(--teal-700);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.88rem;
+            border: 1.5px solid var(--teal-300);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-secondary:hover { background: var(--teal-50); }
+
+        .btn-row {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        /* ── RESULTS PANEL ── */
+        .results-panel {
+            display: none;
+            margin-top: 1.25rem;
+            background: linear-gradient(135deg, var(--teal-50), #f0f9ff);
+            border: 1px solid var(--teal-200);
+            border-radius: 14px;
+            padding: 1.5rem;
+        }
+        .results-panel.show { display: block; animation: fadeIn 0.4s ease; }
+        .results-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--teal-800);
+            margin-bottom: 0.75rem;
+        }
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(20,184,166,0.15);
+            font-size: 0.9rem;
+        }
+        .result-row:last-child { border-bottom: none; }
+        .result-label { color: var(--gray-600); }
+        .result-value { font-weight: 700; color: var(--teal-800); }
+
+        /* ── CHECKLIST ── */
+        .checklist {
+            list-style: none;
+        }
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            padding: 0.6rem 0;
+            font-size: 0.93rem;
+            color: var(--gray-700);
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .checklist li:last-child { border-bottom: none; }
+        .check-box {
+            width: 22px; height: 22px;
+            border-radius: 6px;
+            border: 2px solid var(--gray-300);
+            flex-shrink: 0;
+            cursor: pointer;
+            display: grid; place-items: center;
+            transition: all 0.2s;
+            margin-top: 0.1rem;
+        }
+        .check-box.checked {
+            background: var(--teal-500);
+            border-color: var(--teal-500);
+        }
+        .check-box.checked::after {
+            content: '✓';
+            color: var(--white);
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .checklist li.completed span { text-decoration: line-through; color: var(--gray-400); }
+
+        /* ── SCENARIO CARDS ── */
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .scenario-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 1.25rem;
+            transition: all 0.2s;
+        }
+        .scenario-card:hover { border-color: var(--teal-300); box-shadow: var(--shadow-md); }
+        .scenario-card .emoji { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .scenario-card h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: var(--gray-800);
+            margin-bottom: 0.4rem;
+        }
+        .scenario-card p { font-size: 0.85rem; color: var(--gray-500); }
+
+        /* ── KPI METRIC CARDS ── */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+        .kpi-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 1.15rem;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        .kpi-card:hover { border-color: var(--teal-300); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .kpi-card .kpi-icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
+        .kpi-card .kpi-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--gray-500);
+            margin-bottom: 0.2rem;
+        }
+        .kpi-card .kpi-value {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.35rem;
+            color: var(--teal-700);
+        }
+
+        /* ── STEPS / TIMELINE ── */
+        .steps-list {
+            list-style: none;
+            position: relative;
+            padding-left: 2.5rem;
+        }
+        .steps-list::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0; bottom: 0;
+            width: 2px;
+            background: var(--teal-200);
+        }
+        .steps-list li {
+            position: relative;
+            padding: 0.75rem 0;
+        }
+        .steps-list li::before {
+            content: attr(data-step);
+            position: absolute;
+            left: -2.5rem;
+            top: 0.75rem;
+            width: 30px; height: 30px;
+            background: linear-gradient(135deg, var(--teal-500), var(--cyan-500));
+            color: var(--white);
+            border-radius: 50%;
+            display: grid; place-items: center;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.78rem;
+            z-index: 1;
+        }
+        .steps-list li strong {
+            display: block;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem;
+            color: var(--gray-800);
+            margin-bottom: 0.2rem;
+        }
+        .steps-list li span {
+            font-size: 0.88rem;
+            color: var(--gray-500);
+        }
+
+        /* ── CALLOUT ── */
+        .callout {
+            display: flex;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            border-radius: 12px;
+            margin: 1.25rem 0;
+        }
+        .callout.tip {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+        }
+        .callout.warning {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+        }
+        .callout.info {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+        }
+        .callout-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 0.1rem; }
+        .callout-text { font-size: 0.9rem; color: var(--gray-700); }
+        .callout-text strong { color: var(--gray-800); }
+
+        /* ── FOOTER ── */
+        .page-footer {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 3rem;
+            border-top: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .footer-brand {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--gray-400);
+        }
+        .footer-link {
+            font-size: 0.85rem;
+            color: var(--teal-600);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .footer-link:hover { color: var(--teal-800); }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in { animation: fadeIn 0.5s ease forwards; }
+
+        /* ── NUMBER PILL ── */
+        .num-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 0.8rem;
+            width: 28px; height: 28px;
+            border-radius: 8px;
+            color: var(--white);
+            background: linear-gradient(135deg, var(--teal-500), var(--cyan-500));
+            flex-shrink: 0;
+        }
+
+        /* ── DASHBOARD PREVIEW ── */
+        .dashboard-preview {
+            background: var(--gray-900);
+            border-radius: 14px;
+            padding: 1.5rem;
+            margin: 1.25rem 0;
+            overflow: hidden;
+        }
+        .dashboard-title-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .dot.r { background: #ef4444; }
+        .dot.y { background: #eab308; }
+        .dot.g { background: #22c55e; }
+        .dashboard-title-bar span {
+            font-size: 0.78rem;
+            color: var(--gray-400);
+            margin-left: 0.5rem;
+            font-weight: 500;
+        }
+        .dash-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.75rem;
+        }
+        .dash-cell {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 0.85rem 0.65rem;
+            text-align: center;
+        }
+        .dash-cell .dash-label {
+            font-size: 0.68rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--gray-400);
+            margin-bottom: 0.4rem;
+        }
+        .dash-cell .dash-value {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: var(--teal-400);
+        }
+
+        /* ── BAR VISUAL ── */
+        .bar-chart-container {
+            margin: 1rem 0;
+        }
+        .bar-row {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.65rem;
+        }
+        .bar-label {
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--gray-600);
+            width: 90px;
+            flex-shrink: 0;
+            text-align: right;
+        }
+        .bar-track {
+            flex: 1;
+            height: 28px;
+            background: var(--gray-100);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        .bar-fill {
+            height: 100%;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 0.65rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--white);
+            transition: width 1s ease;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 700px) {
+            .navbar { padding: 0 1rem; }
+            .hero { padding: 2.5rem 1.25rem 2rem; }
+            .page-wrapper { padding: 1.5rem 1rem 3rem; }
+            .toc-list { grid-template-columns: 1fr; }
+            .compare-grid { grid-template-columns: 1fr; }
+            .scenario-grid { grid-template-columns: 1fr; }
+            .tracker-grid { grid-template-columns: 1fr 1fr; }
+            .dash-grid { grid-template-columns: repeat(3, 1fr); }
+            .content-card { padding: 1.5rem; }
+            .interactive-card { padding: 1.5rem; }
+        }
+        @media (max-width: 480px) {
+            .tracker-grid { grid-template-columns: 1fr; }
+            .dash-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar">
+    <div style="display:flex;align-items:center;gap:1rem;">
+        <a href="https://civiltech-ai.github.io/knowledge-portal/" class="nav-brand">
+            <span class="nav-brand-text">Civil-Tech<span>.ai</span></span>
+        </a>
+        <a href="https://civiltech-ai.github.io/knowledge-portal/" class="nav-pill">KNOWLEDGE PORTAL</a>
+    </div>
+    <div class="nav-right">
+        <a href="https://civiltech-ai.github.io/knowledge-portal/" class="nav-back">← Back to Library</a>
+        <button class="theme-toggle" onclick="document.body.classList.toggle('dark')" title="Toggle theme">☀️</button>
+    </div>
+</nav>
+
+<!-- ═══ PROGRESS BAR ═══ -->
+<div class="progress-bar-container">
+    <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<header class="hero">
+    <div class="hero-inner">
+        <div class="hero-breadcrumb">
+            <a href="https://civiltech-ai.github.io/knowledge-portal/">Knowledge Portal</a> &nbsp;/&nbsp; Performance &amp; Growth
+        </div>
+        <h1>What Gets Measured Gets Improved</h1>
+        <p class="hero-desc">
+            Why tracking your numbers is the single most powerful habit a civil engineering business owner in Dubai can adopt — and how to build a simple measurement system that gives you clarity, control, and confidence every week.
+        </p>
+        <div class="hero-meta">
+            <span class="hero-tag">📊 Performance &amp; Growth</span>
+            <span class="hero-tag">⚡ Interactive</span>
+            <span class="hero-tag">🕐 15 min read</span>
+            <span class="hero-tag">📅 2026-05-06</span>
+        </div>
+    </div>
+</header>
+
+<!-- ═══ MAIN CONTENT ═══ -->
+<main class="page-wrapper">
+
+    <!-- TABLE OF CONTENTS -->
+    <div class="toc-card">
+        <div class="toc-title">📑 In This Guide</div>
+        <ul class="toc-list">
+            <li><a href="#meaning"><span class="toc-num">1</span> What It Means &amp; Why It Matters</a></li>
+            <li><a href="#teaching"><span class="toc-num">2</span> Teaching Example — A Real Wake-Up Call</a></li>
+            <li><a href="#significance"><span class="toc-num">3</span> Real-Life Business Significance</a></li>
+            <li><a href="#dubai"><span class="toc-num">4</span> Dubai Civil Engineering Context</a></li>
+            <li><a href="#five-kpis"><span class="toc-num">5</span> The 5 Numbers You Must Track</a></li>
+            <li><a href="#dashboard"><span class="toc-num">6</span> Your Weekly Dashboard Template</a></li>
+            <li><a href="#activity-tracker"><span class="toc-num">7</span> Interactive: Build Your Tracker</a></li>
+            <li><a href="#quiz"><span class="toc-num">8</span> Test Your Understanding</a></li>
+            <li><a href="#common-mistakes"><span class="toc-num">9</span> Common Mistakes to Avoid</a></li>
+            <li><a href="#action-plan"><span class="toc-num">10</span> Quick Action Plan — This Week</a></li>
+        </ul>
+    </div>
+
+    <!-- ═══ SECTION 1: MEANING ═══ -->
+    <div class="section" id="meaning">
+        <div class="section-header">
+            <div class="section-icon teal">💡</div>
+            <h2 class="section-label">What It Means &amp; Why It Matters</h2>
+        </div>
+
+        <div class="content-card">
+            <h3>The Core Idea in One Line</h3>
+            <p>
+                If you are not measuring something, you cannot improve it. It is as simple as that. Most SME business owners — especially in technical industries like civil and structural engineering — rely on gut feeling and assumptions to run their companies. They "feel" sales are going okay, they "think" cash flow is stable, and they "believe" the team is performing well.
+            </p>
+            <p>
+                But feelings are not facts. When you start tracking specific numbers on a regular basis, something powerful happens: hidden problems become visible, small wins become clear, and you shift from reacting to problems to preventing them.
+            </p>
+
+            <div class="highlight-box">
+                <p>
+                    <strong>"What gets measured gets improved"</strong> does not mean you need complicated software or a finance degree. It means picking a handful of important numbers, writing them down every week, and reviewing them with your team. That simple habit — repeated consistently — is what separates growing businesses from struggling ones.
+                </p>
+            </div>
+
+            <h3>Why This Especially Matters for Engineering Firms in Dubai</h3>
+            <p>
+                If you run a civil or structural engineering consultancy in Dubai, you are operating in one of the world's most competitive and project-driven markets. Projects are often large in value but delayed in payment. Clients range from private developers to government entities, each with different approval timelines. Your team might be working on multiple projects with different deadlines, budgets, and scope changes happening simultaneously.
+            </p>
+            <p>
+                Without tracking numbers, you could have a team that is "busy" but not profitable. You could be winning projects but losing money on each one. You could have AED 2 million in receivables but less than AED 100,000 in the bank. Measurement gives you the truth — and the truth gives you the power to act before it is too late.
+            </p>
+        </div>
+    </div>
+
+    <!-- ═══ SECTION 2: TEACHING EXAMPLE ═══ -->
+    <div class="section" id="teaching">
+        <div class="section-header">
+            <div class="section-icon amber">📖</div>
+            <h2 class="section-label">Teaching Example — A Real Wake-Up Call</h2>
+        </div>
+
+        <div class="content-card">
+            <h3>The Scenario: Ahmed's Structural Engineering Firm in Business Bay</h3>
+            <p>
+                Ahmed runs a 15-person structural engineering consultancy in Business Bay, Dubai. His firm handles structural design, third-party checking, and project supervision for mid-rise residential and commercial buildings. Like many business owners in Dubai, Ahmed has been running the company for six years. He keeps an eye on things informally — he checks the bank account occasionally, talks to the team in the morning, and follows up on big invoices when he remembers.
+            </p>
+            <p>
+                Business "feels" okay. The team is busy. There are projects coming in. But Ahmed also notices that cash is always tight at the end of the month, and he cannot quite explain why. He decides to try something new: for one month, he will track just five numbers every Friday afternoon.
+            </p>
+
+            <h3>What Ahmed Found After Tracking for Four Weeks</h3>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Week</th>
+                            <th>New Leads</th>
+                            <th>Proposals Sent</th>
+                            <th>Projects Won</th>
+                            <th>Revenue (AED)</th>
+                            <th>Cash Collected (AED)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Week 1</strong></td>
+                            <td>8</td>
+                            <td>5</td>
+                            <td>2</td>
+                            <td>185,000</td>
+                            <td>65,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Week 2</strong></td>
+                            <td>12 <span class="badge-up">↑ 50%</span></td>
+                            <td>4</td>
+                            <td>1 <span class="badge-down">↓ 50%</span></td>
+                            <td>120,000 <span class="badge-down">↓ 35%</span></td>
+                            <td>40,000 <span class="badge-down">↓ 38%</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Week 3</strong></td>
+                            <td>10</td>
+                            <td>6</td>
+                            <td>3 <span class="badge-up">↑</span></td>
+                            <td>210,000</td>
+                            <td>55,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Week 4</strong></td>
+                            <td>9</td>
+                            <td>7</td>
+                            <td>2</td>
+                            <td>175,000</td>
+                            <td>140,000 <span class="badge-up">↑ 155%</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>The Insights That Changed Everything</h3>
+            <p>
+                Before tracking, Ahmed assumed his biggest problem was "not enough leads." But the numbers told a completely different story. Here is what he discovered:
+            </p>
+
+            <div class="scenario-grid">
+                <div class="scenario-card">
+                    <div class="emoji">🔍</div>
+                    <h4>Leads Were Not the Problem</h4>
+                    <p>He was getting 8–12 leads per week consistently. The marketing was working. The real bottleneck was somewhere else in the pipeline.</p>
+                </div>
+                <div class="scenario-card">
+                    <div class="emoji">📉</div>
+                    <h4>Conversion Was the Real Issue</h4>
+                    <p>In Week 2, leads went up by 50% but conversions dropped. The problem? His senior estimator was on leave, and junior staff were sending proposals with errors and delays.</p>
+                </div>
+                <div class="scenario-card">
+                    <div class="emoji">💰</div>
+                    <h4>Cash vs. Revenue Mismatch</h4>
+                    <p>He was recording AED 185,000 in revenue in Week 1 but only collecting AED 65,000. That means 65% of his income was sitting uncollected — a dangerous cash flow gap.</p>
+                </div>
+                <div class="scenario-card">
+                    <div class="emoji">✅</div>
+                    <h4>Collection Improved With Focus</h4>
+                    <p>Once Ahmed assigned one person to follow up on outstanding invoices every Tuesday, Week 4 collections jumped to AED 140,000 — a 155% improvement over Week 2.</p>
+                </div>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-icon">💡</div>
+                <div class="callout-text">
+                    <strong>Key Takeaway:</strong> Ahmed did not need to hire more salespeople or spend more on marketing. He needed to fix his proposal process and focus on collecting what was already owed to him. Without tracking, he would have never found the real problems.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ SECTION 3: SIGNIFICANCE ═══ -->
+    <div class="section" id="significance">
+        <div class="section-header">
+            <div class="section-icon green">⚖️</div>
+            <h2 class="section-label">Real-Life Business Significance</h2>
+        </div>
+
+        <div class="content-card">
+            <h3>The Two Types of Engineering Firms</h3>
+            <p>
+                Every civil and structural engineering company in Dubai falls into one of two categories. Understanding which one you are in — and which one you want to be in — is the first step toward real improvement.
+            </p>
+
+            <div class="compare-grid">
+                <div class="compare-col negative">
+                    <h4>🚫 Firms That Don't Measure</h4>
+                    <ul>
+                        <li>React to problems only when they become crises (e.g., discovering a cash shortfall when salaries are due)</li>
+                        <li>Depend too heavily on the owner's assumptions and memory</li>
+                        <li>Cannot explain why some months are profitable and others are not</li>
+                        <li>Struggle to hold team members accountable because there are no benchmarks</li>
+                        <li>Find it nearly impossible to scale beyond 10–15 employees</li>
+                        <li>Lose repeat clients without understanding why</li>
+                        <li>Undercharge for projects because they do not know their true cost</li>
+                    </ul>
+                </div>
+                <div class="compare-col positive">
+                    <h4>✅ Firms That Measure Regularly</h4>
+                    <ul>
+                        <li>Spot issues 2–4 weeks before they become serious problems</li>
+                        <li>Make decisions based on data, not assumptions or emotions</li>
+                        <li>Can clearly see which projects, clients, and services are most profitable</li>
+                        <li>Create genuine accountability — every team member knows their numbers</li>
+                        <li>Grow consistently and predictably, adding staff at the right time</li>
+                        <li>Retain clients by identifying satisfaction gaps early</li>
+                        <li>Price projects accurately because they track actual costs vs. estimates</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="callout warning">
+                <div class="callout-icon">⚠️</div>
+                <div class="callout-text">
+                    <strong>Reality Check:</strong> In Dubai's engineering sector, many firms operate on 60–90 day payment cycles. If you are not tracking collections vs. invoicing, you can easily have AED 1 million in receivables and less than AED 50,000 in the bank. This is not a cash flow "problem" — it is a measurement problem. You simply did not see it coming because you were not looking at the right numbers.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ SECTION 4: DUBAI CONTEXT ═══ -->
+    <div class="section" id="dubai">
+        <div class="section-header">
+            <div class="section-icon blue">🏗️</div>
+            <h2 class="section-label">Dubai Civil Engineering Context</h2>
+        </div>
+
+        <div class="content-card">
+            <h3>Why Measurement is Non-Negotiable in the UAE Market</h3>
+            <p>
+                The Dubai construction and engineering market has unique characteristics that make measurement even more critical than in other markets. Understanding these factors will help you appreciate why a weekly measurement habit is not a "nice to have" — it is survival.
+            </p>
+
+            <div class="scenario-grid" style="grid-template-columns: 1fr;">
+                <div class="scenario-card">
+                    <div class="emoji">🏢</div>
+                    <h4>Project-Driven Revenue with Long Payment Cycles</h4>
+                    <p>
+                        Most civil engineering projects in Dubai — whether it is a villa structural design in Jumeirah, a commercial tower in Downtown, or an infrastructure project in Dubai South — involve milestone-based payments. You might complete a design in two weeks, submit it, and then wait 45–90 days for payment after approvals from the Dubai Municipality (DM) or Trakhees. If you are not tracking the gap between "work completed" and "cash received," you are flying blind.
+                    </p>
+                </div>
+            </div>
+
+            <div class="scenario-grid">
+                <div class="scenario-card">
+                    <div class="emoji">📋</div>
+                    <h4>Regulatory Approval Complexity</h4>
+                    <p>Projects need approvals from DM, DEWA, Trakhees, or other authorities. Each approval stage can delay invoicing. Tracking approval timelines helps you forecast when cash will actually arrive — not just when you hope it will.</p>
+                </div>
+                <div class="scenario-card">
+                    <div class="emoji">🤝</div>
+                    <h4>Client Diversity</h4>
+                    <p>You might work with private developers, semi-government entities, and individual villa owners — all with very different payment behaviours. Measuring collection rates by client type reveals who pays on time and who drains your cash flow.</p>
+                </div>
+                <div class="scenario-card">
+                    <div class="emoji">📐</div>
+                    <h4>Scope Creep is Epidemic</h4>
+                    <p>Design changes are constant in Dubai projects. Without measuring the hours spent vs. hours budgeted for each project, you end up doing 30–40% extra work for free. Tracking project profitability is not optional — it is how you survive.</p>
+                </div>
+                <div class="scenario-card">
+                    <div class="emoji">👥</div>
+                    <h4>Talent Costs are Rising</h4>
+                    <p>Engineers in Dubai — especially those with DM-registered credentials — command premium salaries. If you are not measuring revenue per employee and utilisation rate, you cannot tell whether your team is generating enough to cover their cost.</p>
+                </div>
+            </div>
+
+            <div class="callout info">
+                <div class="callout-icon">📌</div>
+                <div class="callout-text">
+                    <strong>Dubai-Specific Tip:</strong> Track your "Days Sales Outstanding" (DSO) — the average number of days it takes for a client to pay after you invoice. For most Dubai engineering firms, DSO ranges from 45 to 120 days. If yours is above 90, you have a collection problem that needs immediate attention, regardless of how much revenue you are generating.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ SECTION 5: THE 5 KPIS ═══ -->
+    <div class="section" id="five-kpis">
+        <div class="section-header">
+            <div class="section-icon orange">🎯</div>
+            <h2 class="section-label">The 5 Numbers You Must Track Every Week</h2>
+        </div>
+
+        <div class="content-card">
+            <p>
+                You do not need to track fifty different metrics. You need five. These five numbers, reviewed every Monday morning for 15 minutes, will give you more clarity about your business than most owners get in an entire quarter.
+            </p>
+
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-icon">📥</div>
+                    <div class="kpi-label">Leads Generated</div>
+                    <div class="kpi-value" style="font-size:1rem;">New Enquiries</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon">🤝</div>
+                    <div class="kpi-label">Sales Converted</div>
+                    <div class="kpi-value" style="font-size:1rem;">Projects Won</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon">💵</div>
+                    <div class="kpi-label">Cash Collected</div>
+                    <div class="kpi-value" style="font-size:1rem;">Money In Bank</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon">💸</div>
+                    <div class="kpi-label">Expenses</div>
+                    <div class="kpi-value" style="font-size:1rem;">Money Going Out</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon">⏳</div>
+                    <div class="kpi-label">Pending Payments</div>
+                    <div class="kpi-value" style="font-size:1rem;">Receivables</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3>1. Leads Generated — How Many New Enquiries Came In This Week?</h3>
+            <p>
+                A "lead" is any new potential project opportunity. It could be a phone call from a developer asking for a structural design quotation, a referral from an architect, an email from a contractor needing a third-party checking service, or an enquiry through your website or LinkedIn. This number tells you whether your pipeline is healthy. If leads drop for two consecutive weeks, you know there is a problem with your visibility, your referral network, or your marketing — and you can act immediately instead of discovering three months later that you have no new work coming in.
+            </p>
+
+            <h3>2. Sales Converted — How Many Leads Turned Into Actual Projects?</h3>
+            <p>
+                Of all the enquiries you received, how many turned into signed contracts or confirmed projects? This is your conversion rate. If you get 10 leads a week but only win 1 project, your conversion rate is 10%. That is not necessarily bad — but you need to know it. If it drops from 20% to 10%, something is wrong. Maybe your pricing is off. Maybe your proposals are taking too long. Maybe a competitor is undercutting you. Without measuring conversion, you will blame marketing when the real issue might be your sales process, your proposal quality, or your response time.
+            </p>
+
+            <h3>3. Cash Collected — How Much Money Actually Entered Your Bank Account?</h3>
+            <p>
+                This is the most important number for any engineering firm in Dubai. Revenue is not cash. You can invoice AED 500,000 in a month and collect only AED 100,000. The difference is sitting in your receivables — and your landlord, your employees, and DEWA do not accept receivables as payment. Track actual cash collected every week. Not invoiced amounts. Not expected payments. Real, confirmed bank deposits. This single number will change how you run your business.
+            </p>
+
+            <h3>4. Expenses — How Much Money Left the Business This Week?</h3>
+            <p>
+                This includes salaries, office rent, software subscriptions (AutoCAD, ETABS, SAFE, Revit licences), professional indemnity insurance, transportation, printing and plotting costs, visa processing, and any other operational spending. Most engineering firm owners know their big expenses (salary and rent) but completely overlook the dozens of smaller outflows that add up. Tracking total weekly expenses helps you spot unnecessary spending and ensures you always know your burn rate — the amount your company needs each week just to stay alive.
+            </p>
+
+            <h3>5. Pending Payments — How Much Are Clients Owing You Right Now?</h3>
+            <p>
+                This is your total outstanding receivables. Break it down by how old the invoices are: 0–30 days, 31–60 days, 61–90 days, and over 90 days. Anything over 90 days should be treated as a serious risk. In Dubai, once a payment is over 120 days old, the probability of collection drops significantly. This number, tracked weekly, shows you exactly where your money is stuck and which clients need follow-up this week.
+            </p>
+        </div>
+    </div>
+
+    <!-- ═══ SECTION 6: DASHBOARD TEMPLATE ═══ -->
+    <div class="section" id="dashboard">
+        <div class="section-header">
+            <div class="section-icon teal">📋</div>
+            <h2 class="section-label">Your Weekly Dashboard Template</h2>
+        </div>
+
+        <div class="content-card">
+            <p>
+                Here is what a simple weekly dashboard looks like for a Dubai-based civil engineering firm. You do not need expensive software — a printed sheet on your office wall or a shared spreadsheet works perfectly.
+            </p>
+
+            <div class="dashboard-preview">
+                <div class="dashboard-title-bar">
+                    <span class="dot r"></span>
+                    <span class="dot y"></span>
+                    <span class="dot g"></span>
+                    <span>Weekly Performance Dashboard — Civil Engineering Firm</span>
+                </div>
+                <div class="dash-grid">
+                    <div class="dash-cell">
+                        <div class="dash-label">Leads</div>
+                        <div class="dash-value">12</div>
+                    </div>
+                    <div class="dash-cell">
+                        <div class="dash-label">Converted</div>
+                        <div class="dash-value">3</div>
+                    </div>
+                    <div class="dash-cell">
+                        <div class="dash-label">Collected</div>
+                        <div class="dash-value">185K</div>
+                    </div>
+                    <div class="dash-cell">
+                        <div class="dash-label">Expenses</div>
+                        <div class="dash-value">95K</div>
+                    </div>
+                    <div class="dash-cell">
+                        <div class="dash-label">Pending</div>
+                        <div class="dash-value">420K</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>The Monday Morning Routine (15 Minutes)</h3>
+            <p>
+                This is how your weekly review should work. It takes exactly 15 minutes and involves your core team — typically you, your office manager or accountant, and your senior engineer or project lead.
+            </p>
+
+            <ul class="steps-list">
+                <li data-step="1">
+                    <strong>Update the Numbers (3 minutes)</strong>
+                    <span>Your accountant or office manager fills in last week's five numbers. No discussion yet — just data entry.</span>
+                </li>
+                <li data-step="2">
+                    <strong>Compare to Last Week (3 minutes)</strong>
+                    <span>Look at each number side by side with the previous week. What went up? What went down? Are there any sudden changes?</span>
+                </li>
+                <li data-step="3">
+                    <strong>Identify the Biggest Risk (3 minutes)</strong>
+                    <span>Which number is most concerning? Maybe collections dropped. Maybe leads dried up. Maybe expenses spiked because of a new software purchase. Pick the one number that needs attention this week.</span>
+                </li>
+                <li data-step="4">
+                    <strong>Assign One Action (3 minutes)</strong>
+                    <span>Assign one specific person to take one specific action to address the biggest risk. Not a committee. Not a "let's discuss later." One person, one action, one deadline.</span>
+                </li>
+                <li data-step="5">
+                    <strong>Confirm Last Week's Action (3 minutes)</strong>
+                    <span>Did the person assigned last week's action complete it? What was the result? This creates a loop of accountability that compounds over time.</span>
+                </li>
+            </ul>
+
+            <div class="callout tip">
+                <div class="callout-icon">🎯</div>
+                <div class="callout-text">
+                    <strong>Pro Tip:</strong> Keep the dashboard visible — on a whiteboard in your office, on a shared Google Sheet, or printed and pinned to the wall. When the team sees the numbers every day, behaviour changes naturally. Numbers that are hidden have no power. Numbers that are visible create accountability without you having to say a word.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ SECTION 7: INTERACTIVE TRACKER ═══ -->
+    <div class="section" id="activity-tracker">
+        <div class="section-header">
+            <div class="section-icon teal">⚡</div>
+            <h2 class="section-label">Interactive: Build Your Weekly Tracker</h2>
+        </div>
+
+        <div class="interactive-card">
+            <h3>Weekly Performance Tracker</h3>
+            <p>Enter your actual numbers for this week and last week. The tool will calculate your trends and highlight areas that need attention.</p>
+
+            <div style="margin-bottom:1.25rem;">
+                <p style="font-size:0.82rem;font-weight:700;color:var(--teal-700);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">📅 This Week's Numbers</p>
+                <div class="tracker-grid">
+                    <div class="tracker-input-group">
+                        <label>Leads</label>
+                        <input type="number" id="tw-leads" placeholder="e.g. 10" min="0">
+                    </div>
+                    <div class="tracker-input-group">
+                        <label>Projects Won</label>
+                        <input type="number" id="tw-won" placeholder="e.g. 3" min="0">
+                    </div>
+                    <div class="tracker-input-group">
+                        <label>Cash Collected (AED)</label>
+                        <input type="number" id="tw-cash" placeholder="e.g. 150000" min="0">
+                    </div>
+                    <div class="tracker-input-group">
+                        <label>Expenses (AED)</label>
+                        <input type="number" id="tw-expenses" placeholder="e.g. 85000" min="0">
+                    </div>
+                    <div class="tracker-input-group">
+                        <label>Pending (AED)</label>
+                        <input type="number" id="tw-pending" placeholder="e.g. 400000" min="0">
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-bottom:1.25rem;">
+                <p style="font-size:0.82rem;font-weight:700;color:var(--gray-500);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">📅 Last Week's Numbers (for comparison)</p>
+                <div class="tracker-grid">
+                    <div class="tracker-input-group">
+                        <label>Leads</label>
+                        <input type="number" id="lw-leads" placeholder="e.g. 8" min="0">
+                    </div>
+                    <div class="tracker-input-group">
+                        <label>Projects Won</label>
+                        <input type="number" id="lw-won" placeholder="e.g. 2" min="0">
+                    </div>
+                    <div class="tracker-input-group">
+                        <label>Cash Collected (AED)</label>
+                        <input type="number" id="lw-cash" placeholder="e.g. 120000" min="0">
+                    </div>
+                    <div class="tracker-input-group">
+                        <label>Expenses (AED)</label>
+                        <input type="number" id="lw-expenses" placeholder="e.g. 90000" min="0">
+                    </div>
+                    <div class="tracker-input-group">
+                        <label>Pending (AED)</label>
+                        <input type="number" id="lw-pending" placeholder="e.g. 350000" min="0">
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-row">
+                <button class="btn-primary" onclick="calculateTracker()">📊 Analyse My Numbers</button>
+                <button class="btn-secondary" onclick="resetTracker()">↺ Reset</button>
+            </div>
+
+            <div class="results-panel" id="trackerResults"></div>
+        </div>
+
+        <!-- VISUAL BAR COMPARISON -->
+        <div class="interactive-card">
+            <h3>Visual Comparison — Where Do Your Numbers Stand?</h3>
+            <p>After entering your numbers above, this bar chart shows a visual comparison of your metrics across the two weeks.</p>
+            <div id="barChartArea" class="bar-chart-container">
+                <p style="font-size:0.88rem;color:var(--gray-400);text-align:center;padding:1.5rem 0;">Enter your numbers above and click "Analyse My Numbers" to see the visual comparison.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ SECTION 8: QUIZ ═══ -->
+    <div class="section" id="quiz">
+        <div class="section-header">
+            <div class="section-icon amber">🧠</div>
+            <h2 class="section-label">Test Your Understanding</h2>
+        </div>
+
+        <div class="interactive-card">
+            <h3>Quick Knowledge Check</h3>
+            <p>Answer these questions to reinforce what you have learned. Select the best answer for each question.</p>
+
+            <!-- Q1 -->
+            <div class="quiz-block" data-correct="2" style="margin-bottom:1.5rem;">
+                <div class="quiz-question">Q1: Ahmed's firm got more leads in Week 2 but won fewer projects. What was the most likely root cause?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectQuiz(this, 0)">
+                        <div class="quiz-radio"></div>
+                        <span>Marketing was not effective enough</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectQuiz(this, 1)">
+                        <div class="quiz-radio"></div>
+                        <span>Clients were not interested in his services</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectQuiz(this, 2)">
+                        <div class="quiz-radio"></div>
+                        <span>The proposal/conversion process had a problem (e.g., estimator on leave)</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectQuiz(this, 3)">
+                        <div class="quiz-radio"></div>
+                        <span>He needed to lower his prices</span>
+                    </div>
+                </div>
+                <div class="quiz-feedback" id="quiz-fb-1"></div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="quiz-block" data-correct="1" style="margin-bottom:1.5rem;">
+                <div class="quiz-question">Q2: What is the most important number for a Dubai engineering firm to track weekly?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectQuiz(this, 0)">
+                        <div class="quiz-radio"></div>
+                        <span>Total revenue invoiced</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectQuiz(this, 1)">
+                        <div class="quiz-radio"></div>
+                        <span>Actual cash collected in the bank</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectQuiz(this, 2)">
+                        <div class="quiz-radio"></div>
+                        <span>Number of projects completed</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectQuiz(this, 3)">
+                        <div class="quiz-radio"></div>
+                        <span>Number of employees</span>
+                    </div>
+                </div>
+                <div class="quiz-feedback" id="quiz-fb-2"></div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="quiz-block" data-correct="0" style="margin-bottom:1.5rem;">
+                <div class="quiz-question">Q3: How long should your Monday morning dashboard review take?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectQuiz(this, 0)">
+                        <div class="quiz-radio"></div>
+                        <span>15 minutes</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectQuiz(this, 1)">
+                        <div class="quiz-radio"></div>
+                        <span>1 hour</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectQuiz(this, 2)">
+                        <div class="quiz-radio"></div>
+                        <span>Half a day</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectQuiz(this, 3)">
+                        <div class="quiz-radio"></div>
+                        <span>Only when there is a problem</span>
+                    </div>
+                </div>
+                <div class="quiz-feedback" id="quiz-fb-3"></div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="quiz-block" data-correct="2">
+                <div class="quiz-question">Q4: If your DSO (Days Sales Outstanding) is above 90 days, what does that indicate?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectQuiz(this, 0)">
+                        <div class="quiz-radio"></div>
+                        <span>You are winning too many projects</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectQuiz(this, 1)">
+                        <div class="quiz-radio"></div>
+                        <span>Your pricing is too high</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectQuiz(this, 2)">
+                        <div class="quiz-radio"></div>
+                        <span>You have a serious collection problem that needs immediate action</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectQuiz(this, 3)">
+                        <div class="quiz-radio"></div>
+                        <span>You should stop taking new projects</span>
+                    </div>
+                </div>
+                <div class="quiz-feedback" id="quiz-fb-4"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ SECTION 9: COMMON MISTAKES ═══ -->
+    <div class="section" id="common-mistakes">
+        <div class="section-header">
+            <div class="section-icon red">🚧</div>
+            <h2 class="section-label">Common Mistakes to Avoid</h2>
+        </div>
+
+        <div class="content-card">
+            <p>
+                When engineering firms start measuring for the first time, they often fall into predictable traps. Here are the most common mistakes and how to avoid each one.
+            </p>
+
+            <div class="scenario-grid" style="grid-template-columns: 1fr;">
+                <div class="scenario-card" style="border-left:4px solid var(--red-400);">
+                    <h4>❌ Mistake 1: Tracking Too Many Numbers</h4>
+                    <p>Some owners get excited and try to track 20+ metrics from Day 1. This leads to overwhelm, inconsistency, and eventually giving up entirely. Start with 5 numbers. You can add more after 3 months when the habit is established.</p>
+                </div>
+            </div>
+            <div class="scenario-grid" style="grid-template-columns: 1fr;">
+                <div class="scenario-card" style="border-left:4px solid var(--red-400);">
+                    <h4>❌ Mistake 2: Tracking Revenue Instead of Cash</h4>
+                    <p>Revenue is what you have invoiced. Cash is what has actually arrived in your bank account. In Dubai, these two numbers can be months apart. Always track cash collected — it is the only number that pays your bills.</p>
+                </div>
+            </div>
+            <div class="scenario-grid" style="grid-template-columns: 1fr;">
+                <div class="scenario-card" style="border-left:4px solid var(--red-400);">
+                    <h4>❌ Mistake 3: Not Reviewing Consistently</h4>
+                    <p>Collecting data without reviewing it is useless. The power is in the review — the 15-minute Monday meeting where you look at the numbers, compare them, and take action. If you skip the review, the tracking is just paperwork with no impact.</p>
+                </div>
+            </div>
+            <div class="scenario-grid" style="grid-template-columns: 1fr;">
+                <div class="scenario-card" style="border-left:4px solid var(--red-400);">
+                    <h4>❌ Mistake 4: Making It the Owner's Job Alone</h4>
+                    <p>If only the owner sees and tracks the numbers, the team has no visibility and no accountability. Share the dashboard. Let everyone see the leads, the conversions, the cash collected. Transparency drives behaviour change faster than any management lecture.</p>
+                </div>
+            </div>
+            <div class="scenario-grid" style="grid-template-columns: 1fr;">
+                <div class="scenario-card" style="border-left:4px solid var(--red-400);">
+                    <h4>❌ Mistake 5: Reacting to One Bad Week</h4>
+                    <p>One slow week is not a trend. Look at a rolling 4-week average before making major decisions. If leads drop for four consecutive weeks, that is a pattern. If leads drop for one week during Eid holidays, that is normal seasonality. Do not panic — trend, not noise, is what matters.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ SECTION 10: ACTION PLAN ═══ -->
+    <div class="section" id="action-plan">
+        <div class="section-header">
+            <div class="section-icon green">🚀</div>
+            <h2 class="section-label">Quick Action Plan — Implement This Week</h2>
+        </div>
+
+        <div class="interactive-card">
+            <h3>Your 5-Day Implementation Checklist</h3>
+            <p>Check off each item as you complete it. This is your roadmap for the next five working days to set up your measurement system.</p>
+
+            <ul class="checklist" id="actionChecklist">
+                <li>
+                    <div class="check-box" onclick="toggleCheck(this)"></div>
+                    <span><strong>Sunday:</strong> Create a simple spreadsheet or printed form with five columns — Leads Generated, Projects Won, Cash Collected, Expenses, and Pending Payments. Use Google Sheets, Excel, or even a notebook. Keep it simple.</span>
+                </li>
+                <li>
+                    <div class="check-box" onclick="toggleCheck(this)"></div>
+                    <span><strong>Monday:</strong> Hold your first 15-minute Monday morning meeting. Gather your accountant/office manager and senior engineer. Fill in last week's numbers (even if they are rough estimates for the first time). Discuss what stands out.</span>
+                </li>
+                <li>
+                    <div class="check-box" onclick="toggleCheck(this)"></div>
+                    <span><strong>Tuesday:</strong> Assign someone to call every client with an invoice older than 30 days. Document the status of each pending payment. This is your collection drive — the single action that will have the fastest impact on your cash position.</span>
+                </li>
+                <li>
+                    <div class="check-box" onclick="toggleCheck(this)"></div>
+                    <span><strong>Wednesday:</strong> Review your last 10 proposals. How many turned into projects? Calculate your conversion rate. If it is below 20%, write down three specific things you could improve — response time, pricing clarity, proposal quality.</span>
+                </li>
+                <li>
+                    <div class="check-box" onclick="toggleCheck(this)"></div>
+                    <span><strong>Thursday:</strong> Print or display the dashboard somewhere visible in the office. Share the Google Sheet link with your core team. Make the numbers visible — this is when accountability begins without you having to enforce it.</span>
+                </li>
+            </ul>
+
+            <div style="margin-top:1.25rem; display:flex; align-items:center; gap:0.75rem;">
+                <div id="checkProgress" style="font-size:0.88rem; font-weight:600; color:var(--teal-700);">0 of 5 completed</div>
+                <div style="flex:1; height:8px; background:var(--gray-100); border-radius:99px; overflow:hidden;">
+                    <div id="checkBar" style="height:100%; width:0%; background:linear-gradient(90deg,var(--teal-500),var(--cyan-400)); border-radius:99px; transition:width 0.4s ease;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3>What Happens After Week 1?</h3>
+            <p>
+                After your first week of tracking, you will already see things you did not notice before. Maybe your pending payments are higher than you thought. Maybe you sent fewer proposals than you assumed. Maybe your expenses include subscriptions you forgot about. That first week of data is your baseline — the starting point from which all improvement is measured.
+            </p>
+            <p>
+                By Week 4, you will have a trend. By Week 8, you will have enough data to start making strategic decisions — such as whether to hire, whether to drop unprofitable clients, whether to invest in marketing, or whether to restructure your proposal process.
+            </p>
+            <p>
+                The key is consistency. Do not stop after one week because nothing dramatic happened. The power of measurement is cumulative — it builds slowly and then becomes the most valuable habit in your business.
+            </p>
+
+            <div class="highlight-box">
+                <p>
+                    <strong>Remember:</strong> You do not need perfect numbers. You need consistent numbers. Even rough estimates, tracked every week and reviewed with your team, will outperform sophisticated reports that sit unread in an email inbox. Start messy. Start now. Improve as you go.
+                </p>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="page-footer">
+    <div class="footer-brand">Civil-Tech.ai — Knowledge Portal</div>
+    <a href="https://civiltech-ai.github.io/knowledge-portal/" class="footer-link">← Back to All Topics</a>
+</footer>
+
+<!-- ═══ SCRIPTS ═══ -->
+<script>
+    // ── PROGRESS BAR ──
+    window.addEventListener('scroll', () => {
+        const h = document.documentElement;
+        const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+        document.getElementById('progressFill').style.width = Math.min(pct, 100) + '%';
+    });
+
+    // ── QUIZ LOGIC ──
+    const feedbackTexts = {
+        1: {
+            correct: "Correct! The senior estimator was on leave, causing proposal delays and errors. Leads were strong — the conversion process was the bottleneck.",
+            wrong: "Not quite. Leads actually increased in Week 2. The problem was in the proposal/conversion stage — the senior estimator was on leave, causing delays and errors in proposals."
+        },
+        2: {
+            correct: "Exactly! In Dubai's long payment cycle environment, cash collected is the number that determines whether your business can pay salaries and rent. Revenue invoiced is not the same as cash in hand.",
+            wrong: "Not quite. While all metrics matter, cash collected is the most critical for Dubai engineering firms because of 60–90 day payment cycles. Revenue invoiced is not money in the bank."
+        },
+        3: {
+            correct: "Correct! 15 minutes is all you need. The review should be short, focused, and consistent — not a lengthy meeting.",
+            wrong: "Not quite. The Monday morning review should take only 15 minutes. Keeping it short ensures the habit sticks and the team does not dread it."
+        },
+        4: {
+            correct: "That's right! A DSO above 90 days means your clients are taking over 3 months to pay on average. This is a serious cash flow risk that requires immediate collection efforts.",
+            wrong: "Not quite. A DSO above 90 days means clients are taking too long to pay, creating a serious collection and cash flow problem. It requires immediate action on follow-ups and payment terms."
+        }
+    };
+
+    let quizNum = 0;
+
+    function selectQuiz(el, idx) {
+        const block = el.closest('.quiz-block');
+        if (block.classList.contains('answered')) return;
+        block.classList.add('answered');
+        quizNum++;
+
+        const correctIdx = parseInt(block.getAttribute('data-correct'));
+        const options = block.querySelectorAll('.quiz-option');
+        const fbEl = block.querySelector('.quiz-feedback');
+        const qId = quizNum;
+
+        options.forEach((opt, i) => {
+            opt.style.pointerEvents = 'none';
+            if (i === correctIdx) { opt.classList.add('correct'); }
+            else if (i === idx && idx !== correctIdx) { opt.classList.add('wrong'); }
+        });
+
+        if (idx === correctIdx) {
+            fbEl.className = 'quiz-feedback correct-feedback';
+            fbEl.textContent = feedbackTexts[qId]?.correct || 'Correct!';
+        } else {
+            fbEl.className = 'quiz-feedback wrong-feedback';
+            fbEl.textContent = feedbackTexts[qId]?.wrong || 'Not quite — review the section above.';
+        }
+    }
+
+    // ── TRACKER TOOL ──
+    function getVal(id) { return parseFloat(document.getElementById(id).value) || 0; }
+
+    function calculateTracker() {
+        const tw = { leads: getVal('tw-leads'), won: getVal('tw-won'), cash: getVal('tw-cash'), expenses: getVal('tw-expenses'), pending: getVal('tw-pending') };
+        const lw = { leads: getVal('lw-leads'), won: getVal('lw-won'), cash: getVal('lw-cash'), expenses: getVal('lw-expenses'), pending: getVal('lw-pending') };
+
+        function pctChange(curr, prev) {
+            if (prev === 0) return curr > 0 ? '+100%' : '0%';
+            const p = ((curr - prev) / prev * 100).toFixed(0);
+            return (p > 0 ? '+' : '') + p + '%';
+        }
+        function arrow(curr, prev, invert) {
+            if (curr === prev) return '<span style="color:var(--gray-400);">→ No change</span>';
+            const up = curr > prev;
+            const good = invert ? !up : up;
+            const color = good ? 'var(--green-500)' : 'var(--red-500)';
+            const sym = up ? '↑' : '↓';
+            return `<span style="color:${color};font-weight:700;">${sym} ${pctChange(curr, prev)}</span>`;
+        }
+
+        const convTW = tw.leads > 0 ? (tw.won / tw.leads * 100).toFixed(0) + '%' : '—';
+        const convLW = lw.leads > 0 ? (lw.won / lw.leads * 100).toFixed(0) + '%' : '—';
+        const netTW = tw.cash - tw.expenses;
+        const collRatioTW = tw.pending > 0 ? (tw.cash / (tw.cash + tw.pending) * 100).toFixed(0) + '%' : '—';
+
+        let alerts = [];
+        if (tw.cash < tw.expenses) alerts.push('⚠️ <strong>Cash Warning:</strong> You collected less than you spent this week. Immediate attention needed on collections or cost control.');
+        if (tw.pending > tw.cash * 4) alerts.push('⚠️ <strong>Receivables Alert:</strong> Your pending payments are more than 4× your weekly collections. Consider a focused collection drive this week.');
+        if (tw.leads > 0 && (tw.won / tw.leads) < 0.15) alerts.push('💡 <strong>Conversion Insight:</strong> Your conversion rate is below 15%. Review your proposal process, response time, and pricing strategy.');
+        if (tw.leads < lw.leads * 0.7 && lw.leads > 0) alerts.push('📉 <strong>Lead Drop:</strong> Leads dropped by more than 30% from last week. Check your marketing, referral pipeline, and client outreach activities.');
+        if (alerts.length === 0) alerts.push('✅ <strong>Looking Good:</strong> No major red flags this week. Keep tracking consistently and review the trend over the next 4 weeks.');
+
+        const panel = document.getElementById('trackerResults');
+        panel.innerHTML = `
+            <div class="results-title">📊 Weekly Analysis Results</div>
+            <div class="result-row"><span class="result-label">Leads Trend</span><span class="result-value">${tw.leads} this week ${arrow(tw.leads, lw.leads, false)}</span></div>
+            <div class="result-row"><span class="result-label">Conversion Rate</span><span class="result-value">${convTW} (last week: ${convLW})</span></div>
+            <div class="result-row"><span class="result-label">Cash Collected</span><span class="result-value">AED ${tw.cash.toLocaleString()} ${arrow(tw.cash, lw.cash, false)}</span></div>
+            <div class="result-row"><span class="result-label">Expenses</span><span class="result-value">AED ${tw.expenses.toLocaleString()} ${arrow(tw.expenses, lw.expenses, true)}</span></div>
+            <div class="result-row"><span class="result-label">Net Cash Flow</span><span class="result-value" style="color:${netTW >= 0 ? 'var(--green-500)' : 'var(--red-500)'}">AED ${netTW.toLocaleString()}</span></div>
+            <div class="result-row"><span class="result-label">Collection Ratio</span><span class="result-value">${collRatioTW}</span></div>
+            <div class="result-row"><span class="result-label">Pending Payments</span><span class="result-value">AED ${tw.pending.toLocaleString()} ${arrow(tw.pending, lw.pending, true)}</span></div>
+            <div style="margin-top:1rem;padding:1rem;background:rgba(255,255,255,0.7);border-radius:10px;font-size:0.88rem;color:var(--gray-700);">
+                ${alerts.join('<br style="margin:0.4rem 0;">')}
+            </div>
+        `;
+        panel.classList.add('show');
+
+        // Build bar chart
+        buildBarChart(tw, lw);
+    }
+
+    function buildBarChart(tw, lw) {
+        const area = document.getElementById('barChartArea');
+        const maxLeads = Math.max(tw.leads, lw.leads, 1);
+        const maxWon = Math.max(tw.won, lw.won, 1);
+        const maxCash = Math.max(tw.cash, lw.cash, 1);
+        const maxExp = Math.max(tw.expenses, lw.expenses, 1);
+        const maxPend = Math.max(tw.pending, lw.pending, 1);
+
+        function barPair(label, twVal, lwVal, maxV, prefix) {
+            prefix = prefix || '';
+            const twPct = Math.max((twVal / maxV) * 100, 3);
+            const lwPct = Math.max((lwVal / maxV) * 100, 3);
+            return `
+                <div style="margin-bottom:1rem;">
+                    <div style="font-size:0.82rem;font-weight:700;color:var(--gray-700);margin-bottom:0.4rem;">${label}</div>
+                    <div class="bar-row">
+                        <div class="bar-label">This Week</div>
+                        <div class="bar-track">
+                            <div class="bar-fill" style="width:${twPct}%;background:linear-gradient(90deg,var(--teal-500),var(--cyan-400));">${prefix}${twVal.toLocaleString()}</div>
+                        </div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label">Last Week</div>
+                        <div class="bar-track">
+                            <div class="bar-fill" style="width:${lwPct}%;background:var(--gray-300);color:var(--gray-700);">${prefix}${lwVal.toLocaleString()}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        area.innerHTML =
+            barPair('Leads Generated', tw.leads, lw.leads, maxLeads) +
+            barPair('Projects Won', tw.won, lw.won, maxWon) +
+            barPair('Cash Collected', tw.cash, lw.cash, maxCash, 'AED ') +
+            barPair('Expenses', tw.expenses, lw.expenses, maxExp, 'AED ') +
+            barPair('Pending Payments', tw.pending, lw.pending, maxPend, 'AED ');
+    }
+
+    function resetTracker() {
+        ['tw-leads','tw-won','tw-cash','tw-expenses','tw-pending','lw-leads','lw-won','lw-cash','lw-expenses','lw-pending'].forEach(id => {
+            document.getElementById(id).value = '';
+        });
+        const panel = document.getElementById('trackerResults');
+        panel.classList.remove('show');
+        panel.innerHTML = '';
+        document.getElementById('barChartArea').innerHTML = '<p style="font-size:0.88rem;color:var(--gray-400);text-align:center;padding:1.5rem 0;">Enter your numbers above and click "Analyse My Numbers" to see the visual comparison.</p>';
+    }
+
+    // ── CHECKLIST ──
+    function toggleCheck(el) {
+        el.classList.toggle('checked');
+        el.closest('li').classList.toggle('completed');
+        updateCheckProgress();
+    }
+
+    function updateCheckProgress() {
+        const total = document.querySelectorAll('#actionChecklist .check-box').length;
+        const done = document.querySelectorAll('#actionChecklist .check-box.checked').length;
+        document.getElementById('checkProgress').textContent = done + ' of ' + total + ' completed';
+        document.getElementById('checkBar').style.width = (done / total * 100) + '%';
+    }
+
+    // ── SMOOTH SCROLL ──
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            e.preventDefault();
+            const target = document.querySelector(a.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+</script>
+
+</body>
+</html>
