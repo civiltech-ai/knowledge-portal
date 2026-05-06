@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building a System-Driven Business — Interactive Training</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#14B8A6;--primary-light:#2DD4BF;--primary-dark:#0D9488;
+  --primary-bg:#F0FDFA;--primary-bg2:rgba(20,184,166,.08);--primary-border:rgba(20,184,166,.2);
+  --accent-gradient:linear-gradient(135deg,#14B8A6,#06B6D4);
+  --accent-gradient-soft:linear-gradient(135deg,rgba(20,184,166,.1),rgba(6,182,212,.08));
+  --bg:#F8FAFB;--bg-card:#fff;--bg-card-alt:#F9FAFB;
+  --text:#1E293B;--text-secondary:#64748B;--text-muted:#94A3B8;
+  --border:#E2E8F0;--border-light:#F1F5F9;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.04),0 1px 2px rgba(0,0,0,.03);
+  --shadow-md:0 4px 16px rgba(0,0,0,.06),0 1px 3px rgba(0,0,0,.04);
+  --shadow-lg:0 10px 40px rgba(0,0,0,.08);
+  --radius:16px;--radius-sm:10px;
+  --danger:#EF4444;--success:#10B981;--warning:#F59E0B;--info:#3B82F6;
+}
+[data-theme="dark"]{
+  --bg:#0F172A;--bg-card:#1E293B;--bg-card-alt:#1A2332;
+  --text:#F1F5F9;--text-secondary:#94A3B8;--text-muted:#64748B;
+  --border:#334155;--border-light:#1E293B;
+  --primary-bg:rgba(20,184,166,.1);--primary-bg2:rgba(20,184,166,.12);
+  --primary-border:rgba(20,184,166,.25);
+  --shadow-sm:0 1px 3px rgba(0,0,0,.2);--shadow-md:0 4px 16px rgba(0,0,0,.3);
+  --shadow-lg:0 10px 40px rgba(0,0,0,.4);
+  --accent-gradient-soft:linear-gradient(135deg,rgba(20,184,166,.15),rgba(6,182,212,.1));
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;transition:background .3s,color .3s}
+
+/* ── TOP BAR ── */
+.top-bar{position:sticky;top:0;z-index:100;background:var(--bg-card);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;transition:all .3s;backdrop-filter:blur(20px)}
+.top-bar-left{display:flex;align-items:center;gap:14px}
+.top-bar-logo{width:36px;height:36px;background:var(--accent-gradient);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px;font-family:'Plus Jakarta Sans',sans-serif}
+.top-bar-title{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;color:var(--text)}
+.top-bar-badge{background:var(--primary-bg);color:var(--primary);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;border:1px solid var(--primary-border)}
+.top-bar-right{display:flex;align-items:center;gap:10px}
+.theme-toggle,.save-btn-top{width:42px;height:42px;border-radius:12px;border:1px solid var(--border);background:var(--bg-card);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;transition:all .2s;color:var(--text-secondary)}
+.theme-toggle:hover,.save-btn-top:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-bg)}
+.progress-bar{position:fixed;top:64px;left:0;height:3px;background:var(--accent-gradient);z-index:101;transition:width .15s;border-radius:0 3px 3px 0}
+
+/* ── LAYOUT ── */
+.layout{display:flex;max-width:1440px;margin:0 auto;min-height:calc(100vh - 64px)}
+
+/* ── SIDEBAR ── */
+.sidebar{width:280px;position:sticky;top:64px;height:calc(100vh - 64px);overflow-y:auto;padding:28px 16px;border-right:1px solid var(--border);background:var(--bg-card);flex-shrink:0;transition:all .3s}
+.sidebar::-webkit-scrollbar{width:3px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:10px}
+.sidebar-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);margin:6px 0 10px 14px}
+.toc-link{display:flex;align-items:center;gap:10px;padding:8px 14px;border-radius:8px;text-decoration:none;color:var(--text-secondary);font-size:12.5px;font-weight:500;transition:all .15s;margin-bottom:1px;border-left:2px solid transparent;cursor:pointer}
+.toc-link:hover{background:var(--primary-bg2);color:var(--primary-dark)}
+.toc-link.active{background:var(--primary-bg);color:var(--primary-dark);font-weight:600;border-left-color:var(--primary)}
+[data-theme="dark"] .toc-link.active{color:var(--primary-light)}
+.toc-num{font-size:9px;font-weight:700;color:var(--text-muted);width:18px;text-align:center;flex-shrink:0}
+.toc-link.active .toc-num{color:var(--primary)}
+.toc-divider{height:1px;background:var(--border-light);margin:10px 14px}
+.mobile-menu-btn{display:none;width:42px;height:42px;border-radius:12px;border:1px solid var(--border);background:var(--bg-card);cursor:pointer;align-items:center;justify-content:center;font-size:20px;color:var(--text-secondary)}
+
+/* ── MAIN ── */
+.main{flex:1;padding:40px 52px 80px;max-width:920px}
+
+/* ── HERO ── */
+.hero{background:var(--accent-gradient);border-radius:var(--radius);padding:52px 48px;color:#fff;margin-bottom:48px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:400px;height:400px;background:rgba(255,255,255,.08);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:-30%;left:-10%;width:300px;height:300px;background:rgba(255,255,255,.05);border-radius:50%}
+.hero-eyebrow{font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;opacity:.85;margin-bottom:14px;position:relative}
+.hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:34px;font-weight:800;line-height:1.2;margin-bottom:10px;position:relative}
+.hero-sub{font-size:17px;opacity:.9;margin-bottom:18px;font-weight:400;position:relative}
+.hero-intro{font-size:14.5px;opacity:.85;line-height:1.8;max-width:600px;position:relative}
+.hero-badges{display:flex;gap:10px;margin-top:20px;position:relative;flex-wrap:wrap}
+.hero-badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.25);padding:6px 16px;border-radius:20px;font-size:12px;font-weight:600;backdrop-filter:blur(10px)}
+
+/* ── SECTION ── */
+.section{margin-bottom:52px;scroll-margin-top:80px}
+.section-header{display:flex;align-items:center;gap:14px;margin-bottom:24px}
+.section-num{width:36px;height:36px;background:var(--accent-gradient);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;flex-shrink:0}
+.section h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:23px;font-weight:700;color:var(--text)}
+.section h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:700;color:var(--text);margin:26px 0 12px}
+.section p{color:var(--text-secondary);font-size:14.5px;margin-bottom:14px;line-height:1.8}
+
+/* ── CARD ── */
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:26px;margin-bottom:18px;box-shadow:var(--shadow-sm);transition:all .3s}
+.card:hover{box-shadow:var(--shadow-md)}
+
+/* ── HIGHLIGHT ── */
+.highlight{background:var(--primary-bg);border:1px solid var(--primary-border);border-left:4px solid var(--primary);border-radius:var(--radius-sm);padding:18px 22px;margin:18px 0;font-size:14px;color:var(--text);font-weight:500}
+.highlight strong{color:var(--primary-dark)}
+[data-theme="dark"] .highlight strong{color:var(--primary-light)}
+
+.quote-box{background:var(--accent-gradient-soft);border:1px solid var(--primary-border);border-radius:var(--radius);padding:22px 26px;margin:18px 0;text-align:center;font-size:16px;font-weight:600;color:var(--primary-dark);font-family:'Plus Jakarta Sans',sans-serif}
+[data-theme="dark"] .quote-box{color:var(--primary-light)}
+
+/* ── TABLE ── */
+.table-wrap{overflow-x:auto;margin:18px 0;border-radius:var(--radius-sm);border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead{background:var(--accent-gradient);color:#fff}
+thead th{padding:12px 16px;text-align:left;font-weight:600;font-size:12px;letter-spacing:.3px}
+tbody tr{border-bottom:1px solid var(--border-light);transition:background .15s}
+tbody tr:hover{background:var(--primary-bg2)}
+tbody td{padding:11px 16px;color:var(--text-secondary)}
+tbody td:first-child{font-weight:600;color:var(--text)}
+tbody tr:last-child{border-bottom:none}
+
+/* ── LISTS ── */
+.check-list,.problem-list{list-style:none;padding:0;margin:14px 0}
+.check-list li{padding:9px 0 9px 30px;position:relative;color:var(--text-secondary);font-size:14px;border-bottom:1px solid var(--border-light)}
+.check-list li:last-child{border-bottom:none}
+.check-list li::before{content:'';position:absolute;left:0;top:12px;width:16px;height:16px;border-radius:50%;background:var(--primary-bg);border:2px solid var(--primary)}
+.check-list li::after{content:'✓';position:absolute;left:3.5px;top:11px;font-size:10px;font-weight:700;color:var(--primary)}
+.problem-list li{padding:9px 0 9px 30px;position:relative;color:var(--text-secondary);font-size:14px;border-bottom:1px solid var(--border-light)}
+.problem-list li:last-child{border-bottom:none}
+.problem-list li::before{content:'⚠';position:absolute;left:2px;top:9px;font-size:13px}
+
+/* ── LOOP DIAGRAM ── */
+.loop-diagram{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:22px 0}
+.loop-step{text-align:center;padding:22px 14px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);transition:all .3s}
+.loop-step:hover{border-color:var(--primary);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.loop-step-icon{width:46px;height:46px;background:var(--accent-gradient);border-radius:13px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:20px;color:#fff}
+.loop-step-title{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;color:var(--text);margin-bottom:4px}
+.loop-step-desc{font-size:11px;color:var(--text-muted)}
+
+/* ── METRIC ── */
+.metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+.metric-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px;transition:all .3s}
+.metric-card:hover{border-color:var(--primary);box-shadow:var(--shadow-md)}
+.metric-card-header{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.metric-dot{width:8px;height:8px;border-radius:50%}
+.metric-dot.teal{background:var(--primary)}
+.metric-dot.blue{background:var(--info)}
+.metric-dot.amber{background:var(--warning)}
+.metric-item{padding:6px 0;border-bottom:1px solid var(--border-light);font-size:12.5px;color:var(--text-secondary);display:flex;align-items:center;gap:8px}
+.metric-item:last-child{border-bottom:none}
+.metric-item::before{content:'→';color:var(--primary);font-weight:700;font-size:11px}
+
+/* ── AREA GRID ── */
+.area-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.area-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:22px;transition:all .3s}
+.area-card:hover{border-color:var(--primary);box-shadow:var(--shadow-md)}
+.area-card-title{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;color:var(--text);margin-bottom:3px;display:flex;align-items:center;gap:8px}
+.area-card-purpose{font-size:11.5px;color:var(--text-muted);margin-bottom:10px;font-style:italic}
+.area-card ul{list-style:none;padding:0}
+.area-card li{padding:4px 0 4px 16px;position:relative;font-size:12.5px;color:var(--text-secondary)}
+.area-card li::before{content:'→';position:absolute;left:0;color:var(--primary);font-weight:700}
+
+/* ── TIMELINE ── */
+.timeline{position:relative;padding-left:32px;margin:22px 0}
+.timeline::before{content:'';position:absolute;left:12px;top:0;bottom:0;width:2px;background:var(--primary-border)}
+.timeline-item{position:relative;margin-bottom:28px;padding:22px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm)}
+.timeline-item::before{content:'';position:absolute;left:-26px;top:26px;width:12px;height:12px;background:var(--primary);border-radius:50%;border:3px solid var(--bg)}
+.timeline-month{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:15px;color:var(--primary-dark);margin-bottom:4px}
+[data-theme="dark"] .timeline-month{color:var(--primary-light)}
+.timeline-desc{font-size:13px;color:var(--text-secondary)}
+.timeline-tasks{list-style:none;padding:0;margin-top:10px}
+.timeline-tasks li{padding:5px 0 5px 18px;position:relative;font-size:12.5px;color:var(--text-secondary)}
+.timeline-tasks li::before{content:'✓';position:absolute;left:0;color:var(--primary);font-weight:700;font-size:11px}
+
+/* ── CASE STUDY ── */
+.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0}
+.case-card{padding:24px;border-radius:var(--radius-sm);border:1px solid var(--border)}
+.case-card.before{background:rgba(239,68,68,.04);border-color:rgba(239,68,68,.2)}
+.case-card.after{background:var(--primary-bg);border-color:var(--primary-border)}
+.case-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.case-card.before .case-label{color:var(--danger)}
+.case-card.after .case-label{color:var(--primary-dark)}
+[data-theme="dark"] .case-card.after .case-label{color:var(--primary-light)}
+.case-card ul{list-style:none;padding:0}
+.case-card li{padding:6px 0;font-size:13px;color:var(--text-secondary);border-bottom:1px solid var(--border-light)}
+.case-card li:last-child{border-bottom:none}
+
+/* ── TAKEAWAY ── */
+.takeaway-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}
+.takeaway-pill{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px 20px;font-size:13px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:12px;transition:all .2s}
+.takeaway-pill:hover{border-color:var(--primary);transform:translateX(4px)}
+.takeaway-icon{width:30px;height:30px;background:var(--primary-bg);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+
+/* ── CTA ── */
+.cta-section{background:var(--accent-gradient);border-radius:var(--radius);padding:44px;text-align:center;color:#fff;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;top:-30%;right:-10%;width:300px;height:300px;background:rgba(255,255,255,.06);border-radius:50%}
+.cta-section h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:26px;font-weight:800;margin-bottom:12px;position:relative;color:#fff}
+.cta-section p{color:rgba(255,255,255,.9);font-size:15px;margin-bottom:24px;position:relative}
+.cta-steps{display:flex;justify-content:center;gap:24px;position:relative;flex-wrap:wrap}
+.cta-step{background:rgba(255,255,255,.15);border-radius:12px;padding:18px 24px;min-width:160px;backdrop-filter:blur(10px)}
+.cta-step-num{font-size:26px;font-weight:800;font-family:'Plus Jakarta Sans',sans-serif;opacity:.6}
+.cta-step-text{font-size:13px;font-weight:600;margin-top:4px}
+
+.sep{height:1px;background:var(--border);margin:48px 0}
+.tag{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:6px;background:var(--primary-bg);color:var(--primary-dark);border:1px solid var(--primary-border)}
+[data-theme="dark"] .tag{color:var(--primary-light)}
+.footer{text-align:center;padding:40px;color:var(--text-muted);font-size:13px;border-top:1px solid var(--border);margin-top:40px}
+
+/* ════════════════════════════════════════════════
+   INTERACTIVE MODULES
+   ════════════════════════════════════════════════ */
+
+/* ── Interactive Section Divider ── */
+.interactive-divider{background:var(--accent-gradient);border-radius:var(--radius);padding:28px 36px;margin:52px 0 48px;color:#fff;display:flex;align-items:center;gap:18px;position:relative;overflow:hidden}
+.interactive-divider::after{content:'';position:absolute;right:-40px;top:-40px;width:180px;height:180px;background:rgba(255,255,255,.06);border-radius:50%}
+.interactive-divider-icon{width:48px;height:48px;background:rgba(255,255,255,.2);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.interactive-divider h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;position:relative}
+.interactive-divider p{font-size:13px;opacity:.85;position:relative;margin:0}
+
+/* ── Shared Form Styles ── */
+.form-group{margin-bottom:16px}
+.form-label{display:block;font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px;letter-spacing:.3px}
+.form-input,.form-select,.form-textarea{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg-card);color:var(--text);font-family:'DM Sans',sans-serif;font-size:13.5px;transition:border-color .2s,box-shadow .2s;outline:none}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(20,184,166,.12)}
+.form-textarea{resize:vertical;min-height:70px}
+.form-select{cursor:pointer;appearance:auto}
+
+/* ── Buttons ── */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .2s}
+.btn-primary{background:var(--accent-gradient);color:#fff;box-shadow:0 2px 8px rgba(20,184,166,.3)}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(20,184,166,.4)}
+.btn-outline{background:transparent;color:var(--primary);border:1.5px solid var(--primary)}
+.btn-outline:hover{background:var(--primary-bg)}
+.btn-danger{background:var(--danger);color:#fff}
+.btn-danger:hover{opacity:.9}
+.btn-sm{padding:7px 14px;font-size:12px}
+.btn-group{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+
+/* ── HEALTH CHECK ── */
+.hc-question{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px 22px;margin-bottom:12px;transition:all .2s}
+.hc-question.answered{border-color:var(--primary-border);background:var(--primary-bg)}
+.hc-q-text{font-size:14px;font-weight:600;color:var(--text);margin-bottom:12px;display:flex;gap:10px}
+.hc-q-num{color:var(--primary);font-family:'Plus Jakarta Sans',sans-serif;flex-shrink:0}
+.hc-options{display:flex;flex-wrap:wrap;gap:8px}
+.hc-opt{padding:8px 16px;border:1px solid var(--border);border-radius:8px;font-size:12.5px;font-weight:500;cursor:pointer;transition:all .15s;background:var(--bg-card);color:var(--text-secondary);user-select:none}
+.hc-opt:hover{border-color:var(--primary);color:var(--primary)}
+.hc-opt.selected{background:var(--accent-gradient);color:#fff;border-color:transparent}
+
+.hc-result{background:var(--bg-card);border:2px solid var(--border);border-radius:var(--radius);padding:32px;text-align:center;margin-top:20px;display:none}
+.hc-result.show{display:block}
+.hc-score-ring{width:120px;height:120px;margin:0 auto 16px;position:relative}
+.hc-score-ring svg{transform:rotate(-90deg)}
+.hc-score-val{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Plus Jakarta Sans',sans-serif;font-size:32px;font-weight:800;color:var(--text)}
+.hc-score-label{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:700;margin-bottom:8px}
+.hc-score-desc{font-size:14px;color:var(--text-secondary);max-width:480px;margin:0 auto}
+
+/* ── SYSTEM BUILDER ── */
+.system-card-output{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px;margin-bottom:12px;position:relative;transition:all .2s}
+.system-card-output:hover{box-shadow:var(--shadow-md)}
+.system-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.system-card-fn{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;color:var(--primary-dark);display:flex;align-items:center;gap:8px}
+[data-theme="dark"] .system-card-fn{color:var(--primary-light)}
+.system-card-del{width:28px;height:28px;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--text-muted);transition:all .15s}
+.system-card-del:hover{border-color:var(--danger);color:var(--danger);background:rgba(239,68,68,.06)}
+.system-card-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.system-card-field label{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--text-muted);display:block;margin-bottom:2px}
+.system-card-field span{font-size:13px;color:var(--text-secondary)}
+
+/* ── KPI TRACKER ── */
+.kpi-table{width:100%;border-collapse:collapse}
+.kpi-table th{text-align:left;padding:10px 12px;font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:#fff;border-bottom:none}
+.kpi-table td{padding:8px 12px;border-bottom:1px solid var(--border-light)}
+.kpi-input{width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:8px;background:var(--bg-card);color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;outline:none;transition:border-color .2s}
+.kpi-input:focus{border-color:var(--primary)}
+.kpi-status{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:600}
+.kpi-status.on-track{background:rgba(16,185,129,.1);color:#059669;border:1px solid rgba(16,185,129,.2)}
+.kpi-status.behind{background:rgba(239,68,68,.08);color:#DC2626;border:1px solid rgba(239,68,68,.2)}
+.kpi-status.neutral{background:var(--bg-card-alt);color:var(--text-muted);border:1px solid var(--border)}
+.kpi-del{width:26px;height:26px;border:none;background:transparent;cursor:pointer;color:var(--text-muted);font-size:16px;border-radius:6px;transition:all .15s;display:flex;align-items:center;justify-content:center}
+.kpi-del:hover{background:rgba(239,68,68,.08);color:var(--danger)}
+
+/* ── WEEKLY REVIEW ── */
+.wr-item{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);margin-bottom:8px;cursor:pointer;transition:all .15s;user-select:none}
+.wr-item:hover{border-color:var(--primary-border)}
+.wr-item.checked{border-color:var(--primary);background:var(--primary-bg)}
+.wr-checkbox{width:22px;height:22px;border-radius:6px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:13px;transition:all .15s;flex-shrink:0;color:transparent}
+.wr-item.checked .wr-checkbox{background:var(--primary);border-color:var(--primary);color:#fff}
+.wr-text{font-size:13.5px;color:var(--text-secondary)}
+.wr-item.checked .wr-text{color:var(--text);font-weight:500}
+.wr-progress{margin-top:20px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center}
+.wr-progress-bar-outer{width:100%;height:10px;background:var(--border-light);border-radius:10px;overflow:hidden;margin:14px 0}
+.wr-progress-bar-inner{height:100%;background:var(--accent-gradient);border-radius:10px;transition:width .4s ease}
+.wr-progress-label{font-family:'Plus Jakarta Sans',sans-serif;font-size:28px;font-weight:800;color:var(--text)}
+.wr-progress-sub{font-size:13px;color:var(--text-muted);margin-top:4px}
+
+/* ── RECOMMENDATIONS ── */
+.rec-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:18px 22px;margin-bottom:10px;display:flex;align-items:flex-start;gap:14px}
+.rec-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.rec-icon.high{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.15)}
+.rec-icon.medium{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.15)}
+.rec-icon.low{background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.15)}
+.rec-title{font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:3px}
+.rec-desc{font-size:12.5px;color:var(--text-muted)}
+
+/* ── DASHBOARD PREVIEW ── */
+.dash-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0}
+.dash-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px;text-align:center;transition:all .3s}
+.dash-card:hover{border-color:var(--primary);box-shadow:var(--shadow-md)}
+.dash-card-icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:20px}
+.dash-card-icon.teal-bg{background:var(--primary-bg);border:1px solid var(--primary-border)}
+.dash-card-icon.blue-bg{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.15)}
+.dash-card-icon.amber-bg{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.15)}
+.dash-card-icon.red-bg{background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.12)}
+.dash-val{font-family:'Plus Jakarta Sans',sans-serif;font-size:28px;font-weight:800;color:var(--text)}
+.dash-label{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--text-muted);margin-top:4px}
+.dash-change{font-size:11px;font-weight:600;margin-top:6px}
+.dash-change.up{color:var(--success)}
+.dash-change.down{color:var(--danger)}
+
+.dash-chart-area{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:22px;margin-top:14px}
+.dash-chart-title{font-size:12px;font-weight:700;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.mini-bar-chart{display:flex;align-items:flex-end;gap:6px;height:80px}
+.mini-bar{background:var(--accent-gradient);border-radius:4px 4px 0 0;width:100%;transition:height .5s;position:relative}
+.mini-bar-label{position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:9px;color:var(--text-muted);white-space:nowrap}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--bg-card);border:1px solid var(--primary-border);border-radius:12px;padding:14px 22px;box-shadow:var(--shadow-lg);font-size:13px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:10px;z-index:200;transform:translateY(80px);opacity:0;transition:all .3s}
+.toast.show{transform:translateY(0);opacity:1}
+.toast-icon{font-size:18px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){.sidebar{width:240px}.main{padding:32px 32px 60px}}
+@media(max-width:768px){
+  .top-bar{padding:0 16px}.top-bar-badge{display:none}.mobile-menu-btn{display:flex}
+  .sidebar{position:fixed;left:-300px;top:64px;width:280px;height:calc(100vh - 64px);z-index:99;transition:left .3s}
+  .sidebar.open{left:0;box-shadow:var(--shadow-lg)}
+  .main{padding:20px 16px 60px;max-width:100%}
+  .hero{padding:32px 24px}.hero h1{font-size:24px}.hero-sub{font-size:15px}
+  .loop-diagram,.metric-grid{grid-template-columns:repeat(2,1fr)}
+  .case-grid,.takeaway-grid,.area-grid{grid-template-columns:1fr}
+  .cta-steps{flex-direction:column;align-items:center;gap:12px}
+  .cta-step{min-width:auto;width:100%}
+  .dash-grid{grid-template-columns:repeat(2,1fr)}
+  .system-card-row{grid-template-columns:1fr}
+  .hc-options{flex-direction:column}
+  .hc-opt{text-align:center}
+}
+</style>
+</head>
+<body>
+
+<header class="top-bar">
+  <div class="top-bar-left">
+    <button class="mobile-menu-btn" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+    <div class="top-bar-logo">S</div>
+    <span class="top-bar-title">System-Driven Growth</span>
+    <span class="top-bar-badge">● INTERACTIVE TRAINING</span>
+  </div>
+  <div class="top-bar-right">
+    <button class="save-btn-top" onclick="saveAll()" title="Save progress">💾</button>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode" id="themeBtn">🌙</button>
+  </div>
+</header>
+<div class="progress-bar" id="progressBar"></div>
+
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-label">Knowledge</div>
+  <a role="button" data-target="core-concept" class="toc-link"><span class="toc-num">01</span>Core Concept</a>
+  <a role="button" data-target="why-struggle" class="toc-link"><span class="toc-num">02</span>Why Businesses Struggle</a>
+  <a role="button" data-target="what-is-system" class="toc-link"><span class="toc-num">03</span>What Is a System</a>
+  <a role="button" data-target="areas-to-systemize" class="toc-link"><span class="toc-num">04</span>Areas to Systemize</a>
+  <a role="button" data-target="daily-execution" class="toc-link"><span class="toc-num">05</span>Daily Execution</a>
+  <a role="button" data-target="weekly-review-k" class="toc-link"><span class="toc-num">06</span>Weekly Review</a>
+  <a role="button" data-target="system-loop" class="toc-link"><span class="toc-num">07</span>The System Loop</a>
+  <a role="button" data-target="kpi-layer-k" class="toc-link"><span class="toc-num">08</span>KPIs</a>
+  <a role="button" data-target="accountability" class="toc-link"><span class="toc-num">09</span>Accountability</a>
+  <a role="button" data-target="automation" class="toc-link"><span class="toc-num">10</span>Automation</a>
+  <a role="button" data-target="dashboard-k" class="toc-link"><span class="toc-num">11</span>Dashboard Thinking</a>
+  <a role="button" data-target="team-alignment" class="toc-link"><span class="toc-num">12</span>Team Alignment</a>
+  <a role="button" data-target="ai-integration" class="toc-link"><span class="toc-num">13</span>AI Integration</a>
+  <a role="button" data-target="mistakes" class="toc-link"><span class="toc-num">14</span>Common Mistakes</a>
+  <a role="button" data-target="implementation" class="toc-link"><span class="toc-num">15</span>90-Day Plan</a>
+  <a role="button" data-target="case-study" class="toc-link"><span class="toc-num">16</span>Case Example</a>
+  <a role="button" data-target="takeaways" class="toc-link"><span class="toc-num">17</span>Key Takeaways</a>
+  <div class="toc-divider"></div>
+  <div class="sidebar-label">Interactive Tools</div>
+  <a role="button" data-target="health-check" class="toc-link"><span class="toc-num">⚡</span>Health Check</a>
+  <a role="button" data-target="system-builder" class="toc-link"><span class="toc-num">⚡</span>System Builder</a>
+  <a role="button" data-target="kpi-tracker" class="toc-link"><span class="toc-num">⚡</span>KPI Tracker</a>
+  <a role="button" data-target="weekly-review-tool" class="toc-link"><span class="toc-num">⚡</span>Weekly Review</a>
+  <a role="button" data-target="recommendations" class="toc-link"><span class="toc-num">⚡</span>Recommendations</a>
+  <a role="button" data-target="dashboard-preview" class="toc-link"><span class="toc-num">⚡</span>Dashboard Preview</a>
+  <a role="button" data-target="cta" class="toc-link"><span class="toc-num">⚡</span>Get Started</a>
+</nav>
+
+<main class="main">
+
+<!-- ═══════════ HERO ═══════════ -->
+<div class="hero">
+  <div class="hero-eyebrow">Interactive Training · Dubai SME Growth</div>
+  <h1>Building a System-Driven Business</h1>
+  <p class="hero-sub">How to create predictable growth without depending on daily motivation</p>
+  <p class="hero-intro">Most SME owners in Dubai work incredibly hard — yet growth remains unpredictable. The difference between a business that scales and one that stays stuck is not effort or talent. It is <strong>systems</strong>. This guide shows you how to build them — and lets you do it right here.</p>
+  <div class="hero-badges">
+    <span class="hero-badge">📖 17 Knowledge Sections</span>
+    <span class="hero-badge">⚡ 6 Interactive Tools</span>
+    <span class="hero-badge">💾 Auto-Save Progress</span>
+  </div>
+</div>
+
+<!-- ═══════════ SECTION 01: CORE CONCEPT ═══════════ -->
+<section class="section" id="core-concept">
+  <div class="section-header"><div class="section-num">01</div><h2>Goals vs. Systems — The Core Shift</h2></div>
+  <p>Every business owner sets goals: "Reach AED 5 million this year" or "Hire 10 more people." Goals give direction, but they do not create daily action. Systems do. A system is a repeatable process your team follows every day — regardless of mood, motivation, or the owner being present.</p>
+  <div class="quote-box">"You do not rise to the level of your goals. You fall to the level of your systems."</div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Aspect</th><th>Goal-Based Approach</th><th>System-Based Approach</th></tr></thead>
+    <tbody>
+      <tr><td>Focus</td><td>End result (revenue target)</td><td>Daily activities (calls, follow-ups)</td></tr>
+      <tr><td>Consistency</td><td>Depends on motivation</td><td>Built into process</td></tr>
+      <tr><td>Owner Dependency</td><td>High — owner drives everything</td><td>Low — team follows the system</td></tr>
+      <tr><td>Tracking</td><td>Monthly P&L check</td><td>Daily metrics dashboard</td></tr>
+      <tr><td>Team Clarity</td><td>"Do your best"</td><td>"Do these 5 things daily"</td></tr>
+      <tr><td>Scalability</td><td>Hits a ceiling</td><td>Grows with the team</td></tr>
+    </tbody>
+  </table></div>
+</section><div class="sep"></div>
+
+<!-- ═══════════ SECTION 02: WHY STRUGGLE ═══════════ -->
+<section class="section" id="why-struggle">
+  <div class="section-header"><div class="section-num">02</div><h2>Why Most Businesses Struggle to Grow</h2></div>
+  <p>If any of the following sound familiar, your business is running on effort — not systems:</p>
+  <ul class="problem-list">
+    <li><strong>Inconsistent sales:</strong> Great months followed by dry spells with no clear reason</li>
+    <li><strong>Owner dependency:</strong> Nothing moves unless the owner personally pushes it</li>
+    <li><strong>No tracking:</strong> Decisions made on gut feeling instead of real numbers</li>
+    <li><strong>Team misalignment:</strong> Everyone busy but nobody clear on daily priorities</li>
+    <li><strong>Repeat mistakes:</strong> Same operational issues returning month after month</li>
+    <li><strong>Cash flow surprises:</strong> Expenses pile up without visibility until too late</li>
+    <li><strong>Customer complaints:</strong> Service quality varies by who handles it</li>
+    <li><strong>Scaling anxiety:</strong> Adding people creates more chaos, not more output</li>
+  </ul>
+  <div class="highlight"><strong>The pattern:</strong> These are not people problems. They are system problems. When a business lacks clear processes, even talented teams deliver inconsistent results.</div>
+</section><div class="sep"></div>
+
+<!-- ═══════════ SECTION 03: WHAT IS SYSTEM ═══════════ -->
+<section class="section" id="what-is-system">
+  <div class="section-header"><div class="section-num">03</div><h2>What Is a Business System?</h2></div>
+  <p>A business system is a documented, repeatable process that produces predictable output. Think of it as a machine: put inputs in, follow the steps, get reliable results — no matter who runs it.</p>
+  <h3>The 4 Components of Every System</h3>
+  <div class="loop-diagram">
+    <div class="loop-step"><div class="loop-step-icon">📋</div><div class="loop-step-title">Activities</div><div class="loop-step-desc">What needs to be done daily</div></div>
+    <div class="loop-step"><div class="loop-step-icon">⚙️</div><div class="loop-step-title">Process</div><div class="loop-step-desc">How it should be done</div></div>
+    <div class="loop-step"><div class="loop-step-icon">📊</div><div class="loop-step-title">Tracking</div><div class="loop-step-desc">How you measure it</div></div>
+    <div class="loop-step"><div class="loop-step-icon">🔁</div><div class="loop-step-title">Review</div><div class="loop-step-desc">How you improve it</div></div>
+  </div>
+  <div class="highlight"><strong>Example:</strong> A sales system is not "sell more." It is: "Make 20 calls daily (activity), follow the call script (process), log results in CRM (tracking), review conversion rate every Friday (review)."</div>
+</section><div class="sep"></div>
+
+<!-- ═══════════ SECTION 04: AREAS TO SYSTEMIZE ═══════════ -->
+<section class="section" id="areas-to-systemize">
+  <div class="section-header"><div class="section-num">04</div><h2>Core Business Areas to Systemize</h2></div>
+  <p>Every SME has five core areas. Each needs its own simple system. Start with the one causing the most pain.</p>
+  <div class="area-grid">
+    <div class="area-card"><div class="area-card-title">💰 Sales</div><div class="area-card-purpose">Convert leads into paying customers predictably</div><ul><li>Daily lead follow-up process</li><li>Pipeline tracking and stage management</li><li>Weekly conversion analysis</li></ul></div>
+    <div class="area-card"><div class="area-card-title">📢 Marketing</div><div class="area-card-purpose">Generate consistent inbound enquiries</div><ul><li>Content calendar with posting schedule</li><li>Lead source tracking</li><li>Monthly ad spend vs. enquiry analysis</li></ul></div>
+    <div class="area-card"><div class="area-card-title">⚙️ Operations</div><div class="area-card-purpose">Deliver consistent quality on time</div><ul><li>Standard operating procedures (SOPs)</li><li>Delivery checklists and quality checks</li><li>Customer feedback loop</li></ul></div>
+    <div class="area-card"><div class="area-card-title">💵 Finance</div><div class="area-card-purpose">Control cash flow and eliminate surprises</div><ul><li>Daily collections tracking</li><li>Weekly payables and receivables review</li><li>Monthly P&L and cash flow review</li></ul></div>
+  </div>
+  <div class="area-grid"><div class="area-card"><div class="area-card-title">👥 Team / HR</div><div class="area-card-purpose">Build a team that performs without constant supervision</div><ul><li>Clear KPIs and daily reporting</li><li>Weekly one-on-one check-ins</li><li>Structured onboarding for new hires</li></ul></div></div>
+</section><div class="sep"></div>
+
+<!-- ═══════════ SECTION 05: DAILY EXECUTION ═══════════ -->
+<section class="section" id="daily-execution">
+  <div class="section-header"><div class="section-num">05</div><h2>Daily Execution Systems</h2></div>
+  <p>A realistic daily activity system for an SME team:</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Area</th><th>Daily Activity</th><th>Owner</th><th>Expected Output</th></tr></thead>
+    <tbody>
+      <tr><td>Sales</td><td>Follow up with all hot leads</td><td>Sales Executive</td><td>Min 20 calls logged in CRM</td></tr>
+      <tr><td>Sales</td><td>Update pipeline with deal status</td><td>Sales Manager</td><td>Pipeline updated by 5 PM</td></tr>
+      <tr><td>Marketing</td><td>Post 1 content piece on social</td><td>Marketing Coord.</td><td>Published post + engagement tracked</td></tr>
+      <tr><td>Operations</td><td>Complete delivery checklist</td><td>Operations Lead</td><td>Checklist signed off per order</td></tr>
+      <tr><td>Finance</td><td>Record all payments</td><td>Accounts Exec.</td><td>Updated cash position by 4 PM</td></tr>
+      <tr><td>Finance</td><td>Follow up overdue invoices</td><td>Accounts Exec.</td><td>Overdue list updated with actions</td></tr>
+      <tr><td>Team</td><td>15-min morning standup</td><td>Team Lead</td><td>Daily priorities confirmed</td></tr>
+    </tbody>
+  </table></div>
+  <div class="highlight"><strong>Key rule:</strong> If an activity doesn't have a clear owner and expected output, it will not happen consistently.</div>
+</section><div class="sep"></div>
+
+<!-- ═══════════ SECTION 06: WEEKLY REVIEW KNOWLEDGE ═══════════ -->
+<section class="section" id="weekly-review-k">
+  <div class="section-header"><div class="section-num">06</div><h2>Weekly Review System</h2></div>
+  <p>The weekly review is where systems get improved. Block 60–90 minutes every week for this meeting.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Segment</th><th>Duration</th><th>What Happens</th></tr></thead>
+    <tbody>
+      <tr><td>Numbers Review</td><td>15 min</td><td>Review key metrics vs targets</td></tr>
+      <tr><td>Wins & Gaps</td><td>15 min</td><td>What went well? What didn't? Why?</td></tr>
+      <tr><td>Problem Solving</td><td>20 min</td><td>Pick top 2 problems, assign solutions</td></tr>
+      <tr><td>Next Week Plan</td><td>15 min</td><td>Set priorities and targets</td></tr>
+      <tr><td>Action Items</td><td>10 min</td><td>Document decisions, assign owners</td></tr>
+    </tbody>
+  </table></div>
+  <div class="quote-box">"A weekly review turns problems into improvements. Skip it, and problems become habits."</div>
+</section><div class="sep"></div>
+
+<!-- ═══════════ SECTION 07: SYSTEM LOOP ═══════════ -->
+<section class="section" id="system-loop">
+  <div class="section-header"><div class="section-num">07</div><h2>The System Loop</h2></div>
+  <p>Every effective business system follows a continuous 4-step loop:</p>
+  <div class="loop-diagram">
+    <div class="loop-step"><div class="loop-step-icon">1</div><div class="loop-step-title">Define</div><div class="loop-step-desc">Write process, assign owners, set targets</div></div>
+    <div class="loop-step"><div class="loop-step-icon">2</div><div class="loop-step-title">Track</div><div class="loop-step-desc">Measure daily — calls, tasks, numbers</div></div>
+    <div class="loop-step"><div class="loop-step-icon">3</div><div class="loop-step-title">Review</div><div class="loop-step-desc">Weekly — what worked, what didn't</div></div>
+    <div class="loop-step"><div class="loop-step-icon">4</div><div class="loop-step-title">Improve</div><div class="loop-step-desc">Fix gaps, update, repeat</div></div>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0">Example: Sales System Loop</h3>
+    <p><strong>Define:</strong> 20 calls/day, log in CRM, follow up within 24 hours.</p>
+    <p><strong>Track:</strong> Daily log shows 18 calls average. 2 missed follow-ups/week.</p>
+    <p><strong>Review:</strong> Friday review reveals follow-ups drop on Thursday (admin overload).</p>
+    <p style="margin-bottom:0"><strong>Improve:</strong> Move admin to morning. Follow-up compliance rises to 98%.</p>
+  </div>
+</section><div class="sep"></div>
+
+<!-- ═══════════ SECTION 08: KPI KNOWLEDGE ═══════════ -->
+<section class="section" id="kpi-layer-k">
+  <div class="section-header"><div class="section-num">08</div><h2>Measurement &amp; KPI Layer</h2></div>
+  <p>Keep your KPIs simple — no more than 3–5 per area:</p>
+  <div class="metric-grid">
+    <div class="metric-card"><div class="metric-card-header"><span class="metric-dot teal"></span>Sales KPIs</div><div class="metric-item">Calls / meetings per day</div><div class="metric-item">Lead-to-proposal rate</div><div class="metric-item">Proposal-to-close rate</div><div class="metric-item">Average deal size (AED)</div></div>
+    <div class="metric-card"><div class="metric-card-header"><span class="metric-dot blue"></span>Operations KPIs</div><div class="metric-item">On-time delivery rate</div><div class="metric-item">Customer complaint count</div><div class="metric-item">Resolution time (avg)</div><div class="metric-item">Quality check pass rate</div></div>
+    <div class="metric-card"><div class="metric-card-header"><span class="metric-dot amber"></span>Finance KPIs</div><div class="metric-item">Cash collected vs invoiced</div><div class="metric-item">Overdue receivables (AED)</div><div class="metric-item">Expenses vs budget</div><div class="metric-item">Gross profit margin (%)</div></div>
+  </div>
+  <div class="highlight"><strong>Pro tip:</strong> Start by tracking just 3 numbers daily — leads contacted, orders delivered, cash collected.</div>
+</section><div class="sep"></div>
+
+<!-- ═══════════ SECTION 09: ACCOUNTABILITY ═══════════ -->
+<section class="section" id="accountability">
+  <div class="section-header"><div class="section-num">09</div><h2>Accountability System</h2></div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Component</th><th>What It Means</th><th>How to Implement</th></tr></thead>
+    <tbody>
+      <tr><td>Role Clarity</td><td>Every person knows what they own</td><td>1-page role sheet with 5 key responsibilities</td></tr>
+      <tr><td>Daily Reporting</td><td>EOD update on key activities</td><td>WhatsApp/form: done, not done, why</td></tr>
+      <tr><td>Escalation Rules</td><td>When to flag problems</td><td>Blocked 4+ hours → escalate to manager</td></tr>
+      <tr><td>Review Frequency</td><td>Regular check-ins</td><td>Daily standup + weekly review + monthly deep dive</td></tr>
+    </tbody>
+  </table></div>
+  <div class="quote-box">"Accountability is not about punishment. It is about making it easy for good people to do their best work."</div>
+</section><div class="sep"></div>
+
+<!-- ═══════════ SECTION 10: AUTOMATION ═══════════ -->
+<section class="section" id="automation">
+  <div class="section-header"><div class="section-num">10</div><h2>Automation Layer</h2></div>
+  <p>Once your systems run manually and produce results, automate. Automation makes them faster and more reliable.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Task</th><th>Before (Manual)</th><th>After (Automated)</th></tr></thead>
+    <tbody>
+      <tr><td>Lead follow-up</td><td>Sales rep remembers (or forgets)</td><td>CRM auto reminder + tracking</td></tr>
+      <tr><td>Invoice reminders</td><td>Accounts calls each customer</td><td>WhatsApp auto-reminder on due date</td></tr>
+      <tr><td>Daily reporting</td><td>Manager compiles from 4 sources</td><td>Dashboard updates automatically</td></tr>
+      <tr><td>Customer feedback</td><td>Occasional phone calls</td><td>Auto survey after every delivery</td></tr>
+      <tr><td>Team performance</td><td>Monthly rough estimates</td><td>Real-time leaderboard</td></tr>
+    </tbody>
+  </table></div>
+  <div class="highlight"><strong>Business impact:</strong> Most Dubai SMEs save 10–15 hours per week by automating these five tasks.</div>
+</section><div class="sep"></div>
+
+<!-- ═══════════ SECTION 11: DASHBOARD KNOWLEDGE ═══════════ -->
+<section class="section" id="dashboard-k">
+  <div class="section-header"><div class="section-num">11</div><h2>Dashboard Thinking</h2></div>
+  <p>Imagine opening your phone every morning and seeing the health of your entire business on one screen:</p>
+  <div class="metric-grid">
+    <div class="metric-card"><div class="metric-card-header"><span class="metric-dot teal"></span>Daily Metrics</div><div class="metric-item">Leads received today</div><div class="metric-item">Calls / meetings done</div><div class="metric-item">Cash collected (AED)</div><div class="metric-item">Orders delivered</div></div>
+    <div class="metric-card"><div class="metric-card-header"><span class="metric-dot blue"></span>Weekly Trends</div><div class="metric-item">Pipeline movement</div><div class="metric-item">Revenue vs target (%)</div><div class="metric-item">Customer satisfaction</div><div class="metric-item">Activity completion rate</div></div>
+    <div class="metric-card"><div class="metric-card-header"><span class="metric-dot amber"></span>Alerts</div><div class="metric-item">Overdue invoices &gt; 30 days</div><div class="metric-item">Leads not contacted &gt; 24h</div><div class="metric-item">Complaints unresolved &gt; 48h</div><div class="metric-item">Missing daily reports</div></div>
+  </div>
+</section><div class="sep"></div>
+
+<!-- ═══════════ SECTION 12: TEAM ALIGNMENT ═══════════ -->
+<section class="section" id="team-alignment">
+  <div class="section-header"><div class="section-num">12</div><h2>Team Alignment System</h2></div>
+  <div class="case-grid">
+    <div class="card"><h3 style="margin-top:0">Daily Standup — 15 Min</h3><p>Each member shares:</p><ul class="check-list"><li>What I completed yesterday</li><li>What I'm working on today</li><li>What is blocking me</li></ul><p style="margin-bottom:0"><span class="tag">No discussions. Just updates. Solve after.</span></p></div>
+    <div class="card"><h3 style="margin-top:0">Weekly Review — 60–90 Min</h3><p>Deep dive into metrics and improvement:</p><ul class="check-list"><li>Review dashboard metrics vs targets</li><li>Top 2 problems → assign solutions</li><li>Recognise wins and best practices</li><li>Set next week's priorities</li></ul><p style="margin-bottom:0"><span class="tag">Decisions documented with owner + deadline.</span></p></div>
+  </div>
+</section><div class="sep"></div>
+
+<!-- ═══════════ SECTION 13: AI INTEGRATION ═══════════ -->
+<section class="section" id="ai-integration">
+  <div class="section-header"><div class="section-num">13</div><h2>Advanced Layer — AI Integration</h2></div>
+  <div class="area-grid">
+    <div class="area-card"><div class="area-card-title">📄 Auto Reports</div><div class="area-card-purpose">Get summaries without compiling data</div><ul><li>AI generates daily/weekly summaries</li><li>Highlights anomalies automatically</li><li>Sent to WhatsApp or email</li></ul></div>
+    <div class="area-card"><div class="area-card-title">🔮 Predictive Insights</div><div class="area-card-purpose">See problems before they happen</div><ul><li>Predicts which deals will close</li><li>Flags cash flow gaps 2–3 weeks ahead</li><li>Identifies at-risk customers</li></ul></div>
+    <div class="area-card"><div class="area-card-title">💡 Smart Suggestions</div><div class="area-card-purpose">Actionable recommendations</div><ul><li>"Best leads from Instagram — increase budget"</li><li>"Thursday follow-ups close 40% more"</li><li>"Customer likely to reorder next week"</li></ul></div>
+    <div class="area-card"><div class="area-card-title">🤖 Process Automation</div><div class="area-card-purpose">Eliminate repetitive decisions</div><ul><li>Auto-categorise enquiries by urgency</li><li>Draft response templates</li><li>Auto-assign tasks by workload</li></ul></div>
+  </div>
+  <div class="highlight"><strong>Important:</strong> AI is the last layer, not the first. Build manual systems → automate → then add AI.</div>
+</section><div class="sep"></div>
+
+<!-- ═══════════ SECTION 14: MISTAKES ═══════════ -->
+<section class="section" id="mistakes">
+  <div class="section-header"><div class="section-num">14</div><h2>8 Common Mistakes to Avoid</h2></div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>#</th><th>Mistake</th><th>Why It Hurts</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>No tracking at all</td><td>Can't fix what you can't see</td></tr>
+      <tr><td>2</td><td>Over-complex systems</td><td>20-step process = nobody follows it</td></tr>
+      <tr><td>3</td><td>No accountability</td><td>Every task becomes "someone else's problem"</td></tr>
+      <tr><td>4</td><td>Building all at once</td><td>Overwhelm → abandonment</td></tr>
+      <tr><td>5</td><td>Skipping weekly review</td><td>Systems decay without maintenance</td></tr>
+      <tr><td>6</td><td>Automating before systematising</td><td>Faster chaos, not faster results</td></tr>
+      <tr><td>7</td><td>Not involving the team</td><td>Top-down systems get resisted</td></tr>
+      <tr><td>8</td><td>Expecting perfection day one</td><td>A rough system beats no system</td></tr>
+    </tbody>
+  </table></div>
+</section><div class="sep"></div>
+
+<!-- ═══════════ SECTION 15: 90-DAY PLAN ═══════════ -->
+<section class="section" id="implementation">
+  <div class="section-header"><div class="section-num">15</div><h2>90-Day Implementation Plan</h2></div>
+  <div class="timeline">
+    <div class="timeline-item"><div class="timeline-month">Month 1 — Define Your Systems</div><div class="timeline-desc">Documentation and role clarity</div><ul class="timeline-tasks"><li>Identify the one area causing most pain</li><li>Write daily activities, process steps, expected outputs</li><li>Assign clear owners</li><li>Create a simple tracking sheet</li><li>Start daily 15-min standup</li></ul></div>
+    <div class="timeline-item"><div class="timeline-month">Month 2 — Track &amp; Review</div><div class="timeline-desc">Building the review habit</div><ul class="timeline-tasks"><li>Track daily metrics consistently</li><li>Weekly review meetings every week</li><li>Improve processes based on data</li><li>Add a second system</li><li>Introduce EOD reporting</li></ul></div>
+    <div class="timeline-item"><div class="timeline-month">Month 3 — Automate &amp; Scale</div><div class="timeline-desc">Speed and visibility</div><ul class="timeline-tasks"><li>Set up CRM or basic automation</li><li>Build a simple dashboard</li><li>Automate reminders and notifications</li><li>Document all processes</li><li>90-day performance review</li></ul></div>
+  </div>
+</section><div class="sep"></div>
+
+<!-- ═══════════ SECTION 16: CASE STUDY ═══════════ -->
+<section class="section" id="case-study">
+  <div class="section-header"><div class="section-num">16</div><h2>Case Example — A Dubai Civil Construction Company</h2></div>
+  <p>A civil construction firm in Dubai with 40 employees and AED 12M annual revenue was struggling with project delays, material cost overruns, and cash flow gaps from delayed client approvals.</p>
+  <div class="case-grid">
+    <div class="case-card before"><div class="case-label">⛔ Before — Chaos</div><ul><li>Project timelines tracked on paper — delays discovered too late</li><li>No CRM — client enquiries lost across WhatsApp and email</li><li>Owner personally visited every site to check progress</li><li>Material procurement reactive — emergency purchases at premium rates</li><li>Subcontractor invoices piled up without reconciliation</li><li>No regular team meetings — only crisis calls</li></ul></div>
+    <div class="case-card after"><div class="case-label">✅ After — Systems</div><ul><li>Daily site progress logged in shared tracker with photo updates</li><li>CRM pipeline for all tenders and client follow-ups — 85% response rate</li><li>Site supervisors follow SOPs — owner visits reduced by 70%</li><li>Weekly material forecasting — emergency purchases dropped by 80%</li><li>Automated invoice reminders — receivables overdue reduced by 50%</li><li>Weekly project reviews with documented action items</li></ul></div>
+  </div>
+  <div class="card"><h3 style="margin-top:0">Results After 6 Months</h3>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:center;padding:8px 0">
+      <div><div style="font-family:'Plus Jakarta Sans';font-size:30px;font-weight:800;color:var(--primary)">+28%</div><div style="font-size:12px;color:var(--text-muted);margin-top:2px">Revenue Growth</div></div>
+      <div><div style="font-family:'Plus Jakarta Sans';font-size:30px;font-weight:800;color:var(--primary)">−65%</div><div style="font-size:12px;color:var(--text-muted);margin-top:2px">Project Delays</div></div>
+      <div><div style="font-family:'Plus Jakarta Sans';font-size:30px;font-weight:800;color:var(--primary)">15 hrs</div><div style="font-size:12px;color:var(--text-muted);margin-top:2px">Owner Time Saved/Wk</div></div>
+    </div>
+  </div>
+</section><div class="sep"></div>
+
+<!-- ═══════════ SECTION 17: TAKEAWAYS ═══════════ -->
+<section class="section" id="takeaways">
+  <div class="section-header"><div class="section-num">17</div><h2>Key Takeaways</h2></div>
+  <div class="takeaway-grid">
+    <div class="takeaway-pill"><div class="takeaway-icon">🎯</div>Systems create results, not motivation.</div>
+    <div class="takeaway-pill"><div class="takeaway-icon">📏</div>What gets tracked gets improved.</div>
+    <div class="takeaway-pill"><div class="takeaway-icon">👤</div>If nobody owns it, nobody does it.</div>
+    <div class="takeaway-pill"><div class="takeaway-icon">🔄</div>Start simple. Improve weekly.</div>
+    <div class="takeaway-pill"><div class="takeaway-icon">📊</div>A dashboard beats a meeting.</div>
+    <div class="takeaway-pill"><div class="takeaway-icon">🤖</div>Automate only what already works.</div>
+    <div class="takeaway-pill"><div class="takeaway-icon">📅</div>Weekly reviews are non-negotiable.</div>
+    <div class="takeaway-pill"><div class="takeaway-icon">🏗️</div>Build the system before the team.</div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     INTERACTIVE TOOLS
+     ═══════════════════════════════════════════════════════ -->
+
+<div class="interactive-divider">
+  <div class="interactive-divider-icon">⚡</div>
+  <div>
+    <h2>Interactive Tools</h2>
+    <p>Now put the knowledge into action — assess, build, track, and improve your systems right here.</p>
+  </div>
+</div>
+
+<!-- ═══════════ TOOL 1: HEALTH CHECK ═══════════ -->
+<section class="section" id="health-check">
+  <div class="section-header"><div class="section-num">⚡</div><h2>Business System Health Check</h2></div>
+  <p>Answer 12 quick questions to assess where your business stands today. Select the option that best describes your current situation.</p>
+
+  <div id="hcQuestions"></div>
+
+  <div class="btn-group">
+    <button class="btn btn-primary" onclick="calcHealthScore()">Calculate My Score →</button>
+    <button class="btn btn-outline btn-sm" onclick="resetHealthCheck()">Reset</button>
+  </div>
+
+  <div class="hc-result" id="hcResult">
+    <div class="hc-score-ring">
+      <svg width="120" height="120" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="52" fill="none" stroke="var(--border)" stroke-width="8"/>
+        <circle id="hcRing" cx="60" cy="60" r="52" fill="none" stroke="url(#hcGrad)" stroke-width="8" stroke-linecap="round" stroke-dasharray="327" stroke-dashoffset="327" style="transition:stroke-dashoffset 1s"/>
+        <defs><linearGradient id="hcGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#14B8A6"/><stop offset="100%" stop-color="#06B6D4"/></linearGradient></defs>
+      </svg>
+      <div class="hc-score-val" id="hcScoreVal">0</div>
+    </div>
+    <div class="hc-score-label" id="hcScoreLabel"></div>
+    <div class="hc-score-desc" id="hcScoreDesc"></div>
+  </div>
+</section><div class="sep"></div>
+
+<!-- ═══════════ TOOL 2: SYSTEM BUILDER ═══════════ -->
+<section class="section" id="system-builder">
+  <div class="section-header"><div class="section-num">⚡</div><h2>System Builder Tool</h2></div>
+  <p>Define your business systems one by one. Fill in the form below and click "Add System" to build your system cards.</p>
+
+  <div class="card">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <div class="form-group">
+        <label class="form-label">Business Function</label>
+        <select class="form-select" id="sbFunction">
+          <option value="">Select area...</option>
+          <option value="Sales">💰 Sales</option>
+          <option value="Marketing">📢 Marketing</option>
+          <option value="Operations">⚙️ Operations</option>
+          <option value="Finance">💵 Finance</option>
+          <option value="HR / Team">👥 HR / Team</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Owner / Responsible Person</label>
+        <input type="text" class="form-input" id="sbOwner" placeholder="e.g., Ahmed — Sales Manager">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Daily Activities</label>
+      <textarea class="form-textarea" id="sbActivities" placeholder="e.g., Make 20 cold calls, update CRM pipeline, send 5 follow-up emails"></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Expected Output</label>
+      <input type="text" class="form-input" id="sbOutput" placeholder="e.g., 20 calls logged, pipeline updated by 5 PM">
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="addSystem()">+ Add System</button>
+      <button class="btn btn-outline btn-sm" onclick="clearSystemForm()">Clear Form</button>
+    </div>
+  </div>
+
+  <div id="systemCards"></div>
+  <p id="sbEmpty" style="text-align:center;color:var(--text-muted);font-size:13px;padding:20px 0">Your system cards will appear here after you add them.</p>
+</section><div class="sep"></div>
+
+<!-- ═══════════ TOOL 3: KPI TRACKER ═══════════ -->
+<section class="section" id="kpi-tracker">
+  <div class="section-header"><div class="section-num">⚡</div><h2>KPI Tracker</h2></div>
+  <p>Track your key performance indicators. Enter a name, target, and actual value. Status is calculated automatically.</p>
+
+  <div class="card" style="padding:16px">
+    <div style="overflow-x:auto">
+      <table class="kpi-table">
+        <thead><tr><th style="width:30%">KPI Name</th><th style="width:20%">Target</th><th style="width:20%">Actual</th><th style="width:18%">Status</th><th style="width:12%"></th></tr></thead>
+        <tbody id="kpiBody"></tbody>
+      </table>
+    </div>
+    <div class="btn-group" style="margin-top:14px">
+      <button class="btn btn-primary btn-sm" onclick="addKpiRow()">+ Add KPI</button>
+      <button class="btn btn-outline btn-sm" onclick="clearKpis()">Clear All</button>
+    </div>
+  </div>
+</section><div class="sep"></div>
+
+<!-- ═══════════ TOOL 4: WEEKLY REVIEW ASSISTANT ═══════════ -->
+<section class="section" id="weekly-review-tool">
+  <div class="section-header"><div class="section-num">⚡</div><h2>Weekly Review Checklist</h2></div>
+  <p>Use this checklist every week to ensure your review is thorough. Click each item when completed.</p>
+
+  <div id="wrItems"></div>
+
+  <div class="wr-progress" id="wrProgress">
+    <div class="wr-progress-label" id="wrScoreLabel">0%</div>
+    <div class="wr-progress-bar-outer"><div class="wr-progress-bar-inner" id="wrBar" style="width:0%"></div></div>
+    <div class="wr-progress-sub" id="wrSub">Complete the checklist items above</div>
+  </div>
+</section><div class="sep"></div>
+
+<!-- ═══════════ TOOL 5: RECOMMENDATIONS ═══════════ -->
+<section class="section" id="recommendations">
+  <div class="section-header"><div class="section-num">⚡</div><h2>Smart Recommendations</h2></div>
+  <p>Based on your Health Check score and KPI gaps, here are your personalised recommendations. <em>Complete the Health Check and add KPIs first for best results.</em></p>
+
+  <div class="btn-group" style="margin-bottom:18px">
+    <button class="btn btn-primary" onclick="generateRecs()">Generate Recommendations →</button>
+  </div>
+  <div id="recCards">
+    <div style="text-align:center;padding:24px;color:var(--text-muted);font-size:13px">Click the button above to generate recommendations based on your inputs.</div>
+  </div>
+</section><div class="sep"></div>
+
+<!-- ═══════════ TOOL 6: DASHBOARD PREVIEW ═══════════ -->
+<section class="section" id="dashboard-preview">
+  <div class="section-header"><div class="section-num">⚡</div><h2>Dashboard Preview</h2></div>
+  <p>This is what your daily business dashboard could look like. These are sample metrics — once you implement systems, these numbers become real.</p>
+
+  <div class="dash-grid">
+    <div class="dash-card"><div class="dash-card-icon teal-bg">💰</div><div class="dash-val" id="dashSales">0</div><div class="dash-label">Today's Sales (AED)</div><div class="dash-change up" id="dashSalesChange">↑ 12% vs last week</div></div>
+    <div class="dash-card"><div class="dash-card-icon blue-bg">📥</div><div class="dash-val" id="dashLeads">0</div><div class="dash-label">New Leads</div><div class="dash-change up">↑ 8% vs last week</div></div>
+    <div class="dash-card"><div class="dash-card-icon amber-bg">📋</div><div class="dash-val" id="dashTasks">0</div><div class="dash-label">Pending Tasks</div><div class="dash-change down">3 overdue</div></div>
+    <div class="dash-card"><div class="dash-card-icon red-bg">⚠️</div><div class="dash-val" id="dashAlerts">0</div><div class="dash-label">Alerts</div><div class="dash-change down">Needs attention</div></div>
+  </div>
+
+  <div class="dash-chart-area">
+    <div class="dash-chart-title">📊 Weekly Revenue Trend (AED '000)</div>
+    <div class="mini-bar-chart" id="dashChart"></div>
+  </div>
+
+  <div class="btn-group" style="margin-top:14px">
+    <button class="btn btn-primary btn-sm" onclick="refreshDashboard()">↻ Refresh Sample Data</button>
+  </div>
+</section><div class="sep"></div>
+
+<!-- ═══════════ CTA ═══════════ -->
+<section class="section" id="cta">
+  <div class="cta-section">
+    <h2>Start Building Your System Today</h2>
+    <p>Pick one area, build one system, and review it weekly. The results will speak for themselves.</p>
+    <div class="cta-steps">
+      <div class="cta-step"><div class="cta-step-num">01</div><div class="cta-step-text">Pick one area<br>(Sales or Ops)</div></div>
+      <div class="cta-step"><div class="cta-step-num">02</div><div class="cta-step-text">Implement within<br>7 days</div></div>
+      <div class="cta-step"><div class="cta-step-num">03</div><div class="cta-step-text">Review every<br>week</div></div>
+    </div>
+  </div>
+  <div class="btn-group" style="justify-content:center;margin-top:20px">
+    <button class="btn btn-primary" onclick="saveAll()">💾 Save All Progress</button>
+    <button class="btn btn-danger btn-sm" onclick="resetAll()">🗑 Reset Everything</button>
+  </div>
+</section>
+
+<div class="footer">© 2026 civil-tech.ai · System-Driven Growth for Dubai SMEs · All Rights Reserved</div>
+
+</main>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"><span class="toast-icon">✓</span><span id="toastMsg">Saved!</span></div>
+
+<script>
+/* ═══════════════════════════
+   DATA & STATE
+   ═══════════════════════════ */
+var hcAnswers = {};
+var systems = [];
+var kpis = [];
+var wrChecks = {};
+
+/* ═══════════════════════════
+   HEALTH CHECK
+   ═══════════════════════════ */
+var hcData = [
+  {q:"How do you track your daily sales activities?", opts:[{t:"No tracking at all",s:1},{t:"Occasional notes",s:2},{t:"Basic spreadsheet",s:3},{t:"CRM with daily logging",s:4},{t:"CRM + automated reports",s:5}]},
+  {q:"How are leads followed up?", opts:[{t:"When someone remembers",s:1},{t:"Owner personally follows up",s:2},{t:"Team does it inconsistently",s:3},{t:"Defined process with reminders",s:4},{t:"Automated CRM follow-up system",s:5}]},
+  {q:"Can you see today's key business numbers right now?", opts:[{t:"No visibility at all",s:1},{t:"Have to ask team members",s:2},{t:"Check spreadsheets manually",s:3},{t:"Simple dashboard available",s:4},{t:"Real-time dashboard on phone",s:5}]},
+  {q:"Does your team report daily activities?", opts:[{t:"No daily reporting",s:1},{t:"Verbal updates sometimes",s:2},{t:"WhatsApp messages (unstructured)",s:3},{t:"Structured daily report format",s:4},{t:"Automated reporting system",s:5}]},
+  {q:"How often do you review business performance?", opts:[{t:"Rarely / only when things go wrong",s:1},{t:"Monthly at best",s:2},{t:"Every 2 weeks",s:3},{t:"Weekly structured review",s:4},{t:"Weekly + daily check-ins",s:5}]},
+  {q:"How dependent is the business on you (the owner)?", opts:[{t:"Nothing works without me",s:1},{t:"Most things need my input",s:2},{t:"Some things run independently",s:3},{t:"Most things run with minimal input",s:4},{t:"Business runs smoothly when I travel",s:5}]},
+  {q:"Do you have documented processes (SOPs)?", opts:[{t:"Nothing is written down",s:1},{t:"A few notes here and there",s:2},{t:"Some processes documented",s:3},{t:"Most key processes documented",s:4},{t:"Full SOP library, regularly updated",s:5}]},
+  {q:"How do you handle customer complaints?", opts:[{t:"React when customer escalates",s:1},{t:"Owner handles personally",s:2},{t:"Team handles but inconsistently",s:3},{t:"Defined complaint process",s:4},{t:"System with tracking and resolution SLA",s:5}]},
+  {q:"How is cash flow managed?", opts:[{t:"Check bank balance when needed",s:1},{t:"Monthly review of accounts",s:2},{t:"Weekly payables/receivables review",s:3},{t:"Daily tracking with forecasting",s:4},{t:"Automated alerts and dashboards",s:5}]},
+  {q:"Does every team member have clear KPIs?", opts:[{t:"No KPIs defined",s:1},{t:"Vague targets discussed verbally",s:2},{t:"Some have KPIs, some don't",s:3},{t:"All have KPIs, reviewed monthly",s:4},{t:"All have KPIs, reviewed weekly",s:5}]},
+  {q:"How much automation do you use?", opts:[{t:"Everything is manual",s:1},{t:"Basic email/WhatsApp",s:2},{t:"Some tools (sheets, basic CRM)",s:3},{t:"CRM + automation for key tasks",s:4},{t:"Integrated automation across areas",s:5}]},
+  {q:"How aligned is your team on daily priorities?", opts:[{t:"Everyone decides their own tasks",s:1},{t:"Owner assigns tasks individually",s:2},{t:"Some structure, mostly informal",s:3},{t:"Daily standup with clear priorities",s:4},{t:"Standup + tracked priorities + accountability",s:5}]}
+];
+
+function renderHealthCheck(){
+  var h='';
+  hcData.forEach(function(q,i){
+    h+='<div class="hc-question" id="hcQ'+i+'"><div class="hc-q-text"><span class="hc-q-num">'+(i+1)+'.</span>'+q.q+'</div><div class="hc-options">';
+    q.opts.forEach(function(o,j){
+      var sel=hcAnswers[i]===j?' selected':'';
+      h+='<div class="hc-opt'+sel+'" onclick="selectHC('+i+','+j+','+o.s+')">'+o.t+'</div>';
+    });
+    h+='</div></div>';
+  });
+  document.getElementById('hcQuestions').innerHTML=h;
+}
+
+function selectHC(qi,oi,score){
+  hcAnswers[qi]={idx:oi,score:score};
+  renderHealthCheck();
+  document.getElementById('hcQ'+qi).classList.add('answered');
+}
+
+function calcHealthScore(){
+  var keys=Object.keys(hcAnswers);
+  if(keys.length<12){showToast('⚠️ Please answer all 12 questions first');return;}
+  var total=0;
+  keys.forEach(function(k){total+=hcAnswers[k].score;});
+  var pct=Math.round((total/60)*100);
+  var label,desc,color;
+  if(total<=20){label='Weak Systems';desc='Your business is heavily owner-dependent with minimal systems in place. Start with one core area (sales or operations) and define daily activities, assign owners, and begin tracking immediately.';color='#EF4444';}
+  else if(total<=40){label='Developing Systems';desc='You have some foundations but significant gaps remain. Focus on consistency — introduce daily reporting, start weekly reviews, and document your top 3 processes.';color='#F59E0B';}
+  else{label='Strong Systems';desc='Your business has solid systems in place. Focus on automation, dashboards, and AI integration to scale further. Ensure weekly reviews continue and processes are updated regularly.';color='#10B981';}
+
+  var r=document.getElementById('hcResult');r.classList.add('show');
+  document.getElementById('hcScoreVal').textContent=total;
+  document.getElementById('hcScoreLabel').textContent=label;
+  document.getElementById('hcScoreLabel').style.color=color;
+  document.getElementById('hcScoreDesc').textContent=desc;
+  var offset=327-(327*(total/60));
+  document.getElementById('hcRing').style.strokeDashoffset=offset;
+  r.scrollIntoView({behavior:'smooth',block:'center'});
+  saveAll();
+}
+
+function resetHealthCheck(){
+  hcAnswers={};
+  renderHealthCheck();
+  document.getElementById('hcResult').classList.remove('show');
+  showToast('🔄 Health Check reset');
+}
+
+/* ═══════════════════════════
+   SYSTEM BUILDER
+   ═══════════════════════════ */
+function addSystem(){
+  var fn=document.getElementById('sbFunction').value;
+  var owner=document.getElementById('sbOwner').value.trim();
+  var act=document.getElementById('sbActivities').value.trim();
+  var out=document.getElementById('sbOutput').value.trim();
+  if(!fn||!owner||!act||!out){showToast('⚠️ Please fill in all fields');return;}
+  systems.push({fn:fn,owner:owner,activities:act,output:out,id:Date.now()});
+  renderSystems();
+  clearSystemForm();
+  showToast('✅ System added!');
+  saveAll();
+}
+
+function clearSystemForm(){
+  document.getElementById('sbFunction').value='';
+  document.getElementById('sbOwner').value='';
+  document.getElementById('sbActivities').value='';
+  document.getElementById('sbOutput').value='';
+}
+
+function deleteSystem(id){
+  systems=systems.filter(function(s){return s.id!==id;});
+  renderSystems();
+  saveAll();
+}
+
+function renderSystems(){
+  var c=document.getElementById('systemCards');
+  var e=document.getElementById('sbEmpty');
+  if(!systems.length){c.innerHTML='';e.style.display='block';return;}
+  e.style.display='none';
+  var icons={'Sales':'💰','Marketing':'📢','Operations':'⚙️','Finance':'💵','HR / Team':'👥'};
+  var h='';
+  systems.forEach(function(s){
+    h+='<div class="system-card-output"><div class="system-card-header"><div class="system-card-fn">'+(icons[s.fn]||'📋')+' '+s.fn+'</div><button class="system-card-del" onclick="deleteSystem('+s.id+')" title="Remove">✕</button></div>';
+    h+='<div class="system-card-row"><div class="system-card-field"><label>DAILY ACTIVITIES</label><span>'+escHtml(s.activities)+'</span></div>';
+    h+='<div class="system-card-field"><label>OWNER</label><span>'+escHtml(s.owner)+'</span></div>';
+    h+='<div class="system-card-field"><label>EXPECTED OUTPUT</label><span>'+escHtml(s.output)+'</span></div></div></div>';
+  });
+  c.innerHTML=h;
+}
+
+/* ═══════════════════════════
+   KPI TRACKER
+   ═══════════════════════════ */
+function addKpiRow(name,target,actual){
+  kpis.push({id:Date.now(),name:name||'',target:target||'',actual:actual||''});
+  renderKpis();
+}
+
+function removeKpi(id){
+  kpis=kpis.filter(function(k){return k.id!==id;});
+  renderKpis();
+  saveAll();
+}
+
+function updateKpi(id,field,val){
+  kpis.forEach(function(k){if(k.id===id)k[field]=val;});
+  renderKpiStatuses();
+  saveAll();
+}
+
+function renderKpis(){
+  var b=document.getElementById('kpiBody');
+  if(!kpis.length){b.innerHTML='<tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:20px;font-size:13px">Click "+ Add KPI" to start tracking</td></tr>';return;}
+  var h='';
+  kpis.forEach(function(k){
+    h+='<tr><td><input class="kpi-input" placeholder="e.g., Daily Calls" value="'+escAttr(k.name)+'" onchange="updateKpi('+k.id+',\'name\',this.value)"></td>';
+    h+='<td><input class="kpi-input" type="number" placeholder="0" value="'+escAttr(k.target)+'" onchange="updateKpi('+k.id+',\'target\',this.value)"></td>';
+    h+='<td><input class="kpi-input" type="number" placeholder="0" value="'+escAttr(k.actual)+'" onchange="updateKpi('+k.id+',\'actual\',this.value)"></td>';
+    h+='<td><span class="kpi-status neutral" id="kpiSt'+k.id+'">—</span></td>';
+    h+='<td><button class="kpi-del" onclick="removeKpi('+k.id+')" title="Remove">✕</button></td></tr>';
+  });
+  b.innerHTML=h;
+  renderKpiStatuses();
+}
+
+function renderKpiStatuses(){
+  kpis.forEach(function(k){
+    var el=document.getElementById('kpiSt'+k.id);if(!el)return;
+    var t=parseFloat(k.target),a=parseFloat(k.actual);
+    if(isNaN(t)||isNaN(a)||t===0){el.className='kpi-status neutral';el.textContent='—';return;}
+    if(a>=t){el.className='kpi-status on-track';el.textContent='✓ On Track';}
+    else{el.className='kpi-status behind';el.textContent='✗ Behind';}
+  });
+}
+
+function clearKpis(){kpis=[];renderKpis();saveAll();showToast('🔄 KPIs cleared');}
+
+/* ═══════════════════════════
+   WEEKLY REVIEW CHECKLIST
+   ═══════════════════════════ */
+var wrData=[
+  "Reviewed this week's sales numbers vs target",
+  "Checked all pending customer follow-ups",
+  "Reviewed cash collections and overdue invoices",
+  "Identified top 2 operational bottlenecks",
+  "Reviewed customer complaints and resolution times",
+  "Checked team activity completion rates",
+  "Defined action items with owners and deadlines",
+  "Set clear priorities for next week",
+  "Recognised at least one team win",
+  "Updated the dashboard with latest data"
+];
+
+function renderWeeklyReview(){
+  var h='';
+  wrData.forEach(function(item,i){
+    var checked=wrChecks[i]?' checked':'';
+    h+='<div class="wr-item'+checked+'" onclick="toggleWR('+i+')"><div class="wr-checkbox">✓</div><div class="wr-text">'+item+'</div></div>';
+  });
+  document.getElementById('wrItems').innerHTML=h;
+  updateWRProgress();
+}
+
+function toggleWR(i){
+  wrChecks[i]=!wrChecks[i];
+  renderWeeklyReview();
+  saveAll();
+}
+
+function updateWRProgress(){
+  var done=0;
+  Object.keys(wrChecks).forEach(function(k){if(wrChecks[k])done++;});
+  var pct=Math.round((done/wrData.length)*100);
+  document.getElementById('wrScoreLabel').textContent=pct+'%';
+  document.getElementById('wrBar').style.width=pct+'%';
+  var sub='';
+  if(pct===0)sub='Complete the checklist items above';
+  else if(pct<50)sub='Keep going — you\'re getting started';
+  else if(pct<100)sub='Good progress — finish the remaining items';
+  else sub='🎉 Review complete! Great discipline.';
+  document.getElementById('wrSub').textContent=sub;
+}
+
+/* ═══════════════════════════
+   RECOMMENDATIONS ENGINE
+   ═══════════════════════════ */
+function generateRecs(){
+  var recs=[];
+  // From health check
+  var hcTotal=0,hcCount=0;
+  Object.keys(hcAnswers).forEach(function(k){hcTotal+=hcAnswers[k].score;hcCount++;});
+
+  if(hcCount===0){
+    recs.push({icon:'📋',priority:'medium',title:'Complete Your Health Check First',desc:'Go back to the Health Check section and answer all 12 questions to get personalised recommendations.'});
+  } else {
+    if(hcCount>0 && hcAnswers[0] && hcAnswers[0].score<=2) recs.push({icon:'📊',priority:'high',title:'Start Daily Sales Tracking Immediately',desc:'Your sales activities are not being tracked. Implement a simple daily call/meeting log — even a Google Sheet works to start.'});
+    if(hcCount>0 && hcAnswers[1] && hcAnswers[1].score<=2) recs.push({icon:'📞',priority:'high',title:'Build a Follow-Up System',desc:'Leads are falling through the cracks. Define a follow-up process: who follows up, when, and how to track completion.'});
+    if(hcCount>0 && hcAnswers[2] && hcAnswers[2].score<=2) recs.push({icon:'📱',priority:'high',title:'Create a Simple Dashboard',desc:'You have no visibility into daily numbers. Build a basic dashboard showing leads, sales, and cash collected.'});
+    if(hcCount>0 && hcAnswers[3] && hcAnswers[3].score<=2) recs.push({icon:'📝',priority:'high',title:'Introduce Daily Team Reporting',desc:'Your team is not reporting activities. Implement a simple end-of-day report format via WhatsApp or a shared sheet.'});
+    if(hcCount>0 && hcAnswers[4] && hcAnswers[4].score<=2) recs.push({icon:'📅',priority:'high',title:'Start Weekly Review Meetings',desc:'Regular performance reviews are missing. Block 60 minutes every week and follow the review structure in this guide.'});
+    if(hcCount>0 && hcAnswers[5] && hcAnswers[5].score<=2) recs.push({icon:'👥',priority:'medium',title:'Reduce Owner Dependency',desc:'The business relies too heavily on you. Start by documenting your top 3 tasks and training someone to handle them.'});
+    if(hcCount>0 && hcAnswers[6] && hcAnswers[6].score<=2) recs.push({icon:'📄',priority:'medium',title:'Document Your Core Processes',desc:'Key processes are not written down. Start with your sales and delivery processes — write step-by-step instructions.'});
+    if(hcCount>0 && hcAnswers[8] && hcAnswers[8].score<=2) recs.push({icon:'💵',priority:'high',title:'Implement Cash Flow Tracking',desc:'Cash flow management is reactive. Start tracking daily collections and maintain a weekly receivables/payables review.'});
+    if(hcCount>0 && hcAnswers[10] && hcAnswers[10].score<=2) recs.push({icon:'🤖',priority:'low',title:'Explore Basic Automation',desc:'Everything is manual. Once your processes are stable, consider a CRM and WhatsApp automation for follow-ups.'});
+    if(hcTotal>40) recs.push({icon:'🚀',priority:'low',title:'Consider AI-Powered Insights',desc:'Your systems are strong. Explore AI tools for auto-reports, predictive analytics, and smart suggestions.'});
+  }
+
+  // From KPI gaps
+  var behindCount=0;
+  kpis.forEach(function(k){
+    var t=parseFloat(k.target),a=parseFloat(k.actual);
+    if(!isNaN(t)&&!isNaN(a)&&t>0&&a<t)behindCount++;
+  });
+  if(behindCount>0){
+    recs.push({icon:'🎯',priority:'high',title:behindCount+' KPI(s) Behind Target',desc:'Review your KPI tracker — '+behindCount+' metric(s) are below target. Identify root causes in your weekly review and assign corrective actions.'});
+  }
+  if(kpis.length===0){
+    recs.push({icon:'📏',priority:'medium',title:'Start Tracking KPIs',desc:'You haven\'t added any KPIs yet. Go to the KPI Tracker and add at least 3 key metrics to measure progress.'});
+  }
+
+  if(!recs.length){
+    recs.push({icon:'🎉',priority:'low',title:'You\'re On Track!',desc:'Based on your inputs, your business systems look solid. Keep up the weekly reviews and continue improving.'});
+  }
+
+  // Render
+  var h='';
+  recs.forEach(function(r){
+    h+='<div class="rec-card"><div class="rec-icon '+r.priority+'">'+r.icon+'</div><div><div class="rec-title">'+r.title+'</div><div class="rec-desc">'+r.desc+'</div></div></div>';
+  });
+  document.getElementById('recCards').innerHTML=h;
+}
+
+/* ═══════════════════════════
+   DASHBOARD PREVIEW
+   ═══════════════════════════ */
+function refreshDashboard(){
+  var sales=Math.floor(Math.random()*40000)+15000;
+  var leads=Math.floor(Math.random()*20)+5;
+  var tasks=Math.floor(Math.random()*12)+2;
+  var alerts=Math.floor(Math.random()*5);
+  animateNum('dashSales',sales,true);
+  animateNum('dashLeads',leads);
+  animateNum('dashTasks',tasks);
+  animateNum('dashAlerts',alerts);
+  renderDashChart();
+}
+
+function animateNum(id,target,isCurrency){
+  var el=document.getElementById(id);
+  var start=0;var dur=800;var st=null;
+  function step(ts){
+    if(!st)st=ts;
+    var p=Math.min((ts-st)/dur,1);
+    var v=Math.floor(p*target);
+    el.textContent=isCurrency?v.toLocaleString():v;
+    if(p<1)requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+function renderDashChart(){
+  var days=['Sat','Sun','Mon','Tue','Wed','Thu','Fri'];
+  var vals=days.map(function(){return Math.floor(Math.random()*60)+20;});
+  var max=Math.max.apply(null,vals);
+  var h='';
+  vals.forEach(function(v,i){
+    var pct=(v/max)*100;
+    h+='<div class="mini-bar" style="height:'+pct+'%"><span class="mini-bar-label">'+days[i]+'</span></div>';
+  });
+  document.getElementById('dashChart').innerHTML=h;
+}
+
+/* ═══════════════════════════
+   SAVE / LOAD / RESET
+   ═══════════════════════════ */
+function saveAll(){
+  try{
+    var data={hcAnswers:hcAnswers,systems:systems,kpis:kpis,wrChecks:wrChecks,theme:document.documentElement.getAttribute('data-theme')};
+    localStorage.setItem('sdb_data',JSON.stringify(data));
+    showToast('💾 Progress saved');
+  }catch(e){}
+}
+
+function loadAll(){
+  try{
+    var raw=localStorage.getItem('sdb_data');
+    if(!raw)return;
+    var data=JSON.parse(raw);
+    if(data.hcAnswers)hcAnswers=data.hcAnswers;
+    if(data.systems)systems=data.systems;
+    if(data.kpis)kpis=data.kpis;
+    if(data.wrChecks)wrChecks=data.wrChecks;
+    if(data.theme){
+      document.documentElement.setAttribute('data-theme',data.theme);
+      document.getElementById('themeBtn').textContent=data.theme==='dark'?'☀️':'🌙';
+    }
+  }catch(e){}
+}
+
+function resetAll(){
+  if(!confirm('This will clear all your progress including Health Check answers, System Cards, KPIs, and Weekly Review. Continue?'))return;
+  localStorage.removeItem('sdb_data');
+  hcAnswers={};systems=[];kpis=[];wrChecks={};
+  renderHealthCheck();renderSystems();renderKpis();renderWeeklyReview();
+  document.getElementById('hcResult').classList.remove('show');
+  document.getElementById('recCards').innerHTML='<div style="text-align:center;padding:24px;color:var(--text-muted);font-size:13px">Click the button above to generate recommendations.</div>';
+  showToast('🗑 Everything reset');
+}
+
+/* ═══════════════════════════
+   UTILITIES
+   ═══════════════════════════ */
+function toggleTheme(){
+  var html=document.documentElement;var btn=document.getElementById('themeBtn');
+  if(html.getAttribute('data-theme')==='dark'){html.setAttribute('data-theme','light');btn.textContent='🌙';}
+  else{html.setAttribute('data-theme','dark');btn.textContent='☀️';}
+  saveAll();
+}
+
+function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function escAttr(s){return String(s).replace(/"/g,'&quot;');}
+
+function showToast(msg){
+  var t=document.getElementById('toast');
+  document.getElementById('toastMsg').textContent=msg.replace(/^[^\s]+\s/,'');
+  document.querySelector('.toast-icon').textContent=msg.charAt(0)==='⚠'?'⚠':msg.charAt(0)==='🗑'?'🗑':msg.charAt(0)==='🔄'?'🔄':'✓';
+  t.classList.add('show');
+  clearTimeout(window._toastTimer);
+  window._toastTimer=setTimeout(function(){t.classList.remove('show');},2500);
+}
+
+// Progress bar
+window.addEventListener('scroll',function(){
+  var st=window.scrollY;var dh=document.documentElement.scrollHeight-window.innerHeight;
+  document.getElementById('progressBar').style.width=(st/dh)*100+'%';
+});
+
+// Active TOC
+var sections=document.querySelectorAll('.section');
+var tocLinks=document.querySelectorAll('.toc-link');
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      tocLinks.forEach(function(l){l.classList.remove('active');});
+      var a=document.querySelector('.toc-link[data-target="'+e.target.id+'"]');
+      if(a)a.classList.add('active');
+    }
+  });
+},{rootMargin:'-20% 0px -70% 0px'});
+sections.forEach(function(s){obs.observe(s);});
+
+// Sidebar click → smooth scroll via JS (avoids external link popup in iframes)
+tocLinks.forEach(function(l){
+  l.addEventListener('click',function(evt){
+    evt.preventDefault();
+    var targetId=l.getAttribute('data-target');
+    if(targetId){
+      var el=document.getElementById(targetId);
+      if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    document.getElementById('sidebar').classList.remove('open');
+  });
+});
+
+/* ═══════════════════════════
+   INIT
+   ═══════════════════════════ */
+loadAll();
+renderHealthCheck();
+renderSystems();
+if(!kpis.length){addKpiRow('Daily Sales Calls','20','');addKpiRow('Orders Delivered','10','');addKpiRow('Cash Collected (AED)','50000','');}
+renderKpis();
+renderWeeklyReview();
+refreshDashboard();
+</script>
+</body>
+</html>

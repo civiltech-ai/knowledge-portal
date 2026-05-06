@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customers Don't Leave, They Drift Away — civil-tech.ai</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,800;9..144,900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pri:#14B8A6;--pri-l:#2DD4BF;--pri-d:#0D9488;--pri-dd:#115E59;
+  --grad:linear-gradient(135deg,#14B8A6,#06B6D4);
+  --bg:#F8FAFB;--bg-card:#fff;--text:#1a2332;--text2:#4B5563;--text3:#9CA3AF;
+  --border:#E5E7EB;--border-l:#F3F4F6;
+  --red:#EF4444;--green:#10B981;--amber:#F59E0B;
+  --shadow:0 1px 3px rgba(0,0,0,.04);--shadow-m:0 8px 30px rgba(0,0,0,.07);--shadow-l:0 20px 60px rgba(0,0,0,.1);
+  --r:18px;--rs:12px;
+}
+[data-theme="dark"]{
+  --bg:#0F172A;--bg-card:#1E293B;--text:#F1F5F9;--text2:#94A3B8;--text3:#64748B;
+  --border:#334155;--border-l:#1E293B;
+  --shadow:0 1px 3px rgba(0,0,0,.2);--shadow-m:0 8px 30px rgba(0,0,0,.3);--shadow-l:0 20px 60px rgba(0,0,0,.4);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.75;transition:background .3s,color .3s;min-height:100vh}
+
+/* ── Top bar ── */
+.topbar{position:sticky;top:0;z-index:50;background:var(--bg-card);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:56px;backdrop-filter:blur(16px);transition:all .3s}
+.topbar-left{display:flex;align-items:center;gap:12px}
+.topbar-logo{width:32px;height:32px;background:var(--grad);border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:800;font-family:'Fraunces',serif}
+.topbar-brand{font-family:'Fraunces',serif;font-weight:700;font-size:14px;color:var(--text);letter-spacing:-.3px}
+.topbar-tag{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--pri);background:rgba(20,184,166,.08);border:1px solid rgba(20,184,166,.18);padding:2px 10px;border-radius:20px}
+.theme-btn{width:36px;height:36px;border-radius:10px;border:1px solid var(--border);background:var(--bg-card);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--text2);transition:all .2s}
+.theme-btn:hover{border-color:var(--pri);color:var(--pri)}
+
+/* ── Container ── */
+.container{max-width:760px;margin:0 auto;padding:40px 28px 60px}
+
+/* ── Hero ── */
+.hero{position:relative;background:var(--grad);border-radius:var(--r);padding:52px 44px 48px;color:#fff;overflow:hidden;margin-bottom:44px}
+.hero::before{content:'';position:absolute;top:-80px;right:-60px;width:300px;height:300px;background:rgba(255,255,255,.06);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:-60px;left:-40px;width:220px;height:220px;background:rgba(255,255,255,.04);border-radius:50%}
+.hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;opacity:.7;margin-bottom:18px;position:relative}
+.hero h1{font-family:'Fraunces',serif;font-size:38px;font-weight:900;line-height:1.15;letter-spacing:-.5px;margin-bottom:14px;position:relative}
+.hero-sub{font-size:16px;opacity:.88;line-height:1.7;max-width:560px;position:relative}
+.hero-number{position:absolute;top:40px;right:44px;font-family:'Fraunces',serif;font-size:120px;font-weight:900;opacity:.06;line-height:1;pointer-events:none}
+
+/* ── Section ── */
+.sec{margin-bottom:44px}
+.sec-label{display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--pri);margin-bottom:12px}
+.sec-label-dot{width:6px;height:6px;border-radius:50%;background:var(--pri)}
+.sec h2{font-family:'Fraunces',serif;font-size:26px;font-weight:800;line-height:1.25;letter-spacing:-.3px;color:var(--text);margin-bottom:14px}
+.sec p{color:var(--text2);font-size:15px;margin-bottom:14px}
+
+/* ── Card ── */
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:28px;box-shadow:var(--shadow);margin-bottom:18px;transition:box-shadow .3s}
+.card:hover{box-shadow:var(--shadow-m)}
+
+/* ── Callout ── */
+.callout{background:rgba(20,184,166,.06);border:1px solid rgba(20,184,166,.15);border-left:4px solid var(--pri);border-radius:var(--rs);padding:18px 22px;margin:20px 0;font-size:14px;color:var(--text);font-weight:500}
+.callout strong{color:var(--pri-d)}
+[data-theme="dark"] .callout strong{color:var(--pri-l)}
+
+.callout-warn{background:rgba(239,68,68,.05);border-color:rgba(239,68,68,.12);border-left-color:var(--red)}
+.callout-warn strong{color:var(--red)}
+
+.quote-block{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:28px 32px;margin:22px 0;position:relative;text-align:center}
+.quote-block::before{content:'"';position:absolute;top:-8px;left:24px;font-family:'Fraunces',serif;font-size:64px;color:var(--pri);opacity:.15;line-height:1}
+.quote-text{font-family:'Fraunces',serif;font-size:20px;font-weight:700;color:var(--text);line-height:1.4;letter-spacing:-.2px}
+
+/* ── Drift Chart ── */
+.drift-chart{display:flex;align-items:flex-end;gap:2px;height:160px;padding:20px 0;justify-content:center}
+.drift-bar-group{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;max-width:120px}
+.drift-bar{width:100%;border-radius:8px 8px 0 0;transition:height 1s ease;position:relative}
+.drift-bar-val{position:absolute;top:-24px;left:50%;transform:translateX(-50%);font-family:'Fraunces',serif;font-size:18px;font-weight:800}
+.drift-bar-label{font-size:11px;font-weight:600;color:var(--text3);letter-spacing:.5px}
+
+/* ── Cost Cards ── */
+.cost-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+.cost-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--rs);padding:20px;text-align:center;transition:all .3s}
+.cost-card:hover{border-color:var(--pri);transform:translateY(-2px);box-shadow:var(--shadow-m)}
+.cost-icon{font-size:28px;margin-bottom:8px}
+.cost-title{font-family:'Fraunces',serif;font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px}
+.cost-desc{font-size:12px;color:var(--text3);line-height:1.5}
+
+/* ── Action Steps ── */
+.action-step{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--border-l)}
+.action-step:last-child{border-bottom:none}
+.action-num{width:36px;height:36px;background:var(--grad);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Fraunces',serif;font-weight:800;font-size:15px;flex-shrink:0}
+.action-content{flex:1}
+.action-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:2px}
+.action-desc{font-size:13px;color:var(--text2)}
+
+/* ── Vs Table ── */
+.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0}
+.vs-card{border-radius:var(--rs);padding:22px;border:1px solid var(--border)}
+.vs-card.bad{background:rgba(239,68,68,.03);border-color:rgba(239,68,68,.15)}
+.vs-card.good{background:rgba(20,184,166,.04);border-color:rgba(20,184,166,.18)}
+.vs-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
+.vs-card.bad .vs-label{color:var(--red)}
+.vs-card.good .vs-label{color:var(--pri-d)}
+[data-theme="dark"] .vs-card.good .vs-label{color:var(--pri-l)}
+.vs-card ul{list-style:none;padding:0}
+.vs-card li{padding:6px 0;font-size:13px;color:var(--text2);border-bottom:1px solid var(--border-l);display:flex;align-items:center;gap:8px}
+.vs-card li:last-child{border-bottom:none}
+.vs-card li::before{content:'';width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.vs-card.bad li::before{background:var(--red)}
+.vs-card.good li::before{background:var(--green)}
+
+/* ── Interactive Reconnect Planner ── */
+.planner{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:28px;margin:20px 0}
+.planner-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.planner-title{font-family:'Fraunces',serif;font-size:18px;font-weight:800;color:var(--text);display:flex;align-items:center;gap:10px}
+.planner-title-icon{width:32px;height:32px;background:var(--grad);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff}
+.planner-reset{padding:6px 14px;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);cursor:pointer;font-size:11px;font-weight:600;color:var(--text3);transition:all .2s;font-family:'DM Sans',sans-serif}
+.planner-reset:hover{border-color:var(--red);color:var(--red)}
+
+.planner-input-row{display:flex;gap:10px;margin-bottom:14px}
+.planner-input{flex:1;padding:10px 14px;border:1px solid var(--border);border-radius:var(--rs);background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;outline:none;transition:border-color .2s}
+.planner-input:focus{border-color:var(--pri)}
+.planner-input::placeholder{color:var(--text3)}
+.planner-add{padding:10px 20px;border:none;background:var(--grad);color:#fff;border-radius:var(--rs);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:opacity .2s;white-space:nowrap}
+.planner-add:hover{opacity:.9}
+
+.planner-list{margin-top:4px}
+.planner-item{display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--bg);border:1px solid var(--border-l);border-radius:var(--rs);margin-bottom:8px;transition:all .2s}
+.planner-item.done{background:rgba(20,184,166,.06);border-color:rgba(20,184,166,.15)}
+.planner-check{width:22px;height:22px;border-radius:7px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s;font-size:12px;color:transparent;flex-shrink:0}
+.planner-item.done .planner-check{background:var(--pri);border-color:var(--pri);color:#fff}
+.planner-name{font-size:13px;font-weight:600;color:var(--text);flex:1}
+.planner-item.done .planner-name{text-decoration:line-through;opacity:.5}
+.planner-status{font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px}
+.planner-status.pending{background:rgba(245,158,11,.08);color:var(--amber);border:1px solid rgba(245,158,11,.15)}
+.planner-status.contacted{background:rgba(16,185,129,.08);color:var(--green);border:1px solid rgba(16,185,129,.15)}
+.planner-del{width:24px;height:24px;border:none;background:transparent;cursor:pointer;color:var(--text3);font-size:14px;border-radius:6px;transition:all .15s;display:flex;align-items:center;justify-content:center}
+.planner-del:hover{background:rgba(239,68,68,.08);color:var(--red)}
+
+.planner-progress{margin-top:16px;padding-top:16px;border-top:1px solid var(--border-l)}
+.planner-progress-bar-outer{width:100%;height:8px;background:var(--border-l);border-radius:8px;overflow:hidden;margin:8px 0}
+.planner-progress-bar-inner{height:100%;background:var(--grad);border-radius:8px;transition:width .4s}
+.planner-progress-text{display:flex;justify-content:space-between;font-size:12px}
+.planner-progress-pct{font-weight:700;color:var(--pri)}
+.planner-progress-label{color:var(--text3)}
+
+/* ── Bottom CTA ── */
+.bottom-cta{background:var(--grad);border-radius:var(--r);padding:40px;text-align:center;color:#fff;position:relative;overflow:hidden;margin-top:8px}
+.bottom-cta::before{content:'';position:absolute;top:-40%;right:-10%;width:250px;height:250px;background:rgba(255,255,255,.06);border-radius:50%}
+.bottom-cta h3{font-family:'Fraunces',serif;font-size:24px;font-weight:800;margin-bottom:8px;position:relative}
+.bottom-cta p{font-size:14px;opacity:.85;position:relative;margin:0}
+
+.footer{text-align:center;padding:28px;color:var(--text3);font-size:12px;margin-top:20px}
+
+/* ── Animations ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.sec{animation:fadeUp .5s ease both}
+.sec:nth-child(2){animation-delay:.05s}
+.sec:nth-child(3){animation-delay:.1s}
+.sec:nth-child(4){animation-delay:.15s}
+
+/* ── Responsive ── */
+@media(max-width:640px){
+  .container{padding:24px 16px 48px}
+  .hero{padding:36px 24px 32px}.hero h1{font-size:28px}.hero-number{display:none}
+  .cost-grid{grid-template-columns:1fr}
+  .vs-grid{grid-template-columns:1fr}
+  .topbar{padding:0 16px}
+  .planner-input-row{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <div class="topbar-logo">C</div>
+    <span class="topbar-brand">civil-tech.ai</span>
+    <span class="topbar-tag">Knowledge Card</span>
+  </div>
+  <button class="theme-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle dark mode">🌙</button>
+</header>
+
+<div class="container">
+
+  <!-- ═══ HERO ═══ -->
+  <div class="hero">
+    <div class="hero-eyebrow">Business Insight · Customer Retention</div>
+    <h1>Customers Don't Leave,<br>They Drift Away</h1>
+    <p class="hero-sub">Most customers don't fire you with a phone call. They simply stop calling. Understanding this silent exit is the first step to preventing it.</p>
+    <div class="hero-number">01</div>
+  </div>
+
+  <!-- ═══ MEANING ═══ -->
+  <div class="sec">
+    <div class="sec-label"><span class="sec-label-dot"></span> Simple Explanation</div>
+    <h2>What Does This Mean?</h2>
+    <p>Most customers don't suddenly stop buying from you. There is no angry email, no formal complaint. Instead, they <strong>slowly reduce interaction</strong> — ordering less frequently, responding slower, and eventually going silent.</p>
+    <p>This happens because they feel ignored, undervalued, or simply forgotten. If you are not regularly engaging with your customers, they will quietly move to a competitor who does.</p>
+
+    <div class="quote-block">
+      <div class="quote-text">The most dangerous customer is not the one who complains — it's the one who stops talking to you.</div>
+    </div>
+  </div>
+
+  <!-- ═══ THE DRIFT IN ACTION ═══ -->
+  <div class="sec">
+    <div class="sec-label"><span class="sec-label-dot"></span> Teaching Example</div>
+    <h2>See How Drift Happens</h2>
+    <p>A Dubai-based building materials distributor had 100 regular customers in January. No major complaints were filed. But without consistent follow-ups, here is what happened:</p>
+
+    <div class="card">
+      <div class="drift-chart" id="driftChart"></div>
+      <div style="text-align:center;margin-top:4px">
+        <div style="font-size:12px;color:var(--text3)">Active Customers Over 6 Months</div>
+      </div>
+    </div>
+
+    <div class="callout-warn callout">
+      <strong>What went wrong?</strong> When the owner finally checked, most of those 40 lost customers had simply shifted to competitors. No complaints — just no follow-ups. The relationship died from neglect, not conflict.
+    </div>
+  </div>
+
+  <!-- ═══ BUSINESS SIGNIFICANCE ═══ -->
+  <div class="sec">
+    <div class="sec-label"><span class="sec-label-dot"></span> Why This Matters</div>
+    <h2>The Real Cost of Customer Drift</h2>
+    <p>Losing existing customers is far more expensive than most business owners realise. Here's what silently erodes when customers drift away:</p>
+
+    <div class="cost-grid">
+      <div class="cost-card">
+        <div class="cost-icon">💸</div>
+        <div class="cost-title">5× Higher Cost</div>
+        <div class="cost-desc">Acquiring a new customer costs 5 times more than retaining an existing one</div>
+      </div>
+      <div class="cost-card">
+        <div class="cost-icon">📉</div>
+        <div class="cost-title">Margins Shrink</div>
+        <div class="cost-desc">Repeat customers give higher margins because trust is already built</div>
+      </div>
+      <div class="cost-card">
+        <div class="cost-icon">🔇</div>
+        <div class="cost-title">Referrals Dry Up</div>
+        <div class="cost-desc">Disengaged customers stop recommending you — word-of-mouth dies quietly</div>
+      </div>
+    </div>
+
+    <div class="vs-grid">
+      <div class="vs-card bad">
+        <div class="vs-label">⛔ Businesses That Ignore Customers</div>
+        <ul>
+          <li>Unpredictable revenue every month</li>
+          <li>Constantly chasing new clients</li>
+          <li>High marketing spend, low ROI</li>
+          <li>Vulnerable to any competitor entry</li>
+        </ul>
+      </div>
+      <div class="vs-card good">
+        <div class="vs-label">✅ Businesses That Stay Connected</div>
+        <ul>
+          <li>Predictable repeat orders</li>
+          <li>Lower cost of sales</li>
+          <li>Strong referral pipeline</li>
+          <li>Customers become advocates</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ ACTION STEP ═══ -->
+  <div class="sec">
+    <div class="sec-label"><span class="sec-label-dot"></span> Implement This Week</div>
+    <h2>Your Customer Reconnect Plan</h2>
+    <p>You don't need a CRM or fancy software. You need <strong>2 hours and a phone</strong>. Follow these 4 steps this week:</p>
+
+    <div class="card">
+      <div class="action-step">
+        <div class="action-num">1</div>
+        <div class="action-content">
+          <div class="action-title">List Your Top 20 Customers</div>
+          <div class="action-desc">Open your invoicing records. Identify 20 customers who ordered regularly but have slowed down or stopped in the last 2–3 months.</div>
+        </div>
+      </div>
+      <div class="action-step">
+        <div class="action-num">2</div>
+        <div class="action-content">
+          <div class="action-title">Call or Message Each One Personally</div>
+          <div class="action-desc">Not a bulk WhatsApp broadcast. A personal call or individual message. Use their name. Reference their last order. Make it human.</div>
+        </div>
+      </div>
+      <div class="action-step">
+        <div class="action-num">3</div>
+        <div class="action-content">
+          <div class="action-title">Ask One Simple Question</div>
+          <div class="action-desc">"How can we serve you better?" — then listen. Don't sell. Don't pitch. Just listen to what they say. The insights will surprise you.</div>
+        </div>
+      </div>
+      <div class="action-step">
+        <div class="action-num">4</div>
+        <div class="action-content">
+          <div class="action-title">Log the Response and Follow Up</div>
+          <div class="action-desc">Write down what each customer said. Set a reminder to follow up within 7 days. This simple loop can recover lost revenue within weeks.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Time investment:</strong> Even 2 hours of personal reconnecting can bring back business that took months to lose. Most owners who try this report recovering 15–30% of drifted customers within the first week.
+    </div>
+  </div>
+
+  <!-- ═══ INTERACTIVE PLANNER ═══ -->
+  <div class="sec">
+    <div class="sec-label"><span class="sec-label-dot"></span> Interactive Tool</div>
+    <h2>Customer Reconnect Tracker</h2>
+    <p>Use this tool right now — add your top customers, track who you've contacted, and watch your reconnection progress.</p>
+
+    <div class="planner">
+      <div class="planner-header">
+        <div class="planner-title"><div class="planner-title-icon">📞</div> My Reconnect List</div>
+        <button class="planner-reset" onclick="resetPlanner()">Reset All</button>
+      </div>
+
+      <div class="planner-input-row">
+        <input type="text" class="planner-input" id="custInput" placeholder="Enter customer name (e.g., Al Futtaim Interiors)" onkeydown="if(event.key==='Enter')addCustomer()">
+        <button class="planner-add" onclick="addCustomer()">+ Add Customer</button>
+      </div>
+
+      <div class="planner-list" id="plannerList"></div>
+      <div id="plannerEmpty" style="text-align:center;padding:20px;color:var(--text3);font-size:13px">Add your top customers above to start tracking reconnections.</div>
+
+      <div class="planner-progress" id="plannerProgress" style="display:none">
+        <div class="planner-progress-text">
+          <span class="planner-progress-pct" id="plannerPct">0%</span>
+          <span class="planner-progress-label" id="plannerLabel">0 of 0 contacted</span>
+        </div>
+        <div class="planner-progress-bar-outer"><div class="planner-progress-bar-inner" id="plannerBar" style="width:0%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ BOTTOM CTA ═══ -->
+  <div class="sec">
+    <div class="bottom-cta">
+      <h3>Don't Let Customers Drift. Reach Out Today.</h3>
+      <p>Pick up the phone. Send that message. Two hours now can save months of lost revenue.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">© 2026 civil-tech.ai · Business Knowledge Series · All Rights Reserved</div>
+
+<script>
+/* ── Theme ── */
+function toggleTheme(){
+  var h=document.documentElement,b=document.getElementById('themeBtn');
+  if(h.getAttribute('data-theme')==='dark'){h.setAttribute('data-theme','light');b.textContent='🌙';}
+  else{h.setAttribute('data-theme','dark');b.textContent='☀️';}
+  try{localStorage.setItem('ct_theme',h.getAttribute('data-theme'));}catch(e){}
+}
+try{var st=localStorage.getItem('ct_theme');if(st==='dark'){document.documentElement.setAttribute('data-theme','dark');document.getElementById('themeBtn').textContent='☀️';}}catch(e){}
+
+/* ── Drift Chart ── */
+function renderDriftChart(){
+  var data=[
+    {month:'Jan',val:100,color:'var(--pri)'},
+    {month:'Feb',val:92,color:'var(--pri)'},
+    {month:'Mar',val:85,color:'var(--amber)'},
+    {month:'Apr',val:74,color:'var(--amber)'},
+    {month:'May',val:66,color:'var(--red)'},
+    {month:'Jun',val:60,color:'var(--red)'}
+  ];
+  var h='';
+  data.forEach(function(d){
+    var pct=(d.val/100)*100;
+    h+='<div class="drift-bar-group"><div class="drift-bar" style="height:'+pct+'%;background:'+d.color+'"><span class="drift-bar-val" style="color:'+d.color+'">'+d.val+'</span></div><span class="drift-bar-label">'+d.month+'</span></div>';
+  });
+  document.getElementById('driftChart').innerHTML=h;
+}
+renderDriftChart();
+
+/* ── Reconnect Planner ── */
+var customers=[];
+function loadPlanner(){try{var d=localStorage.getItem('ct_planner');if(d)customers=JSON.parse(d);}catch(e){}}
+function savePlanner(){try{localStorage.setItem('ct_planner',JSON.stringify(customers));}catch(e){}}
+
+function addCustomer(){
+  var inp=document.getElementById('custInput');
+  var name=inp.value.trim();
+  if(!name)return;
+  customers.push({id:Date.now(),name:name,done:false});
+  inp.value='';
+  savePlanner();
+  renderPlanner();
+  inp.focus();
+}
+
+function toggleCustomer(id){
+  customers.forEach(function(c){if(c.id===id)c.done=!c.done;});
+  savePlanner();
+  renderPlanner();
+}
+
+function removeCustomer(id){
+  customers=customers.filter(function(c){return c.id!==id;});
+  savePlanner();
+  renderPlanner();
+}
+
+function resetPlanner(){
+  if(!confirm('Clear all customers from the list?'))return;
+  customers=[];
+  savePlanner();
+  renderPlanner();
+}
+
+function renderPlanner(){
+  var list=document.getElementById('plannerList');
+  var empty=document.getElementById('plannerEmpty');
+  var prog=document.getElementById('plannerProgress');
+
+  if(!customers.length){
+    list.innerHTML='';
+    empty.style.display='block';
+    prog.style.display='none';
+    return;
+  }
+  empty.style.display='none';
+  prog.style.display='block';
+
+  var h='';
+  customers.forEach(function(c){
+    var cls=c.done?' done':'';
+    var statusCls=c.done?'contacted':'pending';
+    var statusTxt=c.done?'Contacted':'Pending';
+    h+='<div class="planner-item'+cls+'">';
+    h+='<div class="planner-check" onclick="toggleCustomer('+c.id+')">✓</div>';
+    h+='<div class="planner-name">'+escHtml(c.name)+'</div>';
+    h+='<span class="planner-status '+statusCls+'">'+statusTxt+'</span>';
+    h+='<button class="planner-del" onclick="removeCustomer('+c.id+')" title="Remove">✕</button>';
+    h+='</div>';
+  });
+  list.innerHTML=h;
+
+  var done=customers.filter(function(c){return c.done;}).length;
+  var total=customers.length;
+  var pct=Math.round((done/total)*100);
+  document.getElementById('plannerPct').textContent=pct+'%';
+  document.getElementById('plannerLabel').textContent=done+' of '+total+' contacted';
+  document.getElementById('plannerBar').style.width=pct+'%';
+}
+
+function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+loadPlanner();
+renderPlanner();
+</script>
+</body>
+</html>
