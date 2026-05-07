@@ -1,0 +1,2155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a System-Driven Business — Civil-Tech.ai Knowledge Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0BBAB5;
+            --primary-dark: #099E9A;
+            --primary-light: #E6F9F8;
+            --accent: #FF6B35;
+            --accent-light: #FFF3ED;
+            --dark: #1A2332;
+            --dark-secondary: #2D3B4E;
+            --text: #3A4A5C;
+            --text-light: #6B7D92;
+            --text-muted: #94A3B8;
+            --bg: #F4F7FA;
+            --white: #FFFFFF;
+            --border: #E2E8F0;
+            --success: #10B981;
+            --success-light: #ECFDF5;
+            --warning: #F59E0B;
+            --warning-light: #FFFBEB;
+            --danger: #EF4444;
+            --danger-light: #FEF2F2;
+            --info: #3B82F6;
+            --info-light: #EFF6FF;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 30px rgba(0,0,0,0.1);
+            --shadow-xl: 0 16px 48px rgba(0,0,0,0.12);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+        .nav-brand-text {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+        .nav-badge {
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1.5px solid var(--primary);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-back:hover { color: var(--primary); }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: linear-gradient(135deg, #0BBAB5 0%, #0EA5A0 40%, #14B8B3 70%, #17C5C0 100%);
+            padding: 3.5rem 2rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -40px;
+            right: 120px;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+        }
+        .hero-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-category {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(255,255,255,0.18);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        .hero h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+        .hero-subtitle {
+            color: rgba(255,255,255,0.88);
+            font-size: 1.1rem;
+            max-width: 680px;
+            line-height: 1.65;
+        }
+        .hero-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .hero-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.82rem;
+            font-weight: 500;
+        }
+
+        /* ===== QUOTE BANNER ===== */
+        .quote-banner {
+            background: var(--dark);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+        .quote-banner::before {
+            content: '"';
+            font-family: Georgia, serif;
+            font-size: 6rem;
+            color: var(--primary);
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.3;
+            line-height: 1;
+        }
+        .quote-text {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #fff;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.5;
+            position: relative;
+            z-index: 2;
+        }
+        .quote-author {
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 0.8rem;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem 4rem;
+        }
+
+        /* ===== SECTION STYLES ===== */
+        .section {
+            margin-bottom: 3rem;
+        }
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+            margin-bottom: 0.6rem;
+        }
+        .section h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            line-height: 1.25;
+        }
+        .section h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.6rem;
+        }
+        .section p {
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        /* ===== CARDS ===== */
+        .card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+        .card-accent {
+            border-left: 4px solid var(--primary);
+        }
+        .card-warning {
+            border-left: 4px solid var(--warning);
+            background: var(--warning-light);
+        }
+        .card-danger {
+            border-left: 4px solid var(--danger);
+            background: var(--danger-light);
+        }
+        .card-success {
+            border-left: 4px solid var(--success);
+            background: var(--success-light);
+        }
+        .card-info {
+            border-left: 4px solid var(--info);
+            background: var(--info-light);
+        }
+
+        /* ===== ICON GRID ===== */
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .icon-grid-item {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1.3rem;
+            display: flex;
+            gap: 0.8rem;
+            align-items: flex-start;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .icon-grid-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .icon-grid-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .icon-grid-icon.teal { background: var(--primary-light); }
+        .icon-grid-icon.orange { background: var(--accent-light); }
+        .icon-grid-icon.green { background: var(--success-light); }
+        .icon-grid-icon.blue { background: var(--info-light); }
+        .icon-grid-icon.yellow { background: var(--warning-light); }
+        .icon-grid-icon.red { background: var(--danger-light); }
+        .icon-grid-text h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.2rem;
+        }
+        .icon-grid-text p {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* ===== COMPARISON TABLE ===== */
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            margin: 1.5rem 0;
+        }
+        .comparison-table th {
+            background: var(--dark);
+            color: #fff;
+            padding: 1rem 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-align: left;
+            letter-spacing: 0.03em;
+        }
+        .comparison-table td {
+            padding: 0.9rem 1.2rem;
+            font-size: 0.88rem;
+            border-bottom: 1px solid var(--border);
+            background: var(--white);
+        }
+        .comparison-table tr:last-child td { border-bottom: none; }
+        .comparison-table tr:nth-child(even) td { background: #F8FAFC; }
+
+        /* ===== VS SPLIT ===== */
+        .vs-split {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 0;
+            margin: 1.5rem 0;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        .vs-left {
+            background: var(--danger-light);
+            padding: 1.8rem;
+            border-right: none;
+        }
+        .vs-divider {
+            background: var(--dark);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 1rem;
+            font-weight: 800;
+            font-size: 1.1rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .vs-right {
+            background: var(--success-light);
+            padding: 1.8rem;
+        }
+        .vs-left h4, .vs-right h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+        .vs-left h4 { color: var(--danger); }
+        .vs-right h4 { color: var(--success); }
+        .vs-list {
+            list-style: none;
+            padding: 0;
+        }
+        .vs-list li {
+            font-size: 0.88rem;
+            padding: 0.35rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            color: var(--text);
+        }
+        .vs-list li::before {
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .vs-left .vs-list li::before { content: '✗'; color: var(--danger); font-weight: 700; }
+        .vs-right .vs-list li::before { content: '✓'; color: var(--success); font-weight: 700; }
+
+        /* ===== TIMELINE / CASE STUDY ===== */
+        .case-study {
+            background: linear-gradient(135deg, #F0FDFA 0%, #F8FAFC 100%);
+            border: 1px solid #D1FAE5;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 1.5rem 0;
+        }
+        .case-study-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1.2rem;
+        }
+        .case-study-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+        .case-study-header h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--dark);
+            margin: 0;
+        }
+        .case-study-header span {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin: 1rem 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary);
+            opacity: 0.3;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.2rem;
+            padding-left: 0.5rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.65rem;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid var(--primary-light);
+        }
+        .timeline-item h4 {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.15rem;
+        }
+        .timeline-item p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* ===== PROCESS FLOW ===== */
+        .process-flow {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+        }
+        .process-step {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            padding: 1.3rem 1rem;
+            position: relative;
+            background: var(--white);
+            border: 1px solid var(--border);
+        }
+        .process-step:first-child { border-radius: var(--radius-md) 0 0 var(--radius-md); }
+        .process-step:last-child { border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+        .process-step:not(:last-child)::after {
+            content: '→';
+            position: absolute;
+            right: -14px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            color: var(--primary);
+            z-index: 2;
+            font-weight: 700;
+        }
+        .process-step-num {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .process-step h5 {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.2rem;
+        }
+        .process-step p {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* ===== CHECKLIST ===== */
+        .checklist {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+            padding: 0.6rem 0;
+            font-size: 0.92rem;
+            border-bottom: 1px solid #F1F5F9;
+        }
+        .checklist li:last-child { border-bottom: none; }
+        .checklist-check {
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 1px;
+        }
+        .checklist-check.checked {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+        .checklist-check.checked::after {
+            content: '✓';
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        /* ===== INSIGHT BOX ===== */
+        .insight-box {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-secondary) 100%);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            color: #fff;
+            margin: 1.5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .insight-box::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(11,186,181,0.15);
+        }
+        .insight-box h3 {
+            color: var(--primary);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin-bottom: 0.6rem;
+            position: relative;
+        }
+        .insight-box p {
+            color: rgba(255,255,255,0.85);
+            position: relative;
+        }
+
+        /* ===== INTERACTIVE SELF-ASSESSMENT ===== */
+        .assessment-container {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            border: 2px solid var(--primary);
+            overflow: hidden;
+            margin: 1.5rem 0;
+        }
+        .assessment-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 1.5rem 2rem;
+            color: #fff;
+        }
+        .assessment-header h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+        .assessment-header p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+        .assessment-body {
+            padding: 2rem;
+        }
+        .assessment-q {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .assessment-q:last-of-type { border-bottom: none; }
+        .assessment-q-label {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.8rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+        .assessment-q-num {
+            color: var(--primary);
+            font-weight: 700;
+        }
+        .radio-group {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1rem;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            user-select: none;
+        }
+        .radio-option:hover { border-color: var(--primary); background: var(--primary-light); }
+        .radio-option.selected {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+        .radio-option input { display: none; }
+        .assessment-btn {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 0.85rem 2.2rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .assessment-btn:hover { background: var(--primary-dark); transform: translateY(-1px); }
+        .assessment-result {
+            display: none;
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+        }
+        .result-score {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .result-label {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+        .progress-bar-track {
+            width: 100%;
+            height: 12px;
+            background: #E2E8F0;
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 0.8rem 0;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.8s ease;
+            background: linear-gradient(90deg, var(--primary), #17C5C0);
+        }
+
+        /* ===== MINDSHIFT EXERCISE ===== */
+        .mindshift-container {
+            background: #FFFBF0;
+            border: 1.5px solid #FDE68A;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 1.5rem 0;
+        }
+        .mindshift-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 1.2rem;
+        }
+        .mindshift-header h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--dark);
+        }
+        .mindshift-row {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+        .mindshift-from {
+            background: var(--danger-light);
+            padding: 0.8rem 1rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.88rem;
+            color: var(--danger);
+            font-weight: 600;
+            text-align: center;
+        }
+        .mindshift-arrow {
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        .mindshift-to {
+            background: var(--success-light);
+            padding: 0.8rem 1rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.88rem;
+            color: var(--success);
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* ===== STAT CARDS ===== */
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .stat-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .stat-card-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .stat-card h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.2rem;
+        }
+        .stat-card p {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* ===== ACCORDION ===== */
+        .accordion {
+            margin: 1.5rem 0;
+        }
+        .accordion-item {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            margin-bottom: 0.5rem;
+            overflow: hidden;
+        }
+        .accordion-trigger {
+            width: 100%;
+            padding: 1rem 1.3rem;
+            background: none;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--dark);
+            text-align: left;
+            transition: background 0.2s;
+        }
+        .accordion-trigger:hover { background: #F8FAFC; }
+        .accordion-trigger .arrow {
+            transition: transform 0.3s;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        .accordion-trigger.active .arrow { transform: rotate(180deg); }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .accordion-inner {
+            padding: 0 1.3rem 1.2rem;
+            font-size: 0.88rem;
+            color: var(--text);
+        }
+
+        /* ===== DIAGNOSTIC CARDS ===== */
+        .diagnostic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .diagnostic-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .diagnostic-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        .diagnostic-card-emoji {
+            font-size: 1.5rem;
+            margin-bottom: 0.6rem;
+        }
+        .diagnostic-card h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.4rem;
+        }
+        .diagnostic-card .symptom {
+            font-size: 0.82rem;
+            color: var(--danger);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        .diagnostic-card .fix {
+            font-size: 0.82rem;
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        /* ===== ACTION PLAN BUILDER ===== */
+        .action-builder {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            border: 2px solid var(--primary);
+            overflow: hidden;
+            margin: 1.5rem 0;
+        }
+        .action-builder-header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-secondary) 100%);
+            padding: 1.5rem 2rem;
+            color: #fff;
+        }
+        .action-builder-header h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #fff;
+            margin-bottom: 0.3rem;
+        }
+        .action-builder-header p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+        .action-builder-body {
+            padding: 2rem;
+        }
+        .action-step {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .action-step:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .action-step-week {
+            background: var(--primary);
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 6px 10px;
+            border-radius: 6px;
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .action-step-content h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.3rem;
+        }
+        .action-step-content p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+        .action-step-tasks {
+            list-style: none;
+            padding: 0;
+            margin-top: 0.5rem;
+        }
+        .action-step-tasks li {
+            font-size: 0.82rem;
+            color: var(--text);
+            padding: 0.25rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+        .action-step-tasks li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* ===== TAGS ===== */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .tag {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--dark);
+            padding: 2rem;
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.82rem;
+        }
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero { padding: 2.5rem 1.2rem 2rem; }
+            .main-content { padding: 1.5rem 1.2rem 3rem; }
+            .vs-split { grid-template-columns: 1fr; }
+            .vs-divider { padding: 0.8rem; }
+            .process-flow { flex-direction: column; }
+            .process-step { border-radius: var(--radius-sm) !important; }
+            .process-step:not(:last-child)::after { content: '↓'; right: auto; left: 50%; bottom: -14px; top: auto; transform: translateX(-50%); }
+            .mindshift-row { grid-template-columns: 1fr; text-align: center; }
+            .quote-text { font-size: 1.1rem; }
+            .comparison-table { font-size: 0.82rem; }
+            .icon-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== NUMBERED INSIGHT ===== */
+        .numbered-insight {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            margin-bottom: 1.2rem;
+        }
+        .numbered-insight-num {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .numbered-insight-text h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.15rem;
+        }
+        .numbered-insight-text p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* ===== PILL NAV ===== */
+        .pill-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 64px;
+            background: var(--bg);
+            z-index: 50;
+        }
+        .pill-nav a {
+            padding: 0.45rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--text-light);
+            background: var(--white);
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+        .pill-nav a:hover, .pill-nav a.active {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav">
+    <div style="display:flex;align-items:center;gap:1rem;">
+        <a href="https://civiltech-ai.github.io/knowledge-portal/" class="nav-brand">
+            <span class="nav-brand-text">Civil-Tech.ai</span>
+        </a>
+        <span class="nav-badge">Knowledge Portal</span>
+    </div>
+    <a href="https://civiltech-ai.github.io/knowledge-portal/" class="nav-back">
+        ← Back to Library
+    </a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+    <div class="hero-inner">
+        <div class="hero-category">🔄 Systems &amp; Processes</div>
+        <h1>Building a System-Driven Business</h1>
+        <p class="hero-subtitle">Why your construction company's growth is limited by your systems — not your goals. A comprehensive guide to creating predictable, profitable operations in Dubai's civil and structural engineering industry.</p>
+        <div class="hero-meta">
+            <span class="hero-meta-item">📖 12 min read</span>
+            <span class="hero-meta-item">🎯 3 Interactive activities</span>
+            <span class="hero-meta-item">🏗️ Construction focused</span>
+            <span class="hero-meta-item">📅 May 2026</span>
+        </div>
+    </div>
+</header>
+
+<!-- QUOTE BANNER -->
+<div class="quote-banner">
+    <p class="quote-text">"You do not rise to the level of your goals. You fall to the level of your systems."</p>
+    <p class="quote-author">— James Clear, Author of Atomic Habits</p>
+</div>
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+
+    <!-- PILL NAVIGATION -->
+    <nav class="pill-nav" id="pillNav">
+        <a href="#the-problem" class="active">The Problem</a>
+        <a href="#why-it-matters">Why It Matters</a>
+        <a href="#real-example">Real Example</a>
+        <a href="#goals-vs-systems">Goals vs Systems</a>
+        <a href="#common-mistakes">Common Mistakes</a>
+        <a href="#core-systems">8 Core Systems</a>
+        <a href="#self-assessment">Self-Assessment</a>
+        <a href="#mindshift">Mindset Shift</a>
+        <a href="#action-plan">Action Plan</a>
+    </nav>
+
+    <!-- ===== SECTION 1: THE PROBLEM ===== -->
+    <section class="section fade-in" id="the-problem">
+        <span class="section-label">🔍 Understanding the Gap</span>
+        <h2>What This Quote Really Means for Your Business</h2>
+
+        <div class="card card-accent">
+            <p style="font-size:1rem;font-weight:600;color:var(--dark);margin-bottom:0.8rem;">Most construction business owners have big ambitions:</p>
+            <div class="icon-grid">
+                <div class="icon-grid-item">
+                    <div class="icon-grid-icon teal">📈</div>
+                    <div class="icon-grid-text">
+                        <h4>"I want to grow the company"</h4>
+                        <p>Scale from small projects to AED 10M+ contracts</p>
+                    </div>
+                </div>
+                <div class="icon-grid-item">
+                    <div class="icon-grid-icon orange">🏗️</div>
+                    <div class="icon-grid-text">
+                        <h4>"I want bigger projects"</h4>
+                        <p>Move into government or mega-development contracts</p>
+                    </div>
+                </div>
+                <div class="icon-grid-item">
+                    <div class="icon-grid-icon green">💰</div>
+                    <div class="icon-grid-text">
+                        <h4>"I want better profit"</h4>
+                        <p>Hit 15–20% net margins consistently</p>
+                    </div>
+                </div>
+                <div class="icon-grid-item">
+                    <div class="icon-grid-icon blue">⚙️</div>
+                    <div class="icon-grid-text">
+                        <h4>"I want professional operations"</h4>
+                        <p>Run the business without being stuck in firefighting</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-box">
+            <h3>⚡ The Critical Question</h3>
+            <p style="font-size:1.05rem;font-weight:500;">Does your business have <strong>systems capable of producing those results consistently</strong> — or are good results happening randomly?</p>
+        </div>
+
+        <div class="card card-warning" style="margin-top:1.5rem;">
+            <p style="font-weight:700;color:var(--dark);margin-bottom:0.5rem;">⚠️ Without Systems, This Is What Happens:</p>
+            <ul class="checklist" style="margin:0;">
+                <li><span style="color:var(--danger);font-weight:700;">→</span> Good results happen randomly — you can't repeat success</li>
+                <li><span style="color:var(--danger);font-weight:700;">→</span> Problems repeat constantly — same mistakes, different project</li>
+                <li><span style="color:var(--danger);font-weight:700;">→</span> The owner is always firefighting — no time for strategy</li>
+                <li><span style="color:var(--danger);font-weight:700;">→</span> Team performance is inconsistent — depends on who shows up</li>
+                <li><span style="color:var(--danger);font-weight:700;">→</span> Cash flow is unpredictable — invoices chase, payments lag</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 2: WHY IT MATTERS ===== -->
+    <section class="section fade-in" id="why-it-matters">
+        <span class="section-label">🏗️ Dubai Construction Reality</span>
+        <h2>Why This Matters Specifically for Construction Businesses</h2>
+
+        <p>Dubai's civil and structural engineering companies operate in one of the most demanding environments in the world. The pace is fast, the stakes are high, and the margin for error is thin.</p>
+
+        <div class="icon-grid">
+            <div class="icon-grid-item">
+                <div class="icon-grid-icon teal">🏢</div>
+                <div class="icon-grid-text">
+                    <h4>Multiple Active Sites</h4>
+                    <p>Managing 3–10 projects simultaneously across Dubai, each with different requirements</p>
+                </div>
+            </div>
+            <div class="icon-grid-item">
+                <div class="icon-grid-icon orange">⏰</div>
+                <div class="icon-grid-text">
+                    <h4>Tight Deadlines</h4>
+                    <p>Clients expect fast delivery, and liquidated damages clauses mean delays cost real money</p>
+                </div>
+            </div>
+            <div class="icon-grid-item">
+                <div class="icon-grid-icon red">👤</div>
+                <div class="icon-grid-text">
+                    <h4>Client Pressure</h4>
+                    <p>Consultants, developers, and main contractors demanding daily updates and compliance</p>
+                </div>
+            </div>
+            <div class="icon-grid-item">
+                <div class="icon-grid-icon blue">🚛</div>
+                <div class="icon-grid-text">
+                    <h4>Supplier Coordination</h4>
+                    <p>Material lead times, import delays, and fluctuating prices across 20+ suppliers</p>
+                </div>
+            </div>
+            <div class="icon-grid-item">
+                <div class="icon-grid-icon yellow">👷</div>
+                <div class="icon-grid-text">
+                    <h4>Workforce Management</h4>
+                    <p>Labour allocation across sites, visa compliance, skill matching, and attendance</p>
+                </div>
+            </div>
+            <div class="icon-grid-item">
+                <div class="icon-grid-icon green">📋</div>
+                <div class="icon-grid-text">
+                    <h4>Inspections & Approvals</h4>
+                    <p>Municipality inspections, DM approvals, civil defence requirements — all time-sensitive</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-danger" style="margin-top:1rem;">
+            <p style="font-weight:700;color:var(--dark);margin-bottom:0.5rem;">🎯 The Hard Truth</p>
+            <p>In this environment, <strong>goals alone are useless without execution systems</strong>. A company may have a goal of "Complete projects on time" — but without daily progress tracking, procurement planning, delay escalation workflows, and clear responsibility assignments, delays will continue regardless of the goal.</p>
+        </div>
+
+        <!-- EXAMPLE BREAKDOWN -->
+        <div style="margin-top:1.5rem;">
+            <h3 style="margin-bottom:1rem;">Example: "Complete Projects On Time" — Goal vs Reality</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th style="width:35%;">The Goal Says...</th>
+                        <th style="width:35%;">But Without This System...</th>
+                        <th style="width:30%;">What Actually Happens</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>"Finish on schedule"</td>
+                        <td>Site progress tracking</td>
+                        <td>No one knows the real % complete</td>
+                    </tr>
+                    <tr>
+                        <td>"Materials on time"</td>
+                        <td>Procurement planning system</td>
+                        <td>Emergency orders at premium prices</td>
+                    </tr>
+                    <tr>
+                        <td>"No surprises"</td>
+                        <td>Daily reporting workflow</td>
+                        <td>Issues discovered weeks late</td>
+                    </tr>
+                    <tr>
+                        <td>"Everyone knows their role"</td>
+                        <td>Responsibility clarity matrix</td>
+                        <td>Tasks fall through the cracks</td>
+                    </tr>
+                    <tr>
+                        <td>"Problems solved fast"</td>
+                        <td>Delay escalation system</td>
+                        <td>Small delays snowball into big ones</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 3: REAL EXAMPLE ===== -->
+    <section class="section fade-in" id="real-example">
+        <span class="section-label">📖 Case Study</span>
+        <h2>Real Construction Industry Example</h2>
+
+        <div class="case-study">
+            <div class="case-study-header">
+                <div class="case-study-icon">🏢</div>
+                <div>
+                    <h3>Dubai Interiors Company — Scaling Gone Wrong</h3>
+                    <span>Goal: Scale from 3 simultaneous projects to 10</span>
+                </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;">
+                <div>
+                    <h4 style="font-size:0.88rem;color:var(--dark);margin-bottom:0.6rem;">✅ What the Owner Focused On:</h4>
+                    <ul class="vs-list" style="list-style:none;padding:0;">
+                        <li style="color:var(--text);">📊 Setting aggressive revenue targets</li>
+                        <li style="color:var(--text);">📢 Increasing marketing spend</li>
+                        <li style="color:var(--text);">🤝 More client meetings and sales pitches</li>
+                        <li style="color:var(--text);">💼 Hiring more project managers</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="font-size:0.88rem;color:var(--dark);margin-bottom:0.6rem;">❌ What Was Missing Internally:</h4>
+                    <ul class="vs-list" style="list-style:none;padding:0;">
+                        <li style="color:var(--text);">📝 No standardized site reporting</li>
+                        <li style="color:var(--text);">📦 No procurement tracking</li>
+                        <li style="color:var(--text);">📋 No project handover checklist</li>
+                        <li style="color:var(--text);">👥 No accountability structure</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h4 style="font-size:0.95rem;color:var(--dark);margin-bottom:0.8rem;">📉 The Timeline of What Happened:</h4>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>Month 1–2: Growth Starts</h4>
+                    <p>Won 4 new projects through aggressive sales. Team excited about growth.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Month 3–4: Cracks Appear</h4>
+                    <p>Site managers overwhelmed. Materials arriving late. No standard reporting — owner unaware of problems.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Month 5–6: Chaos Sets In</h4>
+                    <p>Client complaints increasing. Two projects delayed by 3+ weeks. Rework needed on multiple sites.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Month 7–8: Damage Control</h4>
+                    <p>Owner pulled back into daily firefighting. Profitability dropped below break-even on 3 projects.</p>
+                </div>
+            </div>
+
+            <div class="stat-row" style="margin-top:1rem;">
+                <div class="stat-card">
+                    <div class="stat-card-icon">📈</div>
+                    <h4>+230%</h4>
+                    <p>Revenue growth target</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon">⚠️</div>
+                    <h4>+180%</h4>
+                    <p>Increase in delays</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon">😤</div>
+                    <h4>5×</h4>
+                    <p>More client complaints</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon">📉</div>
+                    <h4>−40%</h4>
+                    <p>Profitability drop</p>
+                </div>
+            </div>
+
+            <div class="insight-box" style="margin-top:1rem;">
+                <h3>💡 The Lesson</h3>
+                <p>The business had <strong>growth goals</strong> but <strong>weak systems</strong>. More projects created more chaos — not more profit. Growth without systems is just organized failure at a bigger scale.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 4: GOALS VS SYSTEMS ===== -->
+    <section class="section fade-in" id="goals-vs-systems">
+        <span class="section-label">⚖️ Core Concept</span>
+        <h2>Goals Create Direction. Systems Create Results.</h2>
+
+        <div class="vs-split">
+            <div class="vs-left">
+                <h4>🎯 Goals Alone</h4>
+                <ul class="vs-list">
+                    <li>Tell you WHERE you want to go</li>
+                    <li>Create temporary motivation</li>
+                    <li>Focus on the destination</li>
+                    <li>Produce inconsistent results</li>
+                    <li>Depend on the owner's energy</li>
+                    <li>Break down under pressure</li>
+                </ul>
+            </div>
+            <div class="vs-divider">VS</div>
+            <div class="vs-right">
+                <h4>⚙️ Goals + Systems</h4>
+                <ul class="vs-list">
+                    <li>Tell you HOW to get there daily</li>
+                    <li>Create consistent execution habits</li>
+                    <li>Focus on the process</li>
+                    <li>Produce repeatable results</li>
+                    <li>Work even when the owner is absent</li>
+                    <li>Scale under pressure</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3 style="margin-top:2rem;margin-bottom:1rem;">When Systems Improve, Everything Improves</h3>
+
+        <div class="process-flow">
+            <div class="process-step">
+                <div class="process-step-num">1</div>
+                <h5>Better Systems</h5>
+                <p>Clear processes & workflows in place</p>
+            </div>
+            <div class="process-step">
+                <div class="process-step-num">2</div>
+                <h5>Consistent Teams</h5>
+                <p>Everyone knows what to do & when</p>
+            </div>
+            <div class="process-step">
+                <div class="process-step-num">3</div>
+                <h5>Fewer Delays</h5>
+                <p>Problems caught early & escalated fast</p>
+            </div>
+            <div class="process-step">
+                <div class="process-step-num">4</div>
+                <h5>Less Rework</h5>
+                <p>Quality checked at every stage</p>
+            </div>
+            <div class="process-step">
+                <div class="process-step-num">5</div>
+                <h5>Scalable Growth</h5>
+                <p>Owner regains control & can expand</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 5: COMMON MISTAKES ===== -->
+    <section class="section fade-in" id="common-mistakes">
+        <span class="section-label">⚠️ Watch Out</span>
+        <h2>Common Mistakes Business Owners Make</h2>
+
+        <p>When problems repeat, most owners instinctively try to solve them with <strong>more effort</strong> — more pressure, more meetings, more supervision, more personal hours. But repeated problems are almost always <strong>system problems</strong>, not effort problems.</p>
+
+        <div class="diagnostic-grid">
+            <div class="diagnostic-card">
+                <div class="diagnostic-card-emoji">🏗️</div>
+                <h4>Repeated Site Delays</h4>
+                <div class="symptom">❌ Not a motivation issue</div>
+                <div class="fix">✅ Planning system problem — tasks not sequenced, dependencies not tracked</div>
+            </div>
+            <div class="diagnostic-card">
+                <div class="diagnostic-card-emoji">💸</div>
+                <h4>Payment Delays</h4>
+                <div class="symptom">❌ Not a client issue alone</div>
+                <div class="fix">✅ Follow-up system problem — no invoice tracking, no escalation triggers</div>
+            </div>
+            <div class="diagnostic-card">
+                <div class="diagnostic-card-emoji">📦</div>
+                <h4>Material Shortages</h4>
+                <div class="symptom">❌ Not a supplier issue alone</div>
+                <div class="fix">✅ Procurement system problem — no look-ahead planning, no lead-time tracking</div>
+            </div>
+            <div class="diagnostic-card">
+                <div class="diagnostic-card-emoji">😵</div>
+                <h4>Team Confusion</h4>
+                <div class="symptom">❌ Not a hiring issue</div>
+                <div class="fix">✅ Role clarity problem — no responsibility matrix, no defined handoffs</div>
+            </div>
+            <div class="diagnostic-card">
+                <div class="diagnostic-card-emoji">🔁</div>
+                <h4>Repeated Rework</h4>
+                <div class="symptom">❌ Not a supervision issue</div>
+                <div class="fix">✅ Quality system problem — no stage-gate inspections, no checklists</div>
+            </div>
+            <div class="diagnostic-card">
+                <div class="diagnostic-card-emoji">📊</div>
+                <h4>Unpredictable Cash Flow</h4>
+                <div class="symptom">❌ Not a revenue issue</div>
+                <div class="fix">✅ Financial systems problem — no billing milestones, no AR tracking</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 6: 8 CORE SYSTEMS ===== -->
+    <section class="section fade-in" id="core-systems">
+        <span class="section-label">🔧 The 8 Essential Systems</span>
+        <h2>Core Systems Every Construction Business Needs</h2>
+        <p>Strong construction businesses don't rely on talented individuals alone. They build systems that make <strong>consistent performance the default</strong> — not the exception.</p>
+
+        <div class="accordion" id="systemsAccordion">
+            <div class="accordion-item">
+                <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                    <span>📊 1. Daily Site Reporting System</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-inner">
+                        <p><strong>Purpose:</strong> Give real-time visibility into what's happening on every site — every day.</p>
+                        <p><strong>How It Works:</strong></p>
+                        <ul style="margin:0.5rem 0;padding-left:1.2rem;font-size:0.88rem;">
+                            <li>Each site manager sends a structured WhatsApp or app-based report by 5 PM daily</li>
+                            <li>Report covers: work completed, labour count, materials used, issues faced, photos</li>
+                            <li>Owner or operations manager reviews all reports in 15 minutes each evening</li>
+                        </ul>
+                        <p><strong>Dubai Example:</strong> A structural contractor running 6 villa projects uses a daily Google Form. Each engineer submits progress %, issues, and 3 site photos. The owner reviews a summary dashboard before the next morning.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                    <span>📦 2. Procurement Tracking System</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-inner">
+                        <p><strong>Purpose:</strong> Ensure the right materials arrive at the right site at the right time — every time.</p>
+                        <p><strong>How It Works:</strong></p>
+                        <ul style="margin:0.5rem 0;padding-left:1.2rem;font-size:0.88rem;">
+                            <li>3-week look-ahead procurement schedule linked to project timeline</li>
+                            <li>Material request deadlines: PMs must submit requests by Wednesday for next week</li>
+                            <li>Status tracking: Requested → Approved → Ordered → In Transit → Delivered</li>
+                            <li>Automatic flag if any item is not ordered within 48 hours of approval</li>
+                        </ul>
+                        <p><strong>Dubai Example:</strong> A civil contractor importing rebar from India maintains a shared Google Sheet with order dates, expected arrival, customs clearance status, and delivery confirmation. No more "where's the steel?" phone calls.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                    <span>📝 3. Variation Approval Workflow</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-inner">
+                        <p><strong>Purpose:</strong> Never do extra work without written approval — and never miss billing for it.</p>
+                        <p><strong>How It Works:</strong></p>
+                        <ul style="margin:0.5rem 0;padding-left:1.2rem;font-size:0.88rem;">
+                            <li>Any scope change triggers a Variation Order form (even small changes)</li>
+                            <li>Form includes: description, cost impact, time impact, approval signature</li>
+                            <li>No work begins on variation until signed approval is received</li>
+                            <li>All approved variations added to monthly billing cycle automatically</li>
+                        </ul>
+                        <p><strong>Dubai Example:</strong> A fit-out company was losing AED 200K+ annually on unbilled variations. After implementing a simple approval form and "no approval = no work" policy, they recovered 95% of variation costs.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                    <span>💬 4. Client Communication Standards</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-inner">
+                        <p><strong>Purpose:</strong> Keep clients informed proactively — so they never feel the need to chase you.</p>
+                        <p><strong>How It Works:</strong></p>
+                        <ul style="margin:0.5rem 0;padding-left:1.2rem;font-size:0.88rem;">
+                            <li>Weekly progress email every Sunday (standardized template)</li>
+                            <li>Monthly progress report with photos, schedule update, and financials</li>
+                            <li>Issue notifications within 24 hours — with proposed solution, not just the problem</li>
+                            <li>All communication logged in shared project folder</li>
+                        </ul>
+                        <p><strong>Dubai Example:</strong> A structural engineering firm sends every client a formatted PDF update each Sunday evening. Result: 70% fewer "what's happening on site?" calls during the week.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                    <span>💵 5. Payment Follow-Up Process</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-inner">
+                        <p><strong>Purpose:</strong> Convert completed work into cash in bank — consistently and on time.</p>
+                        <p><strong>How It Works:</strong></p>
+                        <ul style="margin:0.5rem 0;padding-left:1.2rem;font-size:0.88rem;">
+                            <li>Invoice submitted within 3 days of milestone completion</li>
+                            <li>First follow-up at Day 15, second at Day 25, escalation at Day 30</li>
+                            <li>Aging report reviewed weekly by finance + operations</li>
+                            <li>Escalation path: PM → Commercial Manager → Director → Legal notice</li>
+                        </ul>
+                        <p><strong>Dubai Example:</strong> A contracting firm reduced average collection period from 87 days to 52 days just by implementing structured follow-ups with calendar reminders and a shared receivables tracker.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                    <span>📅 6. Project Scheduling System</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-inner">
+                        <p><strong>Purpose:</strong> Keep every project on track with a visual, updated schedule that everyone follows.</p>
+                        <p><strong>How It Works:</strong></p>
+                        <ul style="margin:0.5rem 0;padding-left:1.2rem;font-size:0.88rem;">
+                            <li>Baseline schedule created before project kickoff (even a simple Gantt chart)</li>
+                            <li>3-week rolling look-ahead updated every Monday</li>
+                            <li>Critical path activities flagged in red — no excuses for missing these</li>
+                            <li>Schedule reviewed in weekly project meeting with all stakeholders</li>
+                        </ul>
+                        <p><strong>Dubai Example:</strong> A civil contractor uses a simple MS Project template for every project. The 3-week look-ahead is printed and pinned at the site office. Every morning, the site engineer checks: "What should be happening today?"</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                    <span>📋 7. Weekly Review Meetings</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-inner">
+                        <p><strong>Purpose:</strong> Create a regular rhythm of accountability, problem-solving, and coordination.</p>
+                        <p><strong>How It Works:</strong></p>
+                        <ul style="margin:0.5rem 0;padding-left:1.2rem;font-size:0.88rem;">
+                            <li>Fixed time every week (e.g., Sunday 9 AM — non-negotiable)</li>
+                            <li>Standard agenda: Last week's actions → This week's priorities → Blockers → Decisions needed</li>
+                            <li>Each PM presents in 5 minutes max per project</li>
+                            <li>Action items documented with owner + deadline — reviewed next week</li>
+                        </ul>
+                        <p><strong>Dubai Example:</strong> A structural engineering firm holds a 45-minute Sunday meeting covering all active projects. One shared Google Doc tracks all action items. Nothing falls through the cracks because everything is written and reviewed weekly.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                    <span>👥 8. Responsibility Matrix (RACI)</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-inner">
+                        <p><strong>Purpose:</strong> Eliminate "I thought someone else was handling that" — forever.</p>
+                        <p><strong>How It Works:</strong></p>
+                        <ul style="margin:0.5rem 0;padding-left:1.2rem;font-size:0.88rem;">
+                            <li>For every project, define who is Responsible, Accountable, Consulted, Informed</li>
+                            <li>Key areas: site supervision, quality, procurement, billing, client comms, safety</li>
+                            <li>Shared with the full team at project kickoff</li>
+                            <li>Updated if team members change mid-project</li>
+                        </ul>
+                        <p><strong>Dubai Example:</strong> A contracting firm creates a one-page RACI chart for every project during the kickoff meeting. It's pinned in the site office and shared on the project WhatsApp group. When anyone asks "who handles this?" — the answer is on the wall.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 7: SELF-ASSESSMENT ===== -->
+    <section class="section fade-in" id="self-assessment">
+        <span class="section-label">🎯 Interactive Activity #1</span>
+        <h2>System Strength Self-Assessment</h2>
+        <p>Rate your business honestly on each system. This will show you where to focus your improvement efforts first.</p>
+
+        <div class="assessment-container">
+            <div class="assessment-header">
+                <h3>🔍 How Strong Are Your Business Systems?</h3>
+                <p>Rate each area: 0 = No system exists &nbsp;|&nbsp; 1 = Informal/inconsistent &nbsp;|&nbsp; 2 = Documented & followed</p>
+            </div>
+            <div class="assessment-body" id="assessmentBody">
+                <div class="assessment-q" data-q="1">
+                    <div class="assessment-q-label">
+                        <span class="assessment-q-num">Q1.</span>
+                        Daily site reporting — do you get structured updates from every site?
+                    </div>
+                    <div class="radio-group">
+                        <label class="radio-option" onclick="selectOption(this, 0)"><input type="radio" name="q1" value="0"> 0 — No system</label>
+                        <label class="radio-option" onclick="selectOption(this, 1)"><input type="radio" name="q1" value="1"> 1 — Informal</label>
+                        <label class="radio-option" onclick="selectOption(this, 2)"><input type="radio" name="q1" value="2"> 2 — Documented</label>
+                    </div>
+                </div>
+                <div class="assessment-q" data-q="2">
+                    <div class="assessment-q-label">
+                        <span class="assessment-q-num">Q2.</span>
+                        Procurement tracking — are material orders planned 2–3 weeks ahead?
+                    </div>
+                    <div class="radio-group">
+                        <label class="radio-option" onclick="selectOption(this, 0)"><input type="radio" name="q2" value="0"> 0 — No system</label>
+                        <label class="radio-option" onclick="selectOption(this, 1)"><input type="radio" name="q2" value="1"> 1 — Informal</label>
+                        <label class="radio-option" onclick="selectOption(this, 2)"><input type="radio" name="q2" value="2"> 2 — Documented</label>
+                    </div>
+                </div>
+                <div class="assessment-q" data-q="3">
+                    <div class="assessment-q-label">
+                        <span class="assessment-q-num">Q3.</span>
+                        Variation approvals — is every scope change documented and approved before work starts?
+                    </div>
+                    <div class="radio-group">
+                        <label class="radio-option" onclick="selectOption(this, 0)"><input type="radio" name="q3" value="0"> 0 — No system</label>
+                        <label class="radio-option" onclick="selectOption(this, 1)"><input type="radio" name="q3" value="1"> 1 — Informal</label>
+                        <label class="radio-option" onclick="selectOption(this, 2)"><input type="radio" name="q3" value="2"> 2 — Documented</label>
+                    </div>
+                </div>
+                <div class="assessment-q" data-q="4">
+                    <div class="assessment-q-label">
+                        <span class="assessment-q-num">Q4.</span>
+                        Client communication — do clients receive proactive weekly updates?
+                    </div>
+                    <div class="radio-group">
+                        <label class="radio-option" onclick="selectOption(this, 0)"><input type="radio" name="q4" value="0"> 0 — No system</label>
+                        <label class="radio-option" onclick="selectOption(this, 1)"><input type="radio" name="q4" value="1"> 1 — Informal</label>
+                        <label class="radio-option" onclick="selectOption(this, 2)"><input type="radio" name="q4" value="2"> 2 — Documented</label>
+                    </div>
+                </div>
+                <div class="assessment-q" data-q="5">
+                    <div class="assessment-q-label">
+                        <span class="assessment-q-num">Q5.</span>
+                        Payment follow-up — is there a structured process with escalation triggers?
+                    </div>
+                    <div class="radio-group">
+                        <label class="radio-option" onclick="selectOption(this, 0)"><input type="radio" name="q5" value="0"> 0 — No system</label>
+                        <label class="radio-option" onclick="selectOption(this, 1)"><input type="radio" name="q5" value="1"> 1 — Informal</label>
+                        <label class="radio-option" onclick="selectOption(this, 2)"><input type="radio" name="q5" value="2"> 2 — Documented</label>
+                    </div>
+                </div>
+                <div class="assessment-q" data-q="6">
+                    <div class="assessment-q-label">
+                        <span class="assessment-q-num">Q6.</span>
+                        Project scheduling — does every project have an updated 3-week look-ahead?
+                    </div>
+                    <div class="radio-group">
+                        <label class="radio-option" onclick="selectOption(this, 0)"><input type="radio" name="q6" value="0"> 0 — No system</label>
+                        <label class="radio-option" onclick="selectOption(this, 1)"><input type="radio" name="q6" value="1"> 1 — Informal</label>
+                        <label class="radio-option" onclick="selectOption(this, 2)"><input type="radio" name="q6" value="2"> 2 — Documented</label>
+                    </div>
+                </div>
+                <div class="assessment-q" data-q="7">
+                    <div class="assessment-q-label">
+                        <span class="assessment-q-num">Q7.</span>
+                        Weekly review meetings — is there a fixed weekly rhythm with action tracking?
+                    </div>
+                    <div class="radio-group">
+                        <label class="radio-option" onclick="selectOption(this, 0)"><input type="radio" name="q7" value="0"> 0 — No system</label>
+                        <label class="radio-option" onclick="selectOption(this, 1)"><input type="radio" name="q7" value="1"> 1 — Informal</label>
+                        <label class="radio-option" onclick="selectOption(this, 2)"><input type="radio" name="q7" value="2"> 2 — Documented</label>
+                    </div>
+                </div>
+                <div class="assessment-q" data-q="8">
+                    <div class="assessment-q-label">
+                        <span class="assessment-q-num">Q8.</span>
+                        Responsibility matrix — does every team member know exactly what they own?
+                    </div>
+                    <div class="radio-group">
+                        <label class="radio-option" onclick="selectOption(this, 0)"><input type="radio" name="q8" value="0"> 0 — No system</label>
+                        <label class="radio-option" onclick="selectOption(this, 1)"><input type="radio" name="q8" value="1"> 1 — Informal</label>
+                        <label class="radio-option" onclick="selectOption(this, 2)"><input type="radio" name="q8" value="2"> 2 — Documented</label>
+                    </div>
+                </div>
+
+                <button class="assessment-btn" onclick="calculateScore()">Calculate My System Score →</button>
+
+                <div class="assessment-result" id="assessmentResult">
+                    <div style="display:flex;align-items:center;gap:1.5rem;margin-bottom:1rem;">
+                        <div>
+                            <div class="result-score" id="resultScore">0</div>
+                            <div style="font-size:0.82rem;color:var(--text-light);">out of 16</div>
+                        </div>
+                        <div>
+                            <div class="result-label" id="resultLabel">—</div>
+                            <div class="progress-bar-track">
+                                <div class="progress-bar-fill" id="resultBar" style="width:0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p id="resultMessage" style="font-size:0.9rem;color:var(--text);"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 8: MINDSHIFT ===== -->
+    <section class="section fade-in" id="mindshift">
+        <span class="section-label">🧠 Interactive Activity #2</span>
+        <h2>The Leadership Mindset Shift</h2>
+
+        <div class="card card-accent">
+            <h3 style="margin-bottom:0.6rem;">The One Question That Changes Everything</h3>
+            <p>Instead of asking: <strong style="color:var(--danger);">"Why are people making mistakes?"</strong></p>
+            <p>Start asking: <strong style="color:var(--success);">"What system is missing that allows this mistake to repeat?"</strong></p>
+            <p style="margin:0;font-size:0.9rem;color:var(--text-light);">This single shift moves you from blaming people to building systems — and it changes your leadership completely.</p>
+        </div>
+
+        <div class="mindshift-container">
+            <div class="mindshift-header">
+                <span style="font-size:1.5rem;">💡</span>
+                <h3>Shift Your Thinking: From Blame to Systems</h3>
+            </div>
+
+            <div class="mindshift-row">
+                <div class="mindshift-from">"My team is lazy"</div>
+                <div class="mindshift-arrow">→</div>
+                <div class="mindshift-to">"There's no clear daily task list"</div>
+            </div>
+            <div class="mindshift-row">
+                <div class="mindshift-from">"The PM didn't follow up"</div>
+                <div class="mindshift-arrow">→</div>
+                <div class="mindshift-to">"There's no follow-up checklist with deadlines"</div>
+            </div>
+            <div class="mindshift-row">
+                <div class="mindshift-from">"The client is always angry"</div>
+                <div class="mindshift-arrow">→</div>
+                <div class="mindshift-to">"We don't have a proactive update schedule"</div>
+            </div>
+            <div class="mindshift-row">
+                <div class="mindshift-from">"Materials are always late"</div>
+                <div class="mindshift-arrow">→</div>
+                <div class="mindshift-to">"We don't plan procurement 3 weeks ahead"</div>
+            </div>
+            <div class="mindshift-row">
+                <div class="mindshift-from">"Cash flow is terrible"</div>
+                <div class="mindshift-arrow">→</div>
+                <div class="mindshift-to">"We don't have structured invoice follow-ups"</div>
+            </div>
+            <div class="mindshift-row">
+                <div class="mindshift-from">"Nobody takes ownership"</div>
+                <div class="mindshift-arrow">→</div>
+                <div class="mindshift-to">"We haven't defined a RACI matrix"</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 9: PRACTICAL EXAMPLE ===== -->
+    <section class="section fade-in">
+        <span class="section-label">✅ Proof It Works</span>
+        <h2>Practical Example: System Improvement in Action</h2>
+
+        <div class="case-study">
+            <div class="case-study-header">
+                <div class="case-study-icon">🏗️</div>
+                <div>
+                    <h3>A Dubai Contracting Company — Before & After Systems</h3>
+                    <span>5 simple systems introduced over 8 weeks</span>
+                </div>
+            </div>
+
+            <h4 style="font-size:0.92rem;color:var(--dark);margin-bottom:0.8rem;">What They Introduced:</h4>
+            <div class="icon-grid" style="margin-bottom:1.5rem;">
+                <div class="icon-grid-item">
+                    <div class="icon-grid-icon teal">📋</div>
+                    <div class="icon-grid-text">
+                        <h4>Standard Weekly Site Review</h4>
+                        <p>Fixed agenda, documented action items</p>
+                    </div>
+                </div>
+                <div class="icon-grid-item">
+                    <div class="icon-grid-icon orange">📦</div>
+                    <div class="icon-grid-text">
+                        <h4>Material Request Deadlines</h4>
+                        <p>Submit by Wednesday for next week</p>
+                    </div>
+                </div>
+                <div class="icon-grid-item">
+                    <div class="icon-grid-icon green">📱</div>
+                    <div class="icon-grid-text">
+                        <h4>Daily WhatsApp Reporting</h4>
+                        <p>Structured format: progress + issues + photos</p>
+                    </div>
+                </div>
+                <div class="icon-grid-item">
+                    <div class="icon-grid-icon red">🚨</div>
+                    <div class="icon-grid-text">
+                        <h4>Delay Escalation Process</h4>
+                        <p>24-hour rule: flag any delay immediately</p>
+                    </div>
+                </div>
+                <div class="icon-grid-item">
+                    <div class="icon-grid-icon blue">📝</div>
+                    <div class="icon-grid-text">
+                        <h4>Variation Approval Checklist</h4>
+                        <p>No work without signed approval form</p>
+                    </div>
+                </div>
+            </div>
+
+            <h4 style="font-size:0.92rem;color:var(--dark);margin-bottom:0.8rem;">📈 Results After 3 Months:</h4>
+            <div class="stat-row">
+                <div class="stat-card">
+                    <div class="stat-card-icon">😌</div>
+                    <h4>70%</h4>
+                    <p>Fewer surprises for the owner</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon">⚡</div>
+                    <h4>2×</h4>
+                    <p>Faster coordination across sites</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon">✅</div>
+                    <h4>85%</h4>
+                    <p>On-time project delivery rate</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon">😊</div>
+                    <h4>90%</h4>
+                    <p>Reduction in owner stress</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 10: ACTION PLAN ===== -->
+    <section class="section fade-in" id="action-plan">
+        <span class="section-label">🚀 Interactive Activity #3</span>
+        <h2>Your 4-Week System Building Action Plan</h2>
+        <p>Don't try to build all 8 systems at once. Follow this phased approach — one system per week — and build momentum gradually.</p>
+
+        <div class="action-builder">
+            <div class="action-builder-header">
+                <h3>🗓️ Week-by-Week Implementation Roadmap</h3>
+                <p>Start this Sunday. Check off each task as you complete it.</p>
+            </div>
+            <div class="action-builder-body">
+                <div class="action-step">
+                    <span class="action-step-week">Week 1</span>
+                    <div class="action-step-content">
+                        <h4>Visibility — Daily Site Reporting</h4>
+                        <p>You can't fix what you can't see. Start with getting daily information from every site.</p>
+                        <ul class="action-step-tasks">
+                            <li>Create a simple daily report template (Google Form or WhatsApp format)</li>
+                            <li>Brief all site engineers on the new reporting requirement</li>
+                            <li>Set a daily deadline: every report submitted by 5 PM</li>
+                            <li>Review all reports each evening — takes 15 minutes</li>
+                            <li>Follow up on any missing reports the next morning</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="action-step">
+                    <span class="action-step-week">Week 2</span>
+                    <div class="action-step-content">
+                        <h4>Rhythm — Weekly Review Meetings</h4>
+                        <p>Create a weekly pulse that keeps every project on track and every person accountable.</p>
+                        <ul class="action-step-tasks">
+                            <li>Block Sunday 9 AM in everyone's calendar — non-negotiable</li>
+                            <li>Create a standard meeting agenda template</li>
+                            <li>Each PM prepares a 5-minute project summary before the meeting</li>
+                            <li>Document all action items with owner + deadline</li>
+                            <li>Start next week's meeting by reviewing last week's actions</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="action-step">
+                    <span class="action-step-week">Week 3</span>
+                    <div class="action-step-content">
+                        <h4>Cash Flow — Payment Follow-Up Process</h4>
+                        <p>Completed work means nothing if the money isn't collected. Build a payment system.</p>
+                        <ul class="action-step-tasks">
+                            <li>List all outstanding invoices across all projects in one tracker</li>
+                            <li>Set follow-up rules: Day 15, Day 25, Day 30 escalation</li>
+                            <li>Assign one person to own receivables tracking</li>
+                            <li>Add "Receivables Review" as a standing agenda item in weekly meetings</li>
+                            <li>Create escalation email templates ready to send</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="action-step">
+                    <span class="action-step-week">Week 4</span>
+                    <div class="action-step-content">
+                        <h4>Clarity — Responsibility Matrix (RACI)</h4>
+                        <p>End the "I thought someone else was handling that" problem once and for all.</p>
+                        <ul class="action-step-tasks">
+                            <li>List all recurring project functions (procurement, quality, billing, safety, etc.)</li>
+                            <li>For each function, assign: Responsible, Accountable, Consulted, Informed</li>
+                            <li>Create a one-page RACI chart for each active project</li>
+                            <li>Share with full team and pin in site offices</li>
+                            <li>Reference the RACI whenever there's a "who handles this?" question</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FINAL INSIGHT ===== -->
+    <section class="section fade-in">
+        <div class="insight-box" style="text-align:center;padding:3rem 2rem;">
+            <h3 style="font-size:1.4rem;margin-bottom:0.8rem;">🏗️ The Core Principle</h3>
+            <p style="font-size:1.15rem;font-weight:500;max-width:600px;margin:0 auto 1rem;">Ambition without systems creates frustration.<br>Strong systems turn goals into repeatable business performance.</p>
+            <div style="width:60px;height:3px;background:var(--primary);margin:1.5rem auto;border-radius:2px;"></div>
+            <p style="font-size:1rem;color:rgba(255,255,255,0.9);">In construction businesses:<br><strong>Motivation may start projects.</strong><br><strong>But systems finish them — profitably and consistently.</strong></p>
+        </div>
+    </section>
+
+    <!-- TAGS -->
+    <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);">
+        <p style="font-size:0.78rem;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;">Topics</p>
+        <div class="tags">
+            <span class="tag">systems</span>
+            <span class="tag">operations</span>
+            <span class="tag">growth</span>
+            <span class="tag">processes</span>
+            <span class="tag">construction management</span>
+            <span class="tag">project delivery</span>
+        </div>
+    </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>Civil-Tech.ai Knowledge Portal — Practical business education for Dubai SME owners</p>
+    <p style="margin-top:0.5rem;"><a href="https://civiltech-ai.github.io/knowledge-portal/">← Back to Knowledge Library</a></p>
+</footer>
+
+<script>
+    // Accordion
+    function toggleAccordion(trigger) {
+        const content = trigger.nextElementSibling;
+        const isActive = trigger.classList.contains('active');
+        
+        // Close all
+        document.querySelectorAll('.accordion-trigger').forEach(t => {
+            t.classList.remove('active');
+            t.nextElementSibling.style.maxHeight = null;
+        });
+        
+        if (!isActive) {
+            trigger.classList.add('active');
+            content.style.maxHeight = content.scrollHeight + 'px';
+        }
+    }
+
+    // Assessment
+    function selectOption(label, value) {
+        const group = label.closest('.radio-group');
+        group.querySelectorAll('.radio-option').forEach(o => o.classList.remove('selected'));
+        label.classList.add('selected');
+        label.querySelector('input').checked = true;
+    }
+
+    function calculateScore() {
+        let total = 0;
+        let answered = 0;
+        for (let i = 1; i <= 8; i++) {
+            const selected = document.querySelector(`input[name="q${i}"]:checked`);
+            if (selected) {
+                total += parseInt(selected.value);
+                answered++;
+            }
+        }
+        
+        if (answered < 8) {
+            alert('Please answer all 8 questions before calculating your score.');
+            return;
+        }
+        
+        const pct = Math.round((total / 16) * 100);
+        const resultDiv = document.getElementById('assessmentResult');
+        const scoreEl = document.getElementById('resultScore');
+        const labelEl = document.getElementById('resultLabel');
+        const barEl = document.getElementById('resultBar');
+        const msgEl = document.getElementById('resultMessage');
+        
+        resultDiv.style.display = 'block';
+        scoreEl.textContent = total;
+        barEl.style.width = pct + '%';
+        
+        if (total <= 4) {
+            labelEl.textContent = '🔴 Critical — Systems Barely Exist';
+            barEl.style.background = 'linear-gradient(90deg, #EF4444, #F87171)';
+            resultDiv.style.borderColor = '#FECACA';
+            resultDiv.style.background = '#FEF2F2';
+            msgEl.innerHTML = 'Your business is running almost entirely on personal effort and firefighting. This is the most dangerous zone — growth will multiply chaos, not profit. <strong>Start with Week 1 of the Action Plan immediately.</strong> Focus on daily reporting first — you need visibility before anything else.';
+        } else if (total <= 8) {
+            labelEl.textContent = '🟡 Fragile — Some Informal Systems';
+            barEl.style.background = 'linear-gradient(90deg, #F59E0B, #FBBF24)';
+            resultDiv.style.borderColor = '#FDE68A';
+            resultDiv.style.background = '#FFFBEB';
+            msgEl.innerHTML = 'You have some processes, but they depend on specific people and break down under pressure. You\'re vulnerable to delays and cash flow problems when workload increases. <strong>Your priority: formalize the systems you already have informally.</strong> Write them down, create templates, and make them repeatable.';
+        } else if (total <= 12) {
+            labelEl.textContent = '🟢 Developing — Systems Taking Shape';
+            barEl.style.background = 'linear-gradient(90deg, #10B981, #34D399)';
+            resultDiv.style.borderColor = '#A7F3D0';
+            resultDiv.style.background = '#ECFDF5';
+            msgEl.innerHTML = 'Good progress. You have real systems in place, but there are gaps that still cause problems. The foundation is there — now fill the gaps. <strong>Focus on the areas where you scored 0 or 1.</strong> These are your biggest leverage points for improvement.';
+        } else {
+            labelEl.textContent = '🏆 Strong — System-Driven Business';
+            barEl.style.background = 'linear-gradient(90deg, #0BBAB5, #17C5C0)';
+            resultDiv.style.borderColor = '#99F6E4';
+            resultDiv.style.background = '#F0FDFA';
+            msgEl.innerHTML = 'Excellent! Your business has strong operational systems. You\'re in a position to scale confidently. <strong>Next step: optimize and automate.</strong> Look for ways to reduce manual effort in your systems — dashboards, automated reminders, and digital workflows. Consider training your team to improve and iterate on the systems themselves.';
+        }
+        
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // Checklist toggle
+    document.querySelectorAll('.checklist-check').forEach(check => {
+        check.addEventListener('click', () => check.classList.toggle('checked'));
+    });
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Pill nav active state on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const pillLinks = document.querySelectorAll('.pill-nav a');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 150;
+            if (window.scrollY >= sectionTop) {
+                current = section.getAttribute('id');
+            }
+        });
+        pillLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // Smooth scroll for pill nav
+    pillLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = document.querySelector(link.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
