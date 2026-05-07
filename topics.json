@@ -40,12 +40,22 @@
   "dateAdded": "2026-05-06",
   "visible": true
 },
+    {
+  "id": "what-gets-measured-gets-improved",
+  "title": "What gets measured, gets improved",
+  "description": "If you are not measuring your business activities, you cannot improve them. Learn how to set up simple tracking systems that drive consistent growth.",
+  "category": "sales",
+  "file": "what-gets-measured-gets-improved.html",
+  "tags": ["measurement", "customer","retention"],
+  "dateAdded": "2026-05-06",
+  "visible": true
+},  
   {
-   "id": "profit-is-planned-not-left-over",
+   "id": "delegation-for-business-growth",
       "title": "Profit is planned, not left over",
-      "description": "Learn why profitable engineering firms decide their margins before spending — not after. A concise, interactive guide covering the profit-first formula, a side-by-side comparison of two Dubai structural consultancies earning the same revenue but 4× different profits, and the real financial risks of unplanned spending in project-based businesses. Includes an interactive Profit-First Calculator to model your own firm's numbers, knowledge-check quizzes, a 5-step implementation plan, and a weekly action checklist to start building financial discipline immediately.",
-      "category": "sales",
-      "file": "profit-is-planned-not-left-over",
+      "description": "Why trying to control everything yourself is the biggest barrier to scaling your engineering business. A comprehensive interactive guide covering the five pillars of effective delegation, a practical delegation framework with four authority levels, a real-world case study of a Dubai fit-out company's transformation, a delegation matrix for common construction tasks, common mistakes to avoid, and a three-phase manager development programme — complete with a self-assessment tool, 30-day action plan builder, weekly checklist tracker, and a five-question knowledge quiz.",
+      "category": "Team & Leadership",
+      "file": "delegation-for-business-growth",
       "tags": ["customers", "retention", "follow-up", "reconnect"],
       "dateAdded": "2026-05-05",
       "visible": true
