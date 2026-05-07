@@ -1,0 +1,1852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delegation for Business Growth — Civil-Tech.ai Knowledge Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #14b8a6;
+            --primary-dark: #0d9488;
+            --primary-light: #99f6e4;
+            --primary-gradient: linear-gradient(135deg, #0d9488 0%, #14b8a6 40%, #2dd4bf 100%);
+            --accent: #f59e0b;
+            --accent-light: #fef3c7;
+            --bg: #f0fdfa;
+            --bg-white: #ffffff;
+            --bg-card: #ffffff;
+            --text-primary: #134e4a;
+            --text-secondary: #5f7a77;
+            --text-light: #94a3b8;
+            --border: #e2e8f0;
+            --border-teal: #ccfbf1;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.1);
+            --radius: 12px;
+            --radius-lg: 20px;
+            --danger: #ef4444;
+            --danger-bg: #fef2f2;
+            --success: #10b981;
+            --success-bg: #ecfdf5;
+            --warning: #f59e0b;
+            --warning-bg: #fffbeb;
+            --info: #3b82f6;
+            --info-bg: #eff6ff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── NAVBAR ─── */
+        .navbar {
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+        }
+        .navbar-left { display: flex; align-items: center; gap: 1rem; }
+        .logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--primary-dark);
+        }
+        .logo span { color: var(--text-primary); }
+        .nav-badge {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--primary);
+            border: 1.5px solid var(--primary);
+            border-radius: 20px;
+            padding: 3px 12px;
+        }
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-back:hover { color: var(--primary); }
+
+        /* ─── HERO ─── */
+        .hero {
+            background: var(--primary-gradient);
+            padding: 3.5rem 2rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 320px;
+            height: 320px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            right: 100px;
+            width: 240px;
+            height: 240px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+        .hero-inner {
+            max-width: 860px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-category {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--primary-light);
+            margin-bottom: 0.75rem;
+        }
+        .hero h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        .hero-subtitle {
+            color: rgba(255,255,255,0.85);
+            font-size: 1.05rem;
+            max-width: 640px;
+            line-height: 1.7;
+        }
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.18);
+            color: #fff;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 5px 14px;
+            border-radius: 20px;
+            backdrop-filter: blur(4px);
+        }
+
+        /* ─── QUOTE BANNER ─── */
+        .quote-banner {
+            background: var(--bg-white);
+            border-left: 4px solid var(--primary);
+            margin: 2.5rem auto;
+            max-width: 860px;
+            padding: 1.75rem 2rem;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            box-shadow: var(--shadow-sm);
+        }
+        .quote-banner blockquote {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-style: italic;
+            line-height: 1.5;
+        }
+        .quote-banner cite {
+            display: block;
+            margin-top: 0.5rem;
+            font-style: normal;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+        }
+
+        /* ─── MAIN LAYOUT ─── */
+        .page-container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        /* ─── TABLE OF CONTENTS ─── */
+        .toc {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-teal);
+        }
+        .toc-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .toc ol {
+            list-style: none;
+            counter-reset: toc-counter;
+            padding: 0;
+        }
+        .toc ol li {
+            counter-increment: toc-counter;
+            margin-bottom: 0.35rem;
+        }
+        .toc ol li a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 6px 10px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        .toc ol li a::before {
+            content: counter(toc-counter, decimal-leading-zero);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            background: var(--border-teal);
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+        .toc ol li a:hover {
+            background: var(--bg);
+            color: var(--primary-dark);
+        }
+
+        /* ─── SECTIONS ─── */
+        .content-section {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            padding: 2.25rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+        }
+        .content-section h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--border-teal);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .content-section h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin: 1.5rem 0 0.75rem;
+        }
+        .content-section p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        /* ─── INFO BOXES ─── */
+        .info-box {
+            border-radius: var(--radius);
+            padding: 1.25rem 1.5rem;
+            margin: 1.25rem 0;
+            border-left: 4px solid;
+        }
+        .info-box.warning {
+            background: var(--warning-bg);
+            border-color: var(--warning);
+        }
+        .info-box.danger {
+            background: var(--danger-bg);
+            border-color: var(--danger);
+        }
+        .info-box.success {
+            background: var(--success-bg);
+            border-color: var(--success);
+        }
+        .info-box.info {
+            background: var(--info-bg);
+            border-color: var(--info);
+        }
+        .info-box-title {
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .info-box.warning .info-box-title { color: #b45309; }
+        .info-box.danger .info-box-title { color: #dc2626; }
+        .info-box.success .info-box-title { color: #059669; }
+        .info-box.info .info-box-title { color: #2563eb; }
+        .info-box p {
+            font-size: 0.88rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        /* ─── SCENARIO CARDS ─── */
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.25rem 0;
+        }
+        .scenario-card {
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            border: 1px solid var(--border);
+        }
+        .scenario-card.before {
+            background: var(--danger-bg);
+            border-color: #fecaca;
+        }
+        .scenario-card.after {
+            background: var(--success-bg);
+            border-color: #a7f3d0;
+        }
+        .scenario-card h4 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+        .scenario-card.before h4 { color: var(--danger); }
+        .scenario-card.after h4 { color: var(--success); }
+        .scenario-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .scenario-card ul li {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            padding: 4px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        .scenario-card.before ul li::before {
+            content: '✕';
+            position: absolute;
+            left: 0;
+            color: var(--danger);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+        .scenario-card.after ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* ─── STEPS / FRAMEWORK ─── */
+        .step-list {
+            margin: 1.5rem 0;
+        }
+        .step-item {
+            display: flex;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+        .step-number {
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+            background: var(--primary-gradient);
+            color: #fff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+        }
+        .step-content h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.35rem;
+        }
+        .step-content p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.3rem;
+        }
+        .step-example {
+            background: var(--bg);
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+            border-left: 3px solid var(--primary-light);
+        }
+        .step-example strong { color: var(--primary-dark); }
+
+        /* ─── INTERACTIVE ACTIVITIES ─── */
+        .activity-box {
+            background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
+            border: 2px solid var(--primary-light);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .activity-box h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .activity-box > p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+        }
+        .activity-field {
+            margin-bottom: 1rem;
+        }
+        .activity-field label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.4rem;
+        }
+        .activity-field textarea,
+        .activity-field input[type="text"],
+        .activity-field select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            background: #fff;
+            transition: border-color 0.2s;
+            resize: vertical;
+        }
+        .activity-field textarea:focus,
+        .activity-field input:focus,
+        .activity-field select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(20,184,166,0.12);
+        }
+        .activity-field textarea { min-height: 80px; }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: #fff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 10px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.2s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(20,184,166,0.3);
+        }
+        .btn-secondary {
+            background: var(--bg-white);
+            color: var(--primary-dark);
+            border: 1.5px solid var(--primary);
+            padding: 10px 24px;
+            border-radius: 10px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-secondary:hover {
+            background: var(--border-teal);
+        }
+        .btn-group {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* ─── CHECKLIST ─── */
+        .checklist {
+            margin: 1rem 0;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            user-select: none;
+        }
+        .checklist-item:last-child { border-bottom: none; }
+        .checklist-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--primary);
+            margin-top: 2px;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+        .checklist-item label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+        .checklist-item.checked label {
+            text-decoration: line-through;
+            color: var(--text-light);
+        }
+        .checklist-progress {
+            margin-top: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--primary-gradient);
+            border-radius: 10px;
+            transition: width 0.4s ease;
+        }
+        .progress-text {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            white-space: nowrap;
+        }
+
+        /* ─── MATRIX / TABLE ─── */
+        .matrix-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 1.25rem 0;
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        .matrix-table thead th {
+            background: var(--primary-gradient);
+            color: #fff;
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 12px 14px;
+            text-align: left;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .matrix-table tbody td {
+            padding: 11px 14px;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border);
+        }
+        .matrix-table tbody tr:last-child td { border-bottom: none; }
+        .matrix-table tbody tr:nth-child(even) { background: var(--bg); }
+        .matrix-table tbody tr:hover { background: var(--border-teal); }
+
+        /* ─── QUIZ ─── */
+        .quiz-container {
+            background: var(--bg-white);
+            border: 2px solid var(--primary-light);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .quiz-question {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+        .quiz-option {
+            display: block;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .quiz-option:hover {
+            border-color: var(--primary);
+            background: var(--bg);
+        }
+        .quiz-option.selected {
+            border-color: var(--primary);
+            background: var(--border-teal);
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+        .quiz-option.correct {
+            border-color: var(--success);
+            background: var(--success-bg);
+            color: #059669;
+        }
+        .quiz-option.incorrect {
+            border-color: var(--danger);
+            background: var(--danger-bg);
+            color: #dc2626;
+        }
+        .quiz-feedback {
+            display: none;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+        .quiz-feedback.show { display: block; }
+        .quiz-feedback.correct-fb { background: var(--success-bg); color: #059669; }
+        .quiz-feedback.incorrect-fb { background: var(--danger-bg); color: #dc2626; }
+
+        /* ─── SLIDER / RANGE ACTIVITY ─── */
+        .slider-activity {
+            margin: 1rem 0;
+        }
+        .slider-row {
+            margin-bottom: 1.25rem;
+        }
+        .slider-label {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.4rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        .slider-label span {
+            font-weight: 400;
+            color: var(--text-light);
+            font-size: 0.8rem;
+        }
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            background: var(--border);
+            border-radius: 10px;
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+            border: 3px solid #fff;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
+        /* ─── RESULT BOX ─── */
+        .result-box {
+            display: none;
+            background: var(--bg);
+            border: 2px solid var(--primary-light);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-top: 1.25rem;
+        }
+        .result-box.visible { display: block; }
+        .result-box h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+        .result-box p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* ─── CASE STUDY ─── */
+        .case-study {
+            background: linear-gradient(135deg, #fefce8 0%, #fef9c3 100%);
+            border: 1px solid #fde68a;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 1.5rem 0;
+        }
+        .case-study h3 {
+            color: #92400e;
+            margin-bottom: 0.75rem;
+        }
+        .case-study p {
+            color: #78716c;
+            font-size: 0.9rem;
+        }
+
+        /* ─── LEVEL BADGES ─── */
+        .level-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.25rem 0;
+        }
+        .level-card {
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+        .level-card .level-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .level-card h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 0.35rem;
+        }
+        .level-card p {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+        }
+        .level-card.l1 { background: #fef2f2; border-color: #fecaca; }
+        .level-card.l1 h4 { color: #dc2626; }
+        .level-card.l2 { background: #fffbeb; border-color: #fde68a; }
+        .level-card.l2 h4 { color: #d97706; }
+        .level-card.l3 { background: #eff6ff; border-color: #bfdbfe; }
+        .level-card.l3 h4 { color: #2563eb; }
+        .level-card.l4 { background: #ecfdf5; border-color: #a7f3d0; }
+        .level-card.l4 h4 { color: #059669; }
+
+        /* ─── KEY TAKEAWAY ─── */
+        .key-takeaway {
+            background: var(--primary-gradient);
+            color: #fff;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .key-takeaway::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 140px;
+            height: 140px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+        }
+        .key-takeaway h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #fff;
+            margin-bottom: 0.75rem;
+        }
+        .key-takeaway p {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+
+        /* ─── FOOTER ─── */
+        .page-footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.82rem;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+        .page-footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 640px) {
+            .navbar { padding: 0 1rem; }
+            .hero { padding: 2.5rem 1.25rem 2rem; }
+            .page-container { padding: 0 1rem 3rem; }
+            .content-section { padding: 1.5rem 1.25rem; }
+            .scenario-grid { grid-template-columns: 1fr; }
+            .level-grid { grid-template-columns: 1fr 1fr; }
+            .activity-box { padding: 1.5rem 1.25rem; }
+            .quote-banner { margin: 1.5rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ─── NAVBAR ─── -->
+<nav class="navbar">
+    <div class="navbar-left">
+        <div class="logo">Civil-Tech<span>.ai</span></div>
+        <span class="nav-badge">Knowledge Portal</span>
+    </div>
+    <a href="https://civiltech-ai.github.io/knowledge-portal/" class="nav-back">
+        ← Back to Library
+    </a>
+</nav>
+
+<!-- ─── HERO ─── -->
+<header class="hero">
+    <div class="hero-inner">
+        <div class="hero-category">Leadership &amp; Growth</div>
+        <h1>Delegation for Business Growth</h1>
+        <p class="hero-subtitle">
+            Why trying to control everything yourself is the biggest barrier to scaling your civil or structural engineering company — and how to build the people, systems, and accountability needed to let go and grow.
+        </p>
+        <div class="hero-meta">
+            <span class="hero-tag">📖 15 min read</span>
+            <span class="hero-tag">⚡ 5 Interactive Activities</span>
+            <span class="hero-tag">🏗️ Dubai Construction Focus</span>
+        </div>
+    </div>
+</header>
+
+<!-- ─── QUOTE ─── -->
+<div class="quote-banner">
+    <blockquote>"Your business cannot grow beyond your ability to delegate."</blockquote>
+    <cite>— John C. Maxwell</cite>
+</div>
+
+<!-- ─── MAIN CONTENT ─── -->
+<div class="page-container">
+
+    <!-- TABLE OF CONTENTS -->
+    <div class="toc">
+        <div class="toc-title">📋 What You Will Learn</div>
+        <ol>
+            <li><a href="#section-1">Why Delegation Is the Key to Scaling a Construction Business</a></li>
+            <li><a href="#section-2">The Owner-Dependent Trap — How It Shows Up on Site</a></li>
+            <li><a href="#section-3">What Delegation Really Means (And What It Does Not)</a></li>
+            <li><a href="#section-4">The Five Pillars of Effective Delegation</a></li>
+            <li><a href="#section-5">A Delegation Framework for Engineering Companies</a></li>
+            <li><a href="#section-6">Case Study — From Bottleneck to Business Growth</a></li>
+            <li><a href="#section-7">Delegation Matrix — What to Delegate, What to Keep</a></li>
+            <li><a href="#section-8">Common Mistakes Owners Make When Delegating</a></li>
+            <li><a href="#section-9">How to Build Delegation-Ready Managers</a></li>
+            <li><a href="#section-10">Interactive Self-Assessment — Rate Your Delegation Maturity</a></li>
+            <li><a href="#section-11">Action Plan Builder — Your 30-Day Delegation Kickstart</a></li>
+            <li><a href="#section-12">Quiz — Test Your Understanding</a></li>
+            <li><a href="#section-13">Key Takeaways and Next Steps</a></li>
+        </ol>
+    </div>
+
+    <!-- ──────────────────────────────────────── -->
+    <!-- SECTION 1 -->
+    <!-- ──────────────────────────────────────── -->
+    <section class="content-section" id="section-1">
+        <h2>🔍 Why Delegation Is the Key to Scaling a Construction Business</h2>
+        <p>
+            Every successful civil or structural engineering company in Dubai started small — perhaps with a single founder handling estimations, site visits, client meetings, and procurement all in one day. That hustle is admirable, and in the early stages, it keeps costs low and quality high. The owner knows every bolt, every beam, and every client by name.
+        </p>
+        <p>
+            But there comes a point — usually around 15 to 25 employees, or when 3 to 4 projects run simultaneously — where the owner physically cannot be everywhere. Decisions slow down. Site supervisors wait for approvals. Quotations pile up. Clients call and nobody has answers. That moment is not a failure — it is a <strong>growth signal</strong>. It means the business has outgrown the one-person management model, and delegation is no longer optional.
+        </p>
+        <p>
+            In Dubai's construction market, speed matters enormously. Contractors, consultants, and clients all operate on tight timelines driven by regulatory approvals, weather windows, and commercial deadlines. A company whose operations stall whenever the owner is on-site, in a meeting, or simply unavailable will lose projects — not because of poor workmanship, but because of slow response times.
+        </p>
+        <div class="info-box warning">
+            <div class="info-box-title">⚠️ The Growth Ceiling</div>
+            <p>Research across SMEs globally shows that owner-dependent businesses rarely scale beyond AED 5–8 million in annual revenue. The owner's personal capacity — typically 10–12 productive hours per day — becomes the ceiling. Delegation is the only way to break through it.</p>
+        </div>
+        <p>
+            Delegation is not about reducing the owner's importance. It is about multiplying the owner's impact. When a founder learns to delegate well, the business gains the ability to serve more clients, handle larger projects, enter new markets, and build a reputation that does not depend on one person being available 24/7.
+        </p>
+    </section>
+
+    <!-- ──────────────────────────────────────── -->
+    <!-- SECTION 2 -->
+    <!-- ──────────────────────────────────────── -->
+    <section class="content-section" id="section-2">
+        <h2>🚧 The Owner-Dependent Trap — How It Shows Up on Site</h2>
+        <p>
+            Owner-dependency is one of the most common and damaging patterns in small-to-medium construction businesses. It often develops naturally — the owner is the most experienced, the most trusted by clients, and the fastest decision-maker. So everything flows through them.
+        </p>
+        <p>Here is what this looks like in a typical Dubai-based civil engineering or fit-out company:</p>
+
+        <div class="scenario-grid">
+            <div class="scenario-card before">
+                <h4>🔴 Signs of Owner Dependency</h4>
+                <ul>
+                    <li>Site teams wait 2–3 hours for the owner to approve a material change</li>
+                    <li>Clients can only reach one person — the owner — for updates</li>
+                    <li>Every quotation over AED 10,000 must be personally reviewed before sending</li>
+                    <li>Project managers forward problems instead of solving them</li>
+                    <li>Staff are afraid to make decisions, fearing the owner will disagree</li>
+                    <li>The owner works 14-hour days and still feels behind</li>
+                    <li>Company growth has plateaued despite strong demand</li>
+                </ul>
+            </div>
+            <div class="scenario-card after">
+                <h4>🟢 Signs of Effective Delegation</h4>
+                <ul>
+                    <li>Project managers approve day-to-day site changes within defined limits</li>
+                    <li>A project coordinator handles client communication per agreed protocols</li>
+                    <li>Standard quotations follow templates and are sent by the estimation team</li>
+                    <li>Managers propose solutions, not just problems</li>
+                    <li>Staff understand their decision-making authority and exercise it</li>
+                    <li>The owner focuses on strategy, key relationships, and business development</li>
+                    <li>Company can take on more projects without the owner being spread thin</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-box danger">
+            <div class="info-box-title">🔥 The Real Cost of Not Delegating</div>
+            <p>When you are the bottleneck, you are not just slowing down your business — you are actively training your team to be dependent on you. Every time a manager brings a decision to you that they could have made, and you make it for them, you reinforce the habit. Over months and years, this creates a culture where nobody takes initiative, nobody grows, and the owner burns out.</p>
+        </div>
+
+        <h3>How Owner Dependency Hurts a Dubai Construction Business</h3>
+        <p>
+            Consider the pace of construction operations in Dubai. A structural engineering project may involve coordination with the main contractor, sub-contractors, government approval bodies like Dubai Municipality, materials suppliers from across the GCC, and international consultants. Delays in any single approval can cascade into liquidated damages, extended labour costs, and reputational harm.
+        </p>
+        <p>
+            When the owner is the only one authorised to make purchasing decisions, approve variation orders, or respond to consultant queries, each of these touchpoints becomes a potential delay. Multiply that across three to five concurrent projects, and the company's delivery capability crumbles — not from a lack of skill, but from a structural inability to make timely decisions.
+        </p>
+    </section>
+
+    <!-- ──────────────────────────────────────── -->
+    <!-- SECTION 3 -->
+    <!-- ──────────────────────────────────────── -->
+    <section class="content-section" id="section-3">
+        <h2>🎯 What Delegation Really Means (And What It Does Not)</h2>
+        <p>
+            Many business owners resist delegation because they associate it with losing control, accepting lower quality, or becoming irrelevant. These fears are understandable — especially when you have built the business from scratch and your personal reputation is at stake. But delegation, done properly, is the opposite of losing control. It is a higher form of control.
+        </p>
+
+        <h3>Delegation IS:</h3>
+        <p>
+            <strong>Transferring responsibility with authority.</strong> When you delegate a task, you give the person not just the work, but the right to make decisions about how it is completed. A project manager who is "delegated" site coordination but must ask the owner before every small decision has not actually been delegated to — they have been given instructions with no authority.
+        </p>
+        <p>
+            <strong>Creating clear systems.</strong> Delegation works when there are documented processes, defined limits, and reporting structures. Without systems, delegation becomes chaos. With systems, it becomes scalable management.
+        </p>
+        <p>
+            <strong>Building accountability.</strong> Delegation does not mean "dump and disappear." It means assigning clear ownership, setting measurable expectations, and reviewing outcomes regularly. The owner shifts from doing the work to reviewing the results.
+        </p>
+        <p>
+            <strong>Investing in people.</strong> Delegation requires training, mentorship, and patience. Managers do not become capable overnight — they grow through guided experience, constructive feedback, and gradually increasing responsibility.
+        </p>
+
+        <h3>Delegation is NOT:</h3>
+        <p>
+            <strong>Abandoning oversight.</strong> You still set direction, approve major decisions, and maintain quality standards. The difference is that you do this through structured check-ins and reporting, not by being personally involved in every task.
+        </p>
+        <p>
+            <strong>Accepting poor quality.</strong> When delegation leads to errors, the problem is usually in the system (unclear instructions, insufficient training, no quality checkpoints) — not in the concept of delegation itself.
+        </p>
+        <p>
+            <strong>One-size-fits-all.</strong> Different tasks require different levels of delegation. A routine material order can be fully delegated. A high-value contract negotiation may require owner involvement. The skill is knowing which is which.
+        </p>
+
+        <div class="info-box info">
+            <div class="info-box-title">💡 The Delegation Mindset Shift</div>
+            <p>Stop asking: "Can this person do it as well as I can?" Start asking: "Can this person do it well enough, and will they improve over time?" Perfection is not the standard — consistent, acceptable quality with a clear improvement path is the standard.</p>
+        </div>
+    </section>
+
+    <!-- ──────────────────────────────────────── -->
+    <!-- SECTION 4 -->
+    <!-- ──────────────────────────────────────── -->
+    <section class="content-section" id="section-4">
+        <h2>🏛️ The Five Pillars of Effective Delegation</h2>
+        <p>
+            Delegation is not a single action — it is a system built on five interconnected pillars. If any pillar is missing, delegation fails. For Dubai-based civil and structural engineering companies, each pillar has specific practical applications.
+        </p>
+
+        <div class="step-list">
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>Clear Systems and Processes</h4>
+                    <p>Before you delegate, you need to document how things are done. Standard Operating Procedures (SOPs) for recurring tasks ensure consistency regardless of who performs the task. This includes procurement processes, site inspection checklists, client communication templates, and quality control procedures.</p>
+                    <div class="step-example">
+                        <strong>Example:</strong> Create a Procurement SOP that specifies who can approve orders up to AED 5,000, who handles orders between AED 5,000–25,000, and which orders require owner approval. Include preferred supplier lists, quality specifications, and documentation requirements.
+                    </div>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>Defined Roles and Responsibilities</h4>
+                    <p>Every team member must know exactly what they are responsible for, what decisions they can make independently, and when they need to escalate. Written job descriptions and responsibility matrices eliminate ambiguity and prevent overlap or gaps in accountability.</p>
+                    <div class="step-example">
+                        <strong>Example:</strong> A project manager for a villa construction project has full authority over daily site operations, labour allocation, and minor design adjustments (within pre-approved limits). They escalate structural changes, budget overruns above 5%, and client scope changes to the owner.
+                    </div>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>Capable and Trained People</h4>
+                    <p>Delegation is only as good as the people you delegate to. Investing in training — both technical skills and decision-making abilities — is essential. This may include formal courses, on-the-job mentoring, or shadowing exercises where managers learn to handle situations the owner previously managed.</p>
+                    <div class="step-example">
+                        <strong>Example:</strong> Before delegating client communication to your senior engineer, have them shadow you through five client meetings. Then co-manage the next three. Then let them lead independently while you review summaries. This graduated approach builds competence and confidence.
+                    </div>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h4>Accountability and Reporting</h4>
+                    <p>Delegation without follow-up is abandonment. Establish regular reporting rhythms — daily site reports, weekly project reviews, monthly financial summaries. These allow the owner to maintain oversight without micromanaging, and they create a documented trail of decisions and outcomes.</p>
+                    <div class="step-example">
+                        <strong>Example:</strong> Introduce a weekly Monday meeting where each project manager presents their project status: work completed, upcoming milestones, budget utilisation, risks, and decisions made. The owner reviews, guides, and approves — rather than doing the work themselves.
+                    </div>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h4>Outcome-Based Monitoring</h4>
+                    <p>Instead of controlling every task, monitor outcomes. Set Key Performance Indicators (KPIs) for each role and track them. When results are on target, the delegation is working. When results slip, investigate the root cause — it might be a training gap, a process flaw, or a resource issue — and address it systemically.</p>
+                    <div class="step-example">
+                        <strong>Example:</strong> Track KPIs such as: project completion within 5% of budget, client satisfaction score above 8/10, site safety incidents per month, and quotation turnaround time under 48 hours. Review these monthly and adjust responsibilities accordingly.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ──────────────────────────────────────── -->
+    <!-- SECTION 5 — FRAMEWORK -->
+    <!-- ──────────────────────────────────────── -->
+    <section class="content-section" id="section-5">
+        <h2>📐 A Delegation Framework for Engineering Companies</h2>
+        <p>
+            Not all tasks should be delegated equally. Use the following four-level framework to decide how to delegate different types of work in your civil or structural engineering company.
+        </p>
+
+        <div class="level-grid">
+            <div class="level-card l1">
+                <div class="level-icon">🔴</div>
+                <h4>Level 1: Owner Only</h4>
+                <p>Strategic decisions, key client relationships, major contracts, company vision, hiring senior staff, financial targets</p>
+            </div>
+            <div class="level-card l2">
+                <div class="level-icon">🟡</div>
+                <h4>Level 2: Shared Decision</h4>
+                <p>Large variation orders, new supplier approvals, design changes affecting project scope, pricing for major bids</p>
+            </div>
+            <div class="level-card l3">
+                <div class="level-icon">🔵</div>
+                <h4>Level 3: Delegate with Reporting</h4>
+                <p>Day-to-day procurement, routine client updates, site labour management, standard quotation preparation, progress reporting</p>
+            </div>
+            <div class="level-card l4">
+                <div class="level-icon">🟢</div>
+                <h4>Level 4: Fully Delegated</h4>
+                <p>Site housekeeping, tool and equipment checks, material delivery scheduling, filing and documentation, routine safety walkthroughs</p>
+            </div>
+        </div>
+
+        <div class="info-box success">
+            <div class="info-box-title">✅ The Goal</div>
+            <p>Over time, tasks should gradually move from higher levels to lower levels. A task that starts at Level 2 (shared decision) should move to Level 3 (delegate with reporting) once the assigned manager demonstrates competence. This progressive trust-building is how companies scale.</p>
+        </div>
+    </section>
+
+    <!-- ──────────────────────────────────────── -->
+    <!-- SECTION 6 — CASE STUDY -->
+    <!-- ──────────────────────────────────────── -->
+    <section class="content-section" id="section-6">
+        <h2>📘 Case Study — From Bottleneck to Business Growth</h2>
+
+        <div class="case-study">
+            <h3>🏢 Al Mazaya Fit-Out Contracting — Dubai (Fictionalised Example)</h3>
+            <p>
+                <strong>Background:</strong> A mid-sized fit-out company in Al Quoz with 35 employees, handling commercial and residential interior projects across Dubai. The owner, Mohammed, had been running the company for eight years. Revenue had plateaued at around AED 12 million annually despite strong demand.
+            </p>
+        </div>
+
+        <h3>The Problem</h3>
+        <p>
+            Mohammed personally approved all material purchases, reviewed every quotation before it went to clients, handled all variation order discussions, and was the sole point of contact for key clients. His three project managers were experienced technically but had never been given authority to make decisions independently.
+        </p>
+        <p>
+            As the company won two large retail fit-out contracts simultaneously, the cracks appeared. Suppliers waited days for purchase order approvals. Site teams paused work while waiting for Mohammed's decision on material substitutions. Clients complained that calls went unanswered for hours. One client escalated a formal complaint to the main contractor, threatening to replace Al Mazaya on the project.
+        </p>
+
+        <h3>The Transformation</h3>
+        <p>Mohammed implemented a structured delegation programme over 90 days:</p>
+
+        <div class="step-list">
+            <div class="step-item">
+                <div class="step-number">A</div>
+                <div class="step-content">
+                    <h4>Assigned Purchasing Authority</h4>
+                    <p>Project managers were given authority to approve material purchases up to AED 15,000 per order from pre-approved suppliers. Orders above this amount required Mohammed's review within 24 hours. A shared spreadsheet tracked all purchases in real time.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">B</div>
+                <div class="step-content">
+                    <h4>Created Approval Workflows</h4>
+                    <p>Mohammed documented the decision criteria for common situations: material substitutions, minor design changes, client requests, and subcontractor issues. Each workflow had a clear decision tree — "If X, then the PM decides. If Y, then escalate to Mohammed."</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">C</div>
+                <div class="step-content">
+                    <h4>Introduced Weekly Review Meetings</h4>
+                    <p>Every Sunday morning, the three project managers presented a structured 15-minute update: budget status, schedule progress, risks, decisions made during the week, and items needing owner input. This replaced hundreds of ad-hoc phone calls and messages.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">D</div>
+                <div class="step-content">
+                    <h4>Defined Reporting Systems</h4>
+                    <p>Daily site photos were uploaded to a shared folder. A weekly financial summary was prepared by the accountant. Client communication logs were maintained in a CRM. Mohammed could review all information at his convenience — without needing to be present for every interaction.</p>
+                </div>
+            </div>
+        </div>
+
+        <h3>The Results (After 6 Months)</h3>
+        <div class="scenario-grid">
+            <div class="scenario-card before">
+                <h4>🔴 Before Delegation</h4>
+                <ul>
+                    <li>Quotation turnaround: 5–7 days</li>
+                    <li>Purchase approval time: 1–3 days</li>
+                    <li>Owner working hours: 14+ per day</li>
+                    <li>Client complaints: 3–4 per month</li>
+                    <li>Maximum concurrent projects: 3</li>
+                    <li>Annual revenue: AED 12 million</li>
+                </ul>
+            </div>
+            <div class="scenario-card after">
+                <h4>🟢 After Delegation</h4>
+                <ul>
+                    <li>Quotation turnaround: 24–48 hours</li>
+                    <li>Purchase approval time: Same day</li>
+                    <li>Owner working hours: 9–10 per day</li>
+                    <li>Client complaints: 0–1 per month</li>
+                    <li>Maximum concurrent projects: 6</li>
+                    <li>Annual revenue: AED 19 million (projected)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="key-takeaway">
+            <h3>💡 The Core Insight</h3>
+            <p>Mohammed did not work harder. He worked differently. By building systems and trusting his team with clear boundaries, the business nearly doubled its capacity without hiring significantly more staff. The project managers grew into more capable leaders, client satisfaction improved, and Mohammed regained time to focus on business development and strategic relationships.</p>
+        </div>
+    </section>
+
+    <!-- ──────────────────────────────────────── -->
+    <!-- SECTION 7 — DELEGATION MATRIX -->
+    <!-- ──────────────────────────────────────── -->
+    <section class="content-section" id="section-7">
+        <h2>📊 Delegation Matrix — What to Delegate, What to Keep</h2>
+        <p>
+            Use this matrix as a practical reference for your civil or structural engineering company. Every task in your business can be categorised into one of these four quadrants based on impact and complexity.
+        </p>
+
+        <table class="matrix-table">
+            <thead>
+                <tr>
+                    <th>Task / Decision</th>
+                    <th>Who Handles It</th>
+                    <th>Owner's Role</th>
+                    <th>Review Frequency</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Major contract negotiations</td>
+                    <td>Owner</td>
+                    <td>Lead directly</td>
+                    <td>Per occurrence</td>
+                </tr>
+                <tr>
+                    <td>Annual budgets &amp; financial targets</td>
+                    <td>Owner + Finance Manager</td>
+                    <td>Set targets, approve budget</td>
+                    <td>Quarterly</td>
+                </tr>
+                <tr>
+                    <td>Hiring senior / management staff</td>
+                    <td>Owner + HR</td>
+                    <td>Final interview &amp; decision</td>
+                    <td>Per occurrence</td>
+                </tr>
+                <tr>
+                    <td>Client relationship management</td>
+                    <td>Project Manager</td>
+                    <td>Periodic check-ins</td>
+                    <td>Monthly</td>
+                </tr>
+                <tr>
+                    <td>Variation orders (above AED 50K)</td>
+                    <td>PM proposes, Owner approves</td>
+                    <td>Review &amp; approve</td>
+                    <td>Per occurrence</td>
+                </tr>
+                <tr>
+                    <td>Routine material procurement</td>
+                    <td>Project Manager / Site Engineer</td>
+                    <td>Monitor spend reports</td>
+                    <td>Weekly summary</td>
+                </tr>
+                <tr>
+                    <td>Quotation preparation (standard)</td>
+                    <td>Estimation Team</td>
+                    <td>Review template &amp; pricing</td>
+                    <td>Monthly audit</td>
+                </tr>
+                <tr>
+                    <td>Site progress reporting</td>
+                    <td>Site Engineer / Supervisor</td>
+                    <td>Review in weekly meetings</td>
+                    <td>Weekly</td>
+                </tr>
+                <tr>
+                    <td>Daily labour allocation</td>
+                    <td>Foreman / Site Supervisor</td>
+                    <td>None (unless flagged)</td>
+                    <td>Exception-based</td>
+                </tr>
+                <tr>
+                    <td>Safety inspections</td>
+                    <td>HSE Officer / Supervisor</td>
+                    <td>Review monthly report</td>
+                    <td>Monthly</td>
+                </tr>
+                <tr>
+                    <td>Equipment maintenance scheduling</td>
+                    <td>Operations Coordinator</td>
+                    <td>None (unless budget impact)</td>
+                    <td>Monthly</td>
+                </tr>
+                <tr>
+                    <td>Filing &amp; document management</td>
+                    <td>Admin / Document Controller</td>
+                    <td>None</td>
+                    <td>Quarterly audit</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ──────────────────────────────────────── -->
+    <!-- SECTION 8 — COMMON MISTAKES -->
+    <!-- ──────────────────────────────────────── -->
+    <section class="content-section" id="section-8">
+        <h2>⚠️ Common Mistakes Owners Make When Delegating</h2>
+        <p>
+            Understanding what to delegate is only half the challenge. How you delegate matters just as much. Here are the most common delegation mistakes seen in Dubai construction companies — and how to avoid each one.
+        </p>
+
+        <h3>Mistake 1: Delegating Without Clear Instructions</h3>
+        <p>
+            Telling your project manager to "handle the Al Barsha project" without specifying what decisions they can make, what the budget parameters are, or when to escalate is not delegation — it is ambiguity. The manager will either freeze (waiting for guidance) or overstep (making decisions you disagree with). Both outcomes lead to frustration on both sides.
+        </p>
+        <div class="step-example">
+            <strong>Fix:</strong> Every delegated task should come with a brief: the objective, the boundaries (what they can and cannot decide), the resources available, the reporting expectations, and the timeline.
+        </div>
+
+        <h3>Mistake 2: Delegating and Then Micromanaging</h3>
+        <p>
+            Some owners delegate a task but then check in every few hours, question every decision, and effectively redo the work. This destroys the manager's confidence and motivation, and it eliminates the time-saving benefit of delegation entirely.
+        </p>
+        <div class="step-example">
+            <strong>Fix:</strong> Agree on reporting intervals upfront. If you have delegated weekly client updates, do not ask for daily reports. Trust the process and review at the agreed time.
+        </div>
+
+        <h3>Mistake 3: Not Tolerating Early Mistakes</h3>
+        <p>
+            When a newly empowered manager makes a minor error, some owners react by taking back the responsibility. This teaches the entire team that mistakes equal punishment, which kills initiative. Learning requires making mistakes in a safe environment.
+        </p>
+        <div class="step-example">
+            <strong>Fix:</strong> When mistakes happen, treat them as coaching moments. Ask: "What happened? What would you do differently? What can we change in the process to prevent this?" This builds capability, not dependency.
+        </div>
+
+        <h3>Mistake 4: Delegating Only the Tasks You Dislike</h3>
+        <p>
+            If you only delegate administrative tasks and keep all the "important" work, your managers never develop strategic thinking. True delegation includes meaningful work that challenges and grows people.
+        </p>
+        <div class="step-example">
+            <strong>Fix:</strong> Delegate a mix — some routine tasks for efficiency, and some challenging tasks for development. Gradually increase the complexity as confidence grows.
+        </div>
+
+        <h3>Mistake 5: No Feedback Loop</h3>
+        <p>
+            Delegation without feedback leaves people guessing whether they are doing well or poorly. Silence is not approval — it is confusion.
+        </p>
+        <div class="step-example">
+            <strong>Fix:</strong> Schedule brief monthly one-on-ones with each manager. Discuss what is working, what needs improvement, and what new responsibilities they are ready for. This creates a growth culture.
+        </div>
+    </section>
+
+    <!-- ──────────────────────────────────────── -->
+    <!-- SECTION 9 — BUILDING MANAGERS -->
+    <!-- ──────────────────────────────────────── -->
+    <section class="content-section" id="section-9">
+        <h2>👷 How to Build Delegation-Ready Managers</h2>
+        <p>
+            The most common concern owners express about delegation is: "My people are not ready." This is often true — but the question is, what are you doing to make them ready? Capable managers are not found — they are built.
+        </p>
+
+        <h3>The Three-Phase Manager Development Programme</h3>
+
+        <div class="step-list">
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>Phase 1: Shadow and Learn (Weeks 1–4)</h4>
+                    <p>The manager observes how you handle decisions — client meetings, procurement negotiations, site problem-solving. They see your thought process, not just the outcome. After each situation, spend five minutes explaining why you made that specific decision.</p>
+                    <div class="step-example">
+                        <strong>Practical application:</strong> Take your senior engineer to the next three client meetings. After each meeting, discuss: What did the client actually want? How did I handle the difficult points? What would you have done differently?
+                    </div>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>Phase 2: Co-Manage (Weeks 5–8)</h4>
+                    <p>The manager begins handling tasks with your guidance. They draft the quotation — you review before sending. They lead the site meeting — you attend but let them run it. They propose the procurement decision — you approve or suggest changes. This builds confidence while maintaining quality.</p>
+                    <div class="step-example">
+                        <strong>Practical application:</strong> Ask your project manager to prepare the weekly client progress report independently. Review it together, make adjustments, and discuss the reasoning. By week 8, they should be producing reports that need minimal changes.
+                    </div>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>Phase 3: Independent with Reporting (Weeks 9+)</h4>
+                    <p>The manager takes full ownership. They make decisions, handle situations, and report outcomes. You review weekly — not to redo their work, but to ensure the system is functioning. This is the target state for most operational tasks.</p>
+                    <div class="step-example">
+                        <strong>Practical application:</strong> Your project manager now runs the Al Barsha villa project independently. You receive a weekly one-page summary: budget status, schedule, risks, and decisions made. You step in only for escalated items or strategic decisions.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box success">
+            <div class="info-box-title">✅ A Realistic Timeline</div>
+            <p>Expect three to six months to develop a manager from dependent executor to independent decision-maker. This is not slow — it is an investment. Once complete, you have permanently expanded your company's capacity by an entire management unit. Do this three times and your business can grow significantly without proportional growth in your own workload.</p>
+        </div>
+    </section>
+
+    <!-- ──────────────────────────────────────── -->
+    <!-- SECTION 10 — INTERACTIVE SELF-ASSESSMENT -->
+    <!-- ──────────────────────────────────────── -->
+    <section class="content-section" id="section-10">
+        <h2>📝 Interactive Self-Assessment — Rate Your Delegation Maturity</h2>
+        <p>
+            Use the sliders below to honestly rate where your business currently stands on each dimension of delegation. Move each slider from 1 (we do not do this at all) to 5 (we do this consistently and effectively).
+        </p>
+
+        <div class="activity-box">
+            <h3>⚡ Activity: Delegation Maturity Score</h3>
+            <p>Rate each area for your company. Your total score will reveal your delegation maturity level.</p>
+
+            <div class="slider-activity" id="assessmentSliders">
+                <div class="slider-row">
+                    <div class="slider-label">
+                        Do you have documented SOPs for recurring tasks?
+                        <span id="val1">3</span>/5
+                    </div>
+                    <input type="range" min="1" max="5" value="3" oninput="document.getElementById('val1').textContent=this.value; updateAssessment()">
+                </div>
+                <div class="slider-row">
+                    <div class="slider-label">
+                        Are roles and decision-making authority clearly defined?
+                        <span id="val2">3</span>/5
+                    </div>
+                    <input type="range" min="1" max="5" value="3" oninput="document.getElementById('val2').textContent=this.value; updateAssessment()">
+                </div>
+                <div class="slider-row">
+                    <div class="slider-label">
+                        Can your managers make daily decisions without asking you?
+                        <span id="val3">3</span>/5
+                    </div>
+                    <input type="range" min="1" max="5" value="3" oninput="document.getElementById('val3').textContent=this.value; updateAssessment()">
+                </div>
+                <div class="slider-row">
+                    <div class="slider-label">
+                        Do you have regular reporting and review meetings?
+                        <span id="val4">3</span>/5
+                    </div>
+                    <input type="range" min="1" max="5" value="3" oninput="document.getElementById('val4').textContent=this.value; updateAssessment()">
+                </div>
+                <div class="slider-row">
+                    <div class="slider-label">
+                        Do you invest in training and developing your managers?
+                        <span id="val5">3</span>/5
+                    </div>
+                    <input type="range" min="1" max="5" value="3" oninput="document.getElementById('val5').textContent=this.value; updateAssessment()">
+                </div>
+                <div class="slider-row">
+                    <div class="slider-label">
+                        Are KPIs tracked and used for accountability?
+                        <span id="val6">3</span>/5
+                    </div>
+                    <input type="range" min="1" max="5" value="3" oninput="document.getElementById('val6').textContent=this.value; updateAssessment()">
+                </div>
+                <div class="slider-row">
+                    <div class="slider-label">
+                        Can the business operate for a week without you on-site?
+                        <span id="val7">3</span>/5
+                    </div>
+                    <input type="range" min="1" max="5" value="3" oninput="document.getElementById('val7').textContent=this.value; updateAssessment()">
+                </div>
+                <div class="slider-row">
+                    <div class="slider-label">
+                        Do you focus most of your time on strategy, not operations?
+                        <span id="val8">3</span>/5
+                    </div>
+                    <input type="range" min="1" max="5" value="3" oninput="document.getElementById('val8').textContent=this.value; updateAssessment()">
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn-primary" onclick="showAssessmentResult()">See My Delegation Score</button>
+                <button class="btn-secondary" onclick="resetAssessment()">Reset</button>
+            </div>
+
+            <div class="result-box" id="assessmentResult">
+                <h4 id="assessmentTitle"></h4>
+                <p id="assessmentText"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ──────────────────────────────────────── -->
+    <!-- SECTION 11 — ACTION PLAN BUILDER -->
+    <!-- ──────────────────────────────────────── -->
+    <section class="content-section" id="section-11">
+        <h2>🛠️ Action Plan Builder — Your 30-Day Delegation Kickstart</h2>
+        <p>
+            Use this interactive planner to identify the specific tasks you will delegate in the next 30 days. Writing your commitments down dramatically increases follow-through.
+        </p>
+
+        <div class="activity-box">
+            <h3>⚡ Activity: Build Your Delegation Action Plan</h3>
+            <p>Fill in each field to create a personalised delegation plan for your company.</p>
+
+            <div class="activity-field">
+                <label>1. Name three tasks you currently do that a trained manager could handle:</label>
+                <textarea id="tasks" placeholder="e.g., Reviewing routine quotations, approving standard material orders, conducting weekly site inspections..."></textarea>
+            </div>
+            <div class="activity-field">
+                <label>2. Who in your team has the potential to take on these tasks?</label>
+                <textarea id="people" placeholder="e.g., Ahmed (Senior Project Manager) — has 6 years of experience and good client skills..."></textarea>
+            </div>
+            <div class="activity-field">
+                <label>3. What training or support do they need before taking over?</label>
+                <textarea id="training" placeholder="e.g., Shadow me on 3 client meetings, review our quotation pricing model, complete a procurement authority brief..."></textarea>
+            </div>
+            <div class="activity-field">
+                <label>4. What reporting system will you put in place to maintain oversight?</label>
+                <textarea id="reporting" placeholder="e.g., Weekly Monday meeting with one-page project summary, shared procurement tracker, daily site photo uploads..."></textarea>
+            </div>
+            <div class="activity-field">
+                <label>5. What is your target date to fully hand over the first task?</label>
+                <input type="text" id="targetDate" placeholder="e.g., Within 30 days from today">
+            </div>
+
+            <div class="btn-group">
+                <button class="btn-primary" onclick="generatePlan()">Generate My Plan Summary</button>
+                <button class="btn-secondary" onclick="clearPlan()">Clear All</button>
+            </div>
+
+            <div class="result-box" id="planResult">
+                <h4>📋 Your 30-Day Delegation Plan</h4>
+                <p id="planText"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ──────────────────────────────────────── -->
+    <!-- SECTION 12 — WEEKLY CHECKLIST -->
+    <!-- ──────────────────────────────────────── -->
+    <section class="content-section" id="section-11b">
+        <h2>✅ Weekly Delegation Checklist</h2>
+        <p>
+            Use this checklist every week to ensure your delegation systems are working. Tick off each item as you complete it. Track your progress with the bar below.
+        </p>
+
+        <div class="activity-box">
+            <h3>⚡ Activity: Weekly Review Tracker</h3>
+            <div class="checklist" id="weeklyChecklist">
+                <div class="checklist-item" onclick="toggleCheck(this)">
+                    <input type="checkbox">
+                    <label>Reviewed weekly project reports from all project managers</label>
+                </div>
+                <div class="checklist-item" onclick="toggleCheck(this)">
+                    <input type="checkbox">
+                    <label>Conducted at least one structured team review meeting</label>
+                </div>
+                <div class="checklist-item" onclick="toggleCheck(this)">
+                    <input type="checkbox">
+                    <label>Checked procurement spending against approved budgets</label>
+                </div>
+                <div class="checklist-item" onclick="toggleCheck(this)">
+                    <input type="checkbox">
+                    <label>Provided feedback to at least one manager on a decision they made</label>
+                </div>
+                <div class="checklist-item" onclick="toggleCheck(this)">
+                    <input type="checkbox">
+                    <label>Identified one new task to move down the delegation ladder</label>
+                </div>
+                <div class="checklist-item" onclick="toggleCheck(this)">
+                    <input type="checkbox">
+                    <label>Reviewed client satisfaction or complaint reports</label>
+                </div>
+                <div class="checklist-item" onclick="toggleCheck(this)">
+                    <input type="checkbox">
+                    <label>Spent at least 2 hours on business development (not day-to-day operations)</label>
+                </div>
+                <div class="checklist-item" onclick="toggleCheck(this)">
+                    <input type="checkbox">
+                    <label>Updated or documented one SOP based on a recent situation</label>
+                </div>
+            </div>
+            <div class="checklist-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="checklistProgress" style="width: 0%"></div>
+                </div>
+                <span class="progress-text" id="checklistText">0 / 8 completed</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ──────────────────────────────────────── -->
+    <!-- SECTION 12 — QUIZ -->
+    <!-- ──────────────────────────────────────── -->
+    <section class="content-section" id="section-12">
+        <h2>🧠 Quiz — Test Your Understanding</h2>
+        <p>Answer these questions to check how well you have understood the key principles of delegation for business growth.</p>
+
+        <!-- Quiz 1 -->
+        <div class="quiz-container" id="quiz1">
+            <div class="quiz-question">1. What is the main reason businesses hit a growth ceiling?</div>
+            <div class="quiz-option" onclick="selectQuiz('quiz1', this, false)">A) They do not have enough capital to invest in growth</div>
+            <div class="quiz-option" onclick="selectQuiz('quiz1', this, true)">B) The owner becomes the bottleneck by controlling every decision</div>
+            <div class="quiz-option" onclick="selectQuiz('quiz1', this, false)">C) Employees are not skilled enough to handle their roles</div>
+            <div class="quiz-option" onclick="selectQuiz('quiz1', this, false)">D) Market demand in Dubai is not sufficient for growth</div>
+            <div class="quiz-feedback correct-fb" id="quiz1-correct">Correct! The primary growth limitation is owner-dependency. When every decision funnels through one person, the business can only grow as fast as that person can work.</div>
+            <div class="quiz-feedback incorrect-fb" id="quiz1-incorrect">Not quite. While other factors matter, the single biggest growth ceiling for SME construction businesses is the owner trying to control everything themselves. Review Section 1 for more detail.</div>
+        </div>
+
+        <!-- Quiz 2 -->
+        <div class="quiz-container" id="quiz2">
+            <div class="quiz-question">2. Which of these is NOT one of the Five Pillars of Effective Delegation?</div>
+            <div class="quiz-option" onclick="selectQuiz('quiz2', this, false)">A) Clear Systems and Processes</div>
+            <div class="quiz-option" onclick="selectQuiz('quiz2', this, false)">B) Accountability and Reporting</div>
+            <div class="quiz-option" onclick="selectQuiz('quiz2', this, true)">C) Personally verifying every delegated task</div>
+            <div class="quiz-option" onclick="selectQuiz('quiz2', this, false)">D) Outcome-Based Monitoring</div>
+            <div class="quiz-feedback correct-fb" id="quiz2-correct">Correct! Personally verifying every task defeats the purpose of delegation. The correct approach is outcome-based monitoring — reviewing results rather than controlling every step.</div>
+            <div class="quiz-feedback incorrect-fb" id="quiz2-incorrect">Not quite. Review the Five Pillars in Section 4. The pillar that is NOT included is "Personally verifying every delegated task" — that is micromanagement, not delegation.</div>
+        </div>
+
+        <!-- Quiz 3 -->
+        <div class="quiz-container" id="quiz3">
+            <div class="quiz-question">3. In the delegation framework, a routine material purchase from a pre-approved supplier would fall under which level?</div>
+            <div class="quiz-option" onclick="selectQuiz('quiz3', this, false)">A) Level 1 — Owner Only</div>
+            <div class="quiz-option" onclick="selectQuiz('quiz3', this, false)">B) Level 2 — Shared Decision</div>
+            <div class="quiz-option" onclick="selectQuiz('quiz3', this, true)">C) Level 3 — Delegate with Reporting</div>
+            <div class="quiz-option" onclick="selectQuiz('quiz3', this, false)">D) Level 4 — Fully Delegated</div>
+            <div class="quiz-feedback correct-fb" id="quiz3-correct">Correct! Routine procurement from approved suppliers should be delegated to project managers with spending limits, and reported through weekly summaries. This keeps operations fast while maintaining financial oversight.</div>
+            <div class="quiz-feedback incorrect-fb" id="quiz3-incorrect">Not quite. Routine material procurement from pre-approved suppliers falls under Level 3 — the project manager handles it independently but reports on it. Review the framework in Section 5.</div>
+        </div>
+
+        <!-- Quiz 4 -->
+        <div class="quiz-container" id="quiz4">
+            <div class="quiz-question">4. When a manager makes a mistake on a delegated task, what is the correct response?</div>
+            <div class="quiz-option" onclick="selectQuiz('quiz4', this, false)">A) Take back the responsibility immediately to prevent further errors</div>
+            <div class="quiz-option" onclick="selectQuiz('quiz4', this, false)">B) Ignore it — they need to learn on their own</div>
+            <div class="quiz-option" onclick="selectQuiz('quiz4', this, true)">C) Use it as a coaching moment — discuss what happened and how to improve</div>
+            <div class="quiz-option" onclick="selectQuiz('quiz4', this, false)">D) Assign the task to a different team member instead</div>
+            <div class="quiz-feedback correct-fb" id="quiz4-correct">Correct! Mistakes are learning opportunities. Discuss what happened, explore what could be done differently, and improve the process. This builds capability over time and creates a growth-oriented culture.</div>
+            <div class="quiz-feedback incorrect-fb" id="quiz4-incorrect">Not quite. Taking back responsibility or ignoring errors both fail to develop your team. The correct approach is to treat mistakes as coaching moments — discuss, learn, and improve. Review Section 8 for more detail.</div>
+        </div>
+
+        <!-- Quiz 5 -->
+        <div class="quiz-container" id="quiz5">
+            <div class="quiz-question">5. What is the recommended timeline to develop a manager from dependent executor to independent decision-maker?</div>
+            <div class="quiz-option" onclick="selectQuiz('quiz5', this, false)">A) 1–2 weeks with intensive training</div>
+            <div class="quiz-option" onclick="selectQuiz('quiz5', this, false)">B) 1 month at most</div>
+            <div class="quiz-option" onclick="selectQuiz('quiz5', this, true)">C) 3–6 months through a phased approach</div>
+            <div class="quiz-option" onclick="selectQuiz('quiz5', this, false)">D) Over 1 year — it takes very long to develop trust</div>
+            <div class="quiz-feedback correct-fb" id="quiz5-correct">Correct! A realistic timeline is 3 to 6 months using the three-phase approach: Shadow (weeks 1–4), Co-manage (weeks 5–8), and Independent with Reporting (week 9 onward). This is an investment that permanently expands your company's capacity.</div>
+            <div class="quiz-feedback incorrect-fb" id="quiz5-incorrect">Not quite. The recommended timeline is 3 to 6 months using a phased Shadow → Co-manage → Independent approach. Review Section 9 for the full manager development programme.</div>
+        </div>
+    </section>
+
+    <!-- ──────────────────────────────────────── -->
+    <!-- SECTION 13 — KEY TAKEAWAYS -->
+    <!-- ──────────────────────────────────────── -->
+    <section class="content-section" id="section-13">
+        <h2>🎯 Key Takeaways and Next Steps</h2>
+
+        <div class="key-takeaway">
+            <h3>The Core Message</h3>
+            <p>
+                Growth does not come from doing more yourself. Growth comes from building people and systems that can operate without constant owner involvement. For civil and structural engineering companies in Dubai, where projects move fast and clients expect rapid responses, delegation is not a luxury — it is a competitive necessity.
+            </p>
+        </div>
+
+        <h3>What You Should Remember</h3>
+        <p>
+            Delegation is not about losing control — it is a higher form of control where you manage outcomes instead of tasks. It requires five pillars working together: clear systems, defined roles, capable people, accountability, and outcome-based monitoring. The process takes time, and mistakes will happen along the way, but each mistake is an opportunity to strengthen your systems and develop your team.
+        </p>
+        <p>
+            Start small. Pick one task this week that you currently handle but that a trained team member could manage with the right guidance. Document the process, assign the responsibility with clear boundaries, set up reporting, and begin the handover. Within 30 days, you should see a measurable reduction in your daily operational involvement — and a corresponding increase in your team's capability and confidence.
+        </p>
+
+        <h3>Your Immediate Next Steps</h3>
+        <div class="step-list">
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>Audit Your Week</h4>
+                    <p>Track every task you do for one week. Categorise each as Owner-Only, Could Be Shared, or Should Be Delegated. You will likely find that 40–60% of your time is spent on tasks others could handle.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>Identify Your First Delegation Candidate</h4>
+                    <p>Choose one recurring task (e.g., standard quotation preparation, weekly client updates, or routine procurement). Document the process and begin the Shadow → Co-manage → Independent handover.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>Set Up a Weekly Review Meeting</h4>
+                    <p>Block one hour every week (Sunday morning works well in Dubai) for structured project reviews with your managers. This single habit will transform your oversight from reactive to proactive.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h4>Commit to the 90-Day Journey</h4>
+                    <p>Real delegation takes months, not days. Set a 90-day goal: by the end of three months, at least three tasks should be fully handled by your team with reporting only. Track your progress using the weekly checklist above.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box info" style="margin-top: 1.5rem;">
+            <div class="info-box-title">📚 Continue Learning</div>
+            <p>This guide is part of the Civil-Tech.ai Knowledge Portal — a growing library of practical business topics designed specifically for Dubai-based construction and engineering companies. Visit the <a href="https://civiltech-ai.github.io/knowledge-portal/" style="color: #2563eb;">Knowledge Portal</a> to explore more topics on systems, processes, leadership, and business growth.</p>
+        </div>
+    </section>
+
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer class="page-footer">
+    <p>Civil-Tech.ai Knowledge Portal — Practical Business Education for Dubai SME Owners</p>
+    <p style="margin-top:4px;"><a href="https://civiltech-ai.github.io/knowledge-portal/">← Return to Knowledge Library</a></p>
+</footer>
+
+<!-- ─── SCRIPTS ─── -->
+<script>
+    // ─── ASSESSMENT ───
+    function updateAssessment() { /* just updates slider visuals */ }
+
+    function showAssessmentResult() {
+        const sliders = document.querySelectorAll('#assessmentSliders input[type="range"]');
+        let total = 0;
+        sliders.forEach(s => total += parseInt(s.value));
+
+        const result = document.getElementById('assessmentResult');
+        const title = document.getElementById('assessmentTitle');
+        const text = document.getElementById('assessmentText');
+
+        let titleText, bodyText;
+        if (total <= 15) {
+            titleText = '🔴 Score: ' + total + '/40 — High Owner Dependency';
+            bodyText = 'Your business is heavily dependent on you for day-to-day operations. This is the most critical area to address for growth. Start with one task: document a process, assign it to your most capable team member, and begin the handover this week. Without action, growth will remain limited by your personal capacity.';
+        } else if (total <= 24) {
+            titleText = '🟡 Score: ' + total + '/40 — Emerging Delegation';
+            bodyText = 'You have started delegating some tasks, but there are significant gaps in systems, training, or accountability. Focus on strengthening the weakest areas — likely process documentation and regular reporting. Choose two more tasks to delegate in the next 30 days and set up a weekly review meeting if you have not already.';
+        } else if (total <= 32) {
+            titleText = '🔵 Score: ' + total + '/40 — Developing Delegation Culture';
+            bodyText = 'Good progress! Your team handles many operational tasks, and you have some systems in place. The next step is to formalise KPIs for each delegated area and begin developing your managers for more strategic responsibilities. Focus on moving tasks from Level 2 (shared) to Level 3 (delegated with reporting).';
+        } else {
+            titleText = '🟢 Score: ' + total + '/40 — Strong Delegation Maturity';
+            bodyText = 'Excellent! Your business operates with strong delegation systems. Your managers make confident decisions, reporting is structured, and you focus mainly on strategy and growth. Continue refining your systems, develop the next generation of leaders, and consider whether your delegation model can scale to new markets or service lines.';
+        }
+
+        title.textContent = titleText;
+        text.textContent = bodyText;
+        result.classList.add('visible');
+        result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function resetAssessment() {
+        const sliders = document.querySelectorAll('#assessmentSliders input[type="range"]');
+        sliders.forEach((s, i) => {
+            s.value = 3;
+            document.getElementById('val' + (i + 1)).textContent = '3';
+        });
+        document.getElementById('assessmentResult').classList.remove('visible');
+    }
+
+    // ─── ACTION PLAN ───
+    function generatePlan() {
+        const tasks = document.getElementById('tasks').value.trim();
+        const people = document.getElementById('people').value.trim();
+        const training = document.getElementById('training').value.trim();
+        const reporting = document.getElementById('reporting').value.trim();
+        const targetDate = document.getElementById('targetDate').value.trim();
+
+        if (!tasks && !people) {
+            alert('Please fill in at least the first two fields to generate your plan.');
+            return;
+        }
+
+        let plan = '';
+        if (tasks) plan += '▸ Tasks to Delegate: ' + tasks + '\n\n';
+        if (people) plan += '▸ Assigned To: ' + people + '\n\n';
+        if (training) plan += '▸ Training Required: ' + training + '\n\n';
+        if (reporting) plan += '▸ Reporting System: ' + reporting + '\n\n';
+        if (targetDate) plan += '▸ Target Completion: ' + targetDate + '\n\n';
+        plan += '⏩ Next Step: Begin the Shadow phase this week — have your chosen team member observe how you handle the selected tasks for the first 1–2 weeks before gradually handing over responsibility.';
+
+        const result = document.getElementById('planResult');
+        document.getElementById('planText').innerText = plan;
+        result.classList.add('visible');
+        result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function clearPlan() {
+        document.getElementById('tasks').value = '';
+        document.getElementById('people').value = '';
+        document.getElementById('training').value = '';
+        document.getElementById('reporting').value = '';
+        document.getElementById('targetDate').value = '';
+        document.getElementById('planResult').classList.remove('visible');
+    }
+
+    // ─── CHECKLIST ───
+    function toggleCheck(item) {
+        const cb = item.querySelector('input[type="checkbox"]');
+        cb.checked = !cb.checked;
+        item.classList.toggle('checked', cb.checked);
+        updateChecklist();
+    }
+
+    function updateChecklist() {
+        const items = document.querySelectorAll('#weeklyChecklist .checklist-item');
+        const checked = document.querySelectorAll('#weeklyChecklist input:checked').length;
+        const total = items.length;
+        const pct = Math.round((checked / total) * 100);
+        document.getElementById('checklistProgress').style.width = pct + '%';
+        document.getElementById('checklistText').textContent = checked + ' / ' + total + ' completed';
+    }
+
+    // ─── QUIZ ───
+    function selectQuiz(quizId, el, isCorrect) {
+        const container = document.getElementById(quizId);
+        if (container.dataset.answered) return;
+        container.dataset.answered = 'true';
+
+        const options = container.querySelectorAll('.quiz-option');
+        options.forEach(opt => opt.style.pointerEvents = 'none');
+
+        if (isCorrect) {
+            el.classList.add('correct');
+            container.querySelector('.quiz-feedback.correct-fb').classList.add('show');
+        } else {
+            el.classList.add('incorrect');
+            // highlight the correct answer
+            options.forEach(opt => {
+                if (opt.getAttribute('onclick') && opt.getAttribute('onclick').includes('true')) {
+                    opt.classList.add('correct');
+                }
+            });
+            container.querySelector('.quiz-feedback.incorrect-fb').classList.add('show');
+        }
+    }
+
+    // smooth scroll for TOC
+    document.querySelectorAll('.toc a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+</script>
+
+</body>
+</html>
