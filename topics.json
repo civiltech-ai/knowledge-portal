@@ -20,6 +20,16 @@
       "dateAdded": "2026-05-01",
       "visible": true
     },
+      {
+      "id": "busy-is-not-productive",
+      "title": "Busy is not productive",
+      "description": "Why working 14-hour days does not automatically grow your engineering business. A comprehensive interactive guide exploring the difference between reactive busyness and strategic productivity — with a time audit tool, real-world Dubai contracting case study, 12-week transition checklist, and scenario-based knowledge quizzes to help construction business owners redirect their energy toward systems, delegation, and scalable growth.",
+      "category": "systems",
+      "file": "busy-is-not-productive.html",
+      "tags": ["team", "systems", "strategy"],
+      "dateAdded": "2026-05-01",
+      "visible": true
+    },
     {
       "id": "customer-drift",
       "title": "Customers Don't Leave, They Drift Away",
