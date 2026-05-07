@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profit is Planned, Not Left Over — Civil-Tech.ai Knowledge Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400;1,9..40,500&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ct-teal:#1bb5a5;--ct-teal-dark:#148f82;--ct-teal-deeper:#0e6e64;
+            --ct-teal-light:#e6f7f5;--ct-teal-mist:#f0faf8;
+            --ct-gradient:linear-gradient(135deg,#1bb5a5 0%,#17a394 50%,#2ec4b6 100%);
+            --ct-navy:#1a2332;--ct-dark:#1e293b;--ct-body:#475569;
+            --ct-muted:#94a3b8;--ct-faint:#cbd5e1;
+            --ct-bg:#f1f5f9;--ct-card:#ffffff;--ct-border:#e2e8f0;
+            --ct-green:#16a34a;--ct-green-bg:#f0fdf4;--ct-green-border:#bbf7d0;
+            --ct-red:#dc2626;--ct-red-bg:#fef2f2;--ct-red-border:#fecaca;
+            --ct-orange:#ea880a;--ct-orange-bg:#fffbeb;--ct-orange-border:#fde68a;
+            --ct-blue:#2563eb;--ct-blue-bg:#eff6ff;
+            --radius:16px;--radius-sm:10px;--radius-xs:6px;
+            --shadow-xs:0 1px 2px rgba(0,0,0,0.05);
+            --shadow-sm:0 1px 4px rgba(0,0,0,0.06),0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md:0 4px 16px rgba(0,0,0,0.07),0 1px 4px rgba(0,0,0,0.04);
+        }
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:'DM Sans',-apple-system,sans-serif;background:var(--ct-bg);color:var(--ct-body);line-height:1.72;-webkit-font-smoothing:antialiased}
+
+        /* ── NAVBAR ── */
+        .ct-navbar{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.88);backdrop-filter:blur(16px) saturate(180%);-webkit-backdrop-filter:blur(16px) saturate(180%);border-bottom:1px solid var(--ct-border);height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1rem,4vw,2.5rem)}
+        .ct-navbar-left{display:flex;align-items:center;gap:14px}
+        .ct-logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.2rem;color:var(--ct-teal);text-decoration:none}
+        .ct-logo span{color:var(--ct-navy)}
+        .ct-badge{font-size:.65rem;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--ct-teal);border:1.5px solid var(--ct-teal);padding:3px 11px;border-radius:20px;white-space:nowrap}
+        .ct-back{font-size:.87rem;font-weight:500;color:var(--ct-body);text-decoration:none;display:flex;align-items:center;gap:5px;transition:color .2s}
+        .ct-back:hover{color:var(--ct-teal)}
+        .ct-back svg{width:16px;height:16px}
+
+        /* ── HERO ── */
+        .ct-hero{background:var(--ct-gradient);position:relative;overflow:hidden;padding:clamp(2.5rem,6vw,4rem) clamp(1.2rem,4vw,2.5rem) clamp(2rem,5vw,3.5rem)}
+        .ct-hero-orb1{position:absolute;top:-80px;right:-40px;width:340px;height:340px;border-radius:50%;background:rgba(255,255,255,.07);pointer-events:none}
+        .ct-hero-orb2{position:absolute;bottom:-60px;right:100px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.05);pointer-events:none}
+        .ct-hero-orb3{position:absolute;top:30%;left:-60px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.04);pointer-events:none}
+        .ct-hero-inner{max-width:820px;margin:0 auto;position:relative;z-index:1}
+        .ct-hero-cat{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:rgba(255,255,255,.8);margin-bottom:.65rem}
+        .ct-hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(1.7rem,4.5vw,2.65rem);color:#fff;line-height:1.18;margin-bottom:1rem;letter-spacing:-.01em}
+        .ct-hero-desc{font-size:clamp(.95rem,2vw,1.06rem);color:rgba(255,255,255,.86);max-width:620px;line-height:1.72}
+        .ct-hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.5rem}
+        .ct-hero-tag{font-size:.76rem;font-weight:600;background:rgba(255,255,255,.16);color:#fff;padding:5px 14px;border-radius:20px;backdrop-filter:blur(4px);white-space:nowrap}
+
+        /* ── CONTENT ── */
+        .ct-content{max-width:820px;margin:0 auto;padding:clamp(1.5rem,4vw,2.5rem) clamp(1rem,3vw,1.5rem) 4rem}
+
+        /* ── PROGRESS ── */
+        .ct-progress{background:var(--ct-card);border-radius:var(--radius);box-shadow:var(--shadow-md);padding:1.25rem 1.6rem;margin-bottom:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem}
+        .ct-progress-title{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:.92rem;color:var(--ct-dark);display:flex;align-items:center;gap:8px}
+        .ct-progress-bar-wrap{flex:1;min-width:180px;max-width:380px}
+        .ct-progress-track{height:8px;background:var(--ct-teal-light);border-radius:8px;overflow:hidden}
+        .ct-progress-fill{height:100%;background:var(--ct-gradient);border-radius:8px;width:0%;transition:width .7s cubic-bezier(.4,0,.2,1)}
+        .ct-progress-label{font-size:.74rem;color:var(--ct-muted);margin-top:3px;text-align:right}
+
+        /* ── SECTION CARD ── */
+        .ct-section{background:var(--ct-card);border-radius:var(--radius);border:1px solid var(--ct-border);box-shadow:var(--shadow-sm);padding:clamp(1.5rem,3vw,2.2rem);margin-bottom:1.25rem;transition:box-shadow .3s}
+        .ct-section:hover{box-shadow:var(--shadow-md)}
+        .ct-section-num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:9px;background:var(--ct-teal-light);color:var(--ct-teal);font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:.85rem;margin-bottom:.75rem}
+        .ct-section h2{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:clamp(1.15rem,2.5vw,1.32rem);color:var(--ct-dark);line-height:1.32;margin-bottom:.9rem}
+        .ct-section h3{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1rem;color:var(--ct-dark);margin-top:1.4rem;margin-bottom:.4rem}
+        .ct-section p{font-size:.95rem;margin-bottom:.7rem}
+
+        /* ── CALLOUT ── */
+        .ct-callout{border-radius:var(--radius-sm);padding:1rem 1.2rem;margin:1rem 0}
+        .ct-callout.insight{background:var(--ct-teal-mist);border-left:4px solid var(--ct-teal)}
+        .ct-callout.warning{background:var(--ct-orange-bg);border-left:4px solid var(--ct-orange)}
+        .ct-callout.danger{background:var(--ct-red-bg);border-left:4px solid var(--ct-red)}
+        .ct-callout.success{background:var(--ct-green-bg);border-left:4px solid var(--ct-green)}
+        .ct-callout-title{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:.87rem;margin-bottom:.25rem;display:flex;align-items:center;gap:6px}
+        .ct-callout p{font-size:.91rem;margin-bottom:0}
+
+        /* ── FORMULA BLOCK ── */
+        .ct-formula{display:flex;flex-direction:column;gap:.6rem;margin:1.2rem 0}
+        .ct-formula-row{display:flex;align-items:center;gap:.8rem;padding:.9rem 1.2rem;border-radius:var(--radius-sm);font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:.95rem}
+        .ct-formula-row.old{background:var(--ct-red-bg);color:var(--ct-red);border:1px solid var(--ct-red-border);text-decoration:line-through;opacity:.7}
+        .ct-formula-row.new{background:var(--ct-green-bg);color:var(--ct-green);border:1px solid var(--ct-green-border);font-size:1.02rem}
+        .ct-formula-row .icon{font-style:normal;margin-right:4px}
+
+        /* ── TABLE ── */
+        .ct-table-wrap{overflow-x:auto;margin:1rem 0;border-radius:var(--radius-sm);box-shadow:var(--shadow-xs)}
+        .ct-table{width:100%;border-collapse:collapse;min-width:480px}
+        .ct-table th{background:var(--ct-navy);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:.82rem;padding:10px 14px;text-align:left;white-space:nowrap}
+        .ct-table th:first-child{border-radius:var(--radius-sm) 0 0 0}
+        .ct-table th:last-child{border-radius:0 var(--radius-sm) 0 0}
+        .ct-table td{padding:10px 14px;font-size:.89rem;border-bottom:1px solid var(--ct-border)}
+        .ct-table tbody tr:nth-child(even) td{background:#f8fafc}
+        .ct-table tbody tr:last-child td{border-bottom:none}
+        .badge-good{display:inline-block;background:var(--ct-green-bg);color:var(--ct-green);font-weight:600;font-size:.76rem;padding:2px 10px;border-radius:12px}
+        .badge-bad{display:inline-block;background:var(--ct-red-bg);color:var(--ct-red);font-weight:600;font-size:.76rem;padding:2px 10px;border-radius:12px}
+
+        /* ── BEFORE / AFTER ── */
+        .ct-versus{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.2rem 0}
+        .ct-vs-block{border-radius:var(--radius-sm);padding:1.2rem}
+        .ct-vs-block.before{background:var(--ct-red-bg);border:1px solid var(--ct-red-border)}
+        .ct-vs-block.after{background:var(--ct-green-bg);border:1px solid var(--ct-green-border)}
+        .ct-vs-block h4{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:.88rem;margin-bottom:.5rem}
+        .ct-vs-block.before h4{color:var(--ct-red)}
+        .ct-vs-block.after h4{color:var(--ct-green)}
+        .ct-vs-list{list-style:none;padding:0}
+        .ct-vs-list li{font-size:.86rem;padding:2px 0;display:flex;gap:6px;align-items:flex-start}
+
+        /* ── CALCULATOR ── */
+        .ct-tool{background:linear-gradient(135deg,var(--ct-teal-mist) 0%,var(--ct-blue-bg) 100%);border:2px solid var(--ct-teal);border-radius:var(--radius);padding:clamp(1.4rem,3vw,2rem);margin:1.5rem 0}
+        .ct-tool h3{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;color:var(--ct-teal-dark);margin-top:0;margin-bottom:.3rem;display:flex;align-items:center;gap:8px;font-size:1.05rem}
+        .ct-tool>p{font-size:.88rem;margin-bottom:1rem;color:var(--ct-body)}
+        .ct-calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:1rem}
+        .ct-calc-field label{display:block;font-size:.8rem;font-weight:600;color:var(--ct-dark);margin-bottom:3px}
+        .ct-calc-field input{width:100%;padding:9px 12px;border:1.5px solid var(--ct-border);border-radius:var(--radius-xs);font-family:'DM Sans',sans-serif;font-size:.93rem;color:var(--ct-dark);background:#fff;transition:border-color .2s}
+        .ct-calc-field input:focus{outline:none;border-color:var(--ct-teal)}
+        .ct-btn{background:var(--ct-gradient);color:#fff;border:none;padding:11px 26px;border-radius:var(--radius-sm);font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;transition:transform .15s,box-shadow .25s}
+        .ct-btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(27,181,165,.28)}
+        .ct-btn:active{transform:translateY(0)}
+        .ct-result{display:none;margin-top:1rem;background:#fff;border-radius:var(--radius-sm);padding:1.2rem;box-shadow:var(--shadow-sm)}
+        .ct-result.visible{display:block;animation:ctFadeUp .4s ease}
+        .ct-result-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--ct-border)}
+        .ct-result-row:last-child{border-bottom:none}
+        .ct-result-label{font-size:.88rem;color:var(--ct-body)}
+        .ct-result-value{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1rem;color:var(--ct-dark)}
+        .ct-result-value.profit{color:var(--ct-green)}
+        .ct-result-value.expense{color:var(--ct-red)}
+
+        /* ── QUIZ ── */
+        .ct-quiz{background:var(--ct-card);border:2px dashed var(--ct-teal);border-radius:var(--radius);padding:clamp(1.3rem,3vw,1.8rem);margin:1.2rem 0}
+        .ct-quiz h3{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;color:var(--ct-teal-dark);margin-top:0;margin-bottom:.3rem;font-size:.95rem}
+        .ct-quiz-q{font-size:.93rem;font-weight:500;color:var(--ct-dark);margin-bottom:.8rem}
+        .ct-quiz-opts{list-style:none;padding:0}
+        .ct-quiz-opts li{padding:9px 13px;margin-bottom:6px;border:1.5px solid var(--ct-border);border-radius:var(--radius-sm);cursor:pointer;font-size:.9rem;transition:all .2s}
+        .ct-quiz-opts li:hover{border-color:var(--ct-teal);background:var(--ct-teal-light)}
+        .ct-quiz-opts li.correct{border-color:var(--ct-green);background:var(--ct-green-bg);color:var(--ct-green);font-weight:600;pointer-events:none}
+        .ct-quiz-opts li.wrong{border-color:var(--ct-red);background:var(--ct-red-bg);color:var(--ct-red);pointer-events:none}
+        .ct-quiz-opts li.locked{pointer-events:none;opacity:.55}
+        .ct-quiz-fb{display:none;margin-top:.6rem;padding:8px 12px;border-radius:var(--radius-xs);font-size:.86rem;font-weight:500}
+        .ct-quiz-fb.show{display:block;animation:ctFadeUp .3s ease}
+        .ct-quiz-fb.fb-ok{background:var(--ct-green-bg);color:#15803d}
+        .ct-quiz-fb.fb-no{background:var(--ct-red-bg);color:#b91c1c}
+
+        /* ── FLOW STEPS ── */
+        .ct-flow{display:flex;flex-direction:column;margin:1.3rem 0}
+        .ct-flow-step{display:flex;gap:1rem}
+        .ct-flow-marker{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
+        .ct-flow-dot{width:38px;height:38px;border-radius:50%;background:var(--ct-gradient);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:.82rem}
+        .ct-flow-line{width:2px;flex:1;min-height:16px;background:var(--ct-teal-light)}
+        .ct-flow-step:last-child .ct-flow-line{display:none}
+        .ct-flow-body{padding:5px 0 1.2rem}
+        .ct-flow-body h4{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:.95rem;color:var(--ct-dark);margin-bottom:.2rem}
+        .ct-flow-body p{font-size:.89rem;margin-bottom:0}
+
+        /* ── CHECKLIST ── */
+        .ct-checklist{list-style:none;padding:0;margin:1rem 0}
+        .ct-checklist li{display:flex;align-items:flex-start;gap:11px;padding:8px 0;border-bottom:1px solid var(--ct-border);font-size:.92rem;cursor:pointer;user-select:none;transition:opacity .2s}
+        .ct-checklist li:last-child{border-bottom:none}
+        .ct-chk{flex-shrink:0;width:21px;height:21px;border:2px solid var(--ct-faint);border-radius:5px;display:flex;align-items:center;justify-content:center;transition:all .2s;margin-top:2px}
+        .ct-checklist li.done .ct-chk{background:var(--ct-teal);border-color:var(--ct-teal)}
+        .ct-checklist li.done .ct-chk::after{content:'✓';color:#fff;font-size:.72rem;font-weight:700}
+        .ct-checklist li.done .ct-chk-label{text-decoration:line-through;opacity:.55}
+
+        /* ── BOTTOM / FOOTER ── */
+        .ct-bottom{display:flex;justify-content:space-between;align-items:center;padding:1.3rem 0;margin-top:.8rem;border-top:1px solid var(--ct-border)}
+        .ct-bottom a{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:.88rem;color:var(--ct-teal);text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:opacity .2s}
+        .ct-bottom a:hover{opacity:.7}
+        .ct-footer{text-align:center;padding:1.8rem 1rem;font-size:.79rem;color:var(--ct-muted);border-top:1px solid var(--ct-border)}
+
+        @keyframes ctFadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+        @media(max-width:640px){
+            .ct-versus{grid-template-columns:1fr}
+            .ct-calc-grid{grid-template-columns:1fr}
+            .ct-progress{flex-direction:column;align-items:flex-start}
+            .ct-progress-bar-wrap{max-width:100%}
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════ NAVBAR ═══════════ -->
+<nav class="ct-navbar">
+    <div class="ct-navbar-left">
+        <a href="https://civiltech-ai.github.io/knowledge-portal/" class="ct-logo">Civil-Tech<span>.ai</span></a>
+        <span class="ct-badge">Knowledge Portal</span>
+    </div>
+    <a href="https://civiltech-ai.github.io/knowledge-portal/" class="ct-back">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" clip-rule="evenodd"/></svg>
+        Back to Library
+    </a>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<header class="ct-hero">
+    <div class="ct-hero-orb1"></div>
+    <div class="ct-hero-orb2"></div>
+    <div class="ct-hero-orb3"></div>
+    <div class="ct-hero-inner">
+        <div class="ct-hero-cat">💰 Financial Management</div>
+        <h1>Profit is Planned,<br>Not Left Over</h1>
+        <p class="ct-hero-desc">
+            Stop calculating profit at month-end. Decide it upfront, then build your spending around what remains. This guide shows Dubai engineering firm owners how to take control of their margins—starting this week.
+        </p>
+        <div class="ct-hero-tags">
+            <span class="ct-hero-tag">📖 8 min read</span>
+            <span class="ct-hero-tag">⚡ Interactive</span>
+            <span class="ct-hero-tag">🧮 Profit Calculator</span>
+            <span class="ct-hero-tag">🛠️ Action Steps</span>
+        </div>
+    </div>
+</header>
+
+<!-- ═══════════ CONTENT ═══════════ -->
+<main class="ct-content">
+
+    <!-- Progress -->
+    <div class="ct-progress">
+        <div class="ct-progress-title">📈 Your Progress</div>
+        <div class="ct-progress-bar-wrap">
+            <div class="ct-progress-track"><div class="ct-progress-fill" id="pBar"></div></div>
+            <div class="ct-progress-label" id="pLabel">0 of 6 sections completed</div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         SECTION 1 — THE CORE IDEA
+    ══════════════════════════════════════ -->
+    <section class="ct-section" id="s1">
+        <div class="ct-section-num">1</div>
+        <h2>The Core Idea — Flip the Profit Formula</h2>
+
+        <p>Most engineering firm owners use this formula:</p>
+
+        <div class="ct-formula">
+            <div class="ct-formula-row old"><span class="icon">❌</span> Revenue − Expenses = Profit (whatever is left)</div>
+            <div class="ct-formula-row new"><span class="icon">✅</span> Revenue − Planned Profit = Allowable Expenses</div>
+        </div>
+
+        <p>The first formula makes profit an afterthought. The second makes it a decision you take <strong>before</strong> spending a single dirham.</p>
+
+        <div class="ct-callout insight">
+            <div class="ct-callout-title">💡 The Profit-First Principle</div>
+            <p>Decide your profit percentage upfront. Set that money aside the moment revenue comes in. Run the entire business on what remains. This one shift creates spending discipline automatically.</p>
+        </div>
+
+        <h3>Why This Matters for Engineering Firms</h3>
+        <p>Dubai-based civil and structural consultancies face a unique challenge: project fees are large but payments are often delayed 30–90 days. Retentions lock up 5–10% for months. Meanwhile, overhead keeps running — licensed engineers, ETABS/SAFE licences, office rent, site visit costs.</p>
+        <p>Without a planned profit, these firms appear busy but end the year with little to show for it. The expenses always grow just enough to consume whatever comes in.</p>
+
+        <div class="ct-callout warning">
+            <div class="ct-callout-title">⚠️ Common Trap</div>
+            <p>Accepting a project at a low fee "just to keep the team busy" is the most common margin killer. If you don't know your minimum acceptable profit, you can't know which projects to decline.</p>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION 2 — TEACHING EXAMPLE
+    ══════════════════════════════════════ -->
+    <section class="ct-section" id="s2">
+        <div class="ct-section-num">2</div>
+        <h2>Teaching Example — Same Revenue, Very Different Results</h2>
+
+        <p>Two structural engineering consultancies in Dubai. Same market. Same monthly revenue. Completely different financial outcomes.</p>
+
+        <div class="ct-table-wrap">
+            <table class="ct-table">
+                <thead>
+                    <tr>
+                        <th>Aspect</th>
+                        <th>Firm A — "Spend First"</th>
+                        <th>Firm B — "Profit First"</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Monthly Revenue</strong></td><td>AED 500,000</td><td>AED 500,000</td></tr>
+                    <tr><td><strong>Approach</strong></td><td>Pays all bills, hopes for leftover</td><td>Reserves 20% profit upfront</td></tr>
+                    <tr><td><strong>Staff Costs</strong></td><td>AED 250,000</td><td>AED 220,000</td></tr>
+                    <tr><td><strong>Office &amp; Overhead</strong></td><td>AED 110,000</td><td>AED 80,000</td></tr>
+                    <tr><td><strong>Sub-consultants</strong></td><td>AED 80,000</td><td>AED 60,000</td></tr>
+                    <tr><td><strong>Miscellaneous</strong></td><td>AED 35,000</td><td>AED 40,000</td></tr>
+                    <tr>
+                        <td><strong>Total Expenses</strong></td>
+                        <td><span class="badge-bad">AED 475,000</span></td>
+                        <td><span class="badge-good">AED 400,000</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Monthly Profit</strong></td>
+                        <td><span class="badge-bad">AED 25,000 (5%)</span></td>
+                        <td><span class="badge-good">AED 100,000 (20%)</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Annual Profit</strong></td>
+                        <td><span class="badge-bad">AED 300,000</span></td>
+                        <td><span class="badge-good">AED 1,200,000</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="ct-callout insight">
+            <div class="ct-callout-title">💡 Key Takeaway</div>
+            <p>Firm B earns <strong>4× the profit</strong> on the same revenue. The difference is not better projects or higher fees — it is spending discipline created by deciding profit first.</p>
+        </div>
+
+        <h3>What Firm B Does Differently</h3>
+        <p>Firm B negotiates better sub-consultant rates, uses cloud-based software instead of costly on-premise servers, and runs a leaner team with higher utilisation. None of these are dramatic changes. They are natural outcomes of having a clear expense ceiling.</p>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION 3 — WHY THIS MATTERS
+    ══════════════════════════════════════ -->
+    <section class="ct-section" id="s3">
+        <div class="ct-section-num">3</div>
+        <h2>Why This Matters for Your Engineering Business</h2>
+
+        <div class="ct-versus">
+            <div class="ct-vs-block before">
+                <h4>❌ Without Profit Planning</h4>
+                <ul class="ct-vs-list">
+                    <li><span>•</span> Expenses creep up every quarter</li>
+                    <li><span>•</span> Owner feels busy but isn't building wealth</li>
+                    <li><span>•</span> No cash buffer for delayed payments</li>
+                    <li><span>•</span> Can't invest in BIM, drones, or new hires</li>
+                    <li><span>•</span> Forced to accept low-margin projects</li>
+                    <li><span>•</span> Growth doesn't translate into prosperity</li>
+                </ul>
+            </div>
+            <div class="ct-vs-block after">
+                <h4>✅ With Profit Planning</h4>
+                <ul class="ct-vs-list">
+                    <li><span>•</span> Clear spending limits create discipline</li>
+                    <li><span>•</span> Cash reserves grow for slow seasons</li>
+                    <li><span>•</span> Confident decision-making on every cost</li>
+                    <li><span>•</span> Can invest in technology &amp; talent</li>
+                    <li><span>•</span> Confidently decline unprofitable projects</li>
+                    <li><span>•</span> Predictable owner income every month</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ct-callout danger">
+            <div class="ct-callout-title">🚨 Real Scenario</div>
+            <p>A mid-size structural firm in Business Bay completed an AED 2M project. After paying sub-consultants, overtime, and municipality fees, the actual profit was AED 40,000 — a 2% margin on months of intensive work. Had the owner set a 15% target before accepting, the fee negotiation would have been very different.</p>
+        </div>
+
+        <h3>The Dubai-Specific Risk</h3>
+        <p>Revenue is lumpy in project-based businesses. You might invoice AED 800,000 one month and AED 200,000 the next. High-revenue months create a false sense of abundance, leading to overspending that becomes unsustainable during lean periods. Profit planning prevents this boom-bust cycle.</p>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION 4 — INTERACTIVE CALCULATOR
+    ══════════════════════════════════════ -->
+    <section class="ct-section" id="s4">
+        <div class="ct-section-num">4</div>
+        <h2>Interactive Tool — Profit-First Calculator</h2>
+        <p>Enter your numbers below. See exactly how much you can afford to spend after reserving your target profit.</p>
+
+        <div class="ct-tool">
+            <h3>🧮 Your Profit-First Calculator</h3>
+            <p>Plug in your expected monthly revenue and your desired profit percentage:</p>
+
+            <div class="ct-calc-grid">
+                <div class="ct-calc-field">
+                    <label>Expected Monthly Revenue (AED)</label>
+                    <input type="number" id="cRev" placeholder="e.g. 500000" value="500000">
+                </div>
+                <div class="ct-calc-field">
+                    <label>Target Profit Percentage (%)</label>
+                    <input type="number" id="cPct" placeholder="e.g. 20" value="20" min="1" max="80">
+                </div>
+            </div>
+            <button class="ct-btn" onclick="doCalc()">Calculate My Budget →</button>
+
+            <div class="ct-result" id="cRes">
+                <div class="ct-result-row">
+                    <span class="ct-result-label">Monthly Revenue</span>
+                    <span class="ct-result-value" id="rRev">—</span>
+                </div>
+                <div class="ct-result-row">
+                    <span class="ct-result-label">Planned Profit (set aside first)</span>
+                    <span class="ct-result-value profit" id="rProf">—</span>
+                </div>
+                <div class="ct-result-row">
+                    <span class="ct-result-label">Maximum Allowable Expenses</span>
+                    <span class="ct-result-value expense" id="rExp">—</span>
+                </div>
+                <div class="ct-result-row">
+                    <span class="ct-result-label">Annual Projected Profit</span>
+                    <span class="ct-result-value profit" id="rAnn">—</span>
+                </div>
+                <div class="ct-result-row" style="border-top:2px solid var(--ct-teal);padding-top:10px">
+                    <span class="ct-result-label"><strong>Weekly expense cap</strong></span>
+                    <span class="ct-result-value" id="rWk">—</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="ct-callout insight">
+            <div class="ct-callout-title">💡 How to Use Your Number</div>
+            <p>Break your expense ceiling into categories: ~55% for salaries, ~18% for office/overhead, ~12% for sub-consultants, ~15% flexible buffer. Review weekly to stay on track.</p>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION 5 — KNOWLEDGE CHECK
+    ══════════════════════════════════════ -->
+    <section class="ct-section" id="s5">
+        <div class="ct-section-num">5</div>
+        <h2>Knowledge Check — Test Your Understanding</h2>
+
+        <div class="ct-quiz">
+            <h3>Question 1 of 3</h3>
+            <p class="ct-quiz-q">Your firm invoices AED 600,000 this month. You target 20% profit. What is the maximum you can spend?</p>
+            <ul class="ct-quiz-opts" id="q1o">
+                <li onclick="qAns(this,'q1',false)">AED 600,000 — spend as needed, save whatever is left</li>
+                <li onclick="qAns(this,'q1',true)">AED 480,000 — because AED 120,000 is reserved as profit first</li>
+                <li onclick="qAns(this,'q1',false)">AED 540,000 — a 10% target is more realistic</li>
+            </ul>
+            <div class="ct-quiz-fb" id="q1fb"></div>
+        </div>
+
+        <div class="ct-quiz">
+            <h3>Question 2 of 3</h3>
+            <p class="ct-quiz-q">A project is offered at a fee that would yield only 3% margin. Your target is 15%. What should you do?</p>
+            <ul class="ct-quiz-opts" id="q2o">
+                <li onclick="qAns(this,'q2',false)">Accept it to keep the team busy — some profit beats none</li>
+                <li onclick="qAns(this,'q2',true)">Renegotiate the fee or decline — it doesn't meet your threshold</li>
+                <li onclick="qAns(this,'q2',false)">Accept and cut staff salaries to improve the margin</li>
+            </ul>
+            <div class="ct-quiz-fb" id="q2fb"></div>
+        </div>
+
+        <div class="ct-quiz">
+            <h3>Question 3 of 3</h3>
+            <p class="ct-quiz-q">What is the correct profit-first formula?</p>
+            <ul class="ct-quiz-opts" id="q3o">
+                <li onclick="qAns(this,'q3',false)">Revenue − Expenses = Profit</li>
+                <li onclick="qAns(this,'q3',true)">Revenue − Planned Profit = Allowable Expenses</li>
+                <li onclick="qAns(this,'q3',false)">Expenses − Revenue = Loss or Profit</li>
+            </ul>
+            <div class="ct-quiz-fb" id="q3fb"></div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION 6 — ACTION PLAN
+    ══════════════════════════════════════ -->
+    <section class="ct-section" id="s6">
+        <div class="ct-section-num">6</div>
+        <h2>Action Plan — Implement This Week</h2>
+        <p>Five clear steps. No complex accounting required. Start today.</p>
+
+        <div class="ct-flow">
+            <div class="ct-flow-step">
+                <div class="ct-flow-marker"><div class="ct-flow-dot">1</div><div class="ct-flow-line"></div></div>
+                <div class="ct-flow-body">
+                    <h4>Set Your Target Profit %</h4>
+                    <p>Review your last 3 months of revenue. Pick a target — 15% is a strong starting point. If you're currently at 5%, aim for 12% first and work up.</p>
+                </div>
+            </div>
+            <div class="ct-flow-step">
+                <div class="ct-flow-marker"><div class="ct-flow-dot">2</div><div class="ct-flow-line"></div></div>
+                <div class="ct-flow-body">
+                    <h4>Separate the Profit Immediately</h4>
+                    <p>When client payments land, transfer your profit % into a separate "Profit Hold" bank account. This money is not for operations. Treat it as already spent.</p>
+                </div>
+            </div>
+            <div class="ct-flow-step">
+                <div class="ct-flow-marker"><div class="ct-flow-dot">3</div><div class="ct-flow-line"></div></div>
+                <div class="ct-flow-body">
+                    <h4>Calculate Your Expense Ceiling</h4>
+                    <p>The remaining amount is your total budget. Break it down: salaries, office, sub-consultants, buffer. Use the calculator above to get your numbers.</p>
+                </div>
+            </div>
+            <div class="ct-flow-step">
+                <div class="ct-flow-marker"><div class="ct-flow-dot">4</div><div class="ct-flow-line"></div></div>
+                <div class="ct-flow-body">
+                    <h4>Review Expenses Weekly</h4>
+                    <p>Every Sunday (UAE work-week start), spend 20 minutes checking what was spent last week against budget. Catch overspending before month-end.</p>
+                </div>
+            </div>
+            <div class="ct-flow-step">
+                <div class="ct-flow-marker"><div class="ct-flow-dot">5</div><div class="ct-flow-line"></div></div>
+                <div class="ct-flow-body">
+                    <h4>Screen Every New Project</h4>
+                    <p>Before accepting any project: estimate cost, subtract from fee. Does the remainder meet your profit target? If not, renegotiate or walk away.</p>
+                </div>
+            </div>
+        </div>
+
+        <h3>✅ Weekly Checklist</h3>
+        <p>Click each item as you complete it:</p>
+
+        <ul class="ct-checklist" id="chkList">
+            <li onclick="chkToggle(this)"><span class="ct-chk"></span><span class="ct-chk-label">Reviewed last 3 months' revenue and identified monthly average</span></li>
+            <li onclick="chkToggle(this)"><span class="ct-chk"></span><span class="ct-chk-label">Set my target profit percentage: _____% </span></li>
+            <li onclick="chkToggle(this)"><span class="ct-chk"></span><span class="ct-chk-label">Opened or designated a separate bank account for profit</span></li>
+            <li onclick="chkToggle(this)"><span class="ct-chk"></span><span class="ct-chk-label">Calculated my maximum monthly expense budget</span></li>
+            <li onclick="chkToggle(this)"><span class="ct-chk"></span><span class="ct-chk-label">Broke down budget into categories (salaries, rent, software, etc.)</span></li>
+            <li onclick="chkToggle(this)"><span class="ct-chk"></span><span class="ct-chk-label">Scheduled a 20-minute weekly review every Sunday</span></li>
+            <li onclick="chkToggle(this)"><span class="ct-chk"></span><span class="ct-chk-label">Reviewed current projects to check if each meets my profit threshold</span></li>
+        </ul>
+
+        <div class="ct-callout success" style="margin-top:1.3rem">
+            <div class="ct-callout-title">🌟 Remember</div>
+            <p>You don't need complex software or an MBA. Just one decision: profit comes first, expenses come second. Start this week and within 90 days you'll see a measurable difference in your bank balance.</p>
+        </div>
+    </section>
+
+    <!-- Bottom nav -->
+    <div class="ct-bottom">
+        <a href="https://civiltech-ai.github.io/knowledge-portal/">← Back to Knowledge Portal</a>
+        <a href="#">Next Topic →</a>
+    </div>
+</main>
+
+<footer class="ct-footer">
+    Civil-Tech.ai Knowledge Portal · Practical Business Education for Dubai SME Owners · 2026
+</footer>
+
+<!-- ═══════════ JAVASCRIPT ═══════════ -->
+<script>
+(function(){
+    /* Progress */
+    const seen=new Set(),total=6;
+    function updP(){const p=Math.round(seen.size/total*100);document.getElementById('pBar').style.width=p+'%';document.getElementById('pLabel').textContent=seen.size+' of '+total+' sections completed'}
+    const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const n=parseInt(e.target.id.replace('s',''));if(!isNaN(n)){seen.add(n);updP()}}})},{threshold:.25});
+    for(let i=1;i<=total;i++){const el=document.getElementById('s'+i);if(el)obs.observe(el)}
+
+    /* Calculator */
+    window.doCalc=function(){
+        const rev=parseFloat(document.getElementById('cRev').value)||0;
+        const pct=parseFloat(document.getElementById('cPct').value)||0;
+        if(rev<=0||pct<=0||pct>=100){alert('Enter valid values (revenue > 0, profit 1–99%).');return}
+        const prof=rev*(pct/100),exp=rev-prof,ann=prof*12,wk=exp/4.33;
+        const f=n=>'AED '+n.toLocaleString('en-US',{maximumFractionDigits:0});
+        document.getElementById('rRev').textContent=f(rev);
+        document.getElementById('rProf').textContent=f(prof);
+        document.getElementById('rExp').textContent=f(exp);
+        document.getElementById('rAnn').textContent=f(ann);
+        document.getElementById('rWk').textContent=f(wk);
+        document.getElementById('cRes').classList.add('visible');
+    };
+
+    /* Quiz */
+    const qa={};
+    window.qAns=function(el,qid,ok){
+        if(qa[qid])return;qa[qid]=true;
+        const opts=el.parentElement.querySelectorAll('li');
+        opts.forEach(o=>o.classList.add('locked'));
+        if(ok){
+            el.classList.remove('locked');el.classList.add('correct');
+            const fb=document.getElementById(qid+'fb');
+            fb.textContent='✅ Correct! That\'s the profit-first approach.';
+            fb.className='ct-quiz-fb show fb-ok';
+        }else{
+            el.classList.remove('locked');el.classList.add('wrong');
+            opts.forEach(o=>{if(o.getAttribute('onclick')&&o.getAttribute('onclick').includes('true')){o.classList.remove('locked');o.classList.add('correct')}});
+            const fb=document.getElementById(qid+'fb');
+            fb.textContent='❌ Not quite. The correct answer is highlighted in green.';
+            fb.className='ct-quiz-fb show fb-no';
+        }
+    };
+
+    /* Checklist */
+    window.chkToggle=function(li){li.classList.toggle('done')};
+})();
+</script>
+</body>
+</html>
