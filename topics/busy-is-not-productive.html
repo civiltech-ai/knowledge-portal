@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busy Is Not Productive — Civil-Tech.ai Knowledge Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0bbcb7;
+            --primary-dark: #099e99;
+            --primary-light: #e6f9f8;
+            --accent: #f5a623;
+            --accent-light: #fff8ed;
+            --dark: #1a2b3c;
+            --dark-soft: #2d3e50;
+            --text: #374151;
+            --text-light: #6b7280;
+            --text-lighter: #9ca3af;
+            --bg: #f0f5f4;
+            --white: #ffffff;
+            --border: #e5e7eb;
+            --border-light: #f3f4f6;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.10);
+            --shadow-xl: 0 16px 48px rgba(0,0,0,0.12);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --gradient-teal: linear-gradient(135deg, #0bbcb7 0%, #0e9aa0 40%, #1a8a9a 100%);
+            --gradient-hero: linear-gradient(135deg, #0bbcb7 0%, #0e9aa0 30%, #1a8a9a 60%, #0bbcb7 100%);
+            --red: #ef4444;
+            --red-light: #fef2f2;
+            --green: #22c55e;
+            --green-light: #f0fdf4;
+            --blue: #3b82f6;
+            --blue-light: #eff6ff;
+            --orange: #f97316;
+            --orange-light: #fff7ed;
+            --purple: #8b5cf6;
+            --purple-light: #f5f3ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Navigation ── */
+        .navbar {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            background: rgba(255,255,255,0.95);
+        }
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+        .navbar-brand .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--primary);
+        }
+        .navbar-brand .logo-text span {
+            color: var(--dark);
+        }
+        .nav-badge {
+            background: var(--white);
+            border: 1.5px solid var(--primary);
+            color: var(--primary);
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-back:hover { color: var(--primary); }
+
+        /* ── Hero ── */
+        .hero {
+            background: var(--gradient-hero);
+            padding: 3.5rem 2rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -60%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -40%;
+            right: 5%;
+            width: 350px;
+            height: 350px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+        .hero-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-category {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(255,255,255,0.18);
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(4px);
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.88);
+            max-width: 680px;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        .hero-quote {
+            background: rgba(255,255,255,0.12);
+            border-left: 3px solid rgba(255,255,255,0.5);
+            padding: 1rem 1.5rem;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            max-width: 520px;
+            backdrop-filter: blur(4px);
+        }
+        .hero-quote p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            font-style: italic;
+        }
+        .hero-quote cite {
+            display: block;
+            margin-top: 0.4rem;
+            font-style: normal;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            font-family: 'DM Sans', sans-serif;
+        }
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+        .hero-tag {
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 14px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            backdrop-filter: blur(4px);
+        }
+
+        /* ── Layout ── */
+        .page-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        /* ── Progress Bar ── */
+        .progress-bar-container {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+        }
+        .progress-bar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+        .progress-bar-header span {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        .progress-bar-header .progress-pct {
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        .progress-track {
+            height: 8px;
+            background: var(--border-light);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-teal);
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.6s ease;
+        }
+
+        /* ── Table of Contents ── */
+        .toc {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem 1.75rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+        }
+        .toc-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-lighter);
+            margin-bottom: 1rem;
+        }
+        .toc-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        .toc-list li a {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.92rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .toc-list li a:hover {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+        }
+        .toc-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 50%;
+            font-size: 0.75rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* ── Section Cards ── */
+        .section-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 2rem 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            transition: box-shadow 0.3s;
+        }
+        .section-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+        .section-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+        .section-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        .section-icon.red { background: var(--red-light); }
+        .section-icon.green { background: var(--green-light); }
+        .section-icon.blue { background: var(--blue-light); }
+        .section-icon.orange { background: var(--orange-light); }
+        .section-icon.purple { background: var(--purple-light); }
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark);
+            line-height: 1.3;
+        }
+        .section-header h2 small {
+            display: block;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 0.2rem;
+        }
+        .section-card p {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .section-card p:last-child { margin-bottom: 0; }
+
+        /* ── Highlight Boxes ── */
+        .highlight-box {
+            border-radius: var(--radius-md);
+            padding: 1.25rem 1.5rem;
+            margin: 1.25rem 0;
+            border-left: 4px solid;
+        }
+        .highlight-box.warning {
+            background: var(--red-light);
+            border-color: var(--red);
+        }
+        .highlight-box.success {
+            background: var(--green-light);
+            border-color: var(--green);
+        }
+        .highlight-box.info {
+            background: var(--blue-light);
+            border-color: var(--blue);
+        }
+        .highlight-box.tip {
+            background: var(--orange-light);
+            border-color: var(--orange);
+        }
+        .highlight-box.insight {
+            background: var(--purple-light);
+            border-color: var(--purple);
+        }
+        .highlight-box .box-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .highlight-box.warning .box-title { color: var(--red); }
+        .highlight-box.success .box-title { color: var(--green); }
+        .highlight-box.info .box-title { color: var(--blue); }
+        .highlight-box.tip .box-title { color: var(--orange); }
+        .highlight-box.insight .box-title { color: var(--purple); }
+        .highlight-box p, .highlight-box li {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ── Comparison Table ── */
+        .comparison-wrapper {
+            margin: 1.5rem 0;
+            overflow-x: auto;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            font-size: 0.92rem;
+        }
+        .comparison-table thead th {
+            padding: 1rem 1.25rem;
+            font-weight: 700;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+        .comparison-table thead th:first-child {
+            background: var(--dark);
+            color: #fff;
+        }
+        .comparison-table thead th.bad {
+            background: #fecaca;
+            color: var(--red);
+        }
+        .comparison-table thead th.good {
+            background: #bbf7d0;
+            color: #16a34a;
+        }
+        .comparison-table tbody td {
+            padding: 0.85rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+            vertical-align: top;
+        }
+        .comparison-table tbody tr:last-child td { border-bottom: none; }
+        .comparison-table tbody td:first-child {
+            font-weight: 600;
+            color: var(--dark);
+            background: var(--border-light);
+        }
+
+        /* ── Interactive Activities ── */
+        .activity-card {
+            background: linear-gradient(135deg, #f0f5f4 0%, #e6f9f8 100%);
+            border: 2px dashed var(--primary);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 1.5rem 0;
+        }
+        .activity-card .activity-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: var(--primary);
+            color: #fff;
+            padding: 4px 14px;
+            border-radius: 14px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        .activity-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.75rem;
+        }
+        .activity-card p {
+            font-size: 0.95rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        /* ── Checklist ── */
+        .checklist {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.7rem 1rem;
+            background: var(--white);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+        }
+        .checklist li:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+        .checklist li.checked {
+            border-color: var(--green);
+            background: var(--green-light);
+        }
+        .checklist li .check-icon {
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s;
+            margin-top: 1px;
+        }
+        .checklist li.checked .check-icon {
+            background: var(--green);
+            border-color: var(--green);
+            color: #fff;
+        }
+        .checklist li .check-text {
+            font-size: 0.92rem;
+            line-height: 1.5;
+        }
+        .checklist li.checked .check-text {
+            text-decoration: line-through;
+            color: var(--text-light);
+        }
+
+        /* ── Time Audit Tracker ── */
+        .tracker-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+        .tracker-item {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .tracker-item .tracker-label {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        .tracker-item .tracker-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        .tracker-item .tracker-unit {
+            font-size: 0.75rem;
+            color: var(--text-lighter);
+            font-weight: 500;
+        }
+        .tracker-item.reactive { border-color: var(--red); }
+        .tracker-item.reactive .tracker-value { color: var(--red); }
+        .tracker-item.strategic { border-color: var(--green); }
+        .tracker-item.strategic .tracker-value { color: var(--green); }
+
+        /* Slider control */
+        .slider-group {
+            margin: 0.75rem 0;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.25rem;
+        }
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        .slider-label span {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+        .slider-label .slider-val {
+            font-weight: 700;
+            color: var(--primary);
+        }
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: var(--border);
+            border-radius: 3px;
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(11,188,183,0.3);
+        }
+
+        /* ── Scenario Cards ── */
+        .scenario-container {
+            margin: 1.5rem 0;
+        }
+        .scenario-nav {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        .scenario-btn {
+            padding: 0.5rem 1.25rem;
+            border: 1.5px solid var(--border);
+            background: var(--white);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .scenario-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .scenario-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #fff;
+        }
+        .scenario-panel {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        .scenario-panel.active { display: block; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Before/After ── */
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.25rem 0;
+        }
+        .ba-card {
+            border-radius: var(--radius-md);
+            padding: 1.25rem 1.5rem;
+            border: 1px solid;
+        }
+        .ba-card.before {
+            background: var(--red-light);
+            border-color: #fecaca;
+        }
+        .ba-card.after {
+            background: var(--green-light);
+            border-color: #bbf7d0;
+        }
+        .ba-card .ba-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .ba-card.before .ba-label { color: var(--red); }
+        .ba-card.after .ba-label { color: var(--green); }
+        .ba-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .ba-card ul li {
+            font-size: 0.88rem;
+            line-height: 1.6;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+        .ba-card.before ul li::before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            color: var(--red);
+            font-weight: 700;
+        }
+        .ba-card.after ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--green);
+            font-weight: 700;
+        }
+
+        /* ── Numbered list ── */
+        .numbered-list {
+            list-style: none;
+            counter-reset: step-counter;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+        .numbered-list li {
+            counter-increment: step-counter;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 1rem;
+            background: var(--border-light);
+            border-radius: var(--radius-sm);
+        }
+        .numbered-list li::before {
+            content: counter(step-counter);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 50%;
+            font-size: 0.78rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .numbered-list li .step-content {
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+        .numbered-list li .step-content strong {
+            color: var(--dark);
+        }
+
+        /* ── Quiz ── */
+        .quiz-container {
+            margin: 1rem 0;
+        }
+        .quiz-question {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.85rem 1.25rem;
+            background: var(--white);
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.92rem;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .quiz-option:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+        .quiz-option.correct {
+            border-color: var(--green);
+            background: var(--green-light);
+        }
+        .quiz-option.incorrect {
+            border-color: var(--red);
+            background: var(--red-light);
+        }
+        .quiz-option .option-letter {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            flex-shrink: 0;
+        }
+        .quiz-option.correct .option-letter {
+            background: var(--green);
+            color: #fff;
+        }
+        .quiz-option.incorrect .option-letter {
+            background: var(--red);
+            color: #fff;
+        }
+        .quiz-feedback {
+            margin-top: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            display: none;
+        }
+        .quiz-feedback.show { display: block; }
+        .quiz-feedback.correct-fb {
+            background: var(--green-light);
+            color: #16a34a;
+            border: 1px solid #bbf7d0;
+        }
+        .quiz-feedback.incorrect-fb {
+            background: var(--red-light);
+            color: var(--red);
+            border: 1px solid #fecaca;
+        }
+
+        /* ── Pie/Donut ── */
+        .donut-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        .donut-chart {
+            position: relative;
+            width: 180px;
+            height: 180px;
+        }
+        .donut-chart svg {
+            transform: rotate(-90deg);
+        }
+        .donut-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .donut-center .donut-pct {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        .donut-center .donut-label {
+            font-size: 0.72rem;
+            color: var(--text-lighter);
+            font-weight: 500;
+        }
+        .donut-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+        }
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        /* ── Key Takeaway ── */
+        .key-takeaway {
+            background: var(--gradient-teal);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            color: #fff;
+            margin: 1.5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .key-takeaway::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+        }
+        .key-takeaway h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            position: relative;
+        }
+        .key-takeaway p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.92);
+            position: relative;
+        }
+
+        /* ── CTA Bottom ── */
+        .cta-section {
+            background: var(--white);
+            border: 2px solid var(--primary);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.75rem;
+        }
+        .cta-section p {
+            font-size: 1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.7;
+        }
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--gradient-teal);
+            color: #fff;
+            padding: 0.85rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 14px rgba(11,188,183,0.3);
+        }
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(11,188,183,0.4);
+        }
+
+        /* ── Footer ── */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-lighter);
+            font-size: 0.82rem;
+        }
+        .footer a { color: var(--primary); text-decoration: none; }
+
+        /* ── Responsive ── */
+        @media (max-width: 700px) {
+            .navbar { padding: 0 1rem; }
+            .hero { padding: 2.5rem 1.25rem 2rem; }
+            .page-wrapper { padding: 1.25rem 1rem 3rem; }
+            .section-card { padding: 1.5rem; }
+            .before-after { grid-template-columns: 1fr; }
+            .tracker-grid { grid-template-columns: 1fr; }
+            .donut-container { flex-direction: column; }
+            .comparison-table { font-size: 0.82rem; }
+            .comparison-table thead th, .comparison-table tbody td { padding: 0.65rem 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav class="navbar">
+    <div class="navbar-brand">
+        <a href="https://civiltech-ai.github.io/knowledge-portal/" class="navbar-brand" style="text-decoration:none;">
+            <span class="logo-text">Civil-Tech<span>.ai</span></span>
+            <span class="nav-badge">Knowledge Portal</span>
+        </a>
+    </div>
+    <a href="https://civiltech-ai.github.io/knowledge-portal/" class="nav-back">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+        All Topics
+    </a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-category">🎯 Strategy &amp; Planning</div>
+        <h1>Busy Is Not Productive</h1>
+        <p class="hero-subtitle">Why working 14-hour days does not automatically grow your engineering business — and how to redirect your energy toward activities that actually move the needle on profitability, systems, and sustainable growth.</p>
+        <div class="hero-quote">
+            <p>"Busy is not productive."</p>
+            <cite>— Tim Ferriss</cite>
+        </div>
+        <div class="hero-tags">
+            <span class="hero-tag">productivity</span>
+            <span class="hero-tag">strategy</span>
+            <span class="hero-tag">delegation</span>
+            <span class="hero-tag">systems</span>
+            <span class="hero-tag">leadership</span>
+        </div>
+    </div>
+</section>
+
+<!-- ── MAIN CONTENT ── -->
+<div class="page-wrapper">
+
+    <!-- Progress -->
+    <div class="progress-bar-container">
+        <div class="progress-bar-header">
+            <span>📖 Reading Progress</span>
+            <span class="progress-pct" id="progressPct">0%</span>
+        </div>
+        <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+        <div class="toc-title">📑 In This Guide</div>
+        <ul class="toc-list">
+            <li><a href="#section1"><span class="toc-num">1</span> What This Quote Really Means for Your Business</a></li>
+            <li><a href="#section2"><span class="toc-num">2</span> The "Busy Owner" Trap in Construction Companies</a></li>
+            <li><a href="#section3"><span class="toc-num">3</span> Reactive vs. Strategic Work — Understanding the Difference</a></li>
+            <li><a href="#section4"><span class="toc-num">4</span> The Real Cost of Staying Busy</a></li>
+            <li><a href="#section5"><span class="toc-num">5</span> The Time Audit — Where Do Your Hours Actually Go?</a></li>
+            <li><a href="#section6"><span class="toc-num">6</span> Real-World Case Study — A Dubai Contracting Firm</a></li>
+            <li><a href="#section7"><span class="toc-num">7</span> The Six Pillars of Productive Leadership</a></li>
+            <li><a href="#section8"><span class="toc-num">8</span> Building Your Transition Plan</a></li>
+            <li><a href="#section9"><span class="toc-num">9</span> Knowledge Check — Test Your Understanding</a></li>
+            <li><a href="#section10"><span class="toc-num">10</span> Key Takeaways &amp; Action Steps</a></li>
+        </ul>
+    </div>
+
+    <!-- ── SECTION 1 ── -->
+    <div class="section-card" id="section1">
+        <div class="section-header">
+            <div class="section-icon">💡</div>
+            <h2><small>Section 1</small>What This Quote Really Means for Your Business</h2>
+        </div>
+        <p>Tim Ferriss's principle — <em>"Busy is not productive"</em> — challenges one of the most deep-rooted assumptions in the construction industry. Many owners of civil and structural engineering firms across Dubai genuinely believe that the number of hours they spend working is directly proportional to their business results. They equate physical presence on-site, constant phone availability, and twelve-to-fourteen-hour days with commitment and progress.</p>
+        <p>But here is the uncomfortable truth: <strong>activity and achievement are not the same thing.</strong> You can spend an entire day answering WhatsApp messages, rushing between two project sites in Al Quoz and Jumeirah, resolving a labour dispute, chasing a supplier for delayed rebar delivery, and personally approving every material purchase order. At the end of that day, you feel absolutely exhausted — yet none of those activities actually moved your business forward in a meaningful, strategic way.</p>
+        <p>The quote invites you to ask a fundamentally different question. Instead of <em>"How much did I work today?"</em> the question becomes <em>"What did I improve in my business today?"</em> This shift in thinking separates businesses that remain stagnant despite constant effort from businesses that grow consistently, build strong teams, and create lasting profitability.</p>
+
+        <div class="highlight-box info">
+            <div class="box-title">🔑 The Core Distinction</div>
+            <p><strong>Being busy</strong> means spending your entire day reacting to whatever comes at you — calls, site emergencies, team queries, supplier delays. <strong>Being productive</strong> means deliberately choosing to spend time on activities that permanently improve how your business operates — building systems, training managers, creating sales pipelines, and strengthening client relationships.</p>
+        </div>
+
+        <p>Think of it this way: if you had to leave the country for 30 days, would your business continue to run, win new contracts, deliver projects on time, and collect payments? If the answer is no — then despite all the hours you work, you have been busy but not productive. Your time has been consumed by activities that only maintain the status quo, rather than building a business that can function and grow beyond your personal involvement.</p>
+    </div>
+
+    <!-- ── SECTION 2 ── -->
+    <div class="section-card" id="section2">
+        <div class="section-header">
+            <div class="section-icon red">⚠️</div>
+            <h2><small>Section 2</small>The "Busy Owner" Trap in Construction Companies</h2>
+        </div>
+        <p>The construction industry in Dubai is especially prone to the "busy owner" trap. The nature of civil and structural engineering work — multiple concurrent projects, site safety requirements, coordination with municipalities, subcontractor management, and high material costs — creates an environment where there is always something urgently demanding the owner's attention.</p>
+
+        <p>Here is what the typical day looks like for a Dubai-based engineering company owner who is caught in this trap:</p>
+
+        <div class="highlight-box warning">
+            <div class="box-title">🔴 A Typical "Busy" Day</div>
+            <p><strong>6:30 AM</strong> — Wake up to 47 WhatsApp messages from site supervisors, foremen, and project managers asking for decisions on material approvals, worker scheduling, and design clarifications.</p>
+            <p><strong>7:30 AM</strong> — Drive to the first project site to resolve a problem with concrete pouring that was reported overnight. Spend two hours personally coordinating between the batching plant, the site engineer, and the RMC supplier.</p>
+            <p><strong>10:00 AM</strong> — Rush to the office to meet a subcontractor who is disputing his payment terms. No one else in the company has the authority to negotiate.</p>
+            <p><strong>12:00 PM</strong> — Receive an urgent call from a second project site about a DM inspection failure. Drop everything and drive across the city.</p>
+            <p><strong>2:30 PM</strong> — Return to the office to sign cheques, approve LPOs, and review cash flow. Realise a client payment is overdue by 60 days — but no one followed up.</p>
+            <p><strong>4:00 PM</strong> — Take three calls from potential clients enquiring about new projects. Provide rough estimates over the phone but have no time to prepare proper proposals.</p>
+            <p><strong>7:00 PM</strong> — Still responding to messages. Too exhausted to think about business improvement, marketing strategy, or team development.</p>
+        </div>
+
+        <p>Does this day look familiar? This owner worked for over twelve hours. He was in constant motion. He solved multiple problems. But look carefully — <strong>nothing in that day improved the business itself.</strong> No system was created. No process was documented. No manager was empowered. No client relationship was proactively strengthened. Every single activity was reactive: responding to problems that arose because systems, processes, and trained people were not already in place.</p>
+
+        <p>This is the trap. The owner becomes the single point of failure for every decision, and because everything depends on him, he never has time to build the infrastructure that would free him from this cycle. The business cannot grow beyond his personal capacity to absorb work.</p>
+
+        <div class="highlight-box insight">
+            <div class="box-title">💭 Reflection Point</div>
+            <p>Ask yourself honestly: Of all the hours you worked last week, how many were spent <strong>reacting to problems</strong> versus <strong>building something that would prevent those problems from recurring</strong>? If more than 70% of your time was reactive, you are firmly inside the busy-owner trap.</p>
+        </div>
+    </div>
+
+    <!-- ── SECTION 3 ── -->
+    <div class="section-card" id="section3">
+        <div class="section-header">
+            <div class="section-icon blue">⚖️</div>
+            <h2><small>Section 3</small>Reactive vs. Strategic Work — Understanding the Difference</h2>
+        </div>
+        <p>To break free from the busyness cycle, you first need to clearly understand the difference between reactive work and strategic work. Both feel like "work," both consume energy, and both may even feel important in the moment. But they produce vastly different outcomes for your business over time.</p>
+
+        <div class="comparison-wrapper">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Dimension</th>
+                        <th class="bad">Reactive / Busy Work</th>
+                        <th class="good">Strategic / Productive Work</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Trigger</td>
+                        <td>Comes to you — messages, calls, emergencies</td>
+                        <td>You initiate it — planned, deliberate, scheduled</td>
+                    </tr>
+                    <tr>
+                        <td>Time Horizon</td>
+                        <td>Solves today's problem only</td>
+                        <td>Prevents tomorrow's problems permanently</td>
+                    </tr>
+                    <tr>
+                        <td>Example</td>
+                        <td>Personally calling the batching plant to resolve a delayed delivery</td>
+                        <td>Creating a material ordering system with auto-triggers and backup suppliers</td>
+                    </tr>
+                    <tr>
+                        <td>Impact on Team</td>
+                        <td>Team learns to depend on the owner</td>
+                        <td>Team develops decision-making ability</td>
+                    </tr>
+                    <tr>
+                        <td>Business Result</td>
+                        <td>Business stays the same size; owner gets more tired</td>
+                        <td>Business becomes more capable; owner gets more freedom</td>
+                    </tr>
+                    <tr>
+                        <td>Scalability</td>
+                        <td>Cannot grow beyond owner's personal bandwidth</td>
+                        <td>Builds capacity that compounds over time</td>
+                    </tr>
+                    <tr>
+                        <td>Delegation</td>
+                        <td>Almost nothing is delegated because "no one can do it right"</td>
+                        <td>Tasks are documented, delegated, and followed up</td>
+                    </tr>
+                    <tr>
+                        <td>Feeling at End of Day</td>
+                        <td>Exhausted but unsatisfied — "another fire-fighting day"</td>
+                        <td>Focused and fulfilled — "I built something lasting today"</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>In the context of a Dubai civil engineering company, here are concrete examples of what each category looks like on a daily basis:</p>
+
+        <div class="before-after">
+            <div class="ba-card before">
+                <div class="ba-label">✗ Reactive (Busy)</div>
+                <ul>
+                    <li>Personally approving every LPO over AED 500</li>
+                    <li>Rushing to site for every DM inspection</li>
+                    <li>Answering every worker scheduling question</li>
+                    <li>Chasing clients for overdue invoices yourself</li>
+                    <li>Fixing estimation errors in tender submissions</li>
+                    <li>Mediating disputes between site teams</li>
+                    <li>Solving repeated supply chain delays manually</li>
+                </ul>
+            </div>
+            <div class="ba-card after">
+                <div class="ba-label">✓ Strategic (Productive)</div>
+                <ul>
+                    <li>Creating an LPO approval matrix with defined authority levels</li>
+                    <li>Training a site engineer to handle DM inspections independently</li>
+                    <li>Building a weekly resource planning meeting structure</li>
+                    <li>Setting up a payment follow-up system with a dedicated coordinator</li>
+                    <li>Developing a standardised estimation checklist and review process</li>
+                    <li>Establishing clear escalation protocols for site conflicts</li>
+                    <li>Creating preferred supplier agreements with SLA commitments</li>
+                </ul>
+            </div>
+        </div>
+
+        <p>Notice the pattern: every strategic activity creates a <strong>permanent improvement</strong>. Once you build an LPO approval matrix, you never need to personally approve routine purchases again. Once you train a site engineer on DM inspection procedures, that knowledge lives in the team permanently. Reactive work, by contrast, solves the same problem over and over without ever eliminating it.</p>
+    </div>
+
+    <!-- ── SECTION 4 ── -->
+    <div class="section-card" id="section4">
+        <div class="section-header">
+            <div class="section-icon red">📉</div>
+            <h2><small>Section 4</small>The Real Cost of Staying Busy</h2>
+        </div>
+        <p>Many engineering business owners accept their hectic schedule as "just part of running a construction company in Dubai." But there are very real, measurable costs to staying in the reactive mode indefinitely. These costs compound over months and years, and they affect every aspect of business performance.</p>
+
+        <p><strong>1. Slow or Zero Business Growth.</strong> When the owner is consumed by daily firefighting, there is no bandwidth to pursue new clients, develop relationships with consultants, or bid on larger projects. The company remains stuck at the same revenue level year after year — even as operating costs continue to increase. In Dubai's competitive construction market, standing still effectively means falling behind.</p>
+
+        <p><strong>2. Complete Owner Dependency.</strong> If you personally hold every client relationship, every supplier negotiation, every hiring decision, and every quality control checkpoint, your business literally cannot function without you. This means you cannot take a vacation, you cannot fall sick, and you certainly cannot step away to think strategically. You are not a business owner; you are the business itself — and that is an extremely fragile position.</p>
+
+        <p><strong>3. Weak Organisational Systems.</strong> Because the owner is always available to "just handle it," there is no pressure to build proper systems. There is no documented material ordering process. There is no project handover checklist. There is no standardised invoicing and payment follow-up cycle. Everything operates on memory and habit — which breaks down the moment the business tries to handle more projects simultaneously.</p>
+
+        <p><strong>4. Poor Profitability.</strong> Reactive work is inherently wasteful. Emergency procurement costs more than planned procurement. Last-minute labour mobilisation costs more than scheduled mobilisation. Re-work caused by poor quality control costs more than prevention. When you spend all your time firefighting, you are unconsciously tolerating a higher cost base — which directly erodes your profit margins.</p>
+
+        <p><strong>5. Team Stagnation and High Turnover.</strong> Talented project managers, engineers, and coordinators want to grow, learn, and take on responsibility. When the owner micromanages everything and makes every decision personally, capable team members feel undervalued and leave. You end up with a team that only follows instructions rather than a team that solves problems — which further increases your workload.</p>
+
+        <p><strong>6. Owner Burnout and Health Impact.</strong> This is the cost that most owners ignore until it becomes critical. Twelve-to-fourteen-hour days, constant stress, no weekends, and the mental weight of carrying every business decision alone — this takes a serious physical and psychological toll. It is not sustainable, and it often leads to poor decision-making during the moments when clear strategic thinking is most needed.</p>
+
+        <!-- Donut Chart -->
+        <div class="donut-container">
+            <div class="donut-chart">
+                <svg width="180" height="180" viewBox="0 0 180 180">
+                    <circle cx="90" cy="90" r="70" fill="none" stroke="#f3f4f6" stroke-width="20"/>
+                    <circle cx="90" cy="90" r="70" fill="none" stroke="#ef4444" stroke-width="20"
+                        stroke-dasharray="308 132" stroke-linecap="round"/>
+                    <circle cx="90" cy="90" r="70" fill="none" stroke="#f97316" stroke-width="20"
+                        stroke-dasharray="0 308 66 66" stroke-linecap="round"/>
+                    <circle cx="90" cy="90" r="70" fill="none" stroke="#22c55e" stroke-width="20"
+                        stroke-dasharray="0 374 66 0" stroke-linecap="round"/>
+                </svg>
+                <div class="donut-center">
+                    <div class="donut-pct">70%</div>
+                    <div class="donut-label">Reactive</div>
+                </div>
+            </div>
+            <div class="donut-legend">
+                <div class="legend-item"><div class="legend-dot" style="background:#ef4444"></div> Reactive / firefighting (70%)</div>
+                <div class="legend-item"><div class="legend-dot" style="background:#f97316"></div> Admin / routine (15%)</div>
+                <div class="legend-item"><div class="legend-dot" style="background:#22c55e"></div> Strategic / improvement (15%)</div>
+                <p style="font-size:0.8rem;color:#9ca3af;margin-top:0.5rem;">Typical time split for a "busy" owner</p>
+            </div>
+        </div>
+
+        <div class="key-takeaway">
+            <h3>💡 The Compound Effect</h3>
+            <p>These six costs do not exist in isolation — they reinforce each other. Poor systems lead to more firefighting, which leaves no time for training managers, which creates owner dependency, which prevents growth, which damages profitability, which increases stress. It is a self-reinforcing cycle that only breaks when the owner deliberately decides to stop being busy and start being productive.</p>
+        </div>
+    </div>
+
+    <!-- ── SECTION 5 — Time Audit ── -->
+    <div class="section-card" id="section5">
+        <div class="section-header">
+            <div class="section-icon orange">⏱️</div>
+            <h2><small>Section 5</small>The Time Audit — Where Do Your Hours Actually Go?</h2>
+        </div>
+        <p>Before you can shift from busy to productive, you need to honestly assess how your time is currently distributed. Most business owners dramatically overestimate the amount of strategic work they do. The time audit is a simple but powerful exercise that creates clarity about your current reality.</p>
+
+        <p>Here is how it works: for one complete working week, track every block of time you spend and classify each activity into one of four categories. Be brutally honest — no one else needs to see this. The goal is self-awareness, not judgment.</p>
+
+        <!-- Interactive Activity: Time Audit Slider -->
+        <div class="activity-card">
+            <div class="activity-badge">⚡ Interactive Activity</div>
+            <h3>Your Weekly Time Audit Estimator</h3>
+            <p>Use the sliders below to estimate how many hours per week you currently spend on each type of activity. The tool will instantly show you your reactive vs. strategic balance and provide a personalised diagnosis.</p>
+
+            <div class="slider-group">
+                <div class="slider-label">
+                    <span>🔴 Firefighting &amp; Emergencies</span>
+                    <span class="slider-val" id="val1">20 hrs</span>
+                </div>
+                <input type="range" min="0" max="50" value="20" id="slider1" oninput="updateAudit()">
+                <div style="font-size:0.8rem;color:#9ca3af;margin-top:0.3rem;">Rushing to sites, resolving supplier issues, handling urgent calls, fixing team mistakes</div>
+            </div>
+            <div class="slider-group">
+                <div class="slider-label">
+                    <span>🟠 Routine Admin &amp; Approvals</span>
+                    <span class="slider-val" id="val2">12 hrs</span>
+                </div>
+                <input type="range" min="0" max="50" value="12" id="slider2" oninput="updateAudit()">
+                <div style="font-size:0.8rem;color:#9ca3af;margin-top:0.3rem;">Signing cheques, approving LPOs, reviewing timesheets, general admin tasks</div>
+            </div>
+            <div class="slider-group">
+                <div class="slider-label">
+                    <span>🔵 Client &amp; Sales Activities</span>
+                    <span class="slider-val" id="val3">8 hrs</span>
+                </div>
+                <input type="range" min="0" max="50" value="8" id="slider3" oninput="updateAudit()">
+                <div style="font-size:0.8rem;color:#9ca3af;margin-top:0.3rem;">Client meetings, preparing proposals, following up on tenders, networking</div>
+            </div>
+            <div class="slider-group">
+                <div class="slider-label">
+                    <span>🟢 Strategic Business Improvement</span>
+                    <span class="slider-val" id="val4">5 hrs</span>
+                </div>
+                <input type="range" min="0" max="50" value="5" id="slider4" oninput="updateAudit()">
+                <div style="font-size:0.8rem;color:#9ca3af;margin-top:0.3rem;">Building systems, training managers, improving processes, planning for growth</div>
+            </div>
+
+            <div class="tracker-grid" style="margin-top:1.25rem;">
+                <div class="tracker-item reactive">
+                    <div class="tracker-label">Reactive Hours / Week</div>
+                    <div class="tracker-value" id="reactiveHrs">32</div>
+                    <div class="tracker-unit">hours</div>
+                </div>
+                <div class="tracker-item strategic">
+                    <div class="tracker-label">Strategic Hours / Week</div>
+                    <div class="tracker-value" id="strategicHrs">13</div>
+                    <div class="tracker-unit">hours</div>
+                </div>
+                <div class="tracker-item" style="grid-column: span 2;">
+                    <div class="tracker-label">Total Hours / Week</div>
+                    <div class="tracker-value" id="totalHrs">45</div>
+                    <div class="tracker-unit">hours</div>
+                </div>
+            </div>
+
+            <div id="auditDiagnosis" class="highlight-box warning" style="margin-top:1rem;">
+                <div class="box-title">📊 Your Diagnosis</div>
+                <p id="diagnosisText">You are spending 71% of your time in reactive mode. This means your business is highly dependent on you personally, and there is very little time allocated to activities that would create permanent improvements. You are firmly inside the "busy owner" trap.</p>
+            </div>
+        </div>
+
+        <p>The ideal target for an engineering company owner who wants to grow the business is to eventually reach a ratio where at least 30–40% of your time is spent on strategic activities. This does not happen overnight — it requires deliberately building systems and empowering your team over a period of months. But without measuring where you are now, you cannot chart a path to where you want to be.</p>
+    </div>
+
+    <!-- ── SECTION 6 — Case Study ── -->
+    <div class="section-card" id="section6">
+        <div class="section-header">
+            <div class="section-icon green">📋</div>
+            <h2><small>Section 6</small>Real-World Case Study — A Dubai Contracting Firm</h2>
+        </div>
+        <p>To bring this concept to life, consider this scenario based on common patterns observed in Dubai's civil contracting industry.</p>
+
+        <div class="highlight-box tip">
+            <div class="box-title">🏗️ The Scenario</div>
+            <p>A civil contracting company in Dubai specialising in structural works — foundations, concrete frames, and reinforced concrete structures for villas and low-rise commercial buildings. The owner, who has over 15 years of industry experience, personally managed nearly every aspect of the business. He was the first person on-site in the morning and the last to leave the office at night, regularly working 14-hour days.</p>
+        </div>
+
+        <!-- Scenario Tabs -->
+        <div class="scenario-container">
+            <div class="scenario-nav">
+                <button class="scenario-btn active" onclick="showScenario('before')">Before — The Problem</button>
+                <button class="scenario-btn" onclick="showScenario('changes')">Changes Implemented</button>
+                <button class="scenario-btn" onclick="showScenario('after')">After — The Results</button>
+            </div>
+
+            <div class="scenario-panel active" id="scenario-before">
+                <p><strong>When the owner carefully examined his weekly schedule, he discovered a pattern that was both revealing and alarming:</strong></p>
+                <ul class="numbered-list">
+                    <li><div class="step-content"><strong>Over 60% of his time went to resolving the same categories of problems week after week.</strong> Concrete delivery delays, worker scheduling conflicts, material shortages, and subcontractor coordination issues — the same types of emergencies repeated because no system existed to prevent them.</div></li>
+                    <li><div class="step-content"><strong>Less than 10% of his time was dedicated to any kind of business improvement.</strong> He had not reviewed his estimation process in three years. He had no formal project handover procedure. He had never created a client follow-up system for repeat business.</div></li>
+                    <li><div class="step-content"><strong>No manager in the company had decision-making authority.</strong> Even routine procurement decisions above AED 500 required his personal approval. Site engineers called him for every inspection-related question. The project coordinator could not negotiate delivery schedules without the owner's involvement.</div></li>
+                    <li><div class="step-content"><strong>All site coordination depended entirely on him.</strong> He was the only person who knew the full status of all projects. He was the only one who knew which subcontractors were available. He was the only one who could authorise change orders. This made him irreplaceable — and completely overwhelmed.</div></li>
+                </ul>
+            </div>
+
+            <div class="scenario-panel" id="scenario-changes">
+                <p><strong>Recognising the pattern, the owner began implementing targeted changes — not all at once, but systematically over several months:</strong></p>
+                <ul class="numbered-list">
+                    <li><div class="step-content"><strong>Daily Reporting System.</strong> Every site engineer was required to submit a brief standardised daily report covering work completed, issues encountered, material status, and next-day plan. This replaced the need for the owner to visit each site daily just to understand what was happening.</div></li>
+                    <li><div class="step-content"><strong>Weekly Planning Meetings.</strong> A structured 90-minute meeting every Sunday morning where all project managers reviewed their project status, flagged upcoming risks, and coordinated shared resources. This eliminated most mid-week emergencies caused by poor advance planning.</div></li>
+                    <li><div class="step-content"><strong>Clear Delegation Matrix.</strong> The owner documented which decisions each role could make independently, which required consultation, and which truly needed his approval. For example, the procurement coordinator could now approve LPOs up to AED 5,000 without escalation, and site engineers could handle routine DM inspections autonomously.</div></li>
+                    <li><div class="step-content"><strong>Escalation Rules for Site Teams.</strong> A clear three-tier escalation protocol was established. Level 1 issues (routine operational matters) were handled by the site engineer. Level 2 issues (quality or safety concerns) went to the project manager. Only Level 3 issues (contractual disputes, major cost overruns, or client relationship matters) reached the owner.</div></li>
+                </ul>
+            </div>
+
+            <div class="scenario-panel" id="scenario-after">
+                <p><strong>Within a few months of consistent implementation, the results were significant and measurable:</strong></p>
+                <div class="before-after">
+                    <div class="ba-card before">
+                        <div class="ba-label">Before</div>
+                        <ul>
+                            <li>15+ emergency calls per day</li>
+                            <li>Owner personally visiting 3 sites daily</li>
+                            <li>All procurement decisions through owner</li>
+                            <li>No time for new client meetings</li>
+                            <li>Team waited for instructions on everything</li>
+                            <li>14-hour workdays, 6 days a week</li>
+                        </ul>
+                    </div>
+                    <div class="ba-card after">
+                        <div class="ba-label">After</div>
+                        <ul>
+                            <li>3–4 escalation calls per day (Level 3 only)</li>
+                            <li>Site visits only for critical milestones</li>
+                            <li>80% of procurement handled autonomously</li>
+                            <li>6+ hours per week for business development</li>
+                            <li>Team making confident daily decisions</li>
+                            <li>10-hour workdays with real weekends</li>
+                        </ul>
+                    </div>
+                </div>
+                <p>Crucially, the business did not fall apart when the owner stepped back from daily firefighting. It actually performed better because decisions were being made faster at the appropriate level, site teams felt more ownership, and the owner's newly freed-up time was redirected toward winning new contracts and strengthening relationships with existing clients.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── SECTION 7 — Six Pillars ── -->
+    <div class="section-card" id="section7">
+        <div class="section-header">
+            <div class="section-icon purple">🏛️</div>
+            <h2><small>Section 7</small>The Six Pillars of Productive Leadership</h2>
+        </div>
+        <p>Moving from busy to productive is not about working less. It is about redirecting your energy toward activities that create permanent, compounding improvements in your business. Based on patterns commonly seen in successful Dubai engineering firms, here are six pillars that define truly productive leadership:</p>
+
+        <!-- Pillar 1 -->
+        <div class="highlight-box success" style="margin-top:1.25rem;">
+            <div class="box-title">🔧 Pillar 1 — Building Operational Systems</div>
+            <p>Every time you solve a problem manually, ask: <em>"Can I create a system so this problem never needs me again?"</em> Systems include standardised checklists for DM inspections, documented material ordering procedures with approved supplier lists, project mobilisation templates that any project manager can follow, and quality control sign-off protocols that operate independently of the owner.</p>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="highlight-box success" style="margin-top:0.5rem;">
+            <div class="box-title">👨‍💼 Pillar 2 — Developing Second-Line Leadership</div>
+            <p>Your project managers, site engineers, and senior supervisors need to grow into decision-makers. This requires deliberate investment in their development: giving them responsibility, tolerating their early mistakes, coaching them through complex situations, and gradually expanding their authority. A productive owner builds leaders; a busy owner builds dependency.</p>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="highlight-box success" style="margin-top:0.5rem;">
+            <div class="box-title">💰 Pillar 3 — Strengthening Cash Flow Control</div>
+            <p>Many Dubai construction companies lose significant profit not because they lack revenue, but because they manage cash flow reactively. Productive owners create structured invoicing calendars, payment follow-up systems, retention tracking processes, and cash flow forecasting models. This transforms cash management from a constant fire into a predictable, managed business function.</p>
+        </div>
+
+        <!-- Pillar 4 -->
+        <div class="highlight-box success" style="margin-top:0.5rem;">
+            <div class="box-title">📈 Pillar 4 — Creating Sales Processes</div>
+            <p>In many engineering firms, "business development" means the owner personally takes calls when clients happen to reach out. A productive approach means building a system: a tender tracking register, a proposal template library, a follow-up schedule for past clients, a CRM for consultant and client relationships, and a win/loss analysis process that improves your hit rate over time.</p>
+        </div>
+
+        <!-- Pillar 5 -->
+        <div class="highlight-box success" style="margin-top:0.5rem;">
+            <div class="box-title">🤝 Pillar 5 — Strengthening Client Relationships</div>
+            <p>Repeat business and referrals are the lifeblood of engineering companies. Productive owners invest time in relationship-building activities: regular progress updates to clients, post-project feedback sessions, proactive communication about potential delays, and quarterly check-ins with past clients. These activities create trust and generate future revenue far more effectively than chasing new leads.</p>
+        </div>
+
+        <!-- Pillar 6 -->
+        <div class="highlight-box success" style="margin-top:0.5rem;">
+            <div class="box-title">📊 Pillar 6 — Improving Project Tracking and Monitoring</div>
+            <p>Without data, you are flying blind. Productive owners implement simple but effective tracking mechanisms: weekly project cost vs. budget reports, resource utilisation dashboards, quality non-conformance logs, and schedule variance tracking. This data enables early intervention on troubled projects before they become emergencies — replacing reactive firefighting with proactive management.</p>
+        </div>
+    </div>
+
+    <!-- ── SECTION 8 — Transition Plan ── -->
+    <div class="section-card" id="section8">
+        <div class="section-header">
+            <div class="section-icon">🗺️</div>
+            <h2><small>Section 8</small>Building Your Transition Plan</h2>
+        </div>
+        <p>Shifting from busy to productive does not happen overnight, and it should not be attempted all at once. The most effective approach is a phased transition that builds momentum over three to four months. Here is a practical roadmap tailored for Dubai civil engineering companies:</p>
+
+        <!-- Interactive Checklist -->
+        <div class="activity-card">
+            <div class="activity-badge">⚡ Interactive Activity</div>
+            <h3>Your 12-Week Transition Checklist</h3>
+            <p>Click each item as you complete it. Track your progress from "busy owner" to "productive leader." These steps are sequenced intentionally — each one builds on the previous.</p>
+
+            <p style="font-weight:600;color:var(--dark);margin-bottom:0.5rem;">Weeks 1–3: Awareness &amp; Foundation</p>
+            <ul class="checklist" id="checklist1">
+                <li onclick="toggleCheck(this)"><span class="check-icon"></span><span class="check-text">Complete a full 5-day time audit — track every hour and categorise it as reactive or strategic</span></li>
+                <li onclick="toggleCheck(this)"><span class="check-icon"></span><span class="check-text">Identify the top 5 recurring problems that consume most of your reactive time</span></li>
+                <li onclick="toggleCheck(this)"><span class="check-icon"></span><span class="check-text">List all decisions that currently require your personal approval — question which ones truly need you</span></li>
+                <li onclick="toggleCheck(this)"><span class="check-icon"></span><span class="check-text">Block 2 hours every week in your calendar for "strategic time" — protect this time like a client meeting</span></li>
+            </ul>
+
+            <p style="font-weight:600;color:var(--dark);margin:1.25rem 0 0.5rem;">Weeks 4–6: First Systems</p>
+            <ul class="checklist" id="checklist2">
+                <li onclick="toggleCheck(this)"><span class="check-icon"></span><span class="check-text">Implement a daily site reporting format — even a simple WhatsApp template with structured fields</span></li>
+                <li onclick="toggleCheck(this)"><span class="check-icon"></span><span class="check-text">Create a delegation matrix defining who can approve what, at which value threshold</span></li>
+                <li onclick="toggleCheck(this)"><span class="check-icon"></span><span class="check-text">Start a weekly planning meeting (Sunday or Saturday morning) with all project managers</span></li>
+                <li onclick="toggleCheck(this)"><span class="check-icon"></span><span class="check-text">Document the process for your most frequently repeated task and hand it to a team member</span></li>
+            </ul>
+
+            <p style="font-weight:600;color:var(--dark);margin:1.25rem 0 0.5rem;">Weeks 7–9: Team Empowerment</p>
+            <ul class="checklist" id="checklist3">
+                <li onclick="toggleCheck(this)"><span class="check-icon"></span><span class="check-text">Give one project manager full decision authority on one project (with defined guardrails)</span></li>
+                <li onclick="toggleCheck(this)"><span class="check-icon"></span><span class="check-text">Establish escalation rules — define Level 1, 2, and 3 issues and who handles each</span></li>
+                <li onclick="toggleCheck(this)"><span class="check-icon"></span><span class="check-text">Create a payment follow-up system and assign it to a coordinator — stop chasing invoices yourself</span></li>
+                <li onclick="toggleCheck(this)"><span class="check-icon"></span><span class="check-text">Reduce your site visits to critical milestones only — trust the daily reporting system</span></li>
+            </ul>
+
+            <p style="font-weight:600;color:var(--dark);margin:1.25rem 0 0.5rem;">Weeks 10–12: Growth Focused</p>
+            <ul class="checklist" id="checklist4">
+                <li onclick="toggleCheck(this)"><span class="check-icon"></span><span class="check-text">Allocate freed-up time to 3 business development meetings per week</span></li>
+                <li onclick="toggleCheck(this)"><span class="check-icon"></span><span class="check-text">Create a tender tracking register and proposal template library</span></li>
+                <li onclick="toggleCheck(this)"><span class="check-icon"></span><span class="check-text">Conduct a second time audit — compare with Week 1 results to measure your shift</span></li>
+                <li onclick="toggleCheck(this)"><span class="check-icon"></span><span class="check-text">Review your profit margins and identify whether reduced firefighting has improved project delivery costs</span></li>
+            </ul>
+
+            <div style="margin-top:1rem;text-align:center;">
+                <span style="font-size:0.85rem;color:var(--text-light);" id="checklistProgress">0 of 16 steps completed</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── SECTION 9 — Quiz ── -->
+    <div class="section-card" id="section9">
+        <div class="section-header">
+            <div class="section-icon blue">🧠</div>
+            <h2><small>Section 9</small>Knowledge Check — Test Your Understanding</h2>
+        </div>
+        <p>Now that you have worked through this guide, test your understanding with these scenario-based questions. Each question is designed to reinforce the practical application of the concepts covered.</p>
+
+        <!-- Quiz 1 -->
+        <div class="quiz-container" style="margin-top:1.25rem;">
+            <div class="quiz-question">Question 1: An owner spends 3 hours personally negotiating a rebar price with a supplier for a single project. Which category does this fall into?</div>
+            <div class="quiz-options" id="quiz1">
+                <div class="quiz-option" onclick="answerQuiz('quiz1', this, false)">
+                    <span class="option-letter">A</span>
+                    <span>Strategic work — negotiating saves money for the project</span>
+                </div>
+                <div class="quiz-option" onclick="answerQuiz('quiz1', this, true)">
+                    <span class="option-letter">B</span>
+                    <span>Reactive work — a procurement system with pre-negotiated supplier rates would eliminate this</span>
+                </div>
+                <div class="quiz-option" onclick="answerQuiz('quiz1', this, false)">
+                    <span class="option-letter">C</span>
+                    <span>Neither — it is simply part of running a construction business</span>
+                </div>
+            </div>
+            <div class="quiz-feedback correct-fb" id="quiz1-correct">Correct. While negotiating may feel productive, a pre-negotiated rate card with approved suppliers would handle this automatically for every project — freeing 3+ hours per occurrence. Building that system once is strategic; negotiating each time is reactive.</div>
+            <div class="quiz-feedback incorrect-fb" id="quiz1-incorrect">Not quite. While negotiating does save money on a single project, doing it manually every time is reactive. The strategic approach would be to create pre-negotiated supplier agreements with rate cards, so procurement happens automatically without the owner's involvement.</div>
+        </div>
+
+        <!-- Quiz 2 -->
+        <div class="quiz-container" style="margin-top:1.5rem;">
+            <div class="quiz-question">Question 2: What is the primary risk of an owner who works 14-hour days and handles every decision personally?</div>
+            <div class="quiz-options" id="quiz2">
+                <div class="quiz-option" onclick="answerQuiz('quiz2', this, false)">
+                    <span class="option-letter">A</span>
+                    <span>The owner will run out of physical energy and need rest</span>
+                </div>
+                <div class="quiz-option" onclick="answerQuiz('quiz2', this, false)">
+                    <span class="option-letter">B</span>
+                    <span>The team will become jealous of the owner's workload</span>
+                </div>
+                <div class="quiz-option" onclick="answerQuiz('quiz2', this, true)">
+                    <span class="option-letter">C</span>
+                    <span>The business cannot grow beyond the owner's personal capacity and becomes entirely dependent on one person</span>
+                </div>
+            </div>
+            <div class="quiz-feedback correct-fb" id="quiz2-correct">Exactly right. Owner dependency is the most dangerous outcome because it creates a hard ceiling on growth. The business can never handle more projects, more clients, or more complexity than one person can personally manage.</div>
+            <div class="quiz-feedback incorrect-fb" id="quiz2-incorrect">While burnout is real, the deeper business risk is structural: the company becomes completely dependent on one person, creating a ceiling on growth. No system exists, no manager can decide, and the business cannot scale.</div>
+        </div>
+
+        <!-- Quiz 3 -->
+        <div class="quiz-container" style="margin-top:1.5rem;">
+            <div class="quiz-question">Question 3: A project manager calls the owner during a DM inspection to ask how to respond to an inspector's query about concrete cover measurements. What is the most productive long-term response?</div>
+            <div class="quiz-options" id="quiz3">
+                <div class="quiz-option" onclick="answerQuiz('quiz3', this, false)">
+                    <span class="option-letter">A</span>
+                    <span>Answer the question immediately to avoid delaying the inspection</span>
+                </div>
+                <div class="quiz-option" onclick="answerQuiz('quiz3', this, true)">
+                    <span class="option-letter">B</span>
+                    <span>Answer this time, then schedule a training session on common DM inspection queries and create a reference document</span>
+                </div>
+                <div class="quiz-option" onclick="answerQuiz('quiz3', this, false)">
+                    <span class="option-letter">C</span>
+                    <span>Tell the project manager to figure it out on his own</span>
+                </div>
+            </div>
+            <div class="quiz-feedback correct-fb" id="quiz3-correct">Well done. This is the "fix it now, then fix it forever" approach. You solve the immediate problem but also invest in preventing its recurrence — that is the essence of productive leadership.</div>
+            <div class="quiz-feedback incorrect-fb" id="quiz3-incorrect">The most productive approach combines short-term resolution with long-term prevention. Answer the question now (so the inspection proceeds), but then train the team and create documentation so they can handle it independently next time.</div>
+        </div>
+
+        <!-- Quiz 4 -->
+        <div class="quiz-container" style="margin-top:1.5rem;">
+            <div class="quiz-question">Question 4: An owner decides to block 2 hours every Sunday morning for strategic planning, but site emergencies keep interrupting. What should the owner do?</div>
+            <div class="quiz-options" id="quiz4">
+                <div class="quiz-option" onclick="answerQuiz('quiz4', this, false)">
+                    <span class="option-letter">A</span>
+                    <span>Accept that construction is unpredictable and strategic time is a luxury</span>
+                </div>
+                <div class="quiz-option" onclick="answerQuiz('quiz4', this, false)">
+                    <span class="option-letter">B</span>
+                    <span>Ignore all calls during the 2-hour block, regardless of urgency</span>
+                </div>
+                <div class="quiz-option" onclick="answerQuiz('quiz4', this, true)">
+                    <span class="option-letter">C</span>
+                    <span>Establish escalation rules so that the team can handle Level 1 and 2 issues independently during this time, and only Level 3 issues reach the owner</span>
+                </div>
+            </div>
+            <div class="quiz-feedback correct-fb" id="quiz4-correct">Exactly. The solution is not to ignore emergencies or to accept the status quo — it is to build systems (like escalation protocols) that reduce the number of issues that genuinely require the owner's involvement. This protects strategic time while maintaining operational responsiveness.</div>
+            <div class="quiz-feedback incorrect-fb" id="quiz4-incorrect">Accepting that strategic time is impossible ensures nothing ever improves. Ignoring all calls is irresponsible. The best answer is to build escalation rules that filter what truly needs the owner — so strategic time is protected without ignoring genuine emergencies.</div>
+        </div>
+    </div>
+
+    <!-- ── SECTION 10 — Key Takeaways ── -->
+    <div class="section-card" id="section10">
+        <div class="section-header">
+            <div class="section-icon green">✅</div>
+            <h2><small>Section 10</small>Key Takeaways &amp; Action Steps</h2>
+        </div>
+
+        <div class="key-takeaway" style="margin-top:0;">
+            <h3>🎯 The Central Message</h3>
+            <p>A busy owner can still run a weak business. Productive owners focus on activities that improve systems, profitability, leadership, and long-term business performance. In the construction industry, activity is easy — strategic improvement is harder, but strategic improvement is what creates scalable growth.</p>
+        </div>
+
+        <p style="margin-top:1.25rem;"><strong>Here are the most important lessons from this guide, distilled into actionable principles:</strong></p>
+
+        <ul class="numbered-list" style="margin-top:1rem;">
+            <li><div class="step-content"><strong>Being busy and being productive are fundamentally different.</strong> Busyness is about volume of activity. Productivity is about the value and permanence of outcomes. A day spent creating one system that prevents recurring problems is more productive than a week of personally solving those same problems.</div></li>
+            <li><div class="step-content"><strong>The "busy owner" trap is self-reinforcing.</strong> When you do everything yourself, no system gets built, no team member grows, and your workload only increases. Breaking the cycle requires a deliberate, conscious decision to invest time in improvement — even when firefighting feels more urgent.</div></li>
+            <li><div class="step-content"><strong>Reactive work has a real and measurable cost.</strong> It erodes profitability, prevents growth, creates team stagnation, damages your health, and makes the business fragile. Every month you remain in reactive mode costs money, opportunity, and personal wellbeing.</div></li>
+            <li><div class="step-content"><strong>Strategic work compounds over time.</strong> Every system you build, every manager you train, every process you document — these improvements accumulate. After six months of consistent strategic investment, your business will be structurally stronger, and your daily workload will be fundamentally different.</div></li>
+            <li><div class="step-content"><strong>The goal is not to become less active — it is to redirect your energy.</strong> Stop spending time on work that should already be handled by systems, processes, or trained people. Redirect that energy toward growth, leadership development, client relationships, and business strategy.</div></li>
+            <li><div class="step-content"><strong>Start small and build momentum.</strong> You do not need to transform your entire business overnight. Begin with one system, one delegation, one weekly meeting. As these first changes take hold, they create the space and confidence to make the next set of improvements.</div></li>
+        </ul>
+
+        <div class="highlight-box tip" style="margin-top:1.5rem;">
+            <div class="box-title">🚀 Your Immediate Next Step</div>
+            <p>This week, do one thing differently: conduct a simple 5-day time audit. At the end of each day, write down your major activities and classify each as "reactive" or "strategic." At the end of the week, calculate your ratio. That single number will tell you more about the health of your business than any financial report — because it reveals whether your effort is building a stronger company or simply maintaining the current one.</p>
+        </div>
+    </div>
+
+    <!-- ── CTA ── -->
+    <div class="cta-section">
+        <h2>Continue Learning</h2>
+        <p>Explore more business topics designed specifically for Dubai civil and structural engineering companies. Build systems, grow revenue, and lead with clarity.</p>
+        <a href="https://civiltech-ai.github.io/knowledge-portal/" class="cta-btn">
+            ← Back to Knowledge Portal
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>Civil-Tech.ai Knowledge Portal — Practical Business Education for Dubai SME Owners</p>
+        <p style="margin-top:0.3rem;"><a href="https://civiltech-ai.github.io/knowledge-portal/">civiltech-ai.github.io/knowledge-portal</a></p>
+    </div>
+</div>
+
+<script>
+    // ── Progress Bar ──
+    window.addEventListener('scroll', () => {
+        const winH = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = Math.min(Math.round((window.scrollY / winH) * 100), 100);
+        document.getElementById('progressFill').style.width = pct + '%';
+        document.getElementById('progressPct').textContent = pct + '%';
+    });
+
+    // ── Time Audit Sliders ──
+    function updateAudit() {
+        const v1 = +document.getElementById('slider1').value;
+        const v2 = +document.getElementById('slider2').value;
+        const v3 = +document.getElementById('slider3').value;
+        const v4 = +document.getElementById('slider4').value;
+        document.getElementById('val1').textContent = v1 + ' hrs';
+        document.getElementById('val2').textContent = v2 + ' hrs';
+        document.getElementById('val3').textContent = v3 + ' hrs';
+        document.getElementById('val4').textContent = v4 + ' hrs';
+
+        const reactive = v1 + v2;
+        const strategic = v3 + v4;
+        const total = reactive + strategic;
+        document.getElementById('reactiveHrs').textContent = reactive;
+        document.getElementById('strategicHrs').textContent = strategic;
+        document.getElementById('totalHrs').textContent = total;
+
+        const diag = document.getElementById('auditDiagnosis');
+        const txt = document.getElementById('diagnosisText');
+        const pct = total > 0 ? Math.round((reactive / total) * 100) : 0;
+        const stratPct = total > 0 ? Math.round((strategic / total) * 100) : 0;
+
+        if (pct >= 70) {
+            diag.className = 'highlight-box warning';
+            txt.textContent = `You are spending ${pct}% of your time in reactive mode and only ${stratPct}% on strategic activities. Your business is highly dependent on you personally, and there is very little time allocated to improvement. You are firmly inside the "busy owner" trap. Immediate action is needed to begin building systems and delegating.`;
+        } else if (pct >= 50) {
+            diag.className = 'highlight-box tip';
+            txt.textContent = `Your split is ${pct}% reactive and ${stratPct}% strategic. You are making some progress but reactive work still dominates your week. Focus on delegating routine admin tasks and building one new system each month. You are on the right path but need to keep pushing.`;
+        } else {
+            diag.className = 'highlight-box success';
+            txt.textContent = `Excellent — only ${pct}% reactive with ${stratPct}% strategic time. You are operating as a productive leader. Your business is likely growing, your team is making decisions independently, and your systems are working. Keep investing in this balance and coach other owners to do the same.`;
+        }
+    }
+
+    // ── Scenario Tabs ──
+    function showScenario(id) {
+        document.querySelectorAll('.scenario-panel').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.scenario-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById('scenario-' + id).classList.add('active');
+        event.target.classList.add('active');
+    }
+
+    // ── Checklist ──
+    function toggleCheck(el) {
+        el.classList.toggle('checked');
+        const icon = el.querySelector('.check-icon');
+        icon.innerHTML = el.classList.contains('checked') ? '✓' : '';
+        updateChecklistCount();
+    }
+    function updateChecklistCount() {
+        const total = document.querySelectorAll('.checklist li').length;
+        const done = document.querySelectorAll('.checklist li.checked').length;
+        document.getElementById('checklistProgress').textContent = done + ' of ' + total + ' steps completed';
+    }
+
+    // ── Quiz ──
+    function answerQuiz(quizId, el, isCorrect) {
+        const container = document.getElementById(quizId);
+        if (container.dataset.answered) return;
+        container.dataset.answered = 'true';
+
+        container.querySelectorAll('.quiz-option').forEach(opt => {
+            opt.style.pointerEvents = 'none';
+        });
+
+        if (isCorrect) {
+            el.classList.add('correct');
+            document.getElementById(quizId + '-correct').classList.add('show');
+        } else {
+            el.classList.add('incorrect');
+            document.getElementById(quizId + '-incorrect').classList.add('show');
+        }
+    }
+
+    // ── Smooth scroll for TOC ──
+    document.querySelectorAll('.toc-list a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
