@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Owner as the Bottleneck — Civil-Tech.ai Knowledge Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1bb5a5;
+            --primary-dark: #159588;
+            --primary-light: #e6f7f5;
+            --primary-glow: rgba(27, 181, 165, 0.12);
+            --accent: #f0973b;
+            --accent-light: #fef3e6;
+            --danger: #e74c3c;
+            --danger-light: #fdeaea;
+            --success: #27ae60;
+            --success-light: #e8f8ef;
+            --warning: #f39c12;
+            --warning-light: #fef9e7;
+            --text: #1a2b3c;
+            --text-secondary: #5a6b7d;
+            --text-light: #8a96a5;
+            --bg: #f4f7f9;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --card-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            --card-hover: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── NAV ─── */
+        .topnav {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .topnav-brand {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .topnav-brand span { color: var(--text); }
+        .topnav-badge {
+            display: inline-block;
+            border: 1.5px solid var(--primary);
+            color: var(--primary);
+            font-size: .7rem;
+            font-weight: 700;
+            padding: 2px 10px;
+            border-radius: 20px;
+            margin-left: 14px;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+        }
+        .topnav-back {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: .88rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color .2s;
+        }
+        .topnav-back:hover { color: var(--primary); }
+
+        /* ─── HERO ─── */
+        .hero {
+            background: linear-gradient(135deg, #1bb5a5 0%, #17a498 30%, #2ec4b6 70%, #3dd6c8 100%);
+            padding: 3.5rem 2rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            right: 120px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+        }
+        .hero-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-cat {
+            display: inline-block;
+            font-size: .75rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: .75rem;
+        }
+        .hero h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: .75rem;
+        }
+        .hero-sub {
+            color: rgba(255,255,255,0.85);
+            font-size: 1.05rem;
+            max-width: 640px;
+            margin-bottom: 1.5rem;
+        }
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .hero-tag {
+            background: rgba(255,255,255,0.18);
+            color: #fff;
+            font-size: .78rem;
+            font-weight: 600;
+            padding: 5px 14px;
+            border-radius: 20px;
+            backdrop-filter: blur(4px);
+        }
+
+        /* ─── LAYOUT ─── */
+        .page-wrap {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        /* ─── QUOTE BANNER ─── */
+        .quote-banner {
+            background: linear-gradient(135deg, #1a2b3c 0%, #2c3e50 100%);
+            border-radius: 16px;
+            padding: 2.2rem 2.5rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .quote-banner::before {
+            content: '\201C';
+            position: absolute;
+            top: -10px;
+            left: 18px;
+            font-size: 7rem;
+            color: rgba(27,181,165,0.15);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        .quote-banner blockquote {
+            color: #fff;
+            font-size: 1.35rem;
+            font-weight: 600;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.5;
+            position: relative;
+            z-index: 1;
+        }
+        .quote-banner cite {
+            display: block;
+            color: var(--primary);
+            font-style: normal;
+            font-size: .9rem;
+            font-weight: 600;
+            margin-top: .75rem;
+        }
+
+        /* ─── SECTION ─── */
+        .section {
+            margin-bottom: 2.5rem;
+        }
+        .section-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.55rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title .icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .icon-teal { background: var(--primary-light); }
+        .icon-orange { background: var(--accent-light); }
+        .icon-red { background: var(--danger-light); }
+        .icon-green { background: var(--success-light); }
+        .icon-yellow { background: var(--warning-light); }
+
+        .section-intro {
+            color: var(--text-secondary);
+            font-size: .98rem;
+            margin-bottom: 1.25rem;
+            max-width: 760px;
+        }
+
+        /* ─── INFO CARDS ─── */
+        .info-card {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 1.5rem 1.75rem;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary);
+        }
+        .info-card.warn { border-left-color: var(--accent); }
+        .info-card.danger { border-left-color: var(--danger); }
+        .info-card.success { border-left-color: var(--success); }
+        .info-card h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: .65rem;
+            color: var(--text);
+        }
+        .info-card p {
+            color: var(--text-secondary);
+            font-size: .92rem;
+            margin-bottom: .5rem;
+        }
+
+        /* ─── BULLET LIST (styled) ─── */
+        .styled-list {
+            list-style: none;
+            padding: 0;
+        }
+        .styled-list li {
+            padding: .55rem 0 .55rem 1.75rem;
+            position: relative;
+            font-size: .93rem;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border);
+        }
+        .styled-list li:last-child { border-bottom: none; }
+        .styled-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: .85rem;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+        .styled-list.warn li::before { background: var(--accent); }
+        .styled-list.danger li::before { background: var(--danger); }
+        .styled-list.green li::before { background: var(--success); }
+
+        /* ─── COMPARISON GRID ─── */
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .compare-card {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 1.5rem;
+            box-shadow: var(--card-shadow);
+        }
+        .compare-card.before { border-top: 4px solid var(--danger); }
+        .compare-card.after { border-top: 4px solid var(--success); }
+        .compare-card h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: .75rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* ─── FLOW DIAGRAM ─── */
+        .flow-diagram {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 1.5rem;
+        }
+        .flow-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: .75rem;
+            margin-bottom: 1rem;
+        }
+        .flow-box {
+            background: var(--primary-light);
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            padding: .6rem 1.1rem;
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            text-align: center;
+            min-width: 110px;
+        }
+        .flow-box.center-box {
+            background: var(--danger-light);
+            border-color: var(--danger);
+            color: var(--danger);
+            font-size: .95rem;
+            padding: .8rem 1.4rem;
+        }
+        .flow-box.solution-box {
+            background: var(--success-light);
+            border-color: var(--success);
+            color: #1a8a4a;
+        }
+        .flow-arrow {
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+        .flow-arrow.down {
+            display: block;
+            text-align: center;
+            font-size: 1.4rem;
+            margin: .25rem 0;
+        }
+
+        /* ─── SCORECARD / INTERACTIVE ─── */
+        .scorecard {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 1.5rem;
+        }
+        .scorecard h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: .35rem;
+        }
+        .scorecard-desc {
+            color: var(--text-secondary);
+            font-size: .88rem;
+            margin-bottom: 1.25rem;
+        }
+        .sc-question {
+            background: var(--bg);
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            margin-bottom: .65rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            cursor: pointer;
+            transition: all .2s;
+            border: 2px solid transparent;
+            user-select: none;
+        }
+        .sc-question:hover { border-color: var(--primary-light); }
+        .sc-question.selected { border-color: var(--primary); background: var(--primary-light); }
+        .sc-question span {
+            font-size: .9rem;
+            font-weight: 500;
+            color: var(--text);
+            flex: 1;
+        }
+        .sc-toggle {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .8rem;
+            transition: all .2s;
+            flex-shrink: 0;
+            background: var(--white);
+        }
+        .sc-question.selected .sc-toggle {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #fff;
+        }
+        .sc-result {
+            margin-top: 1.25rem;
+            padding: 1.25rem;
+            border-radius: 12px;
+            display: none;
+        }
+        .sc-result.show { display: block; }
+        .sc-result h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: .5rem;
+        }
+        .sc-result p { font-size: .9rem; }
+        .sc-bar-wrap {
+            background: #e2e8f0;
+            border-radius: 8px;
+            height: 12px;
+            margin: .75rem 0 .5rem;
+            overflow: hidden;
+        }
+        .sc-bar {
+            height: 100%;
+            border-radius: 8px;
+            transition: width .6s ease;
+        }
+        .sc-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: .65rem 1.5rem;
+            border-radius: 10px;
+            border: none;
+            background: var(--primary);
+            color: #fff;
+            font-family: 'DM Sans', sans-serif;
+            font-size: .9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background .2s;
+        }
+        .sc-btn:hover { background: var(--primary-dark); }
+        .sc-btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        .sc-btn-outline:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        /* ─── STEP TIMELINE ─── */
+        .timeline {
+            position: relative;
+            padding-left: 2.5rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 14px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--primary), var(--primary-light));
+            border-radius: 3px;
+        }
+        .tl-item {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        .tl-dot {
+            position: absolute;
+            left: -2.5rem;
+            top: .15rem;
+            width: 28px;
+            height: 28px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: .75rem;
+            font-weight: 700;
+            border: 3px solid var(--bg);
+        }
+        .tl-content {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.2rem 1.4rem;
+            box-shadow: var(--card-shadow);
+        }
+        .tl-content h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: .98rem;
+            font-weight: 700;
+            margin-bottom: .35rem;
+            color: var(--text);
+        }
+        .tl-content p {
+            font-size: .88rem;
+            color: var(--text-secondary);
+        }
+
+        /* ─── ICON GRID ─── */
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .icon-grid-item {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            transition: transform .2s, box-shadow .2s;
+        }
+        .icon-grid-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--card-hover);
+        }
+        .icon-grid-item .emoji {
+            font-size: 1.8rem;
+            margin-bottom: .5rem;
+            display: block;
+        }
+        .icon-grid-item h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: .88rem;
+            font-weight: 700;
+            margin-bottom: .3rem;
+            color: var(--text);
+        }
+        .icon-grid-item p {
+            font-size: .8rem;
+            color: var(--text-secondary);
+        }
+
+        /* ─── TRANSFORMATION TABLE ─── */
+        .transform-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: var(--white);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 1.5rem;
+        }
+        .transform-table thead th {
+            background: var(--primary);
+            color: #fff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: .85rem;
+            font-weight: 700;
+            padding: .9rem 1.2rem;
+            text-align: left;
+        }
+        .transform-table tbody td {
+            padding: .75rem 1.2rem;
+            font-size: .88rem;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border);
+        }
+        .transform-table tbody tr:last-child td { border-bottom: none; }
+        .transform-table tbody tr:nth-child(even) { background: var(--bg); }
+
+        /* ─── CALLOUT BOX ─── */
+        .callout {
+            border-radius: 14px;
+            padding: 1.5rem 1.75rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+        .callout.teal { background: var(--primary-light); border: 1px solid rgba(27,181,165,0.2); }
+        .callout.orange { background: var(--accent-light); border: 1px solid rgba(240,151,59,0.2); }
+        .callout.red { background: var(--danger-light); border: 1px solid rgba(231,76,60,0.2); }
+        .callout.green { background: var(--success-light); border: 1px solid rgba(39,174,96,0.2); }
+        .callout-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            line-height: 1;
+            margin-top: 2px;
+        }
+        .callout-text h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: .95rem;
+            font-weight: 700;
+            margin-bottom: .35rem;
+        }
+        .callout-text p {
+            font-size: .88rem;
+            color: var(--text-secondary);
+        }
+
+        /* ─── DRAG-DROP ACTIVITY ─── */
+        .activity-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 1.5rem;
+            border: 2px dashed var(--border);
+        }
+        .activity-card h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: .35rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .activity-desc {
+            color: var(--text-secondary);
+            font-size: .88rem;
+            margin-bottom: 1.25rem;
+        }
+        .task-input-group {
+            margin-bottom: .75rem;
+        }
+        .task-input-group label {
+            display: block;
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: .35rem;
+        }
+        .task-input {
+            width: 100%;
+            padding: .65rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: .88rem;
+            color: var(--text);
+            transition: border-color .2s;
+            background: var(--bg);
+        }
+        .task-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: var(--white);
+        }
+        textarea.task-input { resize: vertical; min-height: 70px; }
+
+        /* ─── STAT BANNER ─── */
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .stat-box {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 1.25rem;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+        }
+        .stat-num {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+        .stat-num.orange { color: var(--accent); }
+        .stat-num.red { color: var(--danger); }
+        .stat-label {
+            font-size: .78rem;
+            color: var(--text-secondary);
+            margin-top: .35rem;
+            font-weight: 500;
+        }
+
+        /* ─── ACCORDION ─── */
+        .accordion-item {
+            background: var(--white);
+            border-radius: 12px;
+            margin-bottom: .6rem;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+        }
+        .accordion-header {
+            padding: 1rem 1.4rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: .93rem;
+            color: var(--text);
+            transition: background .2s;
+            user-select: none;
+        }
+        .accordion-header:hover { background: var(--bg); }
+        .accordion-arrow {
+            transition: transform .3s;
+            font-size: .8rem;
+            color: var(--text-light);
+        }
+        .accordion-item.open .accordion-arrow { transform: rotate(180deg); }
+        .accordion-body {
+            padding: 0 1.4rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .35s ease, padding .35s ease;
+        }
+        .accordion-item.open .accordion-body {
+            padding: 0 1.4rem 1.2rem;
+            max-height: 600px;
+        }
+        .accordion-body p {
+            font-size: .88rem;
+            color: var(--text-secondary);
+        }
+
+        /* ─── PROGRESS TRACKER ─── */
+        .progress-wrap {
+            margin-bottom: 1.5rem;
+        }
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: .5rem;
+        }
+        .progress-header span {
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .progress-track {
+            background: #e2e8f0;
+            border-radius: 8px;
+            height: 10px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 8px;
+            background: linear-gradient(90deg, var(--primary), #2ec4b6);
+            transition: width .8s ease;
+        }
+
+        /* ─── FOOTER ─── */
+        .page-footer {
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+        .page-footer p {
+            font-size: .82rem;
+            color: var(--text-light);
+        }
+        .page-footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 700px) {
+            .hero h1 { font-size: 1.75rem; }
+            .compare-grid { grid-template-columns: 1fr; }
+            .stat-row { grid-template-columns: 1fr; }
+            .icon-grid { grid-template-columns: 1fr 1fr; }
+            .flow-row { flex-direction: column; }
+            .page-wrap { padding: 1.25rem 1rem 3rem; }
+        }
+
+        /* ─── PRINT ─── */
+        @media print {
+            .topnav, .scorecard, .activity-card { break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="topnav">
+    <div style="display:flex;align-items:center;">
+        <a href="https://civiltech-ai.github.io/knowledge-portal/" class="topnav-brand">Civil-Tech<span>.ai</span></a>
+        <span class="topnav-badge">Knowledge Portal</span>
+    </div>
+    <a href="https://civiltech-ai.github.io/knowledge-portal/" class="topnav-back">← Back to Library</a>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<header class="hero">
+    <div class="hero-inner">
+        <span class="hero-cat">⚙️ Operations · 🔄 Systems &amp; Processes</span>
+        <h1>The Owner as the Bottleneck</h1>
+        <p class="hero-sub">Why the biggest obstacle to your construction company's growth might be you — and a practical framework to fix it without losing control.</p>
+        <div class="hero-tags">
+            <span class="hero-tag">📖 15 min read</span>
+            <span class="hero-tag">🎯 3 Activities</span>
+            <span class="hero-tag">🏗️ Construction Focus</span>
+            <span class="hero-tag">⚡ Interactive</span>
+        </div>
+    </div>
+</header>
+
+<!-- ═══════════ MAIN CONTENT ═══════════ -->
+<main class="page-wrap">
+
+    <!-- ─── QUOTE ─── -->
+    <div class="quote-banner">
+        <blockquote>"The bottleneck in the business is usually the owner."</blockquote>
+        <cite>— Eliyahu M. Goldratt, Author of <em>The Goal</em></cite>
+    </div>
+
+    <!-- ─── WHAT THIS MEANS ─── -->
+    <section class="section">
+        <h2 class="section-title">
+            <span class="icon icon-teal">💡</span>
+            What Does This Quote Really Mean?
+        </h2>
+        <p class="section-intro">
+            In most growing Dubai construction and engineering firms, every critical decision — site approvals, material purchasing, quotations, payment follow-ups — passes through one person: <strong>the owner</strong>. At first, this feels responsible and necessary. But as your project load increases, that single point of control becomes the single point of failure.
+        </p>
+
+        <div class="info-card">
+            <h3>The Core Problem</h3>
+            <p>When every important decision, approval, and communication depends on one person, that person eventually becomes the <strong>biggest slowdown</strong> in the entire company — not the market, not the team, and not the clients.</p>
+        </div>
+
+        <div class="callout teal">
+            <span class="callout-icon">🔑</span>
+            <div class="callout-text">
+                <h4>Key Insight for Engineering Firms</h4>
+                <p>Your company's capacity is not defined by the number of engineers you have or the projects you win. It is defined by how many decisions can move forward <strong>without the owner being in the room</strong>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── WHERE OWNERS GET STUCK ─── -->
+    <section class="section">
+        <h2 class="section-title">
+            <span class="icon icon-orange">🔗</span>
+            Where Dubai Construction Owners Get Stuck
+        </h2>
+        <p class="section-intro">
+            Here are the typical operational areas where owners of civil and structural engineering companies in Dubai become the central dependency:
+        </p>
+
+        <div class="icon-grid">
+            <div class="icon-grid-item">
+                <span class="emoji">📋</span>
+                <h4>Site Approvals</h4>
+                <p>Every site instruction waits for owner sign-off</p>
+            </div>
+            <div class="icon-grid-item">
+                <span class="emoji">🧱</span>
+                <h4>Material Purchasing</h4>
+                <p>Supplier POs stall until the owner reviews each one</p>
+            </div>
+            <div class="icon-grid-item">
+                <span class="emoji">💬</span>
+                <h4>Client Communication</h4>
+                <p>Clients only speak to the owner for updates and changes</p>
+            </div>
+            <div class="icon-grid-item">
+                <span class="emoji">📝</span>
+                <h4>Quotations &amp; BOQs</h4>
+                <p>All pricing passes through one person before going out</p>
+            </div>
+            <div class="icon-grid-item">
+                <span class="emoji">👷</span>
+                <h4>Hiring Decisions</h4>
+                <p>Every new hire — from labourer to engineer — needs owner OK</p>
+            </div>
+            <div class="icon-grid-item">
+                <span class="emoji">💰</span>
+                <h4>Payment Follow-ups</h4>
+                <p>Receivables collection depends on the owner chasing clients</p>
+            </div>
+            <div class="icon-grid-item">
+                <span class="emoji">👥</span>
+                <h4>Team Coordination</h4>
+                <p>Cross-team work only happens when the owner connects the dots</p>
+            </div>
+            <div class="icon-grid-item">
+                <span class="emoji">🔥</span>
+                <h4>Problem-Solving</h4>
+                <p>Every site issue, delay, or conflict escalates to the owner</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── STATS ─── -->
+    <div class="stat-row">
+        <div class="stat-box">
+            <div class="stat-num">72%</div>
+            <div class="stat-label">of SME owners say they are involved in every major decision daily</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-num orange">3–5 hrs</div>
+            <div class="stat-label">average daily time spent by owners on tasks that could be delegated</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-num red">40%</div>
+            <div class="stat-label">of project delays traced back to slow approval chains</div>
+        </div>
+    </div>
+
+    <!-- ─── THE BOTTLENECK VISUAL ─── -->
+    <section class="section">
+        <h2 class="section-title">
+            <span class="icon icon-red">⚠️</span>
+            How the Bottleneck Builds Up
+        </h2>
+        <p class="section-intro">
+            Here's how the cycle works in a typical civil engineering business in Dubai. Everything flows through the owner — and as volume increases, the entire operation slows down:
+        </p>
+
+        <div class="flow-diagram">
+            <div class="flow-row">
+                <div class="flow-box">Site Issues</div>
+                <div class="flow-box">Client Requests</div>
+                <div class="flow-box">Procurement</div>
+                <div class="flow-box">HR Decisions</div>
+            </div>
+            <div class="flow-arrow down">▼ ▼ ▼ ▼</div>
+            <div class="flow-row">
+                <div class="flow-box center-box">🚨 OWNER (Single Point of Control)</div>
+            </div>
+            <div class="flow-arrow down">▼</div>
+            <div class="flow-row">
+                <div class="flow-box" style="border-color:var(--accent);color:var(--accent);">Delays</div>
+                <div class="flow-box" style="border-color:var(--accent);color:var(--accent);">Frustrated Teams</div>
+                <div class="flow-box" style="border-color:var(--accent);color:var(--accent);">Slow Execution</div>
+                <div class="flow-box" style="border-color:var(--accent);color:var(--accent);">Burnout</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── REAL CASE STUDY ─── -->
+    <section class="section">
+        <h2 class="section-title">
+            <span class="icon icon-orange">🏢</span>
+            Real-World Case: A Dubai Fit-Out Company
+        </h2>
+
+        <div class="info-card warn">
+            <h3>The Situation</h3>
+            <p>A mid-sized fit-out company owner in Dubai personally managed all quotations, all supplier approvals, all client variation approvals, and all site escalation decisions. This worked fine when the company had 2–3 active projects.</p>
+        </div>
+
+        <div class="compare-grid">
+            <div class="compare-card before">
+                <h4><span style="color:var(--danger)">❌</span> What Happened as Volume Grew</h4>
+                <ul class="styled-list danger">
+                    <li>Site teams waited <strong>hours</strong> for simple approvals</li>
+                    <li>Procurement slowed down — suppliers started deprioritising the company</li>
+                    <li>Clients became frustrated with delayed responses on variations</li>
+                    <li>Managers stopped taking initiative — "owner will decide anyway"</li>
+                    <li>New project opportunities were missed due to slow quotation turnaround</li>
+                </ul>
+            </div>
+            <div class="compare-card after">
+                <h4><span style="color:var(--success)">✅</span> The Root Cause</h4>
+                <ul class="styled-list green">
+                    <li>Business was <strong>not</strong> limited by market demand</li>
+                    <li>Business was <strong>not</strong> limited by lack of skilled staff</li>
+                    <li>Business was <strong>not</strong> limited by cash flow</li>
+                    <li>Business <strong>was</strong> limited by too much owner involvement in daily execution</li>
+                    <li>The owner had become the invisible ceiling on growth</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── WHY THIS HAPPENS ─── -->
+    <section class="section">
+        <h2 class="section-title">
+            <span class="icon icon-yellow">🧠</span>
+            Why Owners Hold On — The Psychology Behind It
+        </h2>
+        <p class="section-intro">
+            Most owners don't create bottlenecks on purpose. These beliefs drive the behaviour:
+        </p>
+
+        <div class="accordion-item open">
+            <div class="accordion-header">
+                <span>💭 "Nobody can do it properly except me."</span>
+                <span class="accordion-arrow">▼</span>
+            </div>
+            <div class="accordion-body">
+                <p>This is the most common belief. And it often starts as true — you built the company, you know the standards, you know the clients. But as the company grows, this belief stops being a quality control tool and starts being a growth limiter. The real question is: have you created the systems, checklists, and training that allow others to meet your standard?</p>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span>💭 "If I don't check everything, mistakes will happen."</span>
+                <span class="accordion-arrow">▼</span>
+            </div>
+            <div class="accordion-body">
+                <p>Mistakes will happen whether you check or not — the difference is whether you catch them at 11pm yourself or build a review process that catches them at 3pm. In civil engineering, quality errors are expensive. But the answer is not owner-as-inspector — it's <strong>structured review protocols</strong> with clear checklists and accountability.</p>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span>💭 "I must stay involved to maintain quality."</span>
+                <span class="accordion-arrow">▼</span>
+            </div>
+            <div class="accordion-body">
+                <p>Involvement and control are not the same thing. You can maintain quality through reporting dashboards, weekly reviews, audit checklists, and clear standards — without being the one who signs every single purchase order. Quality comes from <strong>systems</strong>, not from your personal attention to every detail.</p>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span>💭 "My clients expect to deal with me directly."</span>
+                <span class="accordion-arrow">▼</span>
+            </div>
+            <div class="accordion-body">
+                <p>Some clients do. But most clients care about <strong>results, responsiveness, and reliability</strong> — not which name is on the WhatsApp message. If your project manager gives faster updates and resolves issues quicker, the client will actually prefer dealing with them. Introduce your team gradually and build client confidence in the process, not just in you.</p>
+            </div>
+        </div>
+
+        <div class="callout orange" style="margin-top:1rem;">
+            <span class="callout-icon">⚡</span>
+            <div class="callout-text">
+                <h4>The Hidden Cost</h4>
+                <p>Some involvement is important. But <strong>excessive involvement</strong> creates team dependency, slow execution, weak managers, burnout, and poor scalability. Every hour you spend on a task someone else could do is an hour you're not spending on strategy, business development, or building the systems that make the business grow.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── WARNING SIGNS ─── -->
+    <section class="section">
+        <h2 class="section-title">
+            <span class="icon icon-red">🚩</span>
+            7 Warning Signs You Are the Bottleneck
+        </h2>
+        <p class="section-intro">
+            If more than three of these apply to your company right now, the owner dependency is already limiting your growth:
+        </p>
+
+        <div class="info-card danger">
+            <ul class="styled-list danger">
+                <li><strong>Your team waits for small approvals</strong> — even routine material orders or subcontractor payments need your sign-off</li>
+                <li><strong>You receive non-stop calls all day</strong> — from site supervisors, procurement staff, project managers, and clients — because nobody else can answer</li>
+                <li><strong>Every issue gets escalated to you</strong> — your managers bring problems, not solutions</li>
+                <li><strong>Projects visibly slow down when you're unavailable</strong> — if you take a day off or travel, work pauses</li>
+                <li><strong>Your managers avoid making decisions</strong> — they've been trained (unintentionally) to defer everything upward</li>
+                <li><strong>You work constantly but the business still feels chaotic</strong> — long hours don't translate to smooth operations</li>
+                <li><strong>The same operational problems repeat every week</strong> — because the root cause (missing systems) is never addressed</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ═══════════ INTERACTIVE SELF-ASSESSMENT ═══════════ -->
+    <section class="section">
+        <h2 class="section-title">
+            <span class="icon icon-teal">📊</span>
+            Activity 1: Bottleneck Self-Assessment
+        </h2>
+
+        <div class="scorecard" id="assessment">
+            <h3>🔍 How Deep Is the Bottleneck in Your Business?</h3>
+            <p class="scorecard-desc">Select every statement that applies to your company today. Be honest — this is for your clarity, not anyone else's.</p>
+
+            <div class="sc-question" onclick="toggleQ(this)">
+                <span>My team cannot approve material purchases over AED 5,000 without my personal sign-off</span>
+                <div class="sc-toggle">✓</div>
+            </div>
+            <div class="sc-question" onclick="toggleQ(this)">
+                <span>I personally handle most client communication, including routine updates</span>
+                <div class="sc-toggle">✓</div>
+            </div>
+            <div class="sc-question" onclick="toggleQ(this)">
+                <span>If I take a full day off, decisions and progress visibly slow down on site</span>
+                <div class="sc-toggle">✓</div>
+            </div>
+            <div class="sc-question" onclick="toggleQ(this)">
+                <span>I review and approve every quotation or BOQ before it goes to the client</span>
+                <div class="sc-toggle">✓</div>
+            </div>
+            <div class="sc-question" onclick="toggleQ(this)">
+                <span>My project managers bring me problems to solve rather than proposing solutions</span>
+                <div class="sc-toggle">✓</div>
+            </div>
+            <div class="sc-question" onclick="toggleQ(this)">
+                <span>I receive more than 30 operational calls/messages per day from my team</span>
+                <div class="sc-toggle">✓</div>
+            </div>
+            <div class="sc-question" onclick="toggleQ(this)">
+                <span>No one in my team has documented authority to approve subcontractor payments</span>
+                <div class="sc-toggle">✓</div>
+            </div>
+            <div class="sc-question" onclick="toggleQ(this)">
+                <span>I am involved in hiring decisions at every level, from labourers to site engineers</span>
+                <div class="sc-toggle">✓</div>
+            </div>
+            <div class="sc-question" onclick="toggleQ(this)">
+                <span>My weekly schedule is mostly reactive — I respond to problems instead of planning</span>
+                <div class="sc-toggle">✓</div>
+            </div>
+            <div class="sc-question" onclick="toggleQ(this)">
+                <span>The same operational issues (delays, material shortages, coordination gaps) repeat weekly</span>
+                <div class="sc-toggle">✓</div>
+            </div>
+
+            <button class="sc-btn" onclick="showResult()">See My Score →</button>
+
+            <div class="sc-result" id="result-low" style="background:var(--success-light);">
+                <h4 style="color:var(--success);">🟢 Low Bottleneck Risk (0–3 selected)</h4>
+                <div class="sc-bar-wrap"><div class="sc-bar" id="bar-low" style="width:0%;background:var(--success);"></div></div>
+                <p>Your business has reasonable delegation in place. Focus on strengthening the areas you selected and building more structured reporting to maintain this momentum. You're ahead of most owner-operated engineering firms in Dubai.</p>
+            </div>
+            <div class="sc-result" id="result-mid" style="background:var(--warning-light);">
+                <h4 style="color:var(--warning);">🟡 Moderate Bottleneck Risk (4–6 selected)</h4>
+                <div class="sc-bar-wrap"><div class="sc-bar" id="bar-mid" style="width:0%;background:var(--warning);"></div></div>
+                <p>You're personally carrying too many decisions. The good news: this is the perfect stage to introduce approval frameworks, reporting dashboards, and authority limits. Start with the highest-volume decision area and delegate systematically.</p>
+            </div>
+            <div class="sc-result" id="result-high" style="background:var(--danger-light);">
+                <h4 style="color:var(--danger);">🔴 High Bottleneck Risk (7–10 selected)</h4>
+                <div class="sc-bar-wrap"><div class="sc-bar" id="bar-high" style="width:0%;background:var(--danger);"></div></div>
+                <p>Your business is significantly constrained by owner dependency. Growth will remain difficult until you build systems, define authority levels, and invest in developing your managers. This is your most urgent business priority — not more projects, not more clients. Fix this first.</p>
+            </div>
+
+            <button class="sc-btn sc-btn-outline" onclick="resetAssessment()" style="display:none;margin-left:.5rem;" id="resetBtn">Reset Assessment</button>
+        </div>
+    </section>
+
+    <!-- ─── THE REAL LESSON ─── -->
+    <section class="section">
+        <h2 class="section-title">
+            <span class="icon icon-green">🎯</span>
+            The Real Business Lesson
+        </h2>
+
+        <div class="callout green">
+            <span class="callout-icon">🌱</span>
+            <div class="callout-text">
+                <h4>Growth ≠ Working Harder</h4>
+                <p>Growth does not happen when the owner works harder. Growth happens when <strong>systems improve, decision-making is distributed, managers become capable, reporting is structured, and accountability is clear</strong>. The owner's role must gradually shift from doing everything to building a business that operates effectively without constant supervision.</p>
+            </div>
+        </div>
+
+        <table class="transform-table">
+            <thead>
+                <tr>
+                    <th style="width:50%;">❌ Owner-Dependent Business</th>
+                    <th style="width:50%;">✅ System-Driven Business</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Owner approves every purchase order</td>
+                    <td>Defined authority limits — PMs approve up to AED 25K</td>
+                </tr>
+                <tr>
+                    <td>Owner handles all client escalations</td>
+                    <td>Escalation hierarchy with clear levels</td>
+                </tr>
+                <tr>
+                    <td>Owner checks all quotations personally</td>
+                    <td>Senior estimator prepares, owner reviews only above threshold</td>
+                </tr>
+                <tr>
+                    <td>Owner coordinates between departments</td>
+                    <td>Weekly cross-team meetings with clear agenda</td>
+                </tr>
+                <tr>
+                    <td>Owner is the only one clients trust</td>
+                    <td>PMs introduced to clients with delegated authority</td>
+                </tr>
+                <tr>
+                    <td>Owner gets 50+ operational calls daily</td>
+                    <td>Daily dashboards replace phone updates</td>
+                </tr>
+                <tr>
+                    <td>Owner firefights all day</td>
+                    <td>Owner spends 60% time on strategy &amp; growth</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ─── PRACTICAL IMPROVEMENT CASE ─── -->
+    <section class="section">
+        <h2 class="section-title">
+            <span class="icon icon-green">✅</span>
+            What Improvement Looks Like: A Civil Contracting Example
+        </h2>
+        <p class="section-intro">A Dubai-based civil contracting company implemented five key changes over a 90-day period. Here's what they did and what happened:</p>
+
+        <div class="timeline">
+            <div class="tl-item">
+                <div class="tl-dot">1</div>
+                <div class="tl-content">
+                    <h4>Approval Limits for Project Managers</h4>
+                    <p>PMs were given authority to approve material purchases up to AED 25,000 and subcontractor day-works up to AED 10,000 without owner involvement. A simple log tracked all approvals for weekly review.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot">2</div>
+                <div class="tl-content">
+                    <h4>Daily Reporting Dashboards</h4>
+                    <p>A shared Google Sheet was set up where each project updated progress, material status, manpower, and issues by 5pm daily. The owner reviewed the dashboard in 15 minutes instead of making 20 phone calls.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot">3</div>
+                <div class="tl-content">
+                    <h4>Weekly Review Meetings</h4>
+                    <p>Every Monday, a 60-minute structured review covered all projects. Agenda: progress vs plan, cash flow status, procurement pipeline, HR needs, client issues. This replaced scattered daily check-ins.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot">4</div>
+                <div class="tl-content">
+                    <h4>Escalation Hierarchy</h4>
+                    <p>A clear three-tier system: Level 1 (Site Engineer resolves) → Level 2 (Project Manager resolves) → Level 3 (Owner involvement). Only Level 3 issues reached the owner — which turned out to be about 15% of total issues.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot">5</div>
+                <div class="tl-content">
+                    <h4>Procurement Authority Levels</h4>
+                    <p>The procurement officer was authorised to place orders with pre-approved suppliers up to agreed rates. Only new suppliers or rate changes needed owner approval. This cut procurement delays by 70%.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="compare-grid" style="margin-top:1rem;">
+            <div class="compare-card after" style="grid-column:1/-1;">
+                <h4><span style="color:var(--success)">📈</span> Results After 90 Days</h4>
+                <div class="icon-grid" style="margin-top:.75rem;">
+                    <div class="icon-grid-item" style="border:2px solid var(--success-light);">
+                        <span class="emoji">⚡</span>
+                        <h4>Faster Execution</h4>
+                        <p>Average decision turnaround dropped from 8 hours to 45 minutes</p>
+                    </div>
+                    <div class="icon-grid-item" style="border:2px solid var(--success-light);">
+                        <span class="emoji">📞</span>
+                        <h4>Fewer Interruptions</h4>
+                        <p>Owner's daily calls dropped from 50+ to under 12</p>
+                    </div>
+                    <div class="icon-grid-item" style="border:2px solid var(--success-light);">
+                        <span class="emoji">📊</span>
+                        <h4>Better Accountability</h4>
+                        <p>PMs took ownership of project outcomes, not just task execution</p>
+                    </div>
+                    <div class="icon-grid-item" style="border:2px solid var(--success-light);">
+                        <span class="emoji">🔥</span>
+                        <h4>Reduced Firefighting</h4>
+                        <p>70% fewer escalations reaching the owner each week</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ ACTIVITY 2: DELEGATION MAP ═══════════ -->
+    <section class="section">
+        <h2 class="section-title">
+            <span class="icon icon-teal">🗺️</span>
+            Activity 2: Build Your Delegation Map
+        </h2>
+
+        <div class="activity-card" id="delegationMap">
+            <h3>✏️ Map Your Top 5 Owner-Dependent Tasks</h3>
+            <p class="activity-desc">Think about the tasks that consume most of your time every week. For each one, identify who could handle it with the right systems in place.</p>
+
+            <div id="delegationRows">
+                <div class="delegation-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem;margin-bottom:.75rem;padding-bottom:.75rem;border-bottom:1px solid var(--border);">
+                    <div class="task-input-group">
+                        <label>Task / Decision</label>
+                        <input class="task-input" type="text" placeholder="e.g. Approve material POs">
+                    </div>
+                    <div class="task-input-group">
+                        <label>Who Could Own This?</label>
+                        <input class="task-input" type="text" placeholder="e.g. Project Manager">
+                    </div>
+                    <div class="task-input-group">
+                        <label>What System/Limit Is Needed?</label>
+                        <input class="task-input" type="text" placeholder="e.g. Approval limit up to AED 20K">
+                    </div>
+                </div>
+            </div>
+
+            <div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:.75rem;">
+                <button class="sc-btn" onclick="addDelegationRow()">+ Add Another Task</button>
+                <button class="sc-btn sc-btn-outline" onclick="exportDelegation()">📋 Copy My Map</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── 5-STEP FRAMEWORK ─── -->
+    <section class="section">
+        <h2 class="section-title">
+            <span class="icon icon-teal">🛠️</span>
+            The 5-Step Framework to Remove the Bottleneck
+        </h2>
+        <p class="section-intro">Use this step-by-step approach — tested in Dubai construction businesses — to systematically remove yourself as the central dependency:</p>
+
+        <div class="flow-diagram">
+            <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem;text-align:center;">
+                <div>
+                    <div class="flow-box solution-box" style="margin-bottom:.5rem;">Step 1</div>
+                    <div style="font-size:.78rem;font-weight:600;color:var(--text);">Audit</div>
+                    <div style="font-size:.72rem;color:var(--text-secondary);margin-top:.2rem;">List every decision that requires your approval this week</div>
+                </div>
+                <div>
+                    <div class="flow-box solution-box" style="margin-bottom:.5rem;">Step 2</div>
+                    <div style="font-size:.78rem;font-weight:600;color:var(--text);">Categorise</div>
+                    <div style="font-size:.72rem;color:var(--text-secondary);margin-top:.2rem;">Sort into Must-Own, Can-Delegate, and Should-Eliminate</div>
+                </div>
+                <div>
+                    <div class="flow-box solution-box" style="margin-bottom:.5rem;">Step 3</div>
+                    <div style="font-size:.78rem;font-weight:600;color:var(--text);">Define Limits</div>
+                    <div style="font-size:.72rem;color:var(--text-secondary);margin-top:.2rem;">Set clear authority limits with AED thresholds and scope</div>
+                </div>
+                <div>
+                    <div class="flow-box solution-box" style="margin-bottom:.5rem;">Step 4</div>
+                    <div style="font-size:.78rem;font-weight:600;color:var(--text);">Implement</div>
+                    <div style="font-size:.72rem;color:var(--text-secondary);margin-top:.2rem;">Roll out dashboards, checklists, and reporting structures</div>
+                </div>
+                <div>
+                    <div class="flow-box solution-box" style="margin-bottom:.5rem;">Step 5</div>
+                    <div style="font-size:.78rem;font-weight:600;color:var(--text);">Review</div>
+                    <div style="font-size:.72rem;color:var(--text-secondary);margin-top:.2rem;">Weekly check: what decisions still reach me that shouldn't?</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── DECISION AUTHORITY MATRIX ─── -->
+    <section class="section">
+        <h2 class="section-title">
+            <span class="icon icon-teal">📋</span>
+            Sample Authority Matrix for a Dubai Engineering Firm
+        </h2>
+        <p class="section-intro">Use this as a starting template. Adjust values and roles to fit your company size and structure.</p>
+
+        <table class="transform-table">
+            <thead>
+                <tr>
+                    <th>Decision Area</th>
+                    <th>Site Engineer</th>
+                    <th>Project Manager</th>
+                    <th>Owner</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Material Purchase</strong></td>
+                    <td>Up to AED 5K</td>
+                    <td>Up to AED 25K</td>
+                    <td>Above AED 25K</td>
+                </tr>
+                <tr>
+                    <td><strong>Subcontractor Day-works</strong></td>
+                    <td>Up to AED 2K</td>
+                    <td>Up to AED 10K</td>
+                    <td>Above AED 10K</td>
+                </tr>
+                <tr>
+                    <td><strong>Client Variation Response</strong></td>
+                    <td>—</td>
+                    <td>Variations under AED 50K</td>
+                    <td>Variations above AED 50K</td>
+                </tr>
+                <tr>
+                    <td><strong>Site Issue Escalation</strong></td>
+                    <td>Level 1 (routine)</td>
+                    <td>Level 2 (significant)</td>
+                    <td>Level 3 (critical / safety)</td>
+                </tr>
+                <tr>
+                    <td><strong>Hiring</strong></td>
+                    <td>—</td>
+                    <td>Labourers &amp; Technicians</td>
+                    <td>Engineers &amp; Managers</td>
+                </tr>
+                <tr>
+                    <td><strong>Client Communication</strong></td>
+                    <td>Daily site updates</td>
+                    <td>Weekly reports &amp; progress meetings</td>
+                    <td>Strategic / relationship meetings</td>
+                </tr>
+                <tr>
+                    <td><strong>Supplier Negotiation</strong></td>
+                    <td>—</td>
+                    <td>Within approved rate card</td>
+                    <td>New suppliers &amp; rate changes</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ═══════════ ACTIVITY 3: WEEKLY TIME AUDIT ═══════════ -->
+    <section class="section">
+        <h2 class="section-title">
+            <span class="icon icon-orange">⏱️</span>
+            Activity 3: Your Weekly Owner Time Audit
+        </h2>
+
+        <div class="activity-card" id="timeAudit">
+            <h3>📅 Where Is Your Time Really Going?</h3>
+            <p class="activity-desc">Estimate how many hours you spend on each category per week. Then set a target for where you want those hours to go after building proper systems.</p>
+
+            <div id="timeSliders">
+                <div class="time-slider-item" style="margin-bottom:1.25rem;">
+                    <div style="display:flex;justify-content:space-between;margin-bottom:.35rem;">
+                        <span style="font-size:.88rem;font-weight:600;">🔥 Firefighting &amp; Escalations</span>
+                        <span class="time-val" style="font-size:.88rem;font-weight:700;color:var(--danger);">0 hrs</span>
+                    </div>
+                    <input type="range" min="0" max="30" value="0" class="time-range" oninput="updateTime(this)" style="width:100%;">
+                </div>
+                <div class="time-slider-item" style="margin-bottom:1.25rem;">
+                    <div style="display:flex;justify-content:space-between;margin-bottom:.35rem;">
+                        <span style="font-size:.88rem;font-weight:600;">📋 Approvals &amp; Reviews</span>
+                        <span class="time-val" style="font-size:.88rem;font-weight:700;color:var(--accent);">0 hrs</span>
+                    </div>
+                    <input type="range" min="0" max="30" value="0" class="time-range" oninput="updateTime(this)" style="width:100%;">
+                </div>
+                <div class="time-slider-item" style="margin-bottom:1.25rem;">
+                    <div style="display:flex;justify-content:space-between;margin-bottom:.35rem;">
+                        <span style="font-size:.88rem;font-weight:600;">💬 Client Communication</span>
+                        <span class="time-val" style="font-size:.88rem;font-weight:700;color:var(--warning);">0 hrs</span>
+                    </div>
+                    <input type="range" min="0" max="30" value="0" class="time-range" oninput="updateTime(this)" style="width:100%;">
+                </div>
+                <div class="time-slider-item" style="margin-bottom:1.25rem;">
+                    <div style="display:flex;justify-content:space-between;margin-bottom:.35rem;">
+                        <span style="font-size:.88rem;font-weight:600;">👥 Team Coordination</span>
+                        <span class="time-val" style="font-size:.88rem;font-weight:700;color:var(--text-secondary);">0 hrs</span>
+                    </div>
+                    <input type="range" min="0" max="30" value="0" class="time-range" oninput="updateTime(this)" style="width:100%;">
+                </div>
+                <div class="time-slider-item" style="margin-bottom:1.25rem;">
+                    <div style="display:flex;justify-content:space-between;margin-bottom:.35rem;">
+                        <span style="font-size:.88rem;font-weight:600;">🎯 Strategy &amp; Business Development</span>
+                        <span class="time-val" style="font-size:.88rem;font-weight:700;color:var(--primary);">0 hrs</span>
+                    </div>
+                    <input type="range" min="0" max="30" value="0" class="time-range" oninput="updateTime(this)" style="width:100%;">
+                </div>
+            </div>
+
+            <div id="timeResult" style="display:none;background:var(--bg);border-radius:12px;padding:1.25rem;margin-top:1rem;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;">
+                    <strong style="font-size:.95rem;">Total: <span id="totalHrs">0</span> hrs/week</strong>
+                    <span id="strategyPct" style="font-size:.85rem;font-weight:600;color:var(--primary);">0% on strategy</span>
+                </div>
+                <div class="sc-bar-wrap" style="margin:.5rem 0;">
+                    <div id="strategyBar" class="sc-bar" style="width:0%;background:var(--primary);"></div>
+                </div>
+                <p id="timeAdvice" style="font-size:.85rem;color:var(--text-secondary);margin-top:.5rem;"></p>
+            </div>
+
+            <button class="sc-btn" onclick="calcTime()" style="margin-top:1rem;">Calculate My Time Split →</button>
+        </div>
+    </section>
+
+    <!-- ─── CORE PRINCIPLE ─── -->
+    <section class="section">
+        <h2 class="section-title">
+            <span class="icon icon-teal">💎</span>
+            The Core Principle
+        </h2>
+
+        <div class="quote-banner" style="background:linear-gradient(135deg,var(--primary) 0%,#2ec4b6 100%);">
+            <blockquote style="font-size:1.2rem;">A business becomes scalable only when the owner stops being the centre of every decision.</blockquote>
+            <cite style="color:rgba(255,255,255,0.8);">The goal is not to remove the owner from the business. The goal is to remove <strong>unnecessary dependency</strong> on the owner.</cite>
+        </div>
+
+        <div class="info-card success">
+            <h3>Your Action Plan Summary</h3>
+            <ul class="styled-list green">
+                <li><strong>This week:</strong> Complete the Bottleneck Self-Assessment above and note your score</li>
+                <li><strong>This week:</strong> Use the Delegation Map to identify your top 5 owner-dependent tasks</li>
+                <li><strong>Next week:</strong> Define authority limits for at least 2 task areas and communicate them to your team</li>
+                <li><strong>Within 30 days:</strong> Implement daily reporting dashboards for all active projects</li>
+                <li><strong>Within 60 days:</strong> Establish a weekly structured review meeting and escalation hierarchy</li>
+                <li><strong>Within 90 days:</strong> Re-take the self-assessment and measure how many items you've resolved</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ─── CLOSING ─── -->
+    <div class="callout teal">
+        <span class="callout-icon">🏗️</span>
+        <div class="callout-text">
+            <h4>Remember</h4>
+            <p>You built this company. Now build the systems that let it grow beyond you. The strongest engineering firms in Dubai are not the ones where the owner works the hardest — they're the ones where the owner has built a team and a structure that performs consistently, whether the owner is on site or on holiday.</p>
+        </div>
+    </div>
+
+    <!-- ─── FOOTER ─── -->
+    <footer class="page-footer">
+        <p>Part of the <a href="https://civiltech-ai.github.io/knowledge-portal/">Civil-Tech.ai Knowledge Portal</a> — Practical business education for Dubai SME owners in construction and engineering.</p>
+    </footer>
+
+</main>
+
+<!-- ═══════════ SCRIPTS ═══════════ -->
+<script>
+    // ─── ACCORDION ───
+    document.querySelectorAll('.accordion-header').forEach(h => {
+        h.addEventListener('click', () => {
+            const item = h.parentElement;
+            document.querySelectorAll('.accordion-item').forEach(i => {
+                if (i !== item) i.classList.remove('open');
+            });
+            item.classList.toggle('open');
+        });
+    });
+
+    // ─── SELF-ASSESSMENT ───
+    function toggleQ(el) {
+        el.classList.toggle('selected');
+    }
+
+    function showResult() {
+        const count = document.querySelectorAll('#assessment .sc-question.selected').length;
+        document.querySelectorAll('.sc-result').forEach(r => r.classList.remove('show'));
+
+        let targetId, barId, pct;
+        if (count <= 3) {
+            targetId = 'result-low'; barId = 'bar-low'; pct = (count / 10) * 100;
+        } else if (count <= 6) {
+            targetId = 'result-mid'; barId = 'bar-mid'; pct = (count / 10) * 100;
+        } else {
+            targetId = 'result-high'; barId = 'bar-high'; pct = (count / 10) * 100;
+        }
+
+        const el = document.getElementById(targetId);
+        el.classList.add('show');
+        setTimeout(() => {
+            document.getElementById(barId).style.width = pct + '%';
+        }, 100);
+        document.getElementById('resetBtn').style.display = 'inline-block';
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function resetAssessment() {
+        document.querySelectorAll('#assessment .sc-question').forEach(q => q.classList.remove('selected'));
+        document.querySelectorAll('.sc-result').forEach(r => r.classList.remove('show'));
+        document.querySelectorAll('.sc-bar').forEach(b => b.style.width = '0%');
+        document.getElementById('resetBtn').style.display = 'none';
+    }
+
+    // ─── DELEGATION MAP ───
+    function addDelegationRow() {
+        const container = document.getElementById('delegationRows');
+        const row = document.createElement('div');
+        row.className = 'delegation-row';
+        row.style.cssText = 'display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem;margin-bottom:.75rem;padding-bottom:.75rem;border-bottom:1px solid var(--border);';
+        row.innerHTML = `
+            <div class="task-input-group">
+                <label>Task / Decision</label>
+                <input class="task-input" type="text" placeholder="e.g. Approve subcontractor payments">
+            </div>
+            <div class="task-input-group">
+                <label>Who Could Own This?</label>
+                <input class="task-input" type="text" placeholder="e.g. Finance Manager">
+            </div>
+            <div class="task-input-group">
+                <label>What System/Limit Is Needed?</label>
+                <input class="task-input" type="text" placeholder="e.g. Pre-approved vendor list">
+            </div>
+        `;
+        container.appendChild(row);
+    }
+
+    // Pre-add 4 more rows to make 5 total
+    for (let i = 0; i < 4; i++) addDelegationRow();
+
+    function exportDelegation() {
+        const rows = document.querySelectorAll('.delegation-row');
+        let text = 'DELEGATION MAP\n' + '═'.repeat(50) + '\n\n';
+        rows.forEach((row, i) => {
+            const inputs = row.querySelectorAll('input');
+            if (inputs[0].value || inputs[1].value || inputs[2].value) {
+                text += `Task ${i + 1}: ${inputs[0].value || '—'}\n`;
+                text += `  Owner: ${inputs[1].value || '—'}\n`;
+                text += `  System: ${inputs[2].value || '—'}\n\n`;
+            }
+        });
+        if (text.includes('Task')) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Delegation map copied to clipboard!');
+            });
+        } else {
+            alert('Please fill in at least one task first.');
+        }
+    }
+
+    // ─── TIME AUDIT ───
+    function updateTime(el) {
+        const val = el.value;
+        el.parentElement.querySelector('.time-val').textContent = val + ' hrs';
+    }
+
+    function calcTime() {
+        const sliders = document.querySelectorAll('.time-range');
+        const vals = Array.from(sliders).map(s => parseInt(s.value));
+        const total = vals.reduce((a, b) => a + b, 0);
+        const strategyHrs = vals[4];
+        const pct = total > 0 ? Math.round((strategyHrs / total) * 100) : 0;
+
+        document.getElementById('totalHrs').textContent = total;
+        document.getElementById('strategyPct').textContent = pct + '% on strategy';
+        document.getElementById('timeResult').style.display = 'block';
+
+        setTimeout(() => {
+            document.getElementById('strategyBar').style.width = pct + '%';
+        }, 100);
+
+        let advice = '';
+        if (pct < 15) {
+            advice = '🔴 You are spending less than 15% on strategy. Most of your week is consumed by operational tasks that could be delegated. This is the classic bottleneck pattern — address it urgently.';
+        } else if (pct < 30) {
+            advice = '🟡 You have some strategic time, but operational tasks still dominate. Target at least 40% of your time on strategy within 90 days by delegating 2–3 major approval areas.';
+        } else {
+            advice = '🟢 Good balance! You are spending meaningful time on strategy. Continue strengthening systems so that the operational share keeps decreasing over time.';
+        }
+        document.getElementById('timeAdvice').textContent = advice;
+    }
+</script>
+
+<style>
+    /* Range slider styling */
+    input[type="range"] {
+        -webkit-appearance: none;
+        appearance: none;
+        height: 8px;
+        border-radius: 8px;
+        background: #e2e8f0;
+        outline: none;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: var(--primary);
+        cursor: pointer;
+        border: 3px solid var(--white);
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    input[type="range"]::-moz-range-thumb {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: var(--primary);
+        cursor: pointer;
+        border: 3px solid var(--white);
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+</style>
+
+</body>
+</html>
