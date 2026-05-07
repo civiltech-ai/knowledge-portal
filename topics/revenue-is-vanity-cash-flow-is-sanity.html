@@ -1,0 +1,1818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revenue is Vanity, Cash Flow is Sanity — Civil-Tech.ai Knowledge Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --teal-50: #effcfc;
+            --teal-100: #d7f6f6;
+            --teal-200: #b3ecec;
+            --teal-300: #7fdcdc;
+            --teal-400: #44c4c4;
+            --teal-500: #28a8a8;
+            --teal-600: #1e8a8e;
+            --teal-700: #1d6f73;
+            --teal-800: #1f5a5e;
+            --teal-900: #1e4b4f;
+            --primary: #1ab4b4;
+            --primary-dark: #158f8f;
+            --primary-gradient: linear-gradient(135deg, #1ab4b4 0%, #0d9e9e 40%, #15b8b8 100%);
+            --accent: #f59e0b;
+            --accent-light: #fbbf24;
+            --danger: #ef4444;
+            --success: #10b981;
+            --bg: #f3f8f8;
+            --bg-card: #ffffff;
+            --text-primary: #1a2e35;
+            --text-secondary: #4a6670;
+            --text-muted: #7a9aa5;
+            --border: #d5e5e8;
+            --shadow-sm: 0 1px 3px rgba(26,180,180,0.06), 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 14px rgba(26,180,180,0.08), 0 2px 6px rgba(0,0,0,0.04);
+            --shadow-lg: 0 10px 30px rgba(26,180,180,0.10), 0 4px 10px rgba(0,0,0,0.04);
+            --shadow-xl: 0 20px 50px rgba(26,180,180,0.12), 0 8px 20px rgba(0,0,0,0.06);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+            --radius-xl: 24px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── NAVBAR ── */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .navbar-left { display: flex; align-items: center; gap: 1rem; }
+        .navbar-brand {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.35rem;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        .navbar-brand span { color: var(--text-primary); }
+        .navbar-tag {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--primary);
+            border: 1.5px solid var(--primary);
+            border-radius: 20px;
+            padding: 3px 12px;
+        }
+        .navbar-right { display: flex; align-items: center; gap: 0.75rem; }
+        .navbar-back {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 6px 14px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        .navbar-back:hover { background: var(--teal-50); color: var(--primary); }
+
+        /* ── HERO ── */
+        .hero {
+            background: var(--primary-gradient);
+            position: relative;
+            overflow: hidden;
+            padding: 3.5rem 2rem 3rem;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.07);
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -60%;
+            right: 5%;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+        }
+        .hero-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 1rem;
+        }
+        .hero-breadcrumb a { color: rgba(255,255,255,0.7); text-decoration: none; }
+        .hero-breadcrumb a:hover { color: #fff; }
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2rem, 4.5vw, 2.8rem);
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            max-width: 700px;
+        }
+        .hero-subtitle {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.85);
+            max-width: 600px;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            align-items: center;
+        }
+        .hero-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: rgba(255,255,255,0.18);
+            color: #fff;
+            font-size: 0.78rem;
+            font-weight: 500;
+            padding: 5px 14px;
+            border-radius: 20px;
+            backdrop-filter: blur(4px);
+        }
+
+        /* ── PROGRESS BAR ── */
+        .progress-container {
+            max-width: 900px;
+            margin: -1.5rem auto 0;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+        .progress-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 1.2rem 1.5rem;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .progress-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+        .progress-bar-bg {
+            flex: 1;
+            height: 8px;
+            background: var(--teal-100);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--primary-gradient);
+            border-radius: 10px;
+            transition: width 0.6s ease;
+        }
+        .progress-pct {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary);
+            min-width: 38px;
+            text-align: right;
+        }
+
+        /* ── MAIN LAYOUT ── */
+        .main-content {
+            max-width: 900px;
+            margin: 2rem auto 4rem;
+            padding: 0 2rem;
+        }
+
+        /* ── SECTION NAV (sticky sidebar-like) ── */
+        .section-nav-floating {
+            position: fixed;
+            left: max(calc((100vw - 900px)/2 - 230px), 12px);
+            top: 100px;
+            width: 200px;
+            z-index: 50;
+        }
+        .section-nav-floating ul {
+            list-style: none;
+            border-left: 2px solid var(--teal-200);
+            padding-left: 0;
+        }
+        .section-nav-floating li a {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 6px 0 6px 16px;
+            border-left: 2px solid transparent;
+            margin-left: -2px;
+            transition: all 0.2s;
+            line-height: 1.4;
+        }
+        .section-nav-floating li a:hover,
+        .section-nav-floating li a.active {
+            color: var(--primary);
+            border-left-color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* ── SECTION CARD ── */
+        .section-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            padding: 2.5rem 2.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+            transition: box-shadow 0.3s;
+        }
+        .section-card:hover { box-shadow: var(--shadow-md); }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: var(--primary);
+            background: var(--teal-50);
+            padding: 4px 12px;
+            border-radius: 6px;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-card h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.55rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        .section-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 1.5rem 0 0.75rem;
+        }
+        .section-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        .section-card ul, .section-card ol {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .section-card li {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+        .section-card li strong { color: var(--text-primary); }
+
+        /* ── HIGHLIGHT BOX ── */
+        .highlight-box {
+            background: linear-gradient(135deg, var(--teal-50) 0%, #f0fafa 100%);
+            border-left: 4px solid var(--primary);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            padding: 1.2rem 1.5rem;
+            margin: 1.25rem 0;
+        }
+        .highlight-box p { color: var(--text-primary); font-weight: 500; margin-bottom: 0; }
+
+        .highlight-box-amber {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            border-left: 4px solid var(--accent);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            padding: 1.2rem 1.5rem;
+            margin: 1.25rem 0;
+        }
+        .highlight-box-amber p { color: #92400e; font-weight: 500; margin-bottom: 0; }
+
+        .highlight-box-red {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border-left: 4px solid var(--danger);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            padding: 1.2rem 1.5rem;
+            margin: 1.25rem 0;
+        }
+        .highlight-box-red p { color: #991b1b; font-weight: 500; margin-bottom: 0; }
+
+        /* ── COMPARISON TABLE ── */
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin: 1.25rem 0;
+            font-size: 0.9rem;
+            border: 1px solid var(--border);
+        }
+        .comparison-table thead th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 600;
+            text-align: left;
+            padding: 12px 16px;
+            font-size: 0.82rem;
+            letter-spacing: 0.3px;
+        }
+        .comparison-table tbody td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        .comparison-table tbody tr:nth-child(even) { background: var(--teal-50); }
+        .comparison-table tbody tr:last-child td { border-bottom: none; }
+        .comparison-table .label-danger {
+            color: var(--danger);
+            font-weight: 600;
+        }
+        .comparison-table .label-success {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        /* ── ICON STAT CARDS ── */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.25rem 0;
+        }
+        .stat-card {
+            background: var(--teal-50);
+            border-radius: var(--radius-md);
+            padding: 1.2rem;
+            text-align: center;
+            border: 1px solid var(--teal-200);
+        }
+        .stat-card .stat-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.4rem;
+        }
+        .stat-card .stat-value {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+        }
+        .stat-card .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 0.15rem;
+        }
+
+        /* ── INTERACTIVE ACTIVITIES ── */
+        .activity-container {
+            background: linear-gradient(135deg, #f8fdfd, #effafa);
+            border: 2px dashed var(--teal-300);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 1.25rem 0;
+        }
+        .activity-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 1rem;
+        }
+        .activity-header .activity-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .activity-header h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Inputs & Form elements */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.35rem;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text-primary);
+            background: #fff;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26,180,180,0.12);
+        }
+        .form-group input::placeholder { color: var(--text-muted); }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 10px 22px;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+        }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+        .btn-secondary {
+            background: var(--teal-50);
+            color: var(--primary);
+            border: 1.5px solid var(--teal-300);
+        }
+        .btn-secondary:hover { background: var(--teal-100); }
+        .btn-danger {
+            background: #fef2f2;
+            color: var(--danger);
+            border: 1.5px solid #fecaca;
+        }
+        .btn-danger:hover { background: #fee2e2; }
+
+        .btn-group { display: flex; gap: 0.6rem; margin-top: 1rem; flex-wrap: wrap; }
+
+        /* Result boxes */
+        .result-box {
+            background: #fff;
+            border: 1.5px solid var(--teal-200);
+            border-radius: var(--radius-md);
+            padding: 1.2rem 1.5rem;
+            margin-top: 1rem;
+            display: none;
+        }
+        .result-box.show { display: block; animation: fadeSlideIn 0.4s ease; }
+        .result-box h5 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        .result-box p { font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 0.3rem; }
+
+        .result-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 6px;
+            margin-top: 0.5rem;
+        }
+        .status-healthy { background: #d1fae5; color: #065f46; }
+        .status-warning { background: #fef3c7; color: #92400e; }
+        .status-danger { background: #fee2e2; color: #991b1b; }
+
+        /* ── CHECKLIST ── */
+        .checklist { list-style: none; padding: 0; margin: 1rem 0; }
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--teal-100);
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            user-select: none;
+        }
+        .checklist li:last-child { border-bottom: none; }
+        .checklist li .check-circle {
+            width: 22px;
+            height: 22px;
+            min-width: 22px;
+            border: 2px solid var(--teal-300);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s;
+            font-size: 0.7rem;
+            color: transparent;
+            margin-top: 1px;
+        }
+        .checklist li.checked .check-circle {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #fff;
+        }
+        .checklist li.checked span {
+            text-decoration: line-through;
+            color: var(--text-muted);
+        }
+
+        /* ── QUIZ ── */
+        .quiz-option {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 12px 16px;
+            margin-bottom: 0.5rem;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-sm);
+            background: #fff;
+            font-size: 0.9rem;
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .quiz-option:hover { border-color: var(--primary); background: var(--teal-50); }
+        .quiz-option.correct {
+            border-color: var(--success);
+            background: #d1fae5;
+            color: #065f46;
+            font-weight: 600;
+        }
+        .quiz-option.incorrect {
+            border-color: var(--danger);
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        .quiz-option.disabled { pointer-events: none; opacity: 0.7; }
+        .quiz-feedback {
+            margin-top: 0.75rem;
+            padding: 10px 14px;
+            border-radius: var(--radius-sm);
+            font-size: 0.88rem;
+            font-weight: 500;
+            display: none;
+        }
+        .quiz-feedback.show { display: block; animation: fadeSlideIn 0.3s ease; }
+        .quiz-feedback.correct { background: #d1fae5; color: #065f46; }
+        .quiz-feedback.incorrect { background: #fee2e2; color: #991b1b; }
+
+        /* ── TIMELINE ── */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin: 1.25rem 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 4px;
+            bottom: 4px;
+            width: 2px;
+            background: var(--teal-200);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid var(--teal-100);
+            margin-left: 2px;
+        }
+        .timeline-item h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+        .timeline-item p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+
+        /* ── SCENARIO CARDS ── */
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.25rem 0;
+        }
+        .scenario-card {
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            border: 1.5px solid;
+        }
+        .scenario-card.danger {
+            border-color: #fecaca;
+            background: linear-gradient(135deg, #fff5f5, #fef2f2);
+        }
+        .scenario-card.success {
+            border-color: #a7f3d0;
+            background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+        }
+        .scenario-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .scenario-card.danger h4 { color: #991b1b; }
+        .scenario-card.success h4 { color: #065f46; }
+        .scenario-card p { font-size: 0.88rem; margin-bottom: 0.5rem; }
+        .scenario-card .amount {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.4rem;
+        }
+        .scenario-card.danger .amount { color: var(--danger); }
+        .scenario-card.success .amount { color: var(--success); }
+
+        /* ── CASH FLOW TRACKER TABLE ── */
+        .tracker-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            margin: 0.75rem 0;
+            font-size: 0.85rem;
+        }
+        .tracker-table th {
+            background: var(--teal-100);
+            color: var(--text-primary);
+            font-weight: 600;
+            text-align: left;
+            padding: 10px 12px;
+            font-size: 0.78rem;
+        }
+        .tracker-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--teal-100);
+        }
+        .tracker-table tbody tr:last-child td { border-bottom: none; }
+        .tracker-table input {
+            width: 100%;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 6px 8px;
+            font-size: 0.85rem;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .tracker-table input:focus { outline: none; border-color: var(--primary); }
+        .tracker-total {
+            background: var(--teal-50) !important;
+            font-weight: 700 !important;
+        }
+
+        /* ── BOTTOM NAV ── */
+        .bottom-nav {
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+        .bottom-nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1.5px solid var(--teal-300);
+            border-radius: var(--radius-sm);
+            transition: all 0.2s;
+        }
+        .bottom-nav a:hover { background: var(--teal-50); }
+
+        /* ── FOOTER ── */
+        .footer {
+            background: var(--text-primary);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.82rem;
+        }
+        .footer a { color: var(--primary); text-decoration: none; }
+        .footer strong { color: #fff; }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeSlideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in { animation: fadeSlideIn 0.5s ease both; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1200px) {
+            .section-nav-floating { display: none; }
+        }
+        @media (max-width: 700px) {
+            .hero { padding: 2.5rem 1.2rem 2rem; }
+            .hero h1 { font-size: 1.7rem; }
+            .main-content { padding: 0 1rem; }
+            .section-card { padding: 1.5rem 1.2rem; }
+            .scenario-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .stat-grid { grid-template-columns: 1fr 1fr; }
+            .navbar { padding: 0 1rem; }
+            .bottom-nav { flex-direction: column; }
+            .activity-container { padding: 1.2rem; }
+            .progress-card { flex-wrap: wrap; }
+        }
+        @media (max-width: 480px) {
+            .stat-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════ NAVBAR ═══════════ -->
+<nav class="navbar">
+    <div class="navbar-left">
+        <a href="https://civiltech-ai.github.io/knowledge-portal/" class="navbar-brand">Civil-Tech<span>.ai</span></a>
+        <span class="navbar-tag">Knowledge Portal</span>
+    </div>
+    <div class="navbar-right">
+        <a href="https://civiltech-ai.github.io/knowledge-portal/" class="navbar-back">← Back to Library</a>
+    </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<header class="hero">
+    <div class="hero-inner">
+        <div class="hero-breadcrumb">
+            <a href="https://civiltech-ai.github.io/knowledge-portal/">Knowledge Portal</a>
+            <span>›</span>
+            <span>Financial Management</span>
+        </div>
+        <h1>Revenue is Vanity, Cash Flow is Sanity</h1>
+        <p class="hero-subtitle">
+            Why high sales numbers can deceive you — and how Dubai engineering companies can build a cash-healthy business by mastering receivables, tracking weekly cash flow, and measuring what truly matters.
+        </p>
+        <div class="hero-meta">
+            <span class="hero-pill">📂 Financial Management</span>
+            <span class="hero-pill">⚡ Interactive</span>
+            <span class="hero-pill">🕐 20 min read</span>
+            <span class="hero-pill">📅 2026-05-07</span>
+        </div>
+    </div>
+</header>
+
+<!-- ═══════════ READING PROGRESS ═══════════ -->
+<div class="progress-container">
+    <div class="progress-card">
+        <span class="progress-label">Your Progress</span>
+        <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progressFill"></div>
+        </div>
+        <span class="progress-pct" id="progressPct">0%</span>
+    </div>
+</div>
+
+<!-- ═══════════ FLOATING SECTION NAV ═══════════ -->
+<aside class="section-nav-floating" id="sectionNav">
+    <ul>
+        <li><a href="#concept1">Cash Flow vs Revenue</a></li>
+        <li><a href="#teaching1">Teaching Example</a></li>
+        <li><a href="#significance1">Why It Matters</a></li>
+        <li><a href="#dubai-context">Dubai Context</a></li>
+        <li><a href="#activity1">Cash Flow Calculator</a></li>
+        <li><a href="#action1">Quick Action Step</a></li>
+        <li><a href="#concept2">Measure to Improve</a></li>
+        <li><a href="#teaching2">Tracking Example</a></li>
+        <li><a href="#significance2">Tracking Benefits</a></li>
+        <li><a href="#activity2">Dashboard Builder</a></li>
+        <li><a href="#action2">Weekly Dashboard</a></li>
+        <li><a href="#quiz">Knowledge Check</a></li>
+    </ul>
+</aside>
+
+<!-- ═══════════ MAIN CONTENT ═══════════ -->
+<main class="main-content">
+
+    <!-- ============================================ -->
+    <!-- TOPIC 1: REVENUE IS VANITY, CASH FLOW IS SANITY -->
+    <!-- ============================================ -->
+
+    <!-- Section: Core Concept -->
+    <section class="section-card fade-in" id="concept1">
+        <div class="section-badge">💡 Core Concept — Part 1</div>
+        <h2>What Does "Revenue is Vanity, Cash Flow is Sanity" Really Mean?</h2>
+        
+        <p>It is easy for business owners to feel a surge of pride when they see their monthly sales figure climb higher. A civil engineering company in Dubai might celebrate winning a large structural consulting contract worth AED 2 million, or a geotechnical firm might announce a record quarter of new project bookings. But here is the hard truth that catches many owners off guard: <strong>high revenue does not mean you have money in your bank account</strong>.</p>
+
+        <p>Revenue is the total value of work you have invoiced or contracts you have signed. Cash flow, on the other hand, is the actual movement of money in and out of your business — the cash that arrives in your account, and the cash that leaves it. The gap between these two can be enormous, and it is in that gap where businesses stumble and sometimes fail entirely.</p>
+
+        <div class="highlight-box">
+            <p>💡 <strong>The Key Insight:</strong> A business can show AED 5 million in annual revenue on paper and still be unable to pay next week's salaries. Revenue is a promise. Cash is reality.</p>
+        </div>
+
+        <h3>Why Does This Gap Exist?</h3>
+        <p>In the civil and structural engineering industry in Dubai, the gap between revenue and cash flow is especially pronounced because of how projects are structured. Consider these common scenarios that create the gap:</p>
+
+        <ul>
+            <li><strong>Milestone-based payments:</strong> Your client pays only when specific project milestones are approved — but your engineers, draftsmen, and site staff need salaries every month regardless of milestone approvals.</li>
+            <li><strong>Retention money:</strong> Clients often hold back 5-10% of each invoice as retention, released only after project completion — which could be 12 to 24 months away.</li>
+            <li><strong>Government and developer payment cycles:</strong> Large developers and government bodies in the UAE may take 60 to 120 days to process payments after invoice submission.</li>
+            <li><strong>Front-loaded expenses:</strong> You may need to purchase specialised software licenses, hire additional staff, or rent testing equipment at the start of a project — long before any payment arrives.</li>
+            <li><strong>Variation claims and disputes:</strong> Additional work performed may be under dispute, meaning the revenue is recorded but the cash is nowhere in sight.</li>
+        </ul>
+
+        <div class="highlight-box-amber">
+            <p>⚠️ <strong>Common Trap:</strong> Many engineering firm owners look at their outstanding invoices and think, "We have AED 3 million coming in." But outstanding invoices are not cash. Until the money is in your bank account, it is just a number on a spreadsheet.</p>
+        </div>
+    </section>
+
+    <!-- Section: Teaching Example -->
+    <section class="section-card fade-in" id="teaching1">
+        <div class="section-badge">📖 Teaching Example</div>
+        <h2>Two Engineering Companies — Same Market, Different Outcomes</h2>
+
+        <p>Let us look at two structural engineering consultancies operating in the same Dubai market. Both have skilled engineers, both serve major developers, and both are winning projects. But their financial health could not be more different.</p>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Factor</th>
+                    <th>AlphaStruct Engineering</th>
+                    <th>BetaBuild Consultants</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Monthly Revenue</strong></td>
+                    <td>AED 1,500,000</td>
+                    <td>AED 800,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Average Collection Period</strong></td>
+                    <td class="label-danger">90+ days</td>
+                    <td class="label-success">15 days</td>
+                </tr>
+                <tr>
+                    <td><strong>Retention Held by Clients</strong></td>
+                    <td>AED 2,800,000</td>
+                    <td>AED 350,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Monthly Overheads</strong></td>
+                    <td>AED 1,200,000</td>
+                    <td>AED 550,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Cash in Bank (Typical)</strong></td>
+                    <td class="label-danger">AED 180,000</td>
+                    <td class="label-success">AED 900,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Can the Owner Sleep at Night?</strong></td>
+                    <td class="label-danger">Barely</td>
+                    <td class="label-success">Comfortably</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="scenario-grid">
+            <div class="scenario-card danger">
+                <h4>🔴 AlphaStruct Engineering</h4>
+                <p>Revenue looks impressive on paper. But with AED 1.2 million in monthly costs and only AED 180,000 in the bank, the owner is constantly juggling payments. Salaries get delayed. Supplier relationships suffer. Every new project actually makes the cash problem worse because it requires upfront spending.</p>
+                <p class="amount">AED 1.5M revenue → Cash-strapped</p>
+            </div>
+            <div class="scenario-card success">
+                <h4>🟢 BetaBuild Consultants</h4>
+                <p>Lower revenue, but payment terms are tight. Invoices go out immediately, follow-ups happen weekly, and the team negotiates shorter payment cycles upfront. The result? More cash in the bank than a company nearly twice their size.</p>
+                <p class="amount">AED 800K revenue → Cash-comfortable</p>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <p>📌 <strong>The lesson is clear:</strong> It is not how much you bill that determines your financial health — it is how quickly you collect. BetaBuild, with nearly half the revenue, operates with five times more cash available than AlphaStruct.</p>
+        </div>
+    </section>
+
+    <!-- Section: Business Significance -->
+    <section class="section-card fade-in" id="significance1">
+        <div class="section-badge">🏢 Business Significance</div>
+        <h2>Why Cash Flow Management Can Make or Break Your Engineering Firm</h2>
+
+        <p>Across the UAE and globally, a significant percentage of small and medium enterprises fail not because they lack customers or projects, but because they simply run out of cash. In the Dubai construction and engineering sector, this is particularly critical because of the project-based nature of the work, long payment cycles, and the high fixed costs of running an engineering office.</p>
+
+        <h3>What Happens When Cash Flow is Poor?</h3>
+        <ul>
+            <li><strong>Delayed salaries:</strong> Your best engineers start looking for jobs elsewhere. Attrition in Dubai's competitive market can be devastating — losing a senior structural engineer means losing months of project knowledge.</li>
+            <li><strong>Broken supplier relationships:</strong> Software vendors (Tekla, ETABS, Revit licenses), printing services, and testing labs may demand upfront payment or refuse service entirely.</li>
+            <li><strong>Inability to bid on new projects:</strong> Many tenders in Dubai require bank guarantees or proof of financial standing. Poor cash flow means you cannot even compete for large contracts.</li>
+            <li><strong>Owner burnout and stress:</strong> Constantly worrying about making payroll takes an enormous personal toll. Decision-making quality deteriorates when the owner is in survival mode.</li>
+            <li><strong>Forced borrowing at high cost:</strong> Emergency loans or credit line drawdowns carry interest costs that eat directly into your margins.</li>
+        </ul>
+
+        <h3>What Happens When Cash Flow is Well-Managed?</h3>
+        <div class="stat-grid">
+            <div class="stat-card">
+                <div class="stat-icon">🛡️</div>
+                <div class="stat-value">Financial Safety</div>
+                <div class="stat-label">Buffer for slow months</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⏰</div>
+                <div class="stat-value">On-Time Payments</div>
+                <div class="stat-label">Suppliers & staff paid promptly</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📈</div>
+                <div class="stat-value">Confident Growth</div>
+                <div class="stat-label">Invest in new capabilities</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🤝</div>
+                <div class="stat-value">Stronger Negotiation</div>
+                <div class="stat-label">Better deals from position of strength</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Dubai Context -->
+    <section class="section-card fade-in" id="dubai-context">
+        <div class="section-badge">🏗️ Dubai Industry Context</div>
+        <h2>Cash Flow Realities for Civil Engineering Companies in Dubai</h2>
+
+        <p>The Dubai construction and engineering ecosystem has unique characteristics that make cash flow management especially important. Understanding these realities will help you plan better and avoid common pitfalls.</p>
+
+        <h3>Payment Cycle Realities</h3>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4>Day 0 — Work Completed</h4>
+                <p>Your team completes a design milestone — say, the structural design of a podium level for a residential tower. The work is done, the hours are spent, the salaries have been paid.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>Day 7–14 — Invoice Submitted</h4>
+                <p>You prepare and submit the invoice along with supporting documents (progress reports, drawings, etc.). Some firms delay this step by weeks, losing precious time.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>Day 14–30 — Client Review</h4>
+                <p>The client's project team reviews the submission. Questions may arise, requiring additional documentation or meetings.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>Day 30–45 — Client Approval</h4>
+                <p>The project manager approves the invoice and forwards it to the finance department for processing.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>Day 45–60 — Finance Processing</h4>
+                <p>The client's accounts payable team processes the payment. For larger developers, this may require multiple internal approvals.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>Day 60–90+ — Payment Received</h4>
+                <p>The money finally arrives in your bank account. For government projects, this can stretch to 120+ days. Meanwhile, you have been paying salaries, rent, and expenses for three months.</p>
+            </div>
+        </div>
+
+        <div class="highlight-box-red">
+            <p>🚨 <strong>Critical Insight:</strong> If your average project payment cycle is 90 days and your monthly overhead is AED 500,000, you need at least AED 1,500,000 in cash reserves just to survive the waiting period — and that is for a single project. Multiple projects with staggered timelines require even more.</p>
+        </div>
+
+        <h3>Specific Cash Flow Risks in UAE Engineering</h3>
+        <ul>
+            <li><strong>Retention money (5-10%):</strong> On a AED 1 million contract, AED 50,000–100,000 is locked away for 1–2 years. Across multiple projects, this adds up to significant trapped capital.</li>
+            <li><strong>Visa and labour costs:</strong> Employee visas, medical insurance, and end-of-service gratuity provisions are substantial and non-negotiable expenses in the UAE.</li>
+            <li><strong>Office rent commitments:</strong> Commercial leases in Dubai typically require post-dated cheques for the full year. This is a fixed cash outflow regardless of how business is performing.</li>
+            <li><strong>Seasonal slowdowns:</strong> The summer months (June–August) often see slower project approvals as key decision-makers travel. Cash collections can dip significantly during this period.</li>
+            <li><strong>Currency considerations:</strong> If you have suppliers or software vendors invoicing in USD, EUR, or GBP, exchange rate fluctuations can impact your actual cost in AED.</li>
+        </ul>
+    </section>
+
+    <!-- Section: Interactive Activity 1 -->
+    <section class="section-card fade-in" id="activity1">
+        <div class="section-badge">🧮 Interactive Activity</div>
+        <h2>Cash Flow Health Calculator</h2>
+        <p>Use this calculator to understand your own company's cash flow position. Enter your actual numbers (or estimates) to see where you stand. All values in AED.</p>
+
+        <div class="activity-container">
+            <div class="activity-header">
+                <div class="activity-icon">📊</div>
+                <h4>Your 30-Day Cash Flow Snapshot</h4>
+            </div>
+
+            <h3 style="color:var(--success); font-size:0.95rem; margin-bottom:0.75rem;">💰 Money Coming In (Inflows)</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Payments expected from clients</label>
+                    <input type="number" id="cf_clients" placeholder="e.g. 500000" value="">
+                </div>
+                <div class="form-group">
+                    <label>Other income (refunds, deposits, etc.)</label>
+                    <input type="number" id="cf_other_in" placeholder="e.g. 20000" value="">
+                </div>
+            </div>
+
+            <h3 style="color:var(--danger); font-size:0.95rem; margin-bottom:0.75rem; margin-top:1.25rem;">💸 Money Going Out (Outflows)</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Salaries &amp; staff costs</label>
+                    <input type="number" id="cf_salaries" placeholder="e.g. 300000" value="">
+                </div>
+                <div class="form-group">
+                    <label>Office rent &amp; utilities</label>
+                    <input type="number" id="cf_rent" placeholder="e.g. 60000" value="">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Software licenses &amp; subscriptions</label>
+                    <input type="number" id="cf_software" placeholder="e.g. 25000" value="">
+                </div>
+                <div class="form-group">
+                    <label>Supplier &amp; subcontractor payments</label>
+                    <input type="number" id="cf_suppliers" placeholder="e.g. 80000" value="">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Insurance, visa &amp; government fees</label>
+                    <input type="number" id="cf_insurance" placeholder="e.g. 15000" value="">
+                </div>
+                <div class="form-group">
+                    <label>Other expenses</label>
+                    <input type="number" id="cf_other_out" placeholder="e.g. 10000" value="">
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="calculateCashFlow()">Calculate Cash Flow →</button>
+                <button class="btn btn-secondary" onclick="resetCashFlow()">Reset</button>
+            </div>
+
+            <div class="result-box" id="cfResult">
+                <h5>Your 30-Day Cash Flow Analysis</h5>
+                <p><strong>Total Inflows:</strong> AED <span id="cfTotalIn">0</span></p>
+                <p><strong>Total Outflows:</strong> AED <span id="cfTotalOut">0</span></p>
+                <p><strong>Net Cash Flow:</strong> AED <span id="cfNet">0</span></p>
+                <div id="cfStatus"></div>
+                <p id="cfAdvice" style="margin-top:0.75rem; font-size:0.85rem;"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Quick Action Step 1 -->
+    <section class="section-card fade-in" id="action1">
+        <div class="section-badge">🎯 Quick Action Step</div>
+        <h2>Implement This Week: Your 30-Day Cash Flow Tracker</h2>
+
+        <p>You do not need expensive software to start managing cash flow. Here is a simple system you can implement this week using a spreadsheet or even a notebook. The goal is to create visibility — once you can see the numbers, you can act on them.</p>
+
+        <div class="activity-container">
+            <div class="activity-header">
+                <div class="activity-icon">✅</div>
+                <h4>Your Action Checklist — Complete This Week</h4>
+            </div>
+
+            <ul class="checklist" id="checklist1">
+                <li onclick="toggleCheck(this)">
+                    <span class="check-circle">✓</span>
+                    <span><strong>Step 1:</strong> Open a spreadsheet and list every payment you expect to receive in the next 30 days. Include the client name, invoice number, amount, and expected date.</span>
+                </li>
+                <li onclick="toggleCheck(this)">
+                    <span class="check-circle">✓</span>
+                    <span><strong>Step 2:</strong> In a separate section, list every expense due in the next 30 days — salaries, rent, supplier payments, loan repayments, software subscriptions, insurance premiums, etc.</span>
+                </li>
+                <li onclick="toggleCheck(this)">
+                    <span class="check-circle">✓</span>
+                    <span><strong>Step 3:</strong> Review your outstanding receivables. Identify any invoice that is older than 30 days and has not been paid. Call or email the client today to follow up.</span>
+                </li>
+                <li onclick="toggleCheck(this)">
+                    <span class="check-circle">✓</span>
+                    <span><strong>Step 4:</strong> Calculate your "cash runway" — how many weeks of expenses can you cover with the cash currently in your bank account?</span>
+                </li>
+                <li onclick="toggleCheck(this)">
+                    <span class="check-circle">✓</span>
+                    <span><strong>Step 5:</strong> Block 15 minutes every Monday morning to review this tracker and update the numbers. Make it a non-negotiable weekly habit.</span>
+                </li>
+                <li onclick="toggleCheck(this)">
+                    <span class="check-circle">✓</span>
+                    <span><strong>Step 6:</strong> Share the high-level cash position with your finance person or partner. Transparency creates accountability.</span>
+                </li>
+            </ul>
+
+            <div id="checklistProgress1" style="font-size:0.82rem; color:var(--text-muted); margin-top:0.5rem;">0 of 6 steps completed</div>
+        </div>
+
+        <div class="highlight-box">
+            <p>🕐 <strong>Time Investment:</strong> Setting up this tracker takes approximately 45 minutes. Maintaining it requires just 15 minutes per week. That is a total of about 1 hour per month to gain full visibility over your company's financial health.</p>
+        </div>
+    </section>
+
+
+    <!-- ============================================ -->
+    <!-- TOPIC 2: WHAT GETS MEASURED GETS IMPROVED -->
+    <!-- ============================================ -->
+
+    <div style="margin: 3rem 0 1.5rem; border-top: 3px solid var(--teal-200); padding-top: 2rem;">
+        <span style="display:inline-block; background:var(--primary); color:#fff; font-size:0.72rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:4px 14px; border-radius:6px;">Part 2 of 2</span>
+    </div>
+
+    <!-- Section: Core Concept 2 -->
+    <section class="section-card fade-in" id="concept2">
+        <div class="section-badge">💡 Core Concept — Part 2</div>
+        <h2>"What Gets Measured Gets Improved" — The Power of Tracking Numbers</h2>
+
+        <p>If the first part of this guide focused on understanding cash flow, this second part addresses a broader principle that applies to every area of your business: <strong>you cannot improve what you do not measure</strong>. This is one of the most important mindset shifts a business owner can make.</p>
+
+        <p>Many owners of civil and structural engineering companies in Dubai rely heavily on gut feeling. They sense that things are "going okay" or that the team is "busy enough." But gut feeling is unreliable, especially as a business grows beyond a handful of employees. Without numbers, problems stay hidden until they become crises.</p>
+
+        <div class="highlight-box">
+            <p>💡 <strong>The Principle:</strong> When you start measuring key areas of your business — leads, conversions, collections, expenses, team utilisation — you gain clarity. Clarity leads to better decisions. Better decisions lead to consistent, controlled growth.</p>
+        </div>
+
+        <h3>What Should an Engineering Firm Be Measuring?</h3>
+        <p>For a civil or structural engineering company in Dubai, the following areas are critical to track regularly:</p>
+
+        <ul>
+            <li><strong>New enquiries / leads:</strong> How many potential clients contacted you this week? Where did they come from (referrals, website, LinkedIn, trade shows)?</li>
+            <li><strong>Proposals submitted:</strong> How many formal proposals or fee quotations did you send out? What is the total value?</li>
+            <li><strong>Conversion rate:</strong> Of the proposals you submitted, how many turned into signed contracts? A 30% conversion rate means very different things at 10 proposals versus 50 proposals.</li>
+            <li><strong>Cash collected:</strong> Not revenue booked, but actual cash that arrived in your bank account this week.</li>
+            <li><strong>Monthly expenses:</strong> Are your costs staying within budget? Which categories are growing faster than expected?</li>
+            <li><strong>Outstanding receivables:</strong> How much money is owed to you, and how old are those invoices?</li>
+            <li><strong>Team utilisation rate:</strong> What percentage of your engineers' available hours are being spent on billable project work versus non-billable activities?</li>
+        </ul>
+    </section>
+
+    <!-- Section: Teaching Example 2 -->
+    <section class="section-card fade-in" id="teaching2">
+        <div class="section-badge">📖 Teaching Example</div>
+        <h2>How Tracking Numbers Reveals the Real Problem</h2>
+
+        <p>Consider this scenario: The owner of a mid-sized structural design firm in Dubai feels that business has slowed down. Projects seem harder to win, and revenue feels "flat." Without data, the owner might blame the market, cut marketing spend, or start discounting fees — none of which may address the actual issue.</p>
+
+        <p>But when the same owner starts tracking weekly numbers, the picture becomes crystal clear:</p>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Week 1</th>
+                    <th>Week 2</th>
+                    <th>Week 3</th>
+                    <th>Week 4</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>New Enquiries</strong></td>
+                    <td>12</td>
+                    <td>15</td>
+                    <td>14</td>
+                    <td>18</td>
+                </tr>
+                <tr>
+                    <td><strong>Proposals Sent</strong></td>
+                    <td>8</td>
+                    <td>10</td>
+                    <td>9</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td><strong>Projects Won</strong></td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td><strong>Conversion Rate</strong></td>
+                    <td class="label-success">37.5%</td>
+                    <td class="label-danger">20.0%</td>
+                    <td class="label-danger">11.1%</td>
+                    <td class="label-danger">16.7%</td>
+                </tr>
+                <tr>
+                    <td><strong>Cash Collected (AED)</strong></td>
+                    <td>320,000</td>
+                    <td>280,000</td>
+                    <td>195,000</td>
+                    <td>210,000</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="highlight-box-amber">
+            <p>🔍 <strong>What the Numbers Reveal:</strong> Enquiries are actually increasing — marketing is working. But the conversion rate dropped from 37.5% down to an average of 16%. The problem is not a lack of leads. The problem is in the proposal or sales process. Perhaps proposals are taking too long, fee estimates are too high, or follow-ups are not happening.</p>
+        </div>
+
+        <p>Without tracking these numbers, the owner might have wasted money on more marketing — the wrong solution entirely. With data, the owner can focus on the real issue: improving the proposal process, training the business development team, or reviewing pricing strategies.</p>
+
+        <h3>The Before-and-After of Measurement</h3>
+        <div class="scenario-grid">
+            <div class="scenario-card danger">
+                <h4>❌ Without Tracking</h4>
+                <p>"Sales feel slow. Maybe we need to spend more on marketing."</p>
+                <p>"The team seems busy but I am not sure what everyone is working on."</p>
+                <p>"I think we are profitable, but I am not exactly sure."</p>
+                <p style="margin-top:0.5rem; font-weight:600; color:#991b1b;">→ Decisions based on feelings</p>
+            </div>
+            <div class="scenario-card success">
+                <h4>✅ With Tracking</h4>
+                <p>"Enquiries are up 50% but conversion dropped to 16%. Our proposal process needs attention."</p>
+                <p>"Team utilisation is at 62% — we have capacity for two more projects without hiring."</p>
+                <p>"Our gross margin is 38% — below the 45% target. Let us review project costing."</p>
+                <p style="margin-top:0.5rem; font-weight:600; color:#065f46;">→ Decisions based on data</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Significance 2 -->
+    <section class="section-card fade-in" id="significance2">
+        <div class="section-badge">🏢 Business Significance</div>
+        <h2>Why Measurement Transforms Engineering Businesses</h2>
+
+        <p>The difference between engineering companies that grow consistently and those that stagnate often comes down to one practice: regular, disciplined measurement of key performance indicators. Here is what changes when you commit to tracking:</p>
+
+        <h3>Businesses That Do NOT Track Numbers:</h3>
+        <ul>
+            <li>React to problems only after they become severe — by then, options are limited</li>
+            <li>Depend on assumptions and "gut feeling" which are frequently wrong</li>
+            <li>Cannot hold team members accountable because there are no objective benchmarks</li>
+            <li>Struggle to scale because they do not know what is working and what is not</li>
+            <li>Make emotional decisions during stress (cutting costs randomly, discounting fees desperately)</li>
+            <li>Cannot provide meaningful reports to banks, investors, or partners</li>
+        </ul>
+
+        <h3>Businesses That Measure Regularly:</h3>
+        <ul>
+            <li>Identify issues when they are small and fixable — a dip in conversions is spotted in Week 2, not Month 3</li>
+            <li>Improve team accountability — when everyone knows their numbers are being tracked, performance improves naturally</li>
+            <li>Grow consistently with control — expansion decisions are backed by data, not hope</li>
+            <li>Build systems that work without the owner — numbers create clarity that enables delegation</li>
+            <li>Negotiate from strength — when you know your margins and utilisation, you make smarter pricing decisions</li>
+            <li>Attract better talent and partnerships — a well-measured business demonstrates professionalism and stability</li>
+        </ul>
+
+        <div class="stat-grid">
+            <div class="stat-card">
+                <div class="stat-icon">🔍</div>
+                <div class="stat-value">Early Detection</div>
+                <div class="stat-label">Spot problems in weeks, not months</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-value">Team Accountability</div>
+                <div class="stat-label">Clear expectations, fair reviews</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🎯</div>
+                <div class="stat-value">Focused Decisions</div>
+                <div class="stat-label">Data-driven, not emotional</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⚙️</div>
+                <div class="stat-value">Scalable Systems</div>
+                <div class="stat-label">Grows beyond the owner</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Interactive Activity 2 — Dashboard Builder -->
+    <section class="section-card fade-in" id="activity2">
+        <div class="section-badge">🧮 Interactive Activity</div>
+        <h2>Weekly Business Dashboard Builder</h2>
+        <p>Use this interactive tool to build your first weekly dashboard. Enter your numbers for this week and see your business health at a glance.</p>
+
+        <div class="activity-container">
+            <div class="activity-header">
+                <div class="activity-icon">📋</div>
+                <h4>Your Weekly Business Dashboard</h4>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>New Enquiries / Leads This Week</label>
+                    <input type="number" id="db_leads" placeholder="e.g. 12" value="">
+                </div>
+                <div class="form-group">
+                    <label>Proposals / Quotations Sent</label>
+                    <input type="number" id="db_proposals" placeholder="e.g. 8" value="">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Projects / Contracts Won</label>
+                    <input type="number" id="db_won" placeholder="e.g. 3" value="">
+                </div>
+                <div class="form-group">
+                    <label>Cash Collected This Week (AED)</label>
+                    <input type="number" id="db_cash" placeholder="e.g. 250000" value="">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Total Expenses This Week (AED)</label>
+                    <input type="number" id="db_expenses" placeholder="e.g. 150000" value="">
+                </div>
+                <div class="form-group">
+                    <label>Pending Payments / Receivables (AED)</label>
+                    <input type="number" id="db_pending" placeholder="e.g. 800000" value="">
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="generateDashboard()">Generate Dashboard →</button>
+                <button class="btn btn-secondary" onclick="resetDashboard()">Reset</button>
+            </div>
+
+            <div class="result-box" id="dbResult">
+                <h5>📊 Your Weekly Business Scorecard</h5>
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap:0.75rem; margin:0.75rem 0;">
+                    <div style="text-align:center; padding:0.75rem; background:var(--teal-50); border-radius:10px;">
+                        <div style="font-size:0.72rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px;">Conversion Rate</div>
+                        <div id="dbConversion" style="font-family:'DM Serif Display',serif; font-size:1.4rem; color:var(--text-primary);">—</div>
+                    </div>
+                    <div style="text-align:center; padding:0.75rem; background:var(--teal-50); border-radius:10px;">
+                        <div style="font-size:0.72rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px;">Net Cash Position</div>
+                        <div id="dbNetCash" style="font-family:'DM Serif Display',serif; font-size:1.4rem; color:var(--text-primary);">—</div>
+                    </div>
+                    <div style="text-align:center; padding:0.75rem; background:var(--teal-50); border-radius:10px;">
+                        <div style="font-size:0.72rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px;">Collection Efficiency</div>
+                        <div id="dbEfficiency" style="font-family:'DM Serif Display',serif; font-size:1.4rem; color:var(--text-primary);">—</div>
+                    </div>
+                </div>
+                <div id="dbInsights" style="margin-top:0.75rem;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Quick Action Step 2 -->
+    <section class="section-card fade-in" id="action2">
+        <div class="section-badge">🎯 Quick Action Step</div>
+        <h2>Implement This Week: Your Monday Morning Dashboard Review</h2>
+
+        <p>Create a simple weekly dashboard tracking just five critical numbers. You do not need complicated software — a Google Sheet or even a whiteboard in your office works perfectly. The key is consistency, not complexity.</p>
+
+        <div class="activity-container">
+            <div class="activity-header">
+                <div class="activity-icon">📋</div>
+                <h4>Your 5-Number Weekly Dashboard</h4>
+            </div>
+
+            <table class="tracker-table">
+                <thead>
+                    <tr>
+                        <th style="width:5%;">#</th>
+                        <th style="width:35%;">Metric</th>
+                        <th style="width:30%;">This Week</th>
+                        <th style="width:30%;">Target</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><strong>Leads Generated</strong><br><span style="font-size:0.78rem; color:var(--text-muted);">New enquiries received</span></td>
+                        <td><input type="text" placeholder="Enter..."></td>
+                        <td><input type="text" placeholder="Set target..."></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><strong>Sales Converted</strong><br><span style="font-size:0.78rem; color:var(--text-muted);">Contracts signed / projects won</span></td>
+                        <td><input type="text" placeholder="Enter..."></td>
+                        <td><input type="text" placeholder="Set target..."></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><strong>Cash Collected</strong><br><span style="font-size:0.78rem; color:var(--text-muted);">Actual AED received in bank</span></td>
+                        <td><input type="text" placeholder="Enter..."></td>
+                        <td><input type="text" placeholder="Set target..."></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><strong>Expenses</strong><br><span style="font-size:0.78rem; color:var(--text-muted);">Total outflows this week</span></td>
+                        <td><input type="text" placeholder="Enter..."></td>
+                        <td><input type="text" placeholder="Set budget..."></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><strong>Pending Payments</strong><br><span style="font-size:0.78rem; color:var(--text-muted);">Total receivables outstanding</span></td>
+                        <td><input type="text" placeholder="Enter..."></td>
+                        <td><input type="text" placeholder="Max limit..."></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="highlight-box">
+            <p>📅 <strong>The Monday Morning Ritual:</strong> Block 15 minutes every Monday morning. Pull up your dashboard. Update the five numbers. Discuss with your team. This single habit, consistently practiced, will transform how you run your business within 90 days.</p>
+        </div>
+
+        <h3>Tips for Making It Work</h3>
+        <ul>
+            <li><strong>Keep it visible:</strong> Print it out and pin it on your office wall, or display it on a shared screen. Visibility drives action.</li>
+            <li><strong>Assign ownership:</strong> Each number should have one person responsible for updating it. The business development manager owns "Leads" and "Conversions." The finance person owns "Cash Collected" and "Expenses."</li>
+            <li><strong>Track trends, not just snapshots:</strong> After four weeks, you will start seeing patterns. A declining conversion rate over three weeks is a clear signal. A spike in expenses requires investigation.</li>
+            <li><strong>Celebrate improvements:</strong> When a number moves in the right direction, acknowledge it in your Monday meeting. Positive reinforcement builds the habit.</li>
+            <li><strong>Do not overcomplicate it:</strong> Five numbers is enough to start. You can always add more metrics later. The goal right now is to build the habit of measuring.</li>
+        </ul>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- KNOWLEDGE CHECK -->
+    <!-- ============================================ -->
+
+    <section class="section-card fade-in" id="quiz">
+        <div class="section-badge">🧠 Knowledge Check</div>
+        <h2>Test Your Understanding</h2>
+        <p>Answer these questions to reinforce what you have learned. Each question is based on the concepts covered in this guide.</p>
+
+        <!-- Quiz 1 -->
+        <div style="margin-top:1.5rem;">
+            <h3>Question 1: Why can a company with high revenue still struggle financially?</h3>
+            <div id="quiz1">
+                <button class="quiz-option" onclick="checkQuiz(1, this, false)">A) Because they have too many employees</button>
+                <button class="quiz-option" onclick="checkQuiz(1, this, true)">B) Because revenue is recorded when invoiced, but cash arrives much later — creating a gap between bills owed and money available</button>
+                <button class="quiz-option" onclick="checkQuiz(1, this, false)">C) Because their office rent is too high</button>
+                <button class="quiz-option" onclick="checkQuiz(1, this, false)">D) Because they are spending too much on marketing</button>
+            </div>
+            <div class="quiz-feedback" id="quiz1Feedback"></div>
+        </div>
+
+        <!-- Quiz 2 -->
+        <div style="margin-top:2rem;">
+            <h3>Question 2: In the teaching example, why did BetaBuild Consultants have a healthier cash position than AlphaStruct despite having lower revenue?</h3>
+            <div id="quiz2">
+                <button class="quiz-option" onclick="checkQuiz(2, this, false)">A) BetaBuild had lower expenses</button>
+                <button class="quiz-option" onclick="checkQuiz(2, this, false)">B) BetaBuild had better engineers</button>
+                <button class="quiz-option" onclick="checkQuiz(2, this, true)">C) BetaBuild collected payments within 15 days while AlphaStruct waited 90+ days</button>
+                <button class="quiz-option" onclick="checkQuiz(2, this, false)">D) BetaBuild charged higher fees per project</button>
+            </div>
+            <div class="quiz-feedback" id="quiz2Feedback"></div>
+        </div>
+
+        <!-- Quiz 3 -->
+        <div style="margin-top:2rem;">
+            <h3>Question 3: A structural engineering firm sees that enquiries are increasing but revenue is flat. Based on the "measure to improve" principle, what should the owner investigate first?</h3>
+            <div id="quiz3">
+                <button class="quiz-option" onclick="checkQuiz(3, this, false)">A) Increase the marketing budget to generate even more enquiries</button>
+                <button class="quiz-option" onclick="checkQuiz(3, this, false)">B) Reduce staff to cut costs</button>
+                <button class="quiz-option" onclick="checkQuiz(3, this, true)">C) Check the conversion rate — the problem is likely in the proposal or sales process, not in lead generation</button>
+                <button class="quiz-option" onclick="checkQuiz(3, this, false)">D) Lower fees to win more projects</button>
+            </div>
+            <div class="quiz-feedback" id="quiz3Feedback"></div>
+        </div>
+
+        <!-- Quiz 4 -->
+        <div style="margin-top:2rem;">
+            <h3>Question 4: What is the recommended frequency for reviewing your business dashboard?</h3>
+            <div id="quiz4">
+                <button class="quiz-option" onclick="checkQuiz(4, this, false)">A) Once a quarter</button>
+                <button class="quiz-option" onclick="checkQuiz(4, this, false)">B) Once a month</button>
+                <button class="quiz-option" onclick="checkQuiz(4, this, true)">C) Every Monday morning — a 15-minute weekly review</button>
+                <button class="quiz-option" onclick="checkQuiz(4, this, false)">D) Only when there is a financial problem</button>
+            </div>
+            <div class="quiz-feedback" id="quiz4Feedback"></div>
+        </div>
+
+        <!-- Quiz Score -->
+        <div class="result-box" id="quizScore" style="margin-top:1.5rem;">
+            <h5>🎯 Your Score</h5>
+            <p id="quizScoreText"></p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- KEY TAKEAWAYS -->
+    <!-- ============================================ -->
+
+    <section class="section-card fade-in" id="takeaways">
+        <div class="section-badge">📝 Summary</div>
+        <h2>Key Takeaways</h2>
+
+        <div style="display:grid; gap:1rem; margin-top:1rem;">
+            <div style="display:flex; gap:1rem; align-items:flex-start; padding:1rem; background:var(--teal-50); border-radius:var(--radius-md);">
+                <span style="font-size:1.4rem;">1️⃣</span>
+                <div>
+                    <strong style="color:var(--text-primary);">Revenue ≠ Cash</strong>
+                    <p style="font-size:0.88rem; color:var(--text-secondary); margin:0.25rem 0 0;">High sales figures are meaningless if the cash is not reaching your bank account. Focus on collection speed, not just billing volume.</p>
+                </div>
+            </div>
+            <div style="display:flex; gap:1rem; align-items:flex-start; padding:1rem; background:var(--teal-50); border-radius:var(--radius-md);">
+                <span style="font-size:1.4rem;">2️⃣</span>
+                <div>
+                    <strong style="color:var(--text-primary);">Track Your Cash Weekly</strong>
+                    <p style="font-size:0.88rem; color:var(--text-secondary); margin:0.25rem 0 0;">A 15-minute weekly cash flow review can prevent major financial crises. Know your inflows, outflows, and runway at all times.</p>
+                </div>
+            </div>
+            <div style="display:flex; gap:1rem; align-items:flex-start; padding:1rem; background:var(--teal-50); border-radius:var(--radius-md);">
+                <span style="font-size:1.4rem;">3️⃣</span>
+                <div>
+                    <strong style="color:var(--text-primary);">Measure Five Key Numbers</strong>
+                    <p style="font-size:0.88rem; color:var(--text-secondary); margin:0.25rem 0 0;">Leads, conversions, cash collected, expenses, and pending payments. These five numbers give you a complete picture of business health.</p>
+                </div>
+            </div>
+            <div style="display:flex; gap:1rem; align-items:flex-start; padding:1rem; background:var(--teal-50); border-radius:var(--radius-md);">
+                <span style="font-size:1.4rem;">4️⃣</span>
+                <div>
+                    <strong style="color:var(--text-primary);">Data Beats Gut Feeling</strong>
+                    <p style="font-size:0.88rem; color:var(--text-secondary); margin:0.25rem 0 0;">Tracking numbers reveals the real problems — and the real opportunities. Gut feeling leads to wrong solutions; data leads to the right ones.</p>
+                </div>
+            </div>
+            <div style="display:flex; gap:1rem; align-items:flex-start; padding:1rem; background:var(--teal-50); border-radius:var(--radius-md);">
+                <span style="font-size:1.4rem;">5️⃣</span>
+                <div>
+                    <strong style="color:var(--text-primary);">Start Simple, Be Consistent</strong>
+                    <p style="font-size:0.88rem; color:var(--text-secondary); margin:0.25rem 0 0;">You do not need expensive software. A spreadsheet and a Monday morning habit can transform your engineering business within 90 days.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- ═══════════ BOTTOM NAV ═══════════ -->
+<div class="bottom-nav">
+    <a href="https://civiltech-ai.github.io/knowledge-portal/">← Back to Knowledge Portal</a>
+    <a href="#">Next Topic →</a>
+</div>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="footer">
+    <p><strong>Civil-Tech.ai</strong> — Knowledge Portal</p>
+    <p style="margin-top:0.3rem;">Practical business education for Dubai SME owners in civil &amp; structural engineering.</p>
+    <p style="margin-top:0.5rem;">© 2026 Civil-Tech.ai. All rights reserved.</p>
+</footer>
+
+<!-- ═══════════ SCRIPTS ═══════════ -->
+<script>
+    // ── Reading Progress Bar ──
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = Math.min(Math.round((scrollTop / docHeight) * 100), 100);
+        document.getElementById('progressFill').style.width = pct + '%';
+        document.getElementById('progressPct').textContent = pct + '%';
+    });
+
+    // ── Section Nav Active State ──
+    const sections = document.querySelectorAll('.section-card[id]');
+    const navLinks = document.querySelectorAll('.section-nav-floating a');
+    
+    window.addEventListener('scroll', function() {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 120;
+            if (window.scrollY >= sectionTop) {
+                current = section.getAttribute('id');
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // ── Cash Flow Calculator ──
+    function getVal(id) { return parseFloat(document.getElementById(id).value) || 0; }
+
+    function calculateCashFlow() {
+        const totalIn = getVal('cf_clients') + getVal('cf_other_in');
+        const totalOut = getVal('cf_salaries') + getVal('cf_rent') + getVal('cf_software') + getVal('cf_suppliers') + getVal('cf_insurance') + getVal('cf_other_out');
+        const net = totalIn - totalOut;
+
+        document.getElementById('cfTotalIn').textContent = totalIn.toLocaleString();
+        document.getElementById('cfTotalOut').textContent = totalOut.toLocaleString();
+        document.getElementById('cfNet').textContent = net.toLocaleString();
+
+        const statusEl = document.getElementById('cfStatus');
+        const adviceEl = document.getElementById('cfAdvice');
+
+        if (net > totalOut * 0.2) {
+            statusEl.innerHTML = '<span class="result-status status-healthy">✅ Healthy Cash Position</span>';
+            adviceEl.textContent = 'Your inflows comfortably cover your outflows with a healthy surplus. Consider building a cash reserve equal to 3 months of expenses, and look for opportunities to invest in growth — additional staff, software upgrades, or business development.';
+        } else if (net > 0) {
+            statusEl.innerHTML = '<span class="result-status status-warning">⚠️ Tight but Positive</span>';
+            adviceEl.textContent = 'You are cash-positive but with a thin margin. A single late payment from a client could push you into negative territory. Prioritise following up on outstanding invoices this week and consider negotiating shorter payment terms with your top clients.';
+        } else {
+            statusEl.innerHTML = '<span class="result-status status-danger">🚨 Cash Flow Negative — Action Needed</span>';
+            adviceEl.textContent = 'Your outflows exceed your inflows. This is a warning sign that requires immediate attention. Actions: (1) Follow up on all outstanding invoices today, (2) Review if any expenses can be deferred, (3) Speak with your bank about a short-term credit facility as a safety net, (4) Consider requesting advance payments from new clients.';
+        }
+
+        const resultEl = document.getElementById('cfResult');
+        resultEl.classList.add('show');
+    }
+
+    function resetCashFlow() {
+        ['cf_clients','cf_other_in','cf_salaries','cf_rent','cf_software','cf_suppliers','cf_insurance','cf_other_out'].forEach(id => {
+            document.getElementById(id).value = '';
+        });
+        document.getElementById('cfResult').classList.remove('show');
+    }
+
+    // ── Dashboard Builder ──
+    function generateDashboard() {
+        const leads = getVal('db_leads');
+        const proposals = getVal('db_proposals');
+        const won = getVal('db_won');
+        const cash = getVal('db_cash');
+        const expenses = getVal('db_expenses');
+        const pending = getVal('db_pending');
+
+        const convRate = proposals > 0 ? ((won / proposals) * 100).toFixed(1) : 0;
+        const netCash = cash - expenses;
+        const collEff = (cash + pending) > 0 ? ((cash / (cash + pending)) * 100).toFixed(1) : 0;
+
+        document.getElementById('dbConversion').textContent = convRate + '%';
+        document.getElementById('dbConversion').style.color = convRate >= 25 ? 'var(--success)' : convRate >= 15 ? 'var(--accent)' : 'var(--danger)';
+
+        document.getElementById('dbNetCash').textContent = 'AED ' + netCash.toLocaleString();
+        document.getElementById('dbNetCash').style.color = netCash >= 0 ? 'var(--success)' : 'var(--danger)';
+
+        document.getElementById('dbEfficiency').textContent = collEff + '%';
+        document.getElementById('dbEfficiency').style.color = collEff >= 50 ? 'var(--success)' : collEff >= 30 ? 'var(--accent)' : 'var(--danger)';
+
+        let insights = '<div style="font-size:0.85rem; color:var(--text-secondary); line-height:1.7;">';
+        insights += '<strong style="color:var(--text-primary);">Insights:</strong><br>';
+
+        if (convRate < 20) insights += '• Your conversion rate is below 20%. Review your proposal quality and follow-up process.<br>';
+        else if (convRate >= 30) insights += '• Strong conversion rate! Your sales process is working well.<br>';
+
+        if (netCash < 0) insights += '• You spent more than you collected this week. Prioritise receivable follow-ups immediately.<br>';
+        else insights += '• Positive net cash this week. Maintain this momentum.<br>';
+
+        if (pending > cash * 3) insights += '• Your pending payments are over 3x your weekly collections. This is a risk — consider dedicating time to accelerating collections.<br>';
+
+        if (leads > 0 && proposals === 0) insights += '• You received enquiries but sent no proposals. Are leads being followed up promptly?<br>';
+
+        insights += '</div>';
+        document.getElementById('dbInsights').innerHTML = insights;
+
+        document.getElementById('dbResult').classList.add('show');
+    }
+
+    function resetDashboard() {
+        ['db_leads','db_proposals','db_won','db_cash','db_expenses','db_pending'].forEach(id => {
+            document.getElementById(id).value = '';
+        });
+        document.getElementById('dbResult').classList.remove('show');
+    }
+
+    // ── Checklist ──
+    function toggleCheck(li) {
+        li.classList.toggle('checked');
+        updateChecklistProgress();
+    }
+
+    function updateChecklistProgress() {
+        const total = document.querySelectorAll('#checklist1 li').length;
+        const checked = document.querySelectorAll('#checklist1 li.checked').length;
+        document.getElementById('checklistProgress1').textContent = checked + ' of ' + total + ' steps completed';
+    }
+
+    // ── Quiz ──
+    let quizAnswered = 0;
+    let quizCorrect = 0;
+    const totalQuestions = 4;
+
+    function checkQuiz(qNum, btn, isCorrect) {
+        const container = document.getElementById('quiz' + qNum);
+        const feedback = document.getElementById('quiz' + qNum + 'Feedback');
+
+        // Disable all options
+        container.querySelectorAll('.quiz-option').forEach(opt => {
+            opt.classList.add('disabled');
+        });
+
+        if (isCorrect) {
+            btn.classList.add('correct');
+            feedback.className = 'quiz-feedback correct show';
+            quizCorrect++;
+
+            const feedbackMessages = {
+                1: 'Correct! Revenue is an accounting entry — it gets recorded when you invoice. Cash flow is the actual money moving through your bank account. The timing gap between the two is what creates financial pressure.',
+                2: 'Correct! The key difference was collection speed. BetaBuild collected in 15 days versus 90+ days for AlphaStruct. Faster collection means more cash available, regardless of total revenue.',
+                3: 'Correct! When enquiries are up but revenue is flat, the conversion rate is the metric to examine. The problem lies in how leads are being converted to projects, not in lead generation itself.',
+                4: 'Correct! A 15-minute weekly review every Monday morning is the recommended practice. This frequency is often enough to catch problems early while being practical enough to maintain consistently.'
+            };
+            feedback.textContent = feedbackMessages[qNum];
+        } else {
+            btn.classList.add('incorrect');
+            feedback.className = 'quiz-feedback incorrect show';
+
+            const incorrectMessages = {
+                1: 'Not quite. While employees and rent are expenses, the core issue is the timing gap — revenue is recorded when invoiced, but cash arrives much later. This gap is what causes financial strain even for high-revenue businesses.',
+                2: 'Not quite. The key difference was payment collection speed. BetaBuild collected in 15 days while AlphaStruct waited 90+ days. This timing difference determined their cash positions.',
+                3: 'Not quite. The data shows enquiries are increasing, so the lead generation is working. The problem is that these leads are not converting into projects — the conversion rate needs investigation.',
+                4: 'Not quite. Quarterly reviews are too infrequent to catch problems early, and monthly reviews can miss fast-developing issues. A 15-minute weekly review every Monday morning is the sweet spot.'
+            };
+            feedback.textContent = incorrectMessages[qNum];
+
+            // Highlight correct answer
+            container.querySelectorAll('.quiz-option').forEach(opt => {
+                if (!opt.classList.contains('incorrect')) {
+                    // Find the correct one
+                }
+            });
+        }
+
+        quizAnswered++;
+        if (quizAnswered === totalQuestions) {
+            const scoreEl = document.getElementById('quizScore');
+            const scoreText = document.getElementById('quizScoreText');
+            scoreEl.classList.add('show');
+
+            if (quizCorrect === totalQuestions) {
+                scoreText.innerHTML = '<span style="font-size:1.2rem;">🎉</span> <strong>' + quizCorrect + '/' + totalQuestions + ' — Perfect Score!</strong><br>You have a strong understanding of these financial management principles. Now put them into practice this week!';
+            } else if (quizCorrect >= 3) {
+                scoreText.innerHTML = '<span style="font-size:1.2rem;">👏</span> <strong>' + quizCorrect + '/' + totalQuestions + ' — Great Job!</strong><br>You have a solid grasp of these concepts. Review the question(s) you missed and consider re-reading those sections.';
+            } else {
+                scoreText.innerHTML = '<span style="font-size:1.2rem;">📖</span> <strong>' + quizCorrect + '/' + totalQuestions + '</strong><br>Consider re-reading the guide to strengthen your understanding. These concepts are critical for running a financially healthy business.';
+            }
+        }
+    }
+
+    // ── Fade-in animation on scroll ──
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animationDelay = '0.1s';
+                entry.target.classList.add('fade-in');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.section-card').forEach(card => observer.observe(card));
+</script>
+
+</body>
+</html>
