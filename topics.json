@@ -30,6 +30,16 @@
       "dateAdded": "2026-05-01",
       "visible": true
     },
+        {
+      "id": "building-a-system-driven-business",
+      "title": "'You do not rise to the level of your goals. You fall to the level of your systems.' — James Clear",
+      "description": "How to create predictable growth without depending on daily motivation. A comprehensive interactive guide covering why Dubai construction companies fall to the level of their systems — not their goals — featuring real case studies, the 8 essential operational systems every civil engineering business needs, a self-assessment tool, leadership mindset shifts, and a 4-week implementation roadmap.",
+      "category": "strategy",
+      "file": "building-a-system-driven-business.html",
+      "tags": ["strategy", "systems", "ops"],
+      "dateAdded": "2026-05-01",
+      "visible": true
+    },
       {
       "id": "busy-is-not-productive",
       "title": "Busy is not productive",
