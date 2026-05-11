@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discounts Attract Customers, Value Retains Them — Civil-Tech.ai Knowledge Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #14b8a6;
+            --primary-dark: #0d9488;
+            --primary-light: #99f6e4;
+            --primary-gradient: linear-gradient(135deg, #0d9488 0%, #14b8a6 40%, #2dd4bf 100%);
+            --accent: #f59e0b;
+            --accent-light: #fef3c7;
+            --bg: #f0fdfa;
+            --bg-white: #ffffff;
+            --bg-card: #ffffff;
+            --text-primary: #134e4a;
+            --text-secondary: #5f7a77;
+            --text-light: #94a3b8;
+            --border: #e2e8f0;
+            --border-teal: #ccfbf1;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.1);
+            --radius: 12px;
+            --radius-lg: 20px;
+            --danger: #ef4444;
+            --danger-bg: #fef2f2;
+            --success: #10b981;
+            --success-bg: #ecfdf5;
+            --warning: #f59e0b;
+            --warning-bg: #fffbeb;
+            --info: #3b82f6;
+            --info-bg: #eff6ff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── NAVBAR ─── */
+        .navbar {
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+        }
+        .navbar-left { display: flex; align-items: center; gap: 1rem; }
+        .navbar-logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--primary);
+        }
+        .navbar-logo span { color: var(--text-primary); }
+        .navbar-badge {
+            background: var(--primary);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+        .navbar-back {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .navbar-back:hover { color: var(--primary); }
+
+        /* ─── HERO SECTION ─── */
+        .hero {
+            background: var(--primary-gradient);
+            padding: 3.5rem 2rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 320px;
+            height: 320px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            right: 120px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+        .hero-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-category {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.18);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+        .hero h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 800;
+            color: white;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        .hero-subtitle {
+            color: rgba(255,255,255,0.88);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            max-width: 680px;
+        }
+        .hero-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .hero-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* ─── CONTENT LAYOUT ─── */
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* ─── TABLE OF CONTENTS ─── */
+        .toc {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+        }
+        .toc-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .toc-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .toc-list li a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+        .toc-list li a:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* ─── SECTION CARDS ─── */
+        .section-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 2rem 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            transition: box-shadow 0.3s;
+        }
+        .section-card:hover { box-shadow: var(--shadow-md); }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1.5rem;
+        }
+        .section-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--primary-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .section-header h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .section-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        /* ─── QUOTE BLOCK ─── */
+        .quote-block {
+            background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
+            border-left: 4px solid var(--primary);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            padding: 1.5rem 1.75rem;
+            margin: 1.5rem 0;
+        }
+        .quote-block p {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            font-style: italic;
+            margin-bottom: 0;
+        }
+
+        /* ─── COMPARISON TABLE ─── */
+        .comparison-table-wrap {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        .comparison-table thead th {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 12px 18px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.82rem;
+            letter-spacing: 0.3px;
+        }
+        .comparison-table tbody td {
+            padding: 12px 18px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        .comparison-table tbody tr:last-child td { border-bottom: none; }
+        .comparison-table tbody tr:nth-child(even) { background: #f8fffe; }
+        .comparison-table .label-danger {
+            display: inline-block;
+            background: var(--danger-bg);
+            color: var(--danger);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 6px;
+        }
+        .comparison-table .label-success {
+            display: inline-block;
+            background: var(--success-bg);
+            color: var(--success);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 6px;
+        }
+
+        /* ─── INFO BOXES ─── */
+        .info-box {
+            border-radius: var(--radius);
+            padding: 1.25rem 1.5rem;
+            margin: 1.25rem 0;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+        .info-box-icon {
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .info-box-content h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .info-box-content p, .info-box-content ul {
+            font-size: 0.88rem;
+            margin-bottom: 0;
+            line-height: 1.7;
+        }
+        .info-box.danger { background: var(--danger-bg); border: 1px solid #fecaca; }
+        .info-box.danger .info-box-content h4 { color: var(--danger); }
+        .info-box.success { background: var(--success-bg); border: 1px solid #a7f3d0; }
+        .info-box.success .info-box-content h4 { color: var(--success); }
+        .info-box.warning { background: var(--warning-bg); border: 1px solid #fde68a; }
+        .info-box.warning .info-box-content h4 { color: #b45309; }
+        .info-box.info { background: var(--info-bg); border: 1px solid #bfdbfe; }
+        .info-box.info .info-box-content h4 { color: var(--info); }
+
+        /* ─── BULLET POINTS ─── */
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        .bullet-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 8px 0;
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .bullet-list li .bullet-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            background: var(--primary);
+            color: white;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-top: 2px;
+        }
+        .bullet-list.danger-list li .bullet-icon {
+            background: var(--danger);
+        }
+
+        /* ─── VISUAL CARDS ROW ─── */
+        .cards-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .mini-card {
+            background: var(--bg);
+            border: 1px solid var(--border-teal);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .mini-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+        .mini-card .mc-icon {
+            font-size: 2rem;
+            margin-bottom: 0.6rem;
+        }
+        .mini-card h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.4rem;
+        }
+        .mini-card p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+        /* ─── VS COMPARISON VISUAL ─── */
+        .vs-container {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            align-items: stretch;
+        }
+        .vs-block {
+            border-radius: var(--radius);
+            padding: 1.5rem;
+        }
+        .vs-block.left {
+            background: var(--danger-bg);
+            border: 1px solid #fecaca;
+        }
+        .vs-block.right {
+            background: var(--success-bg);
+            border: 1px solid #a7f3d0;
+        }
+        .vs-block h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .vs-block.left h4 { color: var(--danger); }
+        .vs-block.right h4 { color: var(--success); }
+        .vs-block ul {
+            list-style: none;
+            padding: 0;
+        }
+        .vs-block ul li {
+            font-size: 0.85rem;
+            padding: 5px 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .vs-block ul li::before {
+            content: '';
+            flex-shrink: 0;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            margin-top: 8px;
+        }
+        .vs-block.left ul li::before { background: var(--danger); }
+        .vs-block.right ul li::before { background: var(--success); }
+        .vs-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        /* ─── SCENARIO CARDS ─── */
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+        }
+        .scenario-card {
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .scenario-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+        .scenario-card.red { background: #fff5f5; border: 1px solid #fecaca; }
+        .scenario-card.red::before { background: var(--danger); }
+        .scenario-card.green { background: #f0fdf4; border: 1px solid #bbf7d0; }
+        .scenario-card.green::before { background: var(--success); }
+        .scenario-card .sc-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .scenario-card.red .sc-label { color: var(--danger); }
+        .scenario-card.green .sc-label { color: var(--success); }
+        .scenario-card h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.6rem;
+        }
+        .scenario-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.6rem;
+        }
+        .scenario-card .sc-result {
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+        .scenario-card.red .sc-result { background: #fecaca; color: #991b1b; }
+        .scenario-card.green .sc-result { background: #bbf7d0; color: #166534; }
+
+        /* ─── FLOW DIAGRAM ─── */
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        .flow-step {
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: var(--radius);
+            padding: 1rem 1.25rem;
+            text-align: center;
+            min-width: 140px;
+            transition: transform 0.2s;
+        }
+        .flow-step:hover { transform: scale(1.04); }
+        .flow-step .fs-icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
+        .flow-step h5 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+        .flow-step p { font-size: 0.72rem; color: var(--text-light); margin-bottom: 0; }
+        .flow-arrow {
+            font-size: 1.5rem;
+            color: var(--primary);
+            padding: 0 8px;
+        }
+
+        /* ─── INTERACTIVE SECTIONS ─── */
+        .interactive-block {
+            background: linear-gradient(135deg, #f0fdfa 0%, #e6fffa 100%);
+            border: 2px dashed var(--primary);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 1.5rem 0;
+        }
+        .interactive-block h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .interactive-block > p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+        }
+
+        /* ─── CHECKLIST ─── */
+        .checklist {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .checklist li:last-child { border-bottom: none; }
+        .checklist li:hover { background: rgba(20,184,166,0.04); }
+        .check-box {
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            cursor: pointer;
+            margin-top: 1px;
+        }
+        .checklist li.checked .check-box {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+        .checklist li.checked .check-box::after {
+            content: '✓';
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .checklist li.checked span {
+            text-decoration: line-through;
+            color: var(--text-light);
+        }
+
+        /* ─── SELF-ASSESSMENT ─── */
+        .quiz-question {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        .quiz-question h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+        }
+        .quiz-options { display: flex; flex-direction: column; gap: 0.5rem; }
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .quiz-option:hover { border-color: var(--primary); background: #f0fdfa; }
+        .quiz-option.selected { border-color: var(--primary); background: #ccfbf1; color: var(--primary-dark); font-weight: 600; }
+        .quiz-option.correct { border-color: var(--success); background: var(--success-bg); color: #166534; }
+        .quiz-option.wrong { border-color: var(--danger); background: var(--danger-bg); color: #991b1b; }
+        .quiz-radio {
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--border);
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        .quiz-option.selected .quiz-radio { border-color: var(--primary); }
+        .quiz-option.selected .quiz-radio::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+        .quiz-option.correct .quiz-radio { border-color: var(--success); }
+        .quiz-option.correct .quiz-radio::after {
+            content: '✓';
+            color: var(--success);
+            font-size: 0.65rem;
+            font-weight: 700;
+        }
+        .quiz-option.wrong .quiz-radio { border-color: var(--danger); }
+        .quiz-option.wrong .quiz-radio::after {
+            content: '✗';
+            color: var(--danger);
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+        .quiz-feedback {
+            display: none;
+            margin-top: 0.8rem;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .quiz-feedback.show { display: block; }
+        .quiz-feedback.correct-fb { background: var(--success-bg); color: #166534; border: 1px solid #a7f3d0; }
+        .quiz-feedback.wrong-fb { background: var(--danger-bg); color: #991b1b; border: 1px solid #fecaca; }
+
+        /* ─── PROGRESS BAR ─── */
+        .progress-container {
+            margin: 1.5rem 0;
+        }
+        .progress-bar-wrap {
+            background: #e2e8f0;
+            border-radius: 20px;
+            height: 12px;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--primary-gradient);
+            border-radius: 20px;
+            transition: width 0.6s ease;
+            width: 0%;
+        }
+        .progress-text {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 6px;
+            font-weight: 500;
+        }
+
+        /* ─── KPI GAUGE ─── */
+        .kpi-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .kpi-card {
+            text-align: center;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.25rem 1rem;
+        }
+        .kpi-card .kpi-num {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .kpi-card .kpi-label {
+            font-size: 0.78rem;
+            color: var(--text-light);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        /* ─── STEP NUMBERS ─── */
+        .step-list {
+            counter-reset: step-counter;
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        .step-list li {
+            counter-increment: step-counter;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .step-list li:last-child { border-bottom: none; }
+        .step-list li::before {
+            content: counter(step-counter);
+            flex-shrink: 0;
+            width: 30px;
+            height: 30px;
+            background: var(--primary-gradient);
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-top: 1px;
+        }
+
+        /* ─── ACTION BOX ─── */
+        .action-box {
+            background: linear-gradient(135deg, #0d9488, #14b8a6);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            color: white;
+            margin: 1.5rem 0;
+        }
+        .action-box h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .action-box p {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.92rem;
+            margin-bottom: 1rem;
+        }
+        .action-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        .action-box ul li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 6px 0;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.95);
+        }
+        .action-box ul li .ab-check {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            margin-top: 1px;
+        }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+        }
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* ─── SLIDER ─── */
+        .slider-wrap {
+            margin: 1.5rem 0;
+        }
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        .slider-label span { font-weight: 600; color: var(--primary-dark); }
+        input[type="range"] {
+            width: 100%;
+            -webkit-appearance: none;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            background: var(--primary);
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+        .slider-result {
+            text-align: center;
+            margin-top: 12px;
+            padding: 12px;
+            background: var(--bg);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+        .slider-result .sr-value {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+        }
+        .slider-result .sr-label {
+            font-size: 0.78rem;
+            color: var(--text-light);
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 700px) {
+            .hero { padding: 2.5rem 1.25rem 2rem; }
+            .content-wrapper { padding: 1.25rem; }
+            .section-card { padding: 1.25rem; }
+            .vs-container { grid-template-columns: 1fr; }
+            .vs-divider { padding: 0.5rem 0; }
+            .scenario-grid { grid-template-columns: 1fr; }
+            .flow-diagram { flex-direction: column; }
+            .flow-arrow { transform: rotate(90deg); }
+            .toc-list { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════ NAVBAR ═══════ -->
+<nav class="navbar">
+    <div class="navbar-left">
+        <div class="navbar-logo">Civil-Tech<span>.ai</span></div>
+        <span class="navbar-badge">Knowledge Portal</span>
+    </div>
+    <a href="https://civiltech-ai.github.io/knowledge-portal/" class="navbar-back">
+        ← Back to Library
+    </a>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-category">💰 Sales & Revenue</div>
+        <h1>"Discounts Attract Customers, Value Retains Them."</h1>
+        <p class="hero-subtitle">
+            Why Dubai's top civil and structural engineering firms win repeat clients through superior value delivery — not constant price cuts. A comprehensive guide with interactive exercises to help you build lasting customer loyalty.
+        </p>
+        <div class="hero-meta">
+            <div class="hero-meta-item">📖 10 min read</div>
+            <div class="hero-meta-item">🎯 3 Interactive Activities</div>
+            <div class="hero-meta-item">🏗️ Engineering Sector Focus</div>
+            <div class="hero-meta-item">📅 May 2026</div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════ CONTENT ═══════ -->
+<div class="content-wrapper">
+
+    <!-- TABLE OF CONTENTS -->
+    <div class="toc">
+        <div class="toc-title">📑 In This Guide</div>
+        <ul class="toc-list">
+            <li><a href="#core-concept">💡 Core Concept</a></li>
+            <li><a href="#why-it-matters">📊 Why It Matters</a></li>
+            <li><a href="#real-scenario">🏗️ Real Scenario</a></li>
+            <li><a href="#discount-trap">⚠️ The Discount Trap</a></li>
+            <li><a href="#value-drivers">🏆 Value Drivers</a></li>
+            <li><a href="#value-framework">🔧 Value Framework</a></li>
+            <li><a href="#self-assessment">✅ Self-Assessment</a></li>
+            <li><a href="#calculator">📐 ROI Calculator</a></li>
+            <li><a href="#action-plan">🚀 Action Plan</a></li>
+        </ul>
+    </div>
+
+    <!-- ═══════ SECTION 1: CORE CONCEPT ═══════ -->
+    <div class="section-card" id="core-concept">
+        <div class="section-header">
+            <div class="section-icon">💡</div>
+            <h2>What Does This Mean?</h2>
+        </div>
+
+        <div class="quote-block">
+            <p>"Discounts attract customers, but only value keeps them coming back."</p>
+        </div>
+
+        <p>
+            Many engineering businesses try to win projects by offering the lowest price. While discounts may get a client in the door once, they rarely come back for the price alone. Clients return and refer others when they experience:
+        </p>
+
+        <div class="cards-row">
+            <div class="mini-card">
+                <div class="mc-icon">🏗️</div>
+                <h4>Quality Work</h4>
+                <p>Accurate designs, clean documentation, and zero rework on deliverables</p>
+            </div>
+            <div class="mini-card">
+                <div class="mc-icon">⏱️</div>
+                <h4>Reliable Timelines</h4>
+                <p>Projects delivered on schedule with clear milestone communication</p>
+            </div>
+            <div class="mini-card">
+                <div class="mc-icon">🤝</div>
+                <h4>Trust & Service</h4>
+                <p>Proactive updates, responsive support, and transparent processes</p>
+            </div>
+            <div class="mini-card">
+                <div class="mc-icon">📞</div>
+                <h4>Follow-Up Care</h4>
+                <p>Post-project check-ins and support that build lifetime relationships</p>
+            </div>
+        </div>
+
+        <p>
+            Long-term business growth comes from delivering strong <strong>value</strong> — not just lower prices. Value is the total experience your client gets when working with your firm.
+        </p>
+    </div>
+
+    <!-- ═══════ SECTION 2: WHY IT MATTERS ═══════ -->
+    <div class="section-card" id="why-it-matters">
+        <div class="section-header">
+            <div class="section-icon">📊</div>
+            <h2>Why This Matters for Engineering Firms in Dubai</h2>
+        </div>
+
+        <p>
+            In Dubai's competitive civil engineering market, dozens of firms bid on the same projects. The temptation to undercut competitors on price is real — but it's a race to the bottom. Here's the hard truth:
+        </p>
+
+        <div class="kpi-row">
+            <div class="kpi-card">
+                <div class="kpi-num">5×</div>
+                <div class="kpi-label">Cheaper to retain a client than acquire a new one</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-num">65%</div>
+                <div class="kpi-label">Business from existing clients in top-performing firms</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-num">80%</div>
+                <div class="kpi-label">Of referrals come from value-based client relationships</div>
+            </div>
+        </div>
+
+        <div class="info-box warning">
+            <div class="info-box-icon">💡</div>
+            <div class="info-box-content">
+                <h4>Key Insight for Dubai Engineering SMEs</h4>
+                <p>Developers, contractors, and government entities in Dubai value firms that deliver hassle-free project execution. They pay premium rates for firms that reduce their risk — not the cheapest option.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════ SECTION 3: REAL SCENARIO ═══════ -->
+    <div class="section-card" id="real-scenario">
+        <div class="section-header">
+            <div class="section-icon">🏗️</div>
+            <h2>Real Scenario — Two Engineering Firms in Dubai</h2>
+        </div>
+
+        <p>
+            Consider two civil engineering firms competing for structural design projects across Dubai. Both have similar capabilities, but very different strategies:
+        </p>
+
+        <div class="scenario-grid">
+            <div class="scenario-card red">
+                <div class="sc-label">❌ Discount-Led Firm</div>
+                <h4>Al Reem Structural Consultants</h4>
+                <p>Wins projects by always being the cheapest bid. Offers 15–25% discounts on standard fees to beat competitors.</p>
+                <ul class="bullet-list">
+                    <li><span class="bullet-icon">1</span> Underbids on every tender to win work</li>
+                    <li><span class="bullet-icon">2</span> Tight margins lead to cutting corners on reviews</li>
+                    <li><span class="bullet-icon">3</span> Clients complain about revision delays</li>
+                    <li><span class="bullet-icon">4</span> Staff overworked, high turnover, quality drops</li>
+                </ul>
+                <div class="sc-result">Result: Clients keep bargaining & switch easily</div>
+            </div>
+            <div class="scenario-card green">
+                <div class="sc-label">✅ Value-Led Firm</div>
+                <h4>Gulf Structures Engineering</h4>
+                <p>Charges market-rate fees but delivers an outstanding client experience at every touchpoint.</p>
+                <ul class="bullet-list">
+                    <li><span class="bullet-icon">1</span> Weekly progress reports to every client</li>
+                    <li><span class="bullet-icon">2</span> Same-day response to queries & change requests</li>
+                    <li><span class="bullet-icon">3</span> Free 30-day post-completion support included</li>
+                    <li><span class="bullet-icon">4</span> Dedicated project coordinator per client</li>
+                </ul>
+                <div class="sc-result">Result: Clients return & refer regularly</div>
+            </div>
+        </div>
+
+        <div class="comparison-table-wrap">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Al Reem (Discount-Led)</th>
+                        <th>Gulf Structures (Value-Led)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Pricing Strategy</strong></td>
+                        <td>15–25% below market</td>
+                        <td>Market rate or slight premium</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Profit Margin</strong></td>
+                        <td><span class="label-danger">8–12%</span></td>
+                        <td><span class="label-success">22–30%</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Repeat Client Rate</strong></td>
+                        <td><span class="label-danger">20%</span></td>
+                        <td><span class="label-success">70%</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Client Referrals</strong></td>
+                        <td><span class="label-danger">Rare</span></td>
+                        <td><span class="label-success">Regular (3–5/quarter)</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Staff Retention</strong></td>
+                        <td><span class="label-danger">High turnover</span></td>
+                        <td><span class="label-success">Stable, experienced team</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Brand Perception</strong></td>
+                        <td><span class="label-danger">"Budget option"</span></td>
+                        <td><span class="label-success">"Trusted partner"</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="info-box success">
+            <div class="info-box-icon">🎯</div>
+            <div class="info-box-content">
+                <h4>The Takeaway</h4>
+                <p>Gulf Structures builds stronger client loyalty because clients feel they are getting better overall value — not just a cheaper price. Over 3 years, their revenue grows more predictably with half the marketing spend.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════ SECTION 4: DISCOUNT TRAP ═══════ -->
+    <div class="section-card" id="discount-trap">
+        <div class="section-header">
+            <div class="section-icon">⚠️</div>
+            <h2>The Discount Trap — What Over-Discounting Does</h2>
+        </div>
+
+        <p>
+            Frequent discounting seems like a quick win, but it quietly damages your engineering firm in multiple ways:
+        </p>
+
+        <div class="vs-container">
+            <div class="vs-block left">
+                <h4>🔴 Risks of Over-Discounting</h4>
+                <ul>
+                    <li>Profit margins shrink on every project</li>
+                    <li>Clients learn to always negotiate harder</li>
+                    <li>Your brand becomes "the cheap firm"</li>
+                    <li>Competitors who discount more steal your clients</li>
+                    <li>You can't invest in better tools or talent</li>
+                    <li>Staff quality drops, leading to rework</li>
+                    <li>Unsustainable long-term growth</li>
+                </ul>
+            </div>
+            <div class="vs-divider">VS</div>
+            <div class="vs-block right">
+                <h4>🟢 Benefits of Value Delivery</h4>
+                <ul>
+                    <li>Healthy margins fund better service</li>
+                    <li>Clients choose you without price haggling</li>
+                    <li>Strong brand attracts premium projects</li>
+                    <li>Referral engine reduces marketing costs</li>
+                    <li>Investment in training & technology grows</li>
+                    <li>Experienced team produces quality output</li>
+                    <li>Sustainable, predictable business growth</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- DISCOUNT IMPACT VISUAL -->
+        <h3 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 700; margin: 1.5rem 0 0.8rem; color: var(--text-primary);">
+            ⚙️ How the Discount Trap Cycle Works
+        </h3>
+
+        <div class="flow-diagram">
+            <div class="flow-step">
+                <div class="fs-icon">💰</div>
+                <h5>Offer Discount</h5>
+                <p>Win project cheap</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+                <div class="fs-icon">📉</div>
+                <h5>Lower Margin</h5>
+                <p>Less budget for quality</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+                <div class="fs-icon">⚠️</div>
+                <h5>Cut Corners</h5>
+                <p>Fewer reviews, less care</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+                <div class="fs-icon">😤</div>
+                <h5>Client Unsatisfied</h5>
+                <p>Demands more discounts</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step" style="border-color: var(--danger);">
+                <div class="fs-icon">🔄</div>
+                <h5>Cycle Repeats</h5>
+                <p>Business stagnates</p>
+            </div>
+        </div>
+
+        <div class="info-box danger">
+            <div class="info-box-icon">⛔</div>
+            <div class="info-box-content">
+                <h4>Warning Sign for Your Firm</h4>
+                <p>If more than 40% of your clients mention "price" as their main reason for choosing you — you're in the discount trap. Clients attracted only by price leave as soon as a cheaper option appears.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════ SECTION 5: VALUE DRIVERS ═══════ -->
+    <div class="section-card" id="value-drivers">
+        <div class="section-header">
+            <div class="section-icon">🏆</div>
+            <h2>The 7 Value Drivers for Engineering Firms</h2>
+        </div>
+
+        <p>
+            Instead of competing on price, compete on these seven value areas. Each one builds client loyalty that discounts never can:
+        </p>
+
+        <div class="cards-row" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+            <div class="mini-card">
+                <div class="mc-icon">📋</div>
+                <h4>1. Accuracy</h4>
+                <p>Deliver error-free structural calculations and drawings — reducing municipality rejections and rework for contractors</p>
+            </div>
+            <div class="mini-card">
+                <div class="mc-icon">⚡</div>
+                <h4>2. Speed</h4>
+                <p>Faster turnaround on design revisions and authority responses — contractors save money on idle time</p>
+            </div>
+            <div class="mini-card">
+                <div class="mc-icon">💬</div>
+                <h4>3. Communication</h4>
+                <p>Proactive updates, same-day responses to queries, clear documentation that keeps all parties aligned</p>
+            </div>
+            <div class="mini-card">
+                <div class="mc-icon">🛡️</div>
+                <h4>4. Reliability</h4>
+                <p>Consistent delivery on every project — clients know exactly what they'll get every single time</p>
+            </div>
+            <div class="mini-card">
+                <div class="mc-icon">🎁</div>
+                <h4>5. Extra Service</h4>
+                <p>Free post-completion support, site visit coordination, or value engineering suggestions that save the client money</p>
+            </div>
+            <div class="mini-card">
+                <div class="mc-icon">🧠</div>
+                <h4>6. Expertise</h4>
+                <p>Deep knowledge of Dubai Municipality and DDA requirements, DCGL codes, and local approval processes</p>
+            </div>
+            <div class="mini-card">
+                <div class="mc-icon">📐</div>
+                <h4>7. Professionalism</h4>
+                <p>Clean reports, branded deliverables, organised handover packages — making your client look good to their stakeholders</p>
+            </div>
+        </div>
+
+        <div class="info-box info">
+            <div class="info-box-icon">💡</div>
+            <div class="info-box-content">
+                <h4>Dubai Market Tip</h4>
+                <p>Main developers and large contractors in Dubai often maintain an "approved vendor list." Firms that deliver consistently strong value get on these lists — giving them a steady pipeline of projects without competing on price at all.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════ SECTION 6: VALUE FRAMEWORK ═══════ -->
+    <div class="section-card" id="value-framework">
+        <div class="section-header">
+            <div class="section-icon">🔧</div>
+            <h2>Building Your Value Framework</h2>
+        </div>
+
+        <p>
+            Use this step-by-step process to shift your engineering firm from discount-dependent to value-driven:
+        </p>
+
+        <ol class="step-list">
+            <li><strong>Audit your current client feedback</strong> — Ask your last 10 clients what they valued most. Was it your price? Or your speed, accuracy, and reliability? The answers will surprise you.</li>
+            <li><strong>Identify your top 3 value strengths</strong> — From the 7 value drivers above, pick the three where your firm is already strong. Double down on making these exceptional.</li>
+            <li><strong>Create a "Value Package" for proposals</strong> — Instead of just listing scope and fees, include what the client gets beyond the deliverables: response time guarantee, milestone tracking, post-project support.</li>
+            <li><strong>Build a client follow-up system</strong> — Contact every completed client at 30 days and 90 days after project handover. Ask if they need anything. This alone generates referrals.</li>
+            <li><strong>Track your repeat client rate monthly</strong> — Measure what percentage of revenue comes from returning clients. Aim to grow this to 50%+ over the next 12 months.</li>
+            <li><strong>Train your team on value communication</strong> — Everyone from project engineers to admin staff should understand why the firm charges fair rates and what value the client receives.</li>
+        </ol>
+
+        <h3 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 700; margin: 1.5rem 0 0.8rem; color: var(--text-primary);">
+            📋 Value Proposition Canvas for Engineering Firms
+        </h3>
+
+        <div class="comparison-table-wrap">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Client Pain Point</th>
+                        <th>Your Value Response</th>
+                        <th>How to Communicate It</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>"Designs always need revisions"</td>
+                        <td>First-time-right accuracy with QA checklists</td>
+                        <td>"Our QA process delivers 95% first-submission approval rate"</td>
+                    </tr>
+                    <tr>
+                        <td>"I never know the project status"</td>
+                        <td>Weekly automated progress reports</td>
+                        <td>"You'll receive status updates every Thursday — no need to chase us"</td>
+                    </tr>
+                    <tr>
+                        <td>"Authority approvals take too long"</td>
+                        <td>Pre-submission municipality compliance check</td>
+                        <td>"We run a DM compliance check before submission to avoid rejections"</td>
+                    </tr>
+                    <tr>
+                        <td>"Post-handover support is non-existent"</td>
+                        <td>30-day free support guarantee</td>
+                        <td>"We include 30 days of free support after every project handover"</td>
+                    </tr>
+                    <tr>
+                        <td>"Hard to reach the project engineer"</td>
+                        <td>Dedicated point of contact with SLA</td>
+                        <td>"Your project engineer responds within 4 working hours, guaranteed"</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ═══════ SECTION 7: SELF-ASSESSMENT QUIZ ═══════ -->
+    <div class="section-card" id="self-assessment">
+        <div class="section-header">
+            <div class="section-icon">✅</div>
+            <h2>Self-Assessment — Are You Trapped in the Discount Cycle?</h2>
+        </div>
+
+        <p>
+            Answer these questions honestly to evaluate whether your firm relies too much on discounts vs. value. Click on your answer for each question.
+        </p>
+
+        <!-- Quiz -->
+        <div class="quiz-question" data-correct="b">
+            <h4>Q1: When you lose a project bid, what's the most common reason?</h4>
+            <div class="quiz-options">
+                <div class="quiz-option" data-value="a" onclick="selectQuiz(this, 'a')">
+                    <div class="quiz-radio"></div>
+                    <span>"Our price was higher than the competitor"</span>
+                </div>
+                <div class="quiz-option" data-value="b" onclick="selectQuiz(this, 'b')">
+                    <div class="quiz-radio"></div>
+                    <span>"The client chose a firm they had worked with before"</span>
+                </div>
+            </div>
+            <div class="quiz-feedback correct-fb">✅ Correct — If clients choose familiar firms, it proves value-based relationships win. Focus on becoming that trusted firm yourself.</div>
+            <div class="quiz-feedback wrong-fb">⚠️ If you're always losing on price, it means clients see you as a commodity. You need to differentiate through value, not match the lowest bid.</div>
+        </div>
+
+        <div class="quiz-question" data-correct="b">
+            <h4>Q2: What percentage of your new projects come from existing clients or referrals?</h4>
+            <div class="quiz-options">
+                <div class="quiz-option" data-value="a" onclick="selectQuiz(this, 'a')">
+                    <div class="quiz-radio"></div>
+                    <span>Less than 30%</span>
+                </div>
+                <div class="quiz-option" data-value="b" onclick="selectQuiz(this, 'b')">
+                    <div class="quiz-radio"></div>
+                    <span>More than 50%</span>
+                </div>
+            </div>
+            <div class="quiz-feedback correct-fb">✅ Great — A high referral rate means your value delivery is working. Keep investing in client experience to maintain this.</div>
+            <div class="quiz-feedback wrong-fb">⚠️ Low referral rates signal that clients aren't impressed enough to come back or recommend you. This is where value improvements have the biggest impact.</div>
+        </div>
+
+        <div class="quiz-question" data-correct="b">
+            <h4>Q3: When a client asks for a discount, what's your usual response?</h4>
+            <div class="quiz-options">
+                <div class="quiz-option" data-value="a" onclick="selectQuiz(this, 'a')">
+                    <div class="quiz-radio"></div>
+                    <span>"We reduce the price to avoid losing the project"</span>
+                </div>
+                <div class="quiz-option" data-value="b" onclick="selectQuiz(this, 'b')">
+                    <div class="quiz-radio"></div>
+                    <span>"We explain what's included and the value they'll get"</span>
+                </div>
+            </div>
+            <div class="quiz-feedback correct-fb">✅ Correct — Confident value communication protects your margins and positions you as a premium provider.</div>
+            <div class="quiz-feedback wrong-fb">⚠️ Instant discounting trains clients to always negotiate. Instead, explain the value, and only adjust scope (not price) if needed.</div>
+        </div>
+
+        <div class="quiz-question" data-correct="a">
+            <h4>Q4: Do you follow up with clients after project completion?</h4>
+            <div class="quiz-options">
+                <div class="quiz-option" data-value="a" onclick="selectQuiz(this, 'a')">
+                    <div class="quiz-radio"></div>
+                    <span>"Yes — we check in at 30 and 90 days after handover"</span>
+                </div>
+                <div class="quiz-option" data-value="b" onclick="selectQuiz(this, 'b')">
+                    <div class="quiz-radio"></div>
+                    <span>"No — once the project is done, we move on"</span>
+                </div>
+            </div>
+            <div class="quiz-feedback correct-fb">✅ Excellent — Post-project follow-up is the #1 driver of repeat business and referrals in the engineering sector.</div>
+            <div class="quiz-feedback wrong-fb">⚠️ Missing out on easy wins. Clients remember the firms that cared even after the invoice was paid. A simple follow-up call can unlock your next project.</div>
+        </div>
+
+        <div class="progress-container" id="quiz-progress">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <span style="font-size: 0.82rem; font-weight: 600; color: var(--text-secondary);">Quiz Progress</span>
+                <span id="quiz-score" style="font-size: 0.82rem; font-weight: 600; color: var(--primary);">0 / 4 answered</span>
+            </div>
+            <div class="progress-bar-wrap">
+                <div class="progress-bar-fill" id="quiz-progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════ SECTION 8: ROI CALCULATOR ═══════ -->
+    <div class="section-card" id="calculator">
+        <div class="section-header">
+            <div class="section-icon">📐</div>
+            <h2>Interactive — Value vs. Discount Impact Calculator</h2>
+        </div>
+
+        <p>
+            Use this calculator to see how shifting from discounts to value delivery affects your engineering firm's revenue over 12 months.
+        </p>
+
+        <div class="interactive-block">
+            <h3>⚡ Adjust Your Numbers</h3>
+            <p>Move the sliders to match your firm's current situation and see the projected impact.</p>
+
+            <div class="slider-wrap">
+                <div class="slider-label">
+                    <span>Average projects per month</span>
+                    <span id="projects-val">4</span>
+                </div>
+                <input type="range" min="1" max="15" value="4" id="projects-slider" oninput="updateCalculator()">
+            </div>
+
+            <div class="slider-wrap">
+                <div class="slider-label">
+                    <span>Average project fee (AED)</span>
+                    <span id="fee-val">50,000</span>
+                </div>
+                <input type="range" min="10000" max="500000" step="5000" value="50000" id="fee-slider" oninput="updateCalculator()">
+            </div>
+
+            <div class="slider-wrap">
+                <div class="slider-label">
+                    <span>Current discount given (%)</span>
+                    <span id="discount-val">15%</span>
+                </div>
+                <input type="range" min="0" max="40" value="15" id="discount-slider" oninput="updateCalculator()">
+            </div>
+
+            <div class="slider-wrap">
+                <div class="slider-label">
+                    <span>Expected repeat client rate after value focus (%)</span>
+                    <span id="repeat-val">50%</span>
+                </div>
+                <input type="range" min="10" max="80" value="50" id="repeat-slider" oninput="updateCalculator()">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem;">
+                <div class="slider-result">
+                    <div class="sr-label">💸 Revenue Lost to Discounts (Annual)</div>
+                    <div class="sr-value" id="calc-lost" style="color: var(--danger);">AED 360,000</div>
+                </div>
+                <div class="slider-result">
+                    <div class="sr-label">💰 Extra Revenue from Repeat Clients</div>
+                    <div class="sr-value" id="calc-gain" style="color: var(--success);">AED 1,200,000</div>
+                </div>
+            </div>
+
+            <div class="slider-result" style="margin-top: 1rem; background: linear-gradient(135deg, #f0fdfa, #ccfbf1);">
+                <div class="sr-label">🚀 Total Annual Revenue Opportunity</div>
+                <div class="sr-value" id="calc-total">AED 1,560,000</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════ SECTION 9: ACTION CHECKLIST ═══════ -->
+    <div class="section-card" id="action-plan">
+        <div class="section-header">
+            <div class="section-icon">🚀</div>
+            <h2>Quick Action Plan — Implement This Week</h2>
+        </div>
+
+        <p>
+            Instead of offering a discount on your next project, do these five things this week to start building value-based client relationships:
+        </p>
+
+        <div class="interactive-block">
+            <h3>✅ Your 5-Day Value Action Checklist</h3>
+            <p>Click each item as you complete it to track your progress.</p>
+
+            <ul class="checklist" id="action-checklist">
+                <li onclick="toggleCheck(this)">
+                    <div class="check-box"></div>
+                    <span><strong>Day 1:</strong> Call your top 3 clients and ask: "What's one thing we could do better?" — Write down their answers.</span>
+                </li>
+                <li onclick="toggleCheck(this)">
+                    <div class="check-box"></div>
+                    <span><strong>Day 2:</strong> Improve one client experience area — Set up a weekly progress email template for ongoing projects.</span>
+                </li>
+                <li onclick="toggleCheck(this)">
+                    <div class="check-box"></div>
+                    <span><strong>Day 3:</strong> Follow up personally with your 5 most recent completed clients — Ask if they need anything or have an upcoming project.</span>
+                </li>
+                <li onclick="toggleCheck(this)">
+                    <div class="check-box"></div>
+                    <span><strong>Day 4:</strong> Add a small extra service to your current proposals — e.g., "Includes 15-day post-handover support" or "Free value engineering review."</span>
+                </li>
+                <li onclick="toggleCheck(this)">
+                    <div class="check-box"></div>
+                    <span><strong>Day 5:</strong> Create a "Why Choose Us" one-pager highlighting your value (not your prices) — Use it in your next proposal.</span>
+                </li>
+            </ul>
+
+            <div class="progress-container">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                    <span style="font-size: 0.82rem; font-weight: 600; color: var(--text-secondary);">Action Progress</span>
+                    <span id="action-count" style="font-size: 0.82rem; font-weight: 600; color: var(--primary);">0 / 5 completed</span>
+                </div>
+                <div class="progress-bar-wrap">
+                    <div class="progress-bar-fill" id="action-progress-bar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════ FINAL KEY TAKEAWAYS ═══════ -->
+    <div class="action-box">
+        <h3>🔑 Key Takeaways to Remember</h3>
+        <p>Save these principles and review them before your next client meeting or proposal submission:</p>
+        <ul>
+            <li>
+                <div class="ab-check">✓</div>
+                <span>Discounts bring one-time buyers — value delivery creates loyal, long-term clients</span>
+            </li>
+            <li>
+                <div class="ab-check">✓</div>
+                <span>Clients remember great experiences longer than temporary price cuts</span>
+            </li>
+            <li>
+                <div class="ab-check">✓</div>
+                <span>The cheapest bid wins a project — the best service wins a client for life</span>
+            </li>
+            <li>
+                <div class="ab-check">✓</div>
+                <span>Invest in accuracy, speed, communication, and follow-up — not lower prices</span>
+            </li>
+            <li>
+                <div class="ab-check">✓</div>
+                <span>A 50%+ repeat client rate means your firm is growing sustainably</span>
+            </li>
+            <li>
+                <div class="ab-check">✓</div>
+                <span>Every dirham saved on discounts is a dirham invested in your firm's future</span>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+<!-- ═══════ FOOTER ═══════ -->
+<div class="footer">
+    <p>
+        <strong>Civil-Tech.ai Knowledge Portal</strong> — Practical Business Education for Dubai SME Owners<br>
+        <a href="https://civiltech-ai.github.io/knowledge-portal/">← Back to Knowledge Library</a>
+    </p>
+</div>
+
+<script>
+    // ── QUIZ LOGIC ──
+    let quizAnswered = 0;
+    let quizCorrect = 0;
+
+    function selectQuiz(option, value) {
+        const question = option.closest('.quiz-question');
+        if (question.classList.contains('answered')) return;
+        question.classList.add('answered');
+
+        const correct = question.dataset.correct;
+        const options = question.querySelectorAll('.quiz-option');
+        const feedbacks = question.querySelectorAll('.quiz-feedback');
+
+        options.forEach(opt => {
+            opt.style.pointerEvents = 'none';
+            if (opt.dataset.value === correct) {
+                opt.classList.add('correct');
+            } else if (opt.dataset.value === value && value !== correct) {
+                opt.classList.add('wrong');
+            }
+        });
+
+        if (value === correct) {
+            quizCorrect++;
+            feedbacks[0].classList.add('show');
+        } else {
+            feedbacks[1].classList.add('show');
+        }
+
+        quizAnswered++;
+        document.getElementById('quiz-score').textContent = quizAnswered + ' / 4 answered';
+        document.getElementById('quiz-progress-bar').style.width = (quizAnswered / 4 * 100) + '%';
+    }
+
+    // ── CHECKLIST LOGIC ──
+    function toggleCheck(li) {
+        li.classList.toggle('checked');
+        updateActionProgress();
+    }
+
+    function updateActionProgress() {
+        const items = document.querySelectorAll('#action-checklist li');
+        const checked = document.querySelectorAll('#action-checklist li.checked').length;
+        document.getElementById('action-count').textContent = checked + ' / ' + items.length + ' completed';
+        document.getElementById('action-progress-bar').style.width = (checked / items.length * 100) + '%';
+    }
+
+    // ── CALCULATOR LOGIC ──
+    function updateCalculator() {
+        const projects = parseInt(document.getElementById('projects-slider').value);
+        const fee = parseInt(document.getElementById('fee-slider').value);
+        const discount = parseInt(document.getElementById('discount-slider').value);
+        const repeat = parseInt(document.getElementById('repeat-slider').value);
+
+        document.getElementById('projects-val').textContent = projects;
+        document.getElementById('fee-val').textContent = fee.toLocaleString();
+        document.getElementById('discount-val').textContent = discount + '%';
+        document.getElementById('repeat-val').textContent = repeat + '%';
+
+        // Revenue lost to discounts annually
+        const annualProjects = projects * 12;
+        const discountLoss = annualProjects * fee * (discount / 100);
+
+        // Extra revenue from repeat clients (assumes additional projects from retained clients)
+        const repeatProjects = Math.round(annualProjects * (repeat / 100));
+        const repeatRevenue = repeatProjects * fee;
+
+        const total = discountLoss + repeatRevenue;
+
+        document.getElementById('calc-lost').textContent = 'AED ' + Math.round(discountLoss).toLocaleString();
+        document.getElementById('calc-gain').textContent = 'AED ' + Math.round(repeatRevenue).toLocaleString();
+        document.getElementById('calc-total').textContent = 'AED ' + Math.round(total).toLocaleString();
+    }
+
+    // Initialize calculator on load
+    updateCalculator();
+
+    // ── SMOOTH SCROLL ──
+    document.querySelectorAll('.toc-list a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
