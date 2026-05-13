@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slow Decisions Kill Fast Growth — Civil-Tech.ai Knowledge Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #14B8A6;
+            --primary-dark: #0D9488;
+            --primary-light: #99F6E4;
+            --primary-50: #F0FDFA;
+            --accent: #0F172A;
+            --accent-light: #1E293B;
+            --navy: #0F172A;
+            --navy-light: #1E293B;
+            --white: #FFFFFF;
+            --gray-50: #F8FAFC;
+            --gray-100: #F1F5F9;
+            --gray-200: #E2E8F0;
+            --gray-300: #CBD5E1;
+            --gray-400: #94A3B8;
+            --gray-500: #64748B;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1E293B;
+            --red: #EF4444;
+            --red-light: #FEF2F2;
+            --green: #22C55E;
+            --green-light: #F0FDF4;
+            --amber: #F59E0B;
+            --amber-light: #FFFBEB;
+            --blue: #3B82F6;
+            --blue-light: #EFF6FF;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            --radius: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-700);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--navy);
+            line-height: 1.3;
+        }
+
+        /* ── Navbar ── */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--gray-200);
+            padding: 0 2rem;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+        .navbar-logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--primary);
+        }
+        .navbar-badge {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--primary);
+            border: 1.5px solid var(--primary);
+            border-radius: 20px;
+            padding: 3px 12px;
+        }
+        .navbar-back {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+        .navbar-back:hover { color: var(--primary); }
+
+        /* ── Progress Bar ── */
+        .progress-bar-container {
+            position: fixed;
+            top: 64px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gray-200);
+            z-index: 999;
+        }
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            width: 0%;
+            transition: width 0.15s;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            background: linear-gradient(135deg, #0D9488 0%, #14B8A6 40%, #2DD4BF 100%);
+            padding: 5rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -60%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -40%;
+            right: 10%;
+            width: 350px;
+            height: 350px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+        .hero-content {
+            max-width: 840px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-category {
+            display: inline-block;
+            background: rgba(255,255,255,0.18);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-bottom: 1.25rem;
+        }
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 1.25rem;
+        }
+        .hero-quote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+            color: rgba(255,255,255,0.92);
+            border-left: 3px solid rgba(255,255,255,0.5);
+            padding-left: 1.25rem;
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+        }
+        .hero-meta {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            color: rgba(255,255,255,0.85);
+            font-size: 0.875rem;
+        }
+        .hero-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ── Table of Contents ── */
+        .toc {
+            max-width: 840px;
+            margin: -2rem auto 2rem;
+            position: relative;
+            z-index: 5;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            padding: 1.75rem 2rem;
+        }
+        .toc h3 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gray-400);
+            margin-bottom: 1rem;
+        }
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 0.5rem;
+        }
+        .toc a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        .toc a:hover {
+            background: var(--primary-50);
+            color: var(--primary-dark);
+        }
+        .toc-num {
+            width: 26px;
+            height: 26px;
+            border-radius: 8px;
+            background: var(--primary-50);
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* ── Sections ── */
+        .content {
+            max-width: 840px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+        .section {
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+        .section h2 {
+            font-size: 1.65rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        /* ── Cards ── */
+        .card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--gray-100);
+            transition: box-shadow 0.3s;
+        }
+        .card:hover { box-shadow: var(--shadow-md); }
+
+        /* ── Stat Row ── */
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .stat-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 1px solid var(--gray-200);
+            padding: 1.25rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .stat-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .stat-icon { font-size: 1.75rem; margin-bottom: 0.5rem; }
+        .stat-value {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--navy);
+        }
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+            margin-top: 2px;
+        }
+
+        /* ── Comparison Table ── */
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin: 1.5rem 0;
+        }
+        .comparison-table thead th {
+            background: var(--navy);
+            color: #fff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            padding: 14px 18px;
+            text-align: left;
+        }
+        .comparison-table tbody td {
+            padding: 14px 18px;
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .comparison-table tbody tr:nth-child(even) { background: var(--gray-50); }
+        .comparison-table tbody tr:last-child td { border-bottom: none; }
+        .badge-slow {
+            background: var(--red-light);
+            color: var(--red);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 12px;
+        }
+        .badge-fast {
+            background: var(--green-light);
+            color: var(--green);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 12px;
+        }
+
+        /* ── Icon List ── */
+        .icon-list {
+            list-style: none;
+            display: grid;
+            gap: 0.75rem;
+        }
+        .icon-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.95rem;
+        }
+        .icon-list .li-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+        .li-icon.red { background: var(--red-light); color: var(--red); }
+        .li-icon.green { background: var(--green-light); color: var(--green); }
+        .li-icon.amber { background: var(--amber-light); color: var(--amber); }
+        .li-icon.blue { background: var(--blue-light); color: var(--blue); }
+
+        /* ── Two-col grid ── */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+        .col-card {
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            border: 1px solid var(--gray-200);
+        }
+        .col-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .col-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.5rem;
+        }
+        .col-card li {
+            font-size: 0.9rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .col-red { background: #FEF2F2; border-color: #FECACA; }
+        .col-red h4 { color: var(--red); }
+        .col-green { background: #F0FDF4; border-color: #BBF7D0; }
+        .col-green h4 { color: #16A34A; }
+
+        /* ── Flow Diagram ── */
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: var(--gray-50);
+            border-radius: var(--radius-lg);
+        }
+        .flow-step {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 1rem 1.25rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            min-width: 140px;
+            border-top: 3px solid var(--primary);
+            transition: transform 0.3s;
+        }
+        .flow-step:hover { transform: translateY(-3px); }
+        .flow-step .flow-icon { font-size: 1.5rem; margin-bottom: 0.35rem; }
+        .flow-step .flow-label {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+        .flow-step .flow-desc {
+            font-size: 0.72rem;
+            color: var(--gray-500);
+            margin-top: 2px;
+        }
+        .flow-arrow {
+            font-size: 1.25rem;
+            color: var(--gray-400);
+            padding: 0 0.5rem;
+        }
+
+        /* ── Scenario Cards ── */
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        @media (max-width: 640px) { .scenario-grid { grid-template-columns: 1fr; } }
+        .scenario-card {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--gray-100);
+        }
+        .scenario-header {
+            padding: 1.25rem 1.5rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .scenario-header.slow { background: linear-gradient(135deg, #FEE2E2, #FFF1F2); color: #B91C1C; }
+        .scenario-header.fast { background: linear-gradient(135deg, #DCFCE7, #F0FDF4); color: #15803D; }
+        .scenario-body {
+            padding: 1.25rem 1.5rem;
+            background: var(--white);
+        }
+        .scenario-body .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 0.85rem;
+            font-size: 0.9rem;
+        }
+        .step-num {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--gray-100);
+            color: var(--gray-600);
+            font-size: 0.72rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .scenario-result {
+            padding: 0.85rem 1.25rem;
+            border-top: 1px solid var(--gray-100);
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* ── Warning Signs Checklist ── */
+        .warning-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .warning-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 1rem 1.25rem;
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 1px solid var(--gray-200);
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+        }
+        .warning-item:hover { border-color: var(--amber); background: var(--amber-light); }
+        .warning-item.checked { border-color: var(--amber); background: var(--amber-light); }
+        .warning-check {
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--gray-300);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s;
+            font-size: 0.75rem;
+        }
+        .warning-item.checked .warning-check {
+            background: var(--amber);
+            border-color: var(--amber);
+            color: #fff;
+        }
+        .warning-text { font-size: 0.88rem; color: var(--gray-700); }
+        .warning-counter {
+            text-align: center;
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: var(--radius);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        /* ── Decision Speed Calculator ── */
+        .calculator {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            margin: 1.5rem 0;
+        }
+        .calc-header {
+            background: linear-gradient(135deg, var(--navy), var(--navy-light));
+            color: #fff;
+            padding: 1.5rem 2rem;
+        }
+        .calc-header h3 {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 0.25rem;
+        }
+        .calc-header p { font-size: 0.85rem; opacity: 0.8; }
+        .calc-body { padding: 2rem; }
+        .calc-field { margin-bottom: 1.5rem; }
+        .calc-field label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: 0.5rem;
+        }
+        .calc-field input[type="range"] {
+            width: 100%;
+            accent-color: var(--primary);
+        }
+        .range-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--gray-400);
+            margin-top: 4px;
+        }
+        .calc-range-value {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+        .calc-result {
+            background: var(--primary-50);
+            border: 2px solid var(--primary-light);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .calc-result-label { font-size: 0.85rem; color: var(--gray-500); margin-bottom: 0.25rem; }
+        .calc-result-value {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+        }
+        .calc-result-sub { font-size: 0.8rem; color: var(--gray-500); margin-top: 0.5rem; }
+
+        /* ── Quiz ── */
+        .quiz-container { margin: 1.5rem 0; }
+        .quiz-question {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            padding: 1.75rem 2rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--gray-100);
+        }
+        .quiz-q-text {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 10px;
+        }
+        .quiz-q-num {
+            background: var(--primary);
+            color: #fff;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .quiz-options { display: grid; gap: 0.5rem; }
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border: 2px solid var(--gray-200);
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            user-select: none;
+        }
+        .quiz-option:hover { border-color: var(--primary); background: var(--primary-50); }
+        .quiz-option.selected { border-color: var(--primary); background: var(--primary-50); }
+        .quiz-option.correct { border-color: var(--green); background: var(--green-light); }
+        .quiz-option.wrong { border-color: var(--red); background: var(--red-light); }
+        .quiz-radio {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--gray-300);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .quiz-option.selected .quiz-radio { border-color: var(--primary); background: var(--primary); }
+        .quiz-option.correct .quiz-radio { border-color: var(--green); background: var(--green); }
+        .quiz-option.wrong .quiz-radio { border-color: var(--red); background: var(--red); }
+        .quiz-submit {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 10px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 1rem;
+        }
+        .quiz-submit:hover { background: var(--primary-dark); }
+        .quiz-feedback {
+            display: none;
+            margin-top: 1rem;
+            padding: 1.25rem 1.5rem;
+            border-radius: var(--radius);
+            font-size: 0.9rem;
+        }
+        .quiz-feedback.show { display: block; }
+
+        /* ── Action Plan ── */
+        .action-timeline { margin: 1.5rem 0; }
+        .action-day {
+            display: flex;
+            gap: 1.25rem;
+            margin-bottom: 0;
+            position: relative;
+        }
+        .action-day-line {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 40px;
+            flex-shrink: 0;
+        }
+        .action-day-dot {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: #fff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+        .action-day-connector {
+            width: 2px;
+            flex: 1;
+            background: var(--gray-200);
+        }
+        .action-day-content {
+            flex: 1;
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 1.25rem 1.5rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-100);
+            margin-bottom: 1rem;
+        }
+        .action-day-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--navy);
+            margin-bottom: 0.35rem;
+        }
+        .action-day-task {
+            font-size: 0.88rem;
+            color: var(--gray-600);
+        }
+        .action-day-check {
+            margin-top: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .action-day-check input { display: none; }
+        .action-checkbox {
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--gray-300);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            font-size: 0.75rem;
+            color: transparent;
+        }
+        .action-day-check input:checked + .action-checkbox {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #fff;
+        }
+        .action-check-label { font-size: 0.82rem; color: var(--gray-500); }
+        .action-progress-bar {
+            margin-top: 1.5rem;
+            background: var(--gray-100);
+            border-radius: 10px;
+            height: 12px;
+            overflow: hidden;
+        }
+        .action-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+        .action-progress-text {
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--gray-500);
+            margin-top: 0.5rem;
+        }
+
+        /* ── Decision Framework ── */
+        .framework-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .framework-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            border: 1px solid var(--gray-200);
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .framework-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        .framework-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+        .framework-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--navy);
+            margin-bottom: 0.35rem;
+        }
+        .framework-desc { font-size: 0.82rem; color: var(--gray-500); }
+
+        /* ── Key Takeaway Box ── */
+        .takeaway-box {
+            background: linear-gradient(135deg, var(--navy), var(--navy-light));
+            border-radius: var(--radius-xl);
+            padding: 2.5rem;
+            margin: 3rem 0 2rem;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        .takeaway-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -15%;
+            width: 300px;
+            height: 300px;
+            background: rgba(20,184,166,0.15);
+            border-radius: 50%;
+        }
+        .takeaway-box h3 {
+            font-size: 1.35rem;
+            color: var(--primary-light);
+            margin-bottom: 1.25rem;
+        }
+        .takeaway-list {
+            list-style: none;
+            display: grid;
+            gap: 0.75rem;
+        }
+        .takeaway-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.9);
+        }
+        .takeaway-check {
+            color: var(--primary-light);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--gray-400);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--gray-200);
+        }
+        .footer a { color: var(--primary); text-decoration: none; }
+
+        /* ── Animations ── */
+        @keyframes fadeInUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .hero { padding: 3.5rem 1.25rem 3rem; }
+            .toc { margin: -1.5rem 1rem 1.5rem; padding: 1.25rem; }
+            .content { padding: 0 1.25rem 3rem; }
+            .card { padding: 1.5rem; }
+            .navbar { padding: 0 1rem; }
+            .flow-diagram { flex-direction: column; }
+            .flow-arrow { transform: rotate(90deg); }
+            .scenario-grid { grid-template-columns: 1fr; }
+            .warning-grid { grid-template-columns: 1fr; }
+            .takeaway-box { padding: 1.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ══════════ NAVBAR ══════════ -->
+<nav class="navbar">
+    <a href="https://civiltech-ai.github.io/knowledge-portal/" class="navbar-brand">
+        <span class="navbar-logo">Civil-Tech.ai</span>
+        <span class="navbar-badge">Knowledge Portal</span>
+    </a>
+    <a href="https://civiltech-ai.github.io/knowledge-portal/" class="navbar-back">
+        ← Back to Portal
+    </a>
+</nav>
+
+<!-- ══════════ PROGRESS BAR ══════════ -->
+<div class="progress-bar-container">
+    <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<!-- ══════════ HERO ══════════ -->
+<header class="hero">
+    <div class="hero-content">
+        <span class="hero-category">🎯 Strategy & Planning</span>
+        <h1>Slow Decisions Kill Fast Growth</h1>
+        <div class="hero-quote">
+            "Speed with reasonable judgment beats waiting for perfect certainty — every single time."
+        </div>
+        <div class="hero-meta">
+            <span>📖 10 min read</span>
+            <span>🏗️ Dubai Construction Focus</span>
+            <span>🧩 Interactive Exercises</span>
+        </div>
+    </div>
+</header>
+
+<!-- ══════════ TABLE OF CONTENTS ══════════ -->
+<div class="toc">
+    <h3>📋 What You'll Learn</h3>
+    <div class="toc-grid">
+        <a href="#meaning"><span class="toc-num">1</span>What This Means for You</a>
+        <a href="#scenario"><span class="toc-num">2</span>Real-World Scenario</a>
+        <a href="#impact"><span class="toc-num">3</span>Cost of Slow Decisions</a>
+        <a href="#benefits"><span class="toc-num">4</span>Benefits of Speed</a>
+        <a href="#warning"><span class="toc-num">5</span>Warning Signs Checklist</a>
+        <a href="#framework"><span class="toc-num">6</span>Rapid Decision Framework</a>
+        <a href="#calculator"><span class="toc-num">7</span>Decision Delay Calculator</a>
+        <a href="#quiz"><span class="toc-num">8</span>Test Your Knowledge</a>
+        <a href="#action"><span class="toc-num">9</span>Your 5-Day Action Plan</a>
+        <a href="#takeaways"><span class="toc-num">10</span>Key Takeaways</a>
+    </div>
+</div>
+
+<!-- ══════════ MAIN CONTENT ══════════ -->
+<main class="content">
+
+    <!-- ── Section 1: Meaning ── -->
+    <div class="section" id="meaning">
+        <span class="section-label">💡 CORE CONCEPT</span>
+        <h2>What This Really Means for Your Business</h2>
+        <div class="card">
+            <p style="font-size:1.05rem; color:var(--gray-700); margin-bottom:1.25rem;">
+                In the construction industry, opportunities do not wait for perfect decisions. A new tender drops on Monday, a bulk RMC supplier offers a 10% discount for 48 hours, or a large client invites you to quote on a fit-out project — and the window closes fast.
+            </p>
+            <p style="font-size:0.95rem; color:var(--gray-600); margin-bottom:1.25rem;">
+                Many SME owners in Dubai delay decisions because they want:
+            </p>
+            <ul class="icon-list">
+                <li>
+                    <span class="li-icon amber">⏳</span>
+                    <span><strong>Complete information</strong> — waiting for every detail before quoting a project</span>
+                </li>
+                <li>
+                    <span class="li-icon amber">⏳</span>
+                    <span><strong>Perfect timing</strong> — believing the "right moment" will appear on its own</span>
+                </li>
+                <li>
+                    <span class="li-icon amber">⏳</span>
+                    <span><strong>Zero risk</strong> — avoiding any commitment until they feel 100% certain</span>
+                </li>
+                <li>
+                    <span class="li-icon amber">⏳</span>
+                    <span><strong>Full consensus</strong> — circulating decisions among too many people before acting</span>
+                </li>
+            </ul>
+            <div style="background:var(--amber-light); border-left:4px solid var(--amber); border-radius:8px; padding:1.15rem 1.25rem; margin-top:1.5rem;">
+                <strong style="color:var(--amber);">⚡ The Hard Truth:</strong>
+                <span style="color:var(--gray-700); font-size:0.92rem;"> By the time you have all the data, your competitor has already won the LPO. Speed with 80% information beats perfection at 100% — because 100% almost never arrives.</span>
+            </div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="stat-row">
+            <div class="stat-card">
+                <div class="stat-icon">⏱️</div>
+                <div class="stat-value">72 hrs</div>
+                <div class="stat-label">Average decision delay for SMEs</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📉</div>
+                <div class="stat-value">35%</div>
+                <div class="stat-label">Tenders lost to faster competitors</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">💰</div>
+                <div class="stat-value">AED 50K+</div>
+                <div class="stat-label">Average revenue lost per delayed quote</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🏆</div>
+                <div class="stat-value">24 hrs</div>
+                <div class="stat-label">Response time top contractors maintain</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Section 2: Scenario Comparison ── -->
+    <div class="section" id="scenario">
+        <span class="section-label">📖 REAL-WORLD SCENARIO</span>
+        <h2>Two Contractors, One Opportunity — Different Outcomes</h2>
+        <p style="font-size:0.95rem; color:var(--gray-600); margin-bottom:0.5rem;">
+            A large fit-out company in Business Bay sends an enquiry to two civil contractors for a partition and painting scope worth AED 280,000. Here's what happens next:
+        </p>
+
+        <div class="scenario-grid">
+            <!-- Slow Decision -->
+            <div class="scenario-card">
+                <div class="scenario-header slow">🐢 Contractor A — The Overthinker</div>
+                <div class="scenario-body">
+                    <div class="step"><span class="step-num">1</span><span>Receives enquiry on Sunday evening</span></div>
+                    <div class="step"><span class="step-num">2</span><span>Tells the team "let's look at this tomorrow"</span></div>
+                    <div class="step"><span class="step-num">3</span><span>Site visit scheduled for Wednesday</span></div>
+                    <div class="step"><span class="step-num">4</span><span>BOQ sent to estimator who takes 3 more days</span></div>
+                    <div class="step"><span class="step-num">5</span><span>Owner reviews, wants one more round of checks</span></div>
+                    <div class="step"><span class="step-num">6</span><span>Quote submitted after 12 days</span></div>
+                </div>
+                <div class="scenario-result" style="background:var(--red-light); color:var(--red);">
+                    ❌ Client already awarded the job to Contractor B
+                </div>
+            </div>
+
+            <!-- Fast Decision -->
+            <div class="scenario-card">
+                <div class="scenario-header fast">🚀 Contractor B — The Fast Mover</div>
+                <div class="scenario-body">
+                    <div class="step"><span class="step-num">1</span><span>Receives enquiry on Sunday evening</span></div>
+                    <div class="step"><span class="step-num">2</span><span>Owner reviews scope, shares BOQ template on WhatsApp</span></div>
+                    <div class="step"><span class="step-num">3</span><span>Quick site visit Monday morning</span></div>
+                    <div class="step"><span class="step-num">4</span><span>Estimator uses pre-built rate cards to price it same day</span></div>
+                    <div class="step"><span class="step-num">5</span><span>Professional quotation emailed within 24 hours</span></div>
+                    <div class="step"><span class="step-num">6</span><span>Follow-up call on Tuesday to clarify any questions</span></div>
+                </div>
+                <div class="scenario-result" style="background:var(--green-light); color:#15803D;">
+                    ✅ Wins the AED 280K order with immediate credibility
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="background:var(--primary-50); border-color:var(--primary-light);">
+            <p style="font-size:0.95rem; color:var(--gray-700);">
+                <strong style="color:var(--primary-dark);">Key Insight:</strong> Contractor B didn't have more experience or better pricing. They simply <strong>moved faster</strong> and showed confidence. In Dubai's competitive market, that alone wins business.
+            </p>
+        </div>
+    </div>
+
+    <!-- ── Section 3: Impact of Slow Decisions ── -->
+    <div class="section" id="impact">
+        <span class="section-label">⚠️ BUSINESS IMPACT</span>
+        <h2>The Real Cost of Slow Decisions</h2>
+
+        <div class="two-col">
+            <div class="col-card col-red">
+                <h4>❌ What Slow Decisions Cause</h4>
+                <ul>
+                    <li>🔴 <span>Missed tenders and client enquiries go to faster competitors</span></li>
+                    <li>🔴 <span>Team frustration — engineers and foremen wait for approvals that never come</span></li>
+                    <li>🔴 <span>Material price hikes — RMC, steel, and aluminium costs change weekly</span></li>
+                    <li>🔴 <span>Liquidated damages from delayed project milestones</span></li>
+                    <li>🔴 <span>Client trust erodes — they stop sending enquiries altogether</span></li>
+                    <li>🔴 <span>Cash flow gaps widen when invoicing and claims get stuck</span></li>
+                </ul>
+            </div>
+            <div class="col-card col-green">
+                <h4>✅ What Fast Decisions Enable</h4>
+                <ul>
+                    <li>🟢 <span>First-mover advantage on new tenders and variation orders</span></li>
+                    <li>🟢 <span>Team operates with momentum — less idle time on site</span></li>
+                    <li>🟢 <span>Lock in material rates before the next price revision</span></li>
+                    <li>🟢 <span>Faster project handovers → quicker retention release</span></li>
+                    <li>🟢 <span>Clients see you as reliable and professional</span></li>
+                    <li>🟢 <span>Revenue compounds — more quotes out = more orders in</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Flow Diagram: Delay Cascade -->
+        <h3 style="font-size:1.1rem; margin:1.5rem 0 0.5rem;">🔄 How One Delayed Decision Cascades</h3>
+        <div class="flow-diagram">
+            <div class="flow-step">
+                <div class="flow-icon">⏳</div>
+                <div class="flow-label">Owner delays approval</div>
+                <div class="flow-desc">3 days pass</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+                <div class="flow-icon">📦</div>
+                <div class="flow-label">Material order stalls</div>
+                <div class="flow-desc">Supplier holds stock</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+                <div class="flow-icon">🏗️</div>
+                <div class="flow-label">Site work delayed</div>
+                <div class="flow-desc">Labour idling</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+                <div class="flow-icon">📅</div>
+                <div class="flow-label">DM inspection missed</div>
+                <div class="flow-desc">Reschedule needed</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+                <div class="flow-icon">💸</div>
+                <div class="flow-label">Revenue delayed</div>
+                <div class="flow-desc">Invoice pushed 30+ days</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Section 4: Benefits Deep Dive ── -->
+    <div class="section" id="benefits">
+        <span class="section-label">🚀 COMPETITIVE ADVANTAGE</span>
+        <h2>Why Speed Is Your #1 Edge in Dubai's Market</h2>
+        <div class="card">
+            <p style="font-size:0.95rem; color:var(--gray-600); margin-bottom:1.25rem;">
+                In fast-moving markets like Dubai, responsiveness itself becomes a competitive advantage. Here's what speed signals to clients, suppliers, and your own team:
+            </p>
+            <div class="framework-grid">
+                <div class="framework-card">
+                    <div class="framework-icon">🤝</div>
+                    <div class="framework-title">Client Confidence</div>
+                    <div class="framework-desc">Fast quotes signal professionalism. Clients assume if you respond quickly, you'll execute quickly too.</div>
+                </div>
+                <div class="framework-card">
+                    <div class="framework-icon">⚡</div>
+                    <div class="framework-title">Execution Momentum</div>
+                    <div class="framework-desc">Quick approvals keep site work flowing. No idle labourers, no wasted crane hours, no rescheduled pours.</div>
+                </div>
+                <div class="framework-card">
+                    <div class="framework-icon">🛡️</div>
+                    <div class="framework-title">Price Lock Advantage</div>
+                    <div class="framework-desc">Deciding fast on material procurement means locking today's rate before tomorrow's revision hits your margin.</div>
+                </div>
+                <div class="framework-card">
+                    <div class="framework-icon">📈</div>
+                    <div class="framework-title">Compound Growth</div>
+                    <div class="framework-desc">More decisions = more activity = more revenue cycles per year. Speed compounds like interest.</div>
+                </div>
+                <div class="framework-card">
+                    <div class="framework-icon">👥</div>
+                    <div class="framework-title">Team Empowerment</div>
+                    <div class="framework-desc">When the owner decides fast, PMs and engineers mirror that energy. The whole company speeds up.</div>
+                </div>
+                <div class="framework-card">
+                    <div class="framework-icon">🏆</div>
+                    <div class="framework-title">Market Reputation</div>
+                    <div class="framework-desc">Word spreads among main contractors: "These guys respond fast." That alone puts you on more tender lists.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Section 5: Warning Signs ── -->
+    <div class="section" id="warning">
+        <span class="section-label">🔍 SELF-DIAGNOSIS</span>
+        <h2>Warning Signs: Is Slow Decision-Making Hurting Your Business?</h2>
+        <p style="font-size:0.92rem; color:var(--gray-600); margin-bottom:1rem;">
+            Tap each warning sign that applies to your business. Be honest — this is for your own clarity.
+        </p>
+
+        <div class="warning-grid" id="warningGrid">
+            <div class="warning-item" onclick="toggleWarning(this)">
+                <div class="warning-check">✓</div>
+                <div class="warning-text">You have pending quotes older than 5 days that haven't been sent</div>
+            </div>
+            <div class="warning-item" onclick="toggleWarning(this)">
+                <div class="warning-check">✓</div>
+                <div class="warning-text">Your team frequently asks "are we doing this or not?" on WhatsApp</div>
+            </div>
+            <div class="warning-item" onclick="toggleWarning(this)">
+                <div class="warning-check">✓</div>
+                <div class="warning-text">Material purchases get delayed because you want to check one more supplier</div>
+            </div>
+            <div class="warning-item" onclick="toggleWarning(this)">
+                <div class="warning-check">✓</div>
+                <div class="warning-text">Clients have stopped following up on your quotes (they moved on)</div>
+            </div>
+            <div class="warning-item" onclick="toggleWarning(this)">
+                <div class="warning-check">✓</div>
+                <div class="warning-text">You postpone hiring even when projects are understaffed</div>
+            </div>
+            <div class="warning-item" onclick="toggleWarning(this)">
+                <div class="warning-check">✓</div>
+                <div class="warning-text">Variation order claims pile up because you haven't reviewed them</div>
+            </div>
+            <div class="warning-item" onclick="toggleWarning(this)">
+                <div class="warning-check">✓</div>
+                <div class="warning-text">You keep saying "I'll decide next week" on recurring issues</div>
+            </div>
+            <div class="warning-item" onclick="toggleWarning(this)">
+                <div class="warning-check">✓</div>
+                <div class="warning-text">Projects slow down noticeably whenever you travel or take leave</div>
+            </div>
+        </div>
+
+        <div class="warning-counter" id="warningResult" style="display:none;"></div>
+    </div>
+
+    <!-- ── Section 6: Rapid Decision Framework ── -->
+    <div class="section" id="framework">
+        <span class="section-label">🧭 DECISION FRAMEWORK</span>
+        <h2>The 80-20 Rapid Decision Framework</h2>
+        <p style="font-size:0.92rem; color:var(--gray-600); margin-bottom:1rem;">
+            Not every decision needs days of analysis. Use this simple framework to match your decision speed to the decision type:
+        </p>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Decision Type</th>
+                    <th>Example in Construction</th>
+                    <th>Target Time</th>
+                    <th>Approach</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Reversible & Low Risk</strong></td>
+                    <td>Which paint brand for a day-works job</td>
+                    <td><span class="badge-fast">Instant</span></td>
+                    <td>Decide now. Adjust later if needed.</td>
+                </tr>
+                <tr>
+                    <td><strong>Routine Operations</strong></td>
+                    <td>Approving an LPO under AED 5,000</td>
+                    <td><span class="badge-fast">Same day</span></td>
+                    <td>Set pre-approved limits for your PMs.</td>
+                </tr>
+                <tr>
+                    <td><strong>Client Quotes & Tenders</strong></td>
+                    <td>Pricing a fit-out scope from a new client</td>
+                    <td><span class="badge-fast">24 hours</span></td>
+                    <td>Use rate cards + quick site assessment.</td>
+                </tr>
+                <tr>
+                    <td><strong>Strategic Investments</strong></td>
+                    <td>Purchasing a new boom loader or tower crane</td>
+                    <td><span class="badge-slow">48–72 hrs</span></td>
+                    <td>Gather key data, set deadline, decide.</td>
+                </tr>
+                <tr>
+                    <td><strong>Major Commitments</strong></td>
+                    <td>Signing a JV partnership for a mega project</td>
+                    <td><span class="badge-slow">1 week max</span></td>
+                    <td>Structured evaluation with a hard deadline.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="card" style="background:var(--blue-light); border-color:#BFDBFE;">
+            <p style="font-size:0.92rem; color:var(--gray-700);">
+                <strong style="color:var(--blue);">💡 Rule of Thumb:</strong> 80% of your daily decisions are reversible and low-risk. These should take minutes, not days. Reserve deep analysis only for the 20% that truly require it — and even those need a hard deadline.
+            </p>
+        </div>
+    </div>
+
+    <!-- ── Section 7: Calculator ── -->
+    <div class="section" id="calculator">
+        <span class="section-label">🔢 INTERACTIVE TOOL</span>
+        <h2>Decision Delay Cost Calculator</h2>
+        <p style="font-size:0.92rem; color:var(--gray-600); margin-bottom:1rem;">
+            See how much delayed decisions could be costing your business every year. Adjust the sliders to match your situation:
+        </p>
+
+        <div class="calculator">
+            <div class="calc-header">
+                <h3>💰 What Are Slow Decisions Costing You?</h3>
+                <p>Estimate the annual revenue impact of decision delays</p>
+            </div>
+            <div class="calc-body">
+                <div class="calc-field">
+                    <label>Average quotes sent per month: <span class="calc-range-value" id="quotesVal">8</span></label>
+                    <input type="range" id="quotesRange" min="2" max="30" value="8" oninput="updateCalculator()">
+                    <div class="range-labels"><span>2</span><span>30</span></div>
+                </div>
+                <div class="calc-field">
+                    <label>Average quote value (AED): <span class="calc-range-value" id="valueVal">150,000</span></label>
+                    <input type="range" id="valueRange" min="20000" max="1000000" step="10000" value="150000" oninput="updateCalculator()">
+                    <div class="range-labels"><span>AED 20K</span><span>AED 1M</span></div>
+                </div>
+                <div class="calc-field">
+                    <label>% of quotes delayed beyond 48 hours: <span class="calc-range-value" id="delayVal">40%</span></label>
+                    <input type="range" id="delayRange" min="5" max="90" value="40" oninput="updateCalculator()">
+                    <div class="range-labels"><span>5%</span><span>90%</span></div>
+                </div>
+                <div class="calc-field">
+                    <label>% of delayed quotes lost to competitors: <span class="calc-range-value" id="lostVal">30%</span></label>
+                    <input type="range" id="lostRange" min="5" max="80" value="30" oninput="updateCalculator()">
+                    <div class="range-labels"><span>5%</span><span>80%</span></div>
+                </div>
+
+                <div class="calc-result">
+                    <div class="calc-result-label">Estimated Annual Revenue Lost to Slow Decisions</div>
+                    <div class="calc-result-value" id="calcResult">AED 1,728,000</div>
+                    <div class="calc-result-sub" id="calcSub">That's roughly 14 lost projects per year</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Section 8: Quiz ── -->
+    <div class="section" id="quiz">
+        <span class="section-label">🧠 TEST YOUR KNOWLEDGE</span>
+        <h2>Quick Decision-Making Quiz</h2>
+        <p style="font-size:0.92rem; color:var(--gray-600); margin-bottom:1rem;">
+            Choose the best answer for each scenario. Think about what a fast-growing contractor would do.
+        </p>
+
+        <div class="quiz-container" id="quizContainer">
+            <!-- Q1 -->
+            <div class="quiz-question" data-correct="1">
+                <div class="quiz-q-text">
+                    <span class="quiz-q-num">1</span>
+                    <span>A main contractor sends you an urgent BOQ for waterproofing work at 4 PM. Your estimator has left for the day. What do you do?</span>
+                </div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(this)">
+                        <div class="quiz-radio"></div>
+                        <span>Wait until tomorrow when the estimator returns to review it properly</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(this)">
+                        <div class="quiz-radio"></div>
+                        <span>Use your rate cards to prepare a preliminary budget quote tonight and send a formal one tomorrow</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(this)">
+                        <div class="quiz-radio"></div>
+                        <span>Forward the email to the estimator's WhatsApp and hope he sees it</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="quiz-question" data-correct="2">
+                <div class="quiz-q-text">
+                    <span class="quiz-q-num">2</span>
+                    <span>Your project manager asks approval to hire two additional labourers for a project running behind schedule. The cost is AED 8,000/month. You should:</span>
+                </div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(this)">
+                        <div class="quiz-radio"></div>
+                        <span>Ask the PM to manage with existing resources and "work smarter"</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(this)">
+                        <div class="quiz-radio"></div>
+                        <span>Tell him you'll think about it over the weekend</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(this)">
+                        <div class="quiz-radio"></div>
+                        <span>Compare the AED 8K cost against the potential liquidated damages, decide the same day</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="quiz-question" data-correct="0">
+                <div class="quiz-q-text">
+                    <span class="quiz-q-num">3</span>
+                    <span>An RMC supplier offers a 7% discount if you confirm a bulk order by end of day. You need the concrete for a project starting next week. What's the smart move?</span>
+                </div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(this)">
+                        <div class="quiz-radio"></div>
+                        <span>Verify the required volume from your BOQ, confirm the order today, and lock the rate</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(this)">
+                        <div class="quiz-radio"></div>
+                        <span>Call three more suppliers for comparative quotes first</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(this)">
+                        <div class="quiz-radio"></div>
+                        <span>Wait to see if prices drop further next month</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="quiz-question" data-correct="1">
+                <div class="quiz-q-text">
+                    <span class="quiz-q-num">4</span>
+                    <span>You've been thinking about investing AED 200K in a project management software for 3 months. What should you do?</span>
+                </div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(this)">
+                        <div class="quiz-radio"></div>
+                        <span>Keep researching — you haven't found the "perfect" solution yet</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(this)">
+                        <div class="quiz-radio"></div>
+                        <span>Set a 48-hour deadline, shortlist the top 2 options, trial one, and commit</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(this)">
+                        <div class="quiz-radio"></div>
+                        <span>Delegate the decision to IT and forget about it</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="quiz-submit" onclick="submitQuiz()">📝 Check My Answers</button>
+        <div class="quiz-feedback" id="quizFeedback"></div>
+    </div>
+
+    <!-- ── Section 9: Action Plan ── -->
+    <div class="section" id="action">
+        <span class="section-label">📋 YOUR ACTION PLAN</span>
+        <h2>5-Day Decision Speed Challenge</h2>
+        <p style="font-size:0.92rem; color:var(--gray-600); margin-bottom:1.25rem;">
+            Don't just read — implement. This week, follow these five steps to build your decision-speed muscle. Check off each day as you complete it.
+        </p>
+
+        <div class="action-timeline" id="actionTimeline">
+            <div class="action-day">
+                <div class="action-day-line">
+                    <div class="action-day-dot">D1</div>
+                    <div class="action-day-connector"></div>
+                </div>
+                <div class="action-day-content">
+                    <div class="action-day-title">🔍 Identify Your Pending Decisions</div>
+                    <div class="action-day-task">Open your WhatsApp, email, and project folders. List every business decision you've been delaying — quotes not sent, approvals not given, hires not made, purchases not confirmed. Write them all down in one place.</div>
+                    <label class="action-day-check">
+                        <input type="checkbox" onchange="updateProgress()">
+                        <div class="action-checkbox">✓</div>
+                        <span class="action-check-label">Mark as completed</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="action-day">
+                <div class="action-day-line">
+                    <div class="action-day-dot">D2</div>
+                    <div class="action-day-connector"></div>
+                </div>
+                <div class="action-day-content">
+                    <div class="action-day-title">⏰ Set 24-Hour Deadlines</div>
+                    <div class="action-day-task">For each pending decision, set a hard deadline of 24–48 hours maximum. Write the deadline next to each item. No "I'll see" or "maybe next week" — firm dates only.</div>
+                    <label class="action-day-check">
+                        <input type="checkbox" onchange="updateProgress()">
+                        <div class="action-checkbox">✓</div>
+                        <span class="action-check-label">Mark as completed</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="action-day">
+                <div class="action-day-line">
+                    <div class="action-day-dot">D3</div>
+                    <div class="action-day-connector"></div>
+                </div>
+                <div class="action-day-content">
+                    <div class="action-day-title">📊 Gather Only the Essentials</div>
+                    <div class="action-day-task">For each decision, identify the top 3 pieces of information you truly need (not 10). Example: for a quote decision, you need the BOQ scope, your rate card, and the client's budget range — that's it.</div>
+                    <label class="action-day-check">
+                        <input type="checkbox" onchange="updateProgress()">
+                        <div class="action-checkbox">✓</div>
+                        <span class="action-check-label">Mark as completed</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="action-day">
+                <div class="action-day-line">
+                    <div class="action-day-dot">D4</div>
+                    <div class="action-day-connector"></div>
+                </div>
+                <div class="action-day-content">
+                    <div class="action-day-title">✅ Decide and Execute</div>
+                    <div class="action-day-task">Go through your list and make every decision. Send those quotes. Approve those LPOs. Confirm that hire. Remember: a good decision now beats a perfect decision next month.</div>
+                    <label class="action-day-check">
+                        <input type="checkbox" onchange="updateProgress()">
+                        <div class="action-checkbox">✓</div>
+                        <span class="action-check-label">Mark as completed</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="action-day">
+                <div class="action-day-line">
+                    <div class="action-day-dot">D5</div>
+                    <div class="action-day-connector" style="background:transparent;"></div>
+                </div>
+                <div class="action-day-content">
+                    <div class="action-day-title">🔄 Build the Habit</div>
+                    <div class="action-day-task">Review what happened. How many decisions did you clear? Set a new rule: no business decision stays pending more than 48 hours without a clear reason. Share this rule with your team on WhatsApp.</div>
+                    <label class="action-day-check">
+                        <input type="checkbox" onchange="updateProgress()">
+                        <div class="action-checkbox">✓</div>
+                        <span class="action-check-label">Mark as completed</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-progress-bar">
+            <div class="action-progress-fill" id="actionProgressFill"></div>
+        </div>
+        <div class="action-progress-text" id="actionProgressText">0 of 5 days completed</div>
+    </div>
+
+    <!-- ── Section 10: Key Takeaways ── -->
+    <div class="section" id="takeaways">
+        <div class="takeaway-box">
+            <h3>🎯 Key Takeaways — Remember This</h3>
+            <ul class="takeaway-list">
+                <li>
+                    <span class="takeaway-check">✔</span>
+                    <span><strong>Speed beats perfection</strong> — a fast 80% decision outperforms a slow 100% one in almost every business situation.</span>
+                </li>
+                <li>
+                    <span class="takeaway-check">✔</span>
+                    <span><strong>Opportunities have expiry dates</strong> — tenders, client enquiries, and supplier deals won't wait for you to be ready.</span>
+                </li>
+                <li>
+                    <span class="takeaway-check">✔</span>
+                    <span><strong>One delay cascades</strong> — a delayed approval today means delayed materials, delayed work, delayed invoicing, and delayed cash flow.</span>
+                </li>
+                <li>
+                    <span class="takeaway-check">✔</span>
+                    <span><strong>Match speed to stakes</strong> — most daily decisions are reversible. Save deep analysis for the truly irreversible ones.</span>
+                </li>
+                <li>
+                    <span class="takeaway-check">✔</span>
+                    <span><strong>Responsiveness is reputation</strong> — in Dubai's construction market, being fast and reliable puts you ahead of bigger competitors.</span>
+                </li>
+                <li>
+                    <span class="takeaway-check">✔</span>
+                    <span><strong>Progress comes from action</strong> — learn by doing, not by waiting. Decide → execute → adjust → repeat.</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</main>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer">
+    <p>Civil-Tech.ai Knowledge Portal — Built for Dubai's construction SME owners</p>
+    <p style="margin-top:4px;"><a href="https://civiltech-ai.github.io/knowledge-portal/">← Back to Knowledge Portal</a></p>
+</footer>
+
+<!-- ══════════ JAVASCRIPT ══════════ -->
+<script>
+    // ── Scroll Progress Bar ──
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = (scrollTop / docHeight) * 100;
+        document.getElementById('progressBar').style.width = progress + '%';
+    });
+
+    // ── Scroll Reveal ──
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.section').forEach(el => observer.observe(el));
+
+    // ── Smooth Scroll for TOC ──
+    document.querySelectorAll('.toc a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = document.querySelector(link.getAttribute('href'));
+            if (target) {
+                const offset = 80;
+                const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top, behavior: 'smooth' });
+            }
+        });
+    });
+
+    // ── Warning Signs Checklist ──
+    function toggleWarning(item) {
+        item.classList.toggle('checked');
+        updateWarningCounter();
+    }
+
+    function updateWarningCounter() {
+        const checked = document.querySelectorAll('.warning-item.checked').length;
+        const resultEl = document.getElementById('warningResult');
+        resultEl.style.display = 'block';
+
+        if (checked === 0) {
+            resultEl.style.background = 'var(--green-light)';
+            resultEl.style.color = '#15803D';
+            resultEl.innerHTML = '✅ No warning signs selected. You may already have strong decision habits!';
+        } else if (checked <= 2) {
+            resultEl.style.background = 'var(--amber-light)';
+            resultEl.style.color = '#B45309';
+            resultEl.innerHTML = '⚠️ <strong>' + checked + ' warning sign' + (checked > 1 ? 's' : '') + ' identified.</strong> Minor decision delays — fixable with awareness and simple deadlines.';
+        } else if (checked <= 5) {
+            resultEl.style.background = '#FEF3C7';
+            resultEl.style.color = '#92400E';
+            resultEl.innerHTML = '🔶 <strong>' + checked + ' warning signs identified.</strong> Decision delays are likely costing you real revenue and team productivity. Implement the 5-Day Action Plan below.';
+        } else {
+            resultEl.style.background = 'var(--red-light)';
+            resultEl.style.color = '#B91C1C';
+            resultEl.innerHTML = '🚨 <strong>' + checked + ' warning signs identified.</strong> Slow decisions are a critical bottleneck in your business. This should be your #1 priority to fix this week.';
+        }
+    }
+
+    // ── Decision Delay Calculator ──
+    function updateCalculator() {
+        const quotes = parseInt(document.getElementById('quotesRange').value);
+        const value = parseInt(document.getElementById('valueRange').value);
+        const delay = parseInt(document.getElementById('delayRange').value);
+        const lost = parseInt(document.getElementById('lostRange').value);
+
+        document.getElementById('quotesVal').textContent = quotes;
+        document.getElementById('valueVal').textContent = 'AED ' + value.toLocaleString();
+        document.getElementById('delayVal').textContent = delay + '%';
+        document.getElementById('lostVal').textContent = lost + '%';
+
+        const annualQuotes = quotes * 12;
+        const delayedQuotes = Math.round(annualQuotes * (delay / 100));
+        const lostQuotes = Math.round(delayedQuotes * (lost / 100));
+        const totalLoss = lostQuotes * value;
+
+        document.getElementById('calcResult').textContent = 'AED ' + totalLoss.toLocaleString();
+        document.getElementById('calcSub').textContent = "That's roughly " + lostQuotes + ' lost project' + (lostQuotes !== 1 ? 's' : '') + ' per year';
+    }
+
+    // ── Quiz ──
+    function selectOption(option) {
+        const question = option.closest('.quiz-question');
+        question.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+        option.classList.add('selected');
+    }
+
+    function submitQuiz() {
+        const questions = document.querySelectorAll('.quiz-question');
+        let score = 0;
+        let answered = 0;
+
+        questions.forEach((q) => {
+            const correctIdx = parseInt(q.getAttribute('data-correct'));
+            const options = q.querySelectorAll('.quiz-option');
+            const selected = q.querySelector('.quiz-option.selected');
+
+            if (!selected) return;
+            answered++;
+
+            options.forEach(o => {
+                o.classList.remove('correct', 'wrong');
+                o.style.pointerEvents = 'none';
+            });
+
+            const selectedIdx = Array.from(options).indexOf(selected);
+            if (selectedIdx === correctIdx) {
+                selected.classList.add('correct');
+                score++;
+            } else {
+                selected.classList.add('wrong');
+                options[correctIdx].classList.add('correct');
+            }
+        });
+
+        const fb = document.getElementById('quizFeedback');
+        fb.classList.add('show');
+
+        if (answered === 0) {
+            fb.style.background = 'var(--amber-light)';
+            fb.style.color = '#92400E';
+            fb.innerHTML = '⚠️ Please select an answer for at least one question before submitting.';
+            return;
+        }
+
+        const pct = Math.round((score / questions.length) * 100);
+        if (pct === 100) {
+            fb.style.background = 'var(--green-light)';
+            fb.style.color = '#15803D';
+            fb.innerHTML = '🏆 <strong>Perfect Score! ' + score + '/' + questions.length + '</strong> — You already think like a fast-moving business owner. Now make sure your team operates with the same speed.';
+        } else if (pct >= 50) {
+            fb.style.background = 'var(--amber-light)';
+            fb.style.color = '#92400E';
+            fb.innerHTML = '👍 <strong>Good effort! ' + score + '/' + questions.length + '</strong> — You understand the importance of speed, but there\'s room to sharpen your decision instincts. Review the framework above.';
+        } else {
+            fb.style.background = 'var(--red-light)';
+            fb.style.color = '#B91C1C';
+            fb.innerHTML = '📚 <strong>' + score + '/' + questions.length + '</strong> — This is a growth area for you. Re-read the Rapid Decision Framework and try the 5-Day Challenge to build faster decision habits.';
+        }
+
+        document.querySelector('.quiz-submit').style.display = 'none';
+    }
+
+    // ── Action Plan Progress ──
+    function updateProgress() {
+        const checks = document.querySelectorAll('#actionTimeline input[type="checkbox"]');
+        const checked = Array.from(checks).filter(c => c.checked).length;
+        const pct = (checked / checks.length) * 100;
+
+        document.getElementById('actionProgressFill').style.width = pct + '%';
+        document.getElementById('actionProgressText').textContent = checked + ' of ' + checks.length + ' days completed' + (checked === checks.length ? ' — 🎉 Challenge Complete!' : '');
+    }
+
+    // Initialize calculator
+    updateCalculator();
+</script>
+
+</body>
+</html>
