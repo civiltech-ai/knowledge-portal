@@ -30,6 +30,16 @@
       "dateAdded": "2026-05-12",
       "visible": true
     },
+    {
+      "id": "complexity-reduces-profitability",
+      "title": "Complexity Reduces Profitability",
+      "description": "Why the most profitable construction SMEs aren't the busiest — they're the simplest. A comprehensive interactive guide showing how unnecessary approvals, service sprawl, and process bloat silently erode margins. Includes a complexity cost calculator, 5-question self-assessment, side-by-side business comparison, the 4-step simplification framework, and a 5-day action checklist tailored for Dubai civil and structural engineering companies.",
+      "category": "strategy",
+      "file": "complexity-reduces-profitability.html",
+      "tags": ["ops", "strategy", "system", "finance"],
+      "dateAdded": "2026-05-14",
+      "visible": true
+    },
      {
       "id": "the-owner-bottleneck",
       "title": "The Owner as the Bottleneck",
