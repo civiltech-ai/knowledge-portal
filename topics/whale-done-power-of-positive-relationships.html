@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whale Done! The Power of Positive Relationships — Civil-Tech.ai Knowledge Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #14b8a6;
+            --primary-dark: #0d9488;
+            --primary-darker: #0f766e;
+            --primary-light: #99f6e4;
+            --primary-ultra-light: #f0fdfa;
+            --primary-gradient: linear-gradient(135deg, #0d9488 0%, #14b8a6 40%, #2dd4bf 100%);
+            --accent: #f59e0b;
+            --accent-light: #fef3c7;
+            --bg: #f0fdfa;
+            --bg-white: #ffffff;
+            --bg-card: #ffffff;
+            --text-primary: #134e4a;
+            --text-secondary: #5f7a77;
+            --text-light: #94a3b8;
+            --border: #e2e8f0;
+            --border-teal: #ccfbf1;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.1);
+            --shadow-xl: 0 16px 48px rgba(0,0,0,0.12);
+            --radius: 12px;
+            --radius-lg: 20px;
+            --danger: #ef4444;
+            --danger-bg: #fef2f2;
+            --success: #10b981;
+            --success-bg: #ecfdf5;
+            --warning: #f59e0b;
+            --warning-bg: #fffbeb;
+            --info: #3b82f6;
+            --info-bg: #eff6ff;
+            --navy: #1e293b;
+            --principle-1: #0d9488;
+            --principle-2: #f59e0b;
+            --principle-3: #10b981;
+            --principle-4: #ef4444;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+        /* ─── NAVBAR ─── */
+        .navbar {
+            background: rgba(255,255,255,0.95);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+        }
+        .navbar-left { display: flex; align-items: center; gap: 1rem; }
+        .navbar-brand {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--primary-dark);
+        }
+        .navbar-badge {
+            background: var(--primary-ultra-light);
+            border: 1.5px solid var(--primary);
+            border-radius: 999px;
+            padding: 0.2rem 0.75rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .navbar-back {
+            display: flex; align-items: center; gap: 0.4rem;
+            font-size: 0.85rem; font-weight: 600;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .navbar-back:hover { color: var(--primary-dark); }
+
+        /* ─── PROGRESS BAR ─── */
+        .progress-bar-container {
+            position: fixed; top: 64px; left: 0; right: 0;
+            height: 3px; background: var(--border); z-index: 99;
+        }
+        .progress-bar {
+            height: 100%; width: 0%;
+            background: var(--primary-gradient);
+            transition: width 0.15s ease;
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            background: var(--primary-gradient);
+            padding: 4.5rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; top: -50%; right: -20%;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero::after {
+            content: '';
+            position: absolute; bottom: -30%; left: -10%;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero-content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+        .hero-icon { font-size: 3.5rem; margin-bottom: 1rem; }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 999px;
+            padding: 0.35rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1.25rem;
+        }
+        .hero h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+        .hero-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.35rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 1rem;
+        }
+        .hero-desc {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.85);
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.6;
+        }
+        .hero-tags { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; }
+        .hero-tag {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 999px;
+            padding: 0.3rem 0.9rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        /* ─── MAIN CONTAINER ─── */
+        .main-container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 4rem;
+        }
+
+        /* ─── TABLE OF CONTENTS ─── */
+        .toc {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-teal);
+        }
+        .toc-title {
+            font-size: 0.8rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.08em;
+            color: var(--primary-dark); margin-bottom: 1rem;
+        }
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 0.5rem;
+        }
+        .toc-item {
+            display: flex; align-items: center; gap: 0.6rem;
+            padding: 0.55rem 0.75rem;
+            border-radius: 8px;
+            font-size: 0.88rem; font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+        .toc-item:hover {
+            background: var(--primary-ultra-light);
+            color: var(--primary-dark);
+        }
+        .toc-num {
+            width: 24px; height: 24px;
+            display: flex; align-items: center; justify-content: center;
+            background: var(--primary-ultra-light);
+            border-radius: 6px;
+            font-size: 0.72rem; font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        /* ─── SECTION STYLES ─── */
+        .section {
+            margin-bottom: 2.5rem;
+            animation: fadeUp 0.5s ease both;
+        }
+        .section-header {
+            display: flex; align-items: center; gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--border-teal);
+        }
+        .section-icon {
+            width: 44px; height: 44px;
+            display: flex; align-items: center; justify-content: center;
+            background: var(--primary-gradient);
+            border-radius: 12px;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        .section-title {
+            font-size: 1.5rem; font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        /* ─── CONTENT CARDS ─── */
+        .content-card {
+            background: var(--bg-white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            margin-bottom: 1.25rem;
+            transition: box-shadow 0.3s;
+        }
+        .content-card:hover { box-shadow: var(--shadow-md); }
+        .content-card h3 {
+            font-size: 1.15rem; font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+        .content-card p, .content-card li {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.75;
+        }
+        .content-card ul, .content-card ol {
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        .content-card li { margin-bottom: 0.5rem; }
+
+        /* ─── PRINCIPLE CARDS ─── */
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .principle-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            padding: 0;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .principle-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        .principle-card-header {
+            padding: 1.25rem 1.5rem;
+            display: flex; align-items: center; gap: 1rem;
+            color: #fff;
+        }
+        .principle-card-header.p1 { background: linear-gradient(135deg, #0d9488, #14b8a6); }
+        .principle-card-header.p2 { background: linear-gradient(135deg, #d97706, #f59e0b); }
+        .principle-card-header.p3 { background: linear-gradient(135deg, #059669, #10b981); }
+        .principle-card-header.p4 { background: linear-gradient(135deg, #dc2626, #ef4444); }
+        .principle-num {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.5rem; font-weight: 800;
+            opacity: 0.4; line-height: 1;
+        }
+        .principle-title-text {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.2rem; font-weight: 700; line-height: 1.3;
+        }
+        .principle-card-body { padding: 1.5rem; }
+        .principle-card-body p {
+            font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7;
+        }
+
+        /* ─── SCENARIO CARDS ─── */
+        .scenario-card {
+            background: var(--bg-white);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            margin-bottom: 1.25rem;
+            box-shadow: var(--shadow-sm);
+        }
+        .scenario-header {
+            padding: 1rem 1.5rem;
+            display: flex; align-items: center; gap: 0.75rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem; font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .scenario-header:hover { background: var(--primary-ultra-light); }
+        .scenario-header .toggle { margin-left: auto; transition: transform 0.3s; font-size: 1.2rem; }
+        .scenario-header .toggle.open { transform: rotate(180deg); }
+        .scenario-body { display: none; padding: 0 1.5rem 1.5rem; }
+        .scenario-body.open { display: block; }
+
+        .response-compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .response-box {
+            border-radius: var(--radius);
+            padding: 1.25rem;
+        }
+        .response-box.wrong {
+            background: var(--danger-bg);
+            border: 1px solid #fecaca;
+        }
+        .response-box.right {
+            background: var(--success-bg);
+            border: 1px solid #a7f3d0;
+        }
+        .response-label {
+            display: flex; align-items: center; gap: 0.4rem;
+            font-size: 0.78rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.05em;
+            margin-bottom: 0.6rem;
+        }
+        .response-box.wrong .response-label { color: var(--danger); }
+        .response-box.right .response-label { color: var(--success); }
+        .response-box p {
+            font-size: 0.88rem; color: var(--text-secondary); line-height: 1.65;
+        }
+
+        /* ─── COMPARISON TABLE ─── */
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin: 1rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+        .comparison-table thead th {
+            background: var(--primary-gradient);
+            color: #fff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.85rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.04em;
+            padding: 0.9rem 1.25rem;
+            text-align: left;
+        }
+        .comparison-table tbody td {
+            padding: 0.85rem 1.25rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-white);
+            vertical-align: top;
+        }
+        .comparison-table tbody tr:last-child td { border-bottom: none; }
+        .comparison-table tbody tr:hover td { background: var(--primary-ultra-light); }
+
+        /* ─── QUOTE BLOCK ─── */
+        .quote-block {
+            background: linear-gradient(135deg, var(--navy), #334155);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            margin: 2rem 0;
+            position: relative;
+        }
+        .quote-block::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 8rem;
+            color: rgba(255,255,255,0.06);
+            position: absolute; top: -0.5rem; left: 1.5rem;
+            line-height: 1;
+        }
+        .quote-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.5;
+            margin-bottom: 0.75rem;
+            position: relative;
+        }
+        .quote-author {
+            font-size: 0.9rem;
+            color: var(--primary-light);
+            font-weight: 600;
+        }
+
+        /* ─── CHECKLIST ─── */
+        .checklist-container {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+        }
+        .checklist-progress {
+            display: flex; align-items: center; gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .checklist-progress-bar {
+            flex: 1; height: 8px;
+            background: var(--border);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+        .checklist-progress-fill {
+            height: 100%; width: 0%;
+            background: var(--primary-gradient);
+            border-radius: 999px;
+            transition: width 0.4s ease;
+        }
+        .checklist-progress-text {
+            font-size: 0.82rem; font-weight: 700;
+            color: var(--primary-dark); white-space: nowrap;
+        }
+        .checklist-item {
+            display: flex; align-items: flex-start; gap: 0.75rem;
+            padding: 0.85rem 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-bottom: 0.3rem;
+        }
+        .checklist-item:hover { background: var(--primary-ultra-light); }
+        .checklist-check {
+            width: 22px; height: 22px;
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+            transition: all 0.25s;
+            font-size: 0.75rem;
+            color: transparent;
+        }
+        .checklist-item.checked .checklist-check {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #fff;
+        }
+        .checklist-label { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.5; }
+        .checklist-item.checked .checklist-label {
+            text-decoration: line-through;
+            opacity: 0.55;
+        }
+        .checklist-day {
+            font-size: 0.72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.06em;
+            color: var(--primary-dark);
+            padding: 0.2rem 0.6rem;
+            background: var(--primary-ultra-light);
+            border-radius: 4px;
+            white-space: nowrap;
+            margin-top: 3px;
+        }
+
+        /* ─── QUIZ ─── */
+        .quiz-container {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+        }
+        .quiz-question {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .quiz-question:last-of-type { border-bottom: none; }
+        .quiz-q-text {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1rem; font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.85rem;
+        }
+        .quiz-options { display: flex; flex-direction: column; gap: 0.5rem; }
+        .quiz-option {
+            padding: 0.75rem 1rem;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex; align-items: center; gap: 0.6rem;
+        }
+        .quiz-option:hover { border-color: var(--primary); background: var(--primary-ultra-light); }
+        .quiz-option.selected { border-color: var(--primary); background: var(--primary-ultra-light); }
+        .quiz-option.correct { border-color: var(--success); background: var(--success-bg); }
+        .quiz-option.incorrect { border-color: var(--danger); background: var(--danger-bg); }
+        .quiz-radio {
+            width: 18px; height: 18px;
+            border: 2px solid var(--border);
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s;
+        }
+        .quiz-option.selected .quiz-radio { border-color: var(--primary); }
+        .quiz-option.selected .quiz-radio::after {
+            content: ''; width: 8px; height: 8px;
+            background: var(--primary); border-radius: 50%;
+        }
+        .quiz-btn {
+            background: var(--primary-gradient);
+            color: #fff;
+            border: none; border-radius: 10px;
+            padding: 0.85rem 2rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem; font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 1rem;
+        }
+        .quiz-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .quiz-result {
+            display: none;
+            background: var(--primary-ultra-light);
+            border: 1px solid var(--border-teal);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-top: 1.25rem;
+            text-align: center;
+        }
+        .quiz-score {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.5rem; font-weight: 800;
+            color: var(--primary-dark);
+        }
+        .quiz-feedback {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        /* ─── CALCULATOR / TOOL ─── */
+        .tool-container {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+        }
+        .tool-row {
+            margin-bottom: 1.25rem;
+        }
+        .tool-label {
+            font-size: 0.88rem; font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .tool-value {
+            font-weight: 700; color: var(--primary-dark);
+        }
+        .tool-range {
+            width: 100%;
+            -webkit-appearance: none;
+            height: 6px;
+            border-radius: 999px;
+            background: var(--border);
+            outline: none;
+        }
+        .tool-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px; height: 20px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(20,184,166,0.3);
+        }
+        .tool-output {
+            background: linear-gradient(135deg, var(--primary-ultra-light), #e0f7f4);
+            border: 1px solid var(--border-teal);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-top: 1.25rem;
+        }
+        .tool-output-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.6rem 0;
+            border-bottom: 1px dashed var(--border-teal);
+        }
+        .tool-output-row:last-child { border-bottom: none; }
+        .tool-output-label { font-size: 0.88rem; color: var(--text-secondary); }
+        .tool-output-value {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.1rem; font-weight: 700;
+            color: var(--primary-dark);
+        }
+        .tool-output-highlight {
+            font-size: 1.5rem;
+        }
+
+        /* ─── INFO CALLOUTS ─── */
+        .callout {
+            border-radius: var(--radius);
+            padding: 1.25rem 1.5rem;
+            margin: 1rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+        }
+        .callout-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+        .callout-body { flex: 1; }
+        .callout-body strong {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.9rem; display: block; margin-bottom: 0.3rem;
+        }
+        .callout-body p { font-size: 0.88rem; line-height: 1.6; }
+        .callout.tip { background: var(--success-bg); border: 1px solid #a7f3d0; }
+        .callout.tip strong { color: var(--success); }
+        .callout.warning { background: var(--warning-bg); border: 1px solid #fde68a; }
+        .callout.warning strong { color: var(--warning); }
+        .callout.info { background: var(--info-bg); border: 1px solid #bfdbfe; }
+        .callout.info strong { color: var(--info); }
+
+        /* ─── STEPS LIST ─── */
+        .steps-list { counter-reset: step; }
+        .step-item {
+            display: flex; gap: 1rem; align-items: flex-start;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .step-item:last-child { border-bottom: none; }
+        .step-num {
+            counter-increment: step;
+            width: 36px; height: 36px;
+            display: flex; align-items: center; justify-content: center;
+            background: var(--primary-gradient);
+            border-radius: 10px;
+            color: #fff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.85rem; font-weight: 800;
+            flex-shrink: 0;
+        }
+        .step-content h4 {
+            font-size: 0.95rem; font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+        .step-content p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+        }
+
+        /* ─── ICON GRID ─── */
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .icon-grid-item {
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .icon-grid-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+        .icon-grid-item .ig-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+        .icon-grid-item h4 {
+            font-size: 0.88rem; font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+        }
+        .icon-grid-item p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* ─── TAKEAWAY BOX ─── */
+        .takeaway-box {
+            background: linear-gradient(135deg, #0d9488 0%, #14b8a6 40%, #2dd4bf 100%);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem 2rem;
+            color: #fff;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .takeaway-box h2 {
+            font-size: 1.6rem; font-weight: 800;
+            margin-bottom: 1.25rem;
+        }
+        .takeaway-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .takeaway-item {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: var(--radius);
+            padding: 1.15rem;
+        }
+        .takeaway-item .ti-icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
+        .takeaway-item p {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.92);
+            line-height: 1.5;
+        }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+        }
+        .footer p {
+            font-size: 0.82rem;
+            color: var(--text-light);
+        }
+        .footer a {
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* ─── ANIMATIONS ─── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-on-scroll { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            .hero { padding: 3rem 1.25rem 2.5rem; }
+            .hero h1 { font-size: 1.85rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            .main-container { padding: 1.5rem 1rem 3rem; }
+            .principles-grid { grid-template-columns: 1fr; }
+            .response-compare { grid-template-columns: 1fr; }
+            .toc-grid { grid-template-columns: 1fr; }
+            .icon-grid { grid-template-columns: 1fr 1fr; }
+            .takeaway-items { grid-template-columns: 1fr; }
+            .navbar { padding: 0 1rem; }
+            .content-card { padding: 1.5rem; }
+        }
+        @media (max-width: 480px) {
+            .icon-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="navbar-left">
+        <span class="navbar-brand">Civil-Tech.ai</span>
+        <span class="navbar-badge">Knowledge Portal</span>
+    </div>
+    <a href="https://civiltech-ai.github.io/knowledge-portal/" class="navbar-back">
+        ← Back to Library
+    </a>
+</nav>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar-container">
+    <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+    <div class="hero-content">
+        <div class="hero-icon">🐋</div>
+        <div class="hero-badge">👥 Team & Leadership</div>
+        <h1>Whale Done!</h1>
+        <div class="hero-subtitle">The Power of Positive Relationships</div>
+        <p class="hero-desc">Based on Ken Blanchard's framework — four principles that transform how you lead your construction team, retain top performers, and build a culture people never want to leave.</p>
+        <div class="hero-tags">
+            <span class="hero-tag">🤝 Connection</span>
+            <span class="hero-tag">🏗️ Construction</span>
+            <span class="hero-tag">⭐ Recognition</span>
+            <span class="hero-tag">📈 Growth</span>
+        </div>
+    </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<div class="main-container">
+
+    <!-- TABLE OF CONTENTS -->
+    <div class="toc animate-on-scroll">
+        <div class="toc-title">📑 What You'll Learn</div>
+        <div class="toc-grid">
+            <a class="toc-item" href="#overview"><span class="toc-num">1</span> What is "Whale Done!"?</a>
+            <a class="toc-item" href="#four-principles"><span class="toc-num">2</span> The Four Principles</a>
+            <a class="toc-item" href="#why-matters"><span class="toc-num">3</span> Why This Matters in Construction</a>
+            <a class="toc-item" href="#scenarios"><span class="toc-num">4</span> Real Site Scenarios</a>
+            <a class="toc-item" href="#old-vs-new"><span class="toc-num">5</span> Old Way vs. Whale Done Way</a>
+            <a class="toc-item" href="#quiz"><span class="toc-num">6</span> Self-Assessment Quiz</a>
+            <a class="toc-item" href="#calculator"><span class="toc-num">7</span> Culture Impact Calculator</a>
+            <a class="toc-item" href="#action-plan"><span class="toc-num">8</span> 7-Day Action Plan</a>
+            <a class="toc-item" href="#takeaways"><span class="toc-num">9</span> Key Takeaways</a>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- SECTION 1: OVERVIEW -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div id="overview" class="section animate-on-scroll">
+        <div class="section-header">
+            <div class="section-icon">🐳</div>
+            <h2 class="section-title">What is "Whale Done!"?</h2>
+        </div>
+
+        <div class="content-card">
+            <h3>The Core Idea</h3>
+            <p>Ken Blanchard studied how SeaWorld trainers get 5-ton killer whales to perform extraordinary feats — not through force or punishment, but through <strong>positive reinforcement</strong> and <strong>genuine connection</strong>. The insight is powerful: if you can get a whale to leap 20 feet into the air using only encouragement and trust, imagine what you can achieve with your team.</p>
+        </div>
+
+        <div class="content-card">
+            <h3>How It Applies to Your Construction Business</h3>
+            <p>In Dubai's construction sector, most companies rely on the "old school" approach — shouting orders, catching mistakes, threatening penalties. But the best-performing companies (the ones winning repeat contracts and retaining skilled foremen for 10+ years) operate differently. They use:</p>
+            <ul>
+                <li><strong>Connection first</strong> — building trust before demanding compliance</li>
+                <li><strong>Recognition</strong> — praising the foreman who prevented a safety incident, not just punishing the one who caused one</li>
+                <li><strong>Individual growth</strong> — mapping each team member's career path, from mason to site supervisor</li>
+                <li><strong>Decisive boundaries</strong> — removing those who poison the culture, no matter their technical skill</li>
+            </ul>
+        </div>
+
+        <div class="quote-block">
+            <p class="quote-text">People may forget your targets...<br>But they will never forget how your culture made them feel.</p>
+            <p class="quote-author">— Ken Blanchard, Whale Done!</p>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- SECTION 2: FOUR PRINCIPLES -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div id="four-principles" class="section animate-on-scroll">
+        <div class="section-header">
+            <div class="section-icon">🔑</div>
+            <h2 class="section-title">The Four Principles</h2>
+        </div>
+
+        <div class="principles-grid">
+            <!-- PRINCIPLE 1 -->
+            <div class="principle-card">
+                <div class="principle-card-header p1">
+                    <span class="principle-num">1</span>
+                    <span class="principle-title-text">Connection Before Correction</span>
+                </div>
+                <div class="principle-card-body">
+                    <p><strong>What it means:</strong> Build a genuine relationship with each person before you ever correct their work.</p>
+                    <br>
+                    <p><strong>🏗️ On your site:</strong></p>
+                    <ul>
+                        <li>Know your site engineer's name, their family situation, their career goals</li>
+                        <li>Spend the first 5 minutes of every Monday toolbox talk asking "How was your weekend?" — not jumping straight to punchlist items</li>
+                        <li>When a foreman makes a mistake on rebar placement, start with "I know you've been doing great work on column grids. Let's look at this together" — not "This is wrong, fix it"</li>
+                    </ul>
+                    <br>
+                    <div class="callout tip">
+                        <span class="callout-icon">💡</span>
+                        <div class="callout-body">
+                            <strong>Dubai Context</strong>
+                            <p>Your workforce likely includes people from 5-10 nationalities. A simple "How are you?" in Urdu, Hindi, or Tagalog builds stronger connection than a thousand emails in English.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRINCIPLE 2 -->
+            <div class="principle-card">
+                <div class="principle-card-header p2">
+                    <span class="principle-num">2</span>
+                    <span class="principle-title-text">Catch People Doing Right Things</span>
+                </div>
+                <div class="principle-card-body">
+                    <p><strong>What it means:</strong> Actively look for people performing well and praise them immediately — don't wait for annual reviews.</p>
+                    <br>
+                    <p><strong>🏗️ On your site:</strong></p>
+                    <ul>
+                        <li>A labourer properly hydrates and wears PPE in 45°C heat → recognise them in front of the team</li>
+                        <li>A sub-contractor finishes tiling 2 days ahead of the BOQ timeline → send a WhatsApp voice note saying "Great work"</li>
+                        <li>An accounts person catches a duplicate LPO before payment → mention it at the Monday meeting</li>
+                    </ul>
+                    <br>
+                    <div class="callout info">
+                        <span class="callout-icon">📊</span>
+                        <div class="callout-body">
+                            <strong>The Ratio That Matters</strong>
+                            <p>Research shows high-performing teams have a <strong>5:1 ratio</strong> of positive-to-negative interactions. For every correction, you need five acknowledgements. Most construction sites are inverted — 5 corrections for every 1 "well done."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRINCIPLE 3 -->
+            <div class="principle-card">
+                <div class="principle-card-header p3">
+                    <span class="principle-num">3</span>
+                    <span class="principle-title-text">Create Their Growth Map</span>
+                </div>
+                <div class="principle-card-body">
+                    <p><strong>What it means:</strong> Help every team member see a future in your company — where they're headed, what skills they need, and how you'll support them.</p>
+                    <br>
+                    <p><strong>🏗️ On your site:</strong></p>
+                    <ul>
+                        <li><strong>Helper → Mason → Foreman → Supervisor:</strong> A clear 3-year path with milestone skills at each level</li>
+                        <li><strong>Junior Estimator → Senior Estimator → Estimation Manager:</strong> Define what "senior" actually means — e.g. can independently price a 50M AED fit-out project</li>
+                        <li><strong>Quarterly 15-minute chats:</strong> "Where do you want to be in 2 years? Let's figure out how to get there."</li>
+                    </ul>
+                    <br>
+                    <div class="callout warning">
+                        <span class="callout-icon">⚠️</span>
+                        <div class="callout-body">
+                            <strong>Common Mistake</strong>
+                            <p>Many Dubai contractors think growth maps are only for office staff. Your best site foreman deserves a documented career path just as much as your project manager does.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRINCIPLE 4 -->
+            <div class="principle-card">
+                <div class="principle-card-header p4">
+                    <span class="principle-num">4</span>
+                    <span class="principle-title-text">Cut Toxic People</span>
+                </div>
+                <div class="principle-card-body">
+                    <p><strong>What it means:</strong> No amount of positive culture survives if you tolerate people who consistently undermine it. High skill does not excuse toxic behaviour.</p>
+                    <br>
+                    <p><strong>🏗️ On your site:</strong></p>
+                    <ul>
+                        <li>The "star estimator" who belittles junior staff and creates fear — let them go</li>
+                        <li>The site engineer who blames labourers publicly for their own planning mistakes — first warning, then exit</li>
+                        <li>The sub-contractor who gossips, creates division between your teams, and always has an excuse for delayed day-works — replace them</li>
+                    </ul>
+                    <br>
+                    <div class="callout tip">
+                        <span class="callout-icon">🎯</span>
+                        <div class="callout-body">
+                            <strong>The Multiplier Effect</strong>
+                            <p>Removing one toxic person often improves the performance of <strong>5-8 people</strong> around them. The short-term pain of losing their technical skill is far outweighed by the long-term gain in team morale and retention.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- SECTION 3: WHY IT MATTERS -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div id="why-matters" class="section animate-on-scroll">
+        <div class="section-header">
+            <div class="section-icon">🏗️</div>
+            <h2 class="section-title">Why This Matters in Construction</h2>
+        </div>
+
+        <div class="icon-grid">
+            <div class="icon-grid-item">
+                <div class="ig-icon">💸</div>
+                <h4>Turnover Is Expensive</h4>
+                <p>Replacing a skilled foreman in Dubai costs <strong>3-6 months' salary</strong> (visa, recruitment, training, ramp-up)</p>
+            </div>
+            <div class="icon-grid-item">
+                <div class="ig-icon">⏱️</div>
+                <h4>Delays Compound</h4>
+                <p>Demotivated teams work 20-30% slower — that's <strong>liquidated damages</strong> on your next project</p>
+            </div>
+            <div class="icon-grid-item">
+                <div class="ig-icon">🔁</div>
+                <h4>Repeat Business</h4>
+                <p>Clients notice your team's energy. A motivated crew leads to <strong>referrals & repeat contracts</strong></p>
+            </div>
+            <div class="icon-grid-item">
+                <div class="ig-icon">🛡️</div>
+                <h4>Safety Performance</h4>
+                <p>Teams that trust their leaders <strong>report near-misses 4x more often</strong> — catching hazards before they become incidents</p>
+            </div>
+            <div class="icon-grid-item">
+                <div class="ig-icon">🧲</div>
+                <h4>Talent Magnet</h4>
+                <p>Word spreads fast in Dubai's construction community. Good culture <strong>attracts the best workers</strong> to your company</p>
+            </div>
+            <div class="icon-grid-item">
+                <div class="ig-icon">📉</div>
+                <h4>Fewer Reworks</h4>
+                <p>Engaged workers take ownership — they <strong>check their own work</strong> instead of waiting for DM inspections to catch errors</p>
+            </div>
+        </div>
+
+        <div class="callout info">
+            <span class="callout-icon">📌</span>
+            <div class="callout-body">
+                <strong>Real Numbers from Dubai</strong>
+                <p>A mid-sized fit-out contractor with 60 staff estimated they lost <strong>AED 450,000/year</strong> to turnover costs alone — visa processing, recruitment fees, training downtime, and mistakes during the new hire's ramp-up period. After implementing positive recognition practices, their annual turnover dropped from 38% to 14% within 18 months.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- SECTION 4: REAL SCENARIOS -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div id="scenarios" class="section animate-on-scroll">
+        <div class="section-header">
+            <div class="section-icon">🎬</div>
+            <h2 class="section-title">Real Site Scenarios: Old Way vs. Whale Done Way</h2>
+        </div>
+
+        <!-- Scenario 1 -->
+        <div class="scenario-card">
+            <div class="scenario-header" onclick="toggleScenario(this)">
+                <span>🧱</span>
+                <span>Scenario 1: A mason lays a wall 5mm out of plumb</span>
+                <span class="toggle">▼</span>
+            </div>
+            <div class="scenario-body">
+                <div class="response-compare">
+                    <div class="response-box wrong">
+                        <div class="response-label">❌ Old Way (Gotcha Response)</div>
+                        <p>"This wall is completely wrong! How many times have I told you to check the plumb line? Break it down and redo it — no overtime pay."</p>
+                        <br>
+                        <p><strong>Result:</strong> Mason feels humiliated in front of peers. Next time, he hides mistakes instead of reporting them. Rework costs multiply.</p>
+                    </div>
+                    <div class="response-box right">
+                        <div class="response-label">✅ Whale Done Way</div>
+                        <p>"Ahmed, the blockwork you did on the east wall yesterday was perfectly aligned — great job. I noticed this section is slightly off. Let me show you a trick with the laser level that'll help. Let's fix it together."</p>
+                        <br>
+                        <p><strong>Result:</strong> Ahmed learns a new skill, feels respected, and starts self-checking his work. Quality improves across the board.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario 2 -->
+        <div class="scenario-card">
+            <div class="scenario-header" onclick="toggleScenario(this)">
+                <span>📦</span>
+                <span>Scenario 2: RMC delivery arrives 2 hours late, delaying the concrete pour</span>
+                <span class="toggle">▼</span>
+            </div>
+            <div class="scenario-body">
+                <div class="response-compare">
+                    <div class="response-box wrong">
+                        <div class="response-label">❌ Old Way</div>
+                        <p>"This supplier is useless! Fire them! Everyone just stand around doing nothing as usual — I pay you all to sit?"</p>
+                        <br>
+                        <p><strong>Result:</strong> Team feels blamed for something they didn't cause. They disengage and stop caring about upcoming deadlines.</p>
+                    </div>
+                    <div class="response-box right">
+                        <div class="response-label">✅ Whale Done Way</div>
+                        <p>"Team, I know the delay isn't your fault. Let's use this 2 hours productively — can we finish the edge formwork for tomorrow's pour? Samir, you showed great initiative last week managing that idle time. Take the lead on this."</p>
+                        <br>
+                        <p><strong>Result:</strong> Team feels trusted. Samir steps up into a leadership role. Idle time is converted to productive work. Everyone stays motivated.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario 3 -->
+        <div class="scenario-card">
+            <div class="scenario-header" onclick="toggleScenario(this)">
+                <span>📋</span>
+                <span>Scenario 3: A DM inspection fails due to missing MEP sleeve openings</span>
+                <span class="toggle">▼</span>
+            </div>
+            <div class="scenario-body">
+                <div class="response-compare">
+                    <div class="response-box wrong">
+                        <div class="response-label">❌ Old Way</div>
+                        <p>Public WhatsApp group message: "Who forgot the sleeves?! This is your responsibility @SiteEngineer. Third time this month. I will deduct this from your salary."</p>
+                        <br>
+                        <p><strong>Result:</strong> Site engineer starts looking for another job immediately. Other staff become afraid to take responsibility. Blame culture intensifies.</p>
+                    </div>
+                    <div class="response-box right">
+                        <div class="response-label">✅ Whale Done Way</div>
+                        <p>Private 1-on-1 conversation: "Rahul, I know you've been handling a lot of coordination lately — your work on the drainage layout was solid. The sleeve issue came up in the DM inspection. Let's figure out a checklist system together so this gets caught before inspection, not during."</p>
+                        <br>
+                        <p><strong>Result:</strong> Rahul feels supported, not attacked. A pre-inspection checklist is created. The problem is solved systemically, not just for today.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario 4 -->
+        <div class="scenario-card">
+            <div class="scenario-header" onclick="toggleScenario(this)">
+                <span>💰</span>
+                <span>Scenario 4: An employee asks for a raise during a slow project phase</span>
+                <span class="toggle">▼</span>
+            </div>
+            <div class="scenario-body">
+                <div class="response-compare">
+                    <div class="response-box wrong">
+                        <div class="response-label">❌ Old Way</div>
+                        <p>"A raise? In this market? Do you know how many people are waiting for your position? Be grateful you have a job."</p>
+                        <br>
+                        <p><strong>Result:</strong> The employee nods, goes quiet, and secretly starts applying elsewhere. You lose a trained professional in 2 months.</p>
+                    </div>
+                    <div class="response-box right">
+                        <div class="response-label">✅ Whale Done Way</div>
+                        <p>"I appreciate you bringing this up directly — that takes courage. Let me be honest about where we are financially. Here's what I can do: let's set 3 clear goals for the next quarter. If you hit them, I'll make the adjustment. And let me also look at what non-salary benefits I can improve for you right now."</p>
+                        <br>
+                        <p><strong>Result:</strong> Employee feels heard and sees a clear path. Even if the answer isn't "yes today," they stay because the process is fair and transparent.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- SECTION 5: OLD WAY vs NEW WAY TABLE -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div id="old-vs-new" class="section animate-on-scroll">
+        <div class="section-header">
+            <div class="section-icon">⚖️</div>
+            <h2 class="section-title">Old Way vs. Whale Done Way</h2>
+        </div>
+
+        <div class="content-card" style="overflow-x: auto;">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Situation</th>
+                        <th>❌ Old School Response</th>
+                        <th>✅ Whale Done Response</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Employee makes a mistake</strong></td>
+                        <td>Publicly criticise, threaten salary deduction</td>
+                        <td>Private conversation — acknowledge past good work, correct together</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Project deadline approaching</strong></td>
+                        <td>"If you don't finish by Friday, I'll bring in another team"</td>
+                        <td>"You finished the last phase ahead of time. I know you can do this — what do you need from me?"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>New hire onboarding</strong></td>
+                        <td>"Here's your desk, figure it out"</td>
+                        <td>Buddy system, 30-day check-ins, clear expectations document</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Good work completed</strong></td>
+                        <td>Silence (it's "expected")</td>
+                        <td>Immediate recognition — WhatsApp praise, mention in team meeting</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Variation order dispute</strong></td>
+                        <td>Blame the site engineer for not documenting</td>
+                        <td>"Let's build a variation tracking system together so we never miss this again"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Staff turnover</strong></td>
+                        <td>"People leave — that's the industry"</td>
+                        <td>Exit interviews, root cause analysis, proactive retention</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- SECTION 6: SELF-ASSESSMENT QUIZ -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div id="quiz" class="section animate-on-scroll">
+        <div class="section-header">
+            <div class="section-icon">📝</div>
+            <h2 class="section-title">Self-Assessment: How "Whale Done" Is Your Company?</h2>
+        </div>
+
+        <div class="quiz-container" id="quizContainer">
+            <!-- Q1 -->
+            <div class="quiz-question" data-correct="1">
+                <div class="quiz-q-text">1. When an employee makes a mistake on site, your first instinct is to...</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-value="0" onclick="selectQuizOption(this)">
+                        <span class="quiz-radio"></span>
+                        Point out the error immediately in front of the team
+                    </div>
+                    <div class="quiz-option" data-value="1" onclick="selectQuizOption(this)">
+                        <span class="quiz-radio"></span>
+                        Pull them aside privately, acknowledge their strengths, then address the issue
+                    </div>
+                    <div class="quiz-option" data-value="0" onclick="selectQuizOption(this)">
+                        <span class="quiz-radio"></span>
+                        Send a WhatsApp message to the group warning everyone
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="quiz-question" data-correct="1">
+                <div class="quiz-q-text">2. How often do you praise or recognise a team member for doing something right?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-value="0" onclick="selectQuizOption(this)">
+                        <span class="quiz-radio"></span>
+                        Rarely — good work is what they're paid for
+                    </div>
+                    <div class="quiz-option" data-value="1" onclick="selectQuizOption(this)">
+                        <span class="quiz-radio"></span>
+                        Multiple times a week — I actively look for things to praise
+                    </div>
+                    <div class="quiz-option" data-value="0" onclick="selectQuizOption(this)">
+                        <span class="quiz-radio"></span>
+                        Only during annual reviews
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="quiz-question" data-correct="1">
+                <div class="quiz-q-text">3. Do your employees have a clear growth path in your company?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-value="0" onclick="selectQuizOption(this)">
+                        <span class="quiz-radio"></span>
+                        Not really — they know their current role, and that's it
+                    </div>
+                    <div class="quiz-option" data-value="1" onclick="selectQuizOption(this)">
+                        <span class="quiz-radio"></span>
+                        Yes — we've discussed where they want to be and what skills they need
+                    </div>
+                    <div class="quiz-option" data-value="0" onclick="selectQuizOption(this)">
+                        <span class="quiz-radio"></span>
+                        Growth happens naturally; I don't plan it
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="quiz-question" data-correct="1">
+                <div class="quiz-q-text">4. You have a skilled but toxic team member who creates drama. What do you do?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-value="0" onclick="selectQuizOption(this)">
+                        <span class="quiz-radio"></span>
+                        Keep them — they're too skilled to lose
+                    </div>
+                    <div class="quiz-option" data-value="1" onclick="selectQuizOption(this)">
+                        <span class="quiz-radio"></span>
+                        Clear warning, documented improvement plan, and exit if no change
+                    </div>
+                    <div class="quiz-option" data-value="0" onclick="selectQuizOption(this)">
+                        <span class="quiz-radio"></span>
+                        Ignore it — every team has difficult people
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="quiz-question" data-correct="1">
+                <div class="quiz-q-text">5. What's your positive-to-negative feedback ratio on a typical day?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-value="0" onclick="selectQuizOption(this)">
+                        <span class="quiz-radio"></span>
+                        Mostly negative — I focus on what needs to be fixed
+                    </div>
+                    <div class="quiz-option" data-value="1" onclick="selectQuizOption(this)">
+                        <span class="quiz-radio"></span>
+                        At least 3:1 positive to negative — I intentionally balance it
+                    </div>
+                    <div class="quiz-option" data-value="0" onclick="selectQuizOption(this)">
+                        <span class="quiz-radio"></span>
+                        I've never thought about it
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q6 -->
+            <div class="quiz-question" data-correct="1">
+                <div class="quiz-q-text">6. How well do you know your key team members personally?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-value="0" onclick="selectQuizOption(this)">
+                        <span class="quiz-radio"></span>
+                        I know their names and job titles
+                    </div>
+                    <div class="quiz-option" data-value="1" onclick="selectQuizOption(this)">
+                        <span class="quiz-radio"></span>
+                        I know their families, goals, challenges, and what motivates them
+                    </div>
+                    <div class="quiz-option" data-value="0" onclick="selectQuizOption(this)">
+                        <span class="quiz-radio"></span>
+                        We keep things strictly professional
+                    </div>
+                </div>
+            </div>
+
+            <button class="quiz-btn" onclick="submitQuiz()">See My Score →</button>
+
+            <div class="quiz-result" id="quizResult">
+                <div class="quiz-score" id="quizScore">0/6</div>
+                <div class="quiz-feedback" id="quizFeedback"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- SECTION 7: CULTURE IMPACT CALCULATOR -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div id="calculator" class="section animate-on-scroll">
+        <div class="section-header">
+            <div class="section-icon">🧮</div>
+            <h2 class="section-title">Culture Impact Calculator</h2>
+        </div>
+
+        <div class="content-card" style="margin-bottom: 0.5rem;">
+            <p>See how much your company could save by improving team culture and reducing turnover. Adjust the sliders to match your business.</p>
+        </div>
+
+        <div class="tool-container">
+            <div class="tool-row">
+                <div class="tool-label">
+                    <span>Total Employees (Office + Site)</span>
+                    <span class="tool-value" id="empVal">30</span>
+                </div>
+                <input type="range" class="tool-range" id="empRange" min="5" max="200" value="30" oninput="calcUpdate()">
+            </div>
+            <div class="tool-row">
+                <div class="tool-label">
+                    <span>Average Monthly Salary (AED)</span>
+                    <span class="tool-value" id="salVal">5,000</span>
+                </div>
+                <input type="range" class="tool-range" id="salRange" min="2000" max="25000" step="500" value="5000" oninput="calcUpdate()">
+            </div>
+            <div class="tool-row">
+                <div class="tool-label">
+                    <span>Current Annual Turnover Rate (%)</span>
+                    <span class="tool-value" id="turnVal">35%</span>
+                </div>
+                <input type="range" class="tool-range" id="turnRange" min="5" max="60" value="35" oninput="calcUpdate()">
+            </div>
+            <div class="tool-row">
+                <div class="tool-label">
+                    <span>Replacement Cost (months of salary)</span>
+                    <span class="tool-value" id="repVal">4</span>
+                </div>
+                <input type="range" class="tool-range" id="repRange" min="1" max="8" value="4" oninput="calcUpdate()">
+            </div>
+
+            <div class="tool-output">
+                <div class="tool-output-row">
+                    <span class="tool-output-label">Employees leaving per year (current)</span>
+                    <span class="tool-output-value" id="outLeaving">11</span>
+                </div>
+                <div class="tool-output-row">
+                    <span class="tool-output-label">Current annual turnover cost</span>
+                    <span class="tool-output-value" id="outCostCurrent">AED 220,000</span>
+                </div>
+                <div class="tool-output-row">
+                    <span class="tool-output-label">Projected turnover after Whale Done culture (est. 50% reduction)</span>
+                    <span class="tool-output-value" id="outCostNew">AED 110,000</span>
+                </div>
+                <div class="tool-output-row" style="border-bottom: none; padding-top: 1rem;">
+                    <span class="tool-output-label"><strong>💰 Estimated Annual Savings</strong></span>
+                    <span class="tool-output-value tool-output-highlight" id="outSavings">AED 110,000</span>
+                </div>
+            </div>
+
+            <div class="callout tip" style="margin-top: 1.25rem;">
+                <span class="callout-icon">💡</span>
+                <div class="callout-body">
+                    <strong>Beyond the Numbers</strong>
+                    <p>This calculator only captures direct replacement costs. The real savings include: fewer project delays, less rework, better DM inspection pass rates, higher client satisfaction scores, and more repeat contracts.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- SECTION 8: 7-DAY ACTION PLAN -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div id="action-plan" class="section animate-on-scroll">
+        <div class="section-header">
+            <div class="section-icon">✅</div>
+            <h2 class="section-title">7-Day Whale Done Action Plan</h2>
+        </div>
+
+        <div class="content-card" style="margin-bottom: 1rem;">
+            <p>Don't try to change everything at once. Follow this step-by-step weekly plan to start building a Whale Done culture in your company. Check off each item as you complete it.</p>
+        </div>
+
+        <div class="checklist-container">
+            <div class="checklist-progress">
+                <div class="checklist-progress-bar">
+                    <div class="checklist-progress-fill" id="checklistProgress"></div>
+                </div>
+                <span class="checklist-progress-text" id="checklistText">0 / 7 complete</span>
+            </div>
+
+            <div class="checklist-item" onclick="toggleCheck(this)">
+                <span class="checklist-check">✓</span>
+                <span class="checklist-day">Day 1</span>
+                <span class="checklist-label"><strong>Connection Audit:</strong> List your top 10 employees by name. Write down one personal detail about each. If you can't — that's your starting point.</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this)">
+                <span class="checklist-check">✓</span>
+                <span class="checklist-day">Day 2</span>
+                <span class="checklist-label"><strong>Catch Someone Right:</strong> Today, praise 3 different team members for specific good work. Be detailed — not just "good job" but "the way you finished the waterproofing ahead of schedule saved us a full day."</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this)">
+                <span class="checklist-check">✓</span>
+                <span class="checklist-day">Day 3</span>
+                <span class="checklist-label"><strong>Growth Conversation:</strong> Have a 15-minute sit-down with one key employee. Ask: "Where do you see yourself in 2 years?" — then listen, don't talk.</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this)">
+                <span class="checklist-check">✓</span>
+                <span class="checklist-day">Day 4</span>
+                <span class="checklist-label"><strong>Toxic Audit:</strong> Honestly identify if there's anyone on your team whose behaviour you're tolerating because of their skill. Write down the specific behaviours and their impact on others.</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this)">
+                <span class="checklist-check">✓</span>
+                <span class="checklist-day">Day 5</span>
+                <span class="checklist-label"><strong>Fix a Correction:</strong> Think of the last time you corrected someone harshly. Go back to them today and re-do it — open with what they did well, then discuss the improvement.</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this)">
+                <span class="checklist-check">✓</span>
+                <span class="checklist-day">Day 6</span>
+                <span class="checklist-label"><strong>Public Recognition:</strong> In your WhatsApp group or morning meeting, recognise one team member by name for something specific they did well this week.</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this)">
+                <span class="checklist-check">✓</span>
+                <span class="checklist-day">Day 7</span>
+                <span class="checklist-label"><strong>Weekly Reflection:</strong> How did people respond this week? Write down 3 things that worked and 1 thing you'll improve next week. Commit to making this a permanent habit.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- SECTION 9: KEY TAKEAWAYS -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div id="takeaways" class="section animate-on-scroll">
+        <div class="takeaway-box">
+            <h2>🐋 Key Takeaways</h2>
+            <div class="takeaway-items">
+                <div class="takeaway-item">
+                    <div class="ti-icon">🤝</div>
+                    <p><strong>Connect First</strong><br>Build trust before correcting. Know your people as humans, not just job titles.</p>
+                </div>
+                <div class="takeaway-item">
+                    <div class="ti-icon">👀</div>
+                    <p><strong>Catch the Good</strong><br>Actively hunt for things going right. Aim for 5:1 positive-to-negative ratio.</p>
+                </div>
+                <div class="takeaway-item">
+                    <div class="ti-icon">🗺️</div>
+                    <p><strong>Map Growth</strong><br>Every person wants to go somewhere. Help them see the path — from helper to supervisor.</p>
+                </div>
+                <div class="takeaway-item">
+                    <div class="ti-icon">🚫</div>
+                    <p><strong>Cut Toxicity</strong><br>No skill justifies destroying team culture. Remove toxic people — the team will thank you.</p>
+                </div>
+                <div class="takeaway-item">
+                    <div class="ti-icon">💰</div>
+                    <p><strong>Culture = Profit</strong><br>Retention saves money. Motivated teams deliver faster, with fewer reworks and happier clients.</p>
+                </div>
+                <div class="takeaway-item">
+                    <div class="ti-icon">📅</div>
+                    <p><strong>Start This Week</strong><br>Use the 7-day action plan above. Small consistent changes compound into transformation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!-- /main-container -->
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>Civil-Tech.ai Knowledge Portal · Built for Dubai's construction SME owners</p>
+    <p style="margin-top:0.4rem;">Based on "Whale Done!" by Ken Blanchard · Presented by <a href="https://civiltech-ai.github.io/knowledge-portal/">Mandeep Arora</a></p>
+</footer>
+
+<script>
+    // ─── PROGRESS BAR ───
+    window.addEventListener('scroll', () => {
+        const h = document.documentElement;
+        const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+        document.getElementById('progressBar').style.width = Math.min(pct, 100) + '%';
+    });
+
+    // ─── SMOOTH SCROLL ───
+    document.querySelectorAll('.toc-item').forEach(a => {
+        a.addEventListener('click', e => {
+            e.preventDefault();
+            const id = a.getAttribute('href').substring(1);
+            const el = document.getElementById(id);
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+
+    // ─── SCROLL ANIMATIONS ───
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.animate-on-scroll').forEach(el => obs.observe(el));
+
+    // ─── SCENARIO ACCORDION ───
+    function toggleScenario(header) {
+        const body = header.nextElementSibling;
+        const toggle = header.querySelector('.toggle');
+        const isOpen = body.classList.contains('open');
+        // Close all
+        document.querySelectorAll('.scenario-body').forEach(b => b.classList.remove('open'));
+        document.querySelectorAll('.scenario-header .toggle').forEach(t => t.classList.remove('open'));
+        // Toggle
+        if (!isOpen) {
+            body.classList.add('open');
+            toggle.classList.add('open');
+        }
+    }
+
+    // ─── QUIZ ───
+    function selectQuizOption(opt) {
+        const question = opt.closest('.quiz-question');
+        question.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+    }
+
+    function submitQuiz() {
+        const questions = document.querySelectorAll('.quiz-question');
+        let score = 0;
+        let answered = 0;
+        questions.forEach(q => {
+            const selected = q.querySelector('.quiz-option.selected');
+            if (selected) {
+                answered++;
+                if (selected.dataset.value === '1') {
+                    score++;
+                    selected.classList.add('correct');
+                } else {
+                    selected.classList.add('incorrect');
+                    // Show correct
+                    q.querySelectorAll('.quiz-option').forEach(o => {
+                        if (o.dataset.value === '1') o.classList.add('correct');
+                    });
+                }
+            }
+        });
+
+        if (answered < questions.length) {
+            alert('Please answer all ' + questions.length + ' questions before submitting.');
+            return;
+        }
+
+        const result = document.getElementById('quizResult');
+        document.getElementById('quizScore').textContent = score + '/' + questions.length;
+
+        let feedback = '';
+        const pct = score / questions.length;
+        if (pct === 1) {
+            feedback = '🐋 Outstanding! You\'re already leading with a Whale Done mindset. Keep it up — your team is lucky to have you.';
+        } else if (pct >= 0.66) {
+            feedback = '👍 Good foundation! You\'re on the right track. Focus on the areas you missed — small improvements here will compound into big cultural shifts.';
+        } else if (pct >= 0.33) {
+            feedback = '⚡ Room for growth. You have some Whale Done instincts, but old habits still dominate. Use the 7-day action plan below to start shifting your approach.';
+        } else {
+            feedback = '🔄 Time for a reset. Your current approach is likely costing you good people and money. The good news? Every principle on this page can be applied starting tomorrow. Begin with Day 1 of the action plan.';
+        }
+        document.getElementById('quizFeedback').textContent = feedback;
+        result.style.display = 'block';
+        result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // ─── CHECKLIST ───
+    function toggleCheck(item) {
+        item.classList.toggle('checked');
+        updateChecklistProgress();
+    }
+
+    function updateChecklistProgress() {
+        const total = document.querySelectorAll('.checklist-item').length;
+        const checked = document.querySelectorAll('.checklist-item.checked').length;
+        const pct = (checked / total) * 100;
+        document.getElementById('checklistProgress').style.width = pct + '%';
+        document.getElementById('checklistText').textContent = checked + ' / ' + total + ' complete';
+    }
+
+    // ─── CALCULATOR ───
+    function calcUpdate() {
+        const emp = parseInt(document.getElementById('empRange').value);
+        const sal = parseInt(document.getElementById('salRange').value);
+        const turn = parseInt(document.getElementById('turnRange').value);
+        const rep = parseInt(document.getElementById('repRange').value);
+
+        document.getElementById('empVal').textContent = emp;
+        document.getElementById('salVal').textContent = sal.toLocaleString();
+        document.getElementById('turnVal').textContent = turn + '%';
+        document.getElementById('repVal').textContent = rep;
+
+        const leaving = Math.round(emp * (turn / 100));
+        const costPer = sal * rep;
+        const costCurrent = leaving * costPer;
+        const leavingNew = Math.round(leaving * 0.5);
+        const costNew = leavingNew * costPer;
+        const savings = costCurrent - costNew;
+
+        document.getElementById('outLeaving').textContent = leaving;
+        document.getElementById('outCostCurrent').textContent = 'AED ' + costCurrent.toLocaleString();
+        document.getElementById('outCostNew').textContent = 'AED ' + costNew.toLocaleString();
+        document.getElementById('outSavings').textContent = 'AED ' + savings.toLocaleString();
+    }
+    calcUpdate();
+</script>
+
+</body>
+</html>
