@@ -1,0 +1,2106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fast Follow-Up Wins More Sales — Civil-Tech.ai Knowledge Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0bbcb7;
+            --primary-dark: #099e99;
+            --primary-light: #e6f9f8;
+            --accent: #f5a623;
+            --accent-light: #fff8ed;
+            --dark: #1a2b3c;
+            --dark-soft: #2d3e50;
+            --text: #374151;
+            --text-light: #6b7280;
+            --text-lighter: #9ca3af;
+            --bg: #f0f5f4;
+            --white: #ffffff;
+            --border: #e5e7eb;
+            --border-light: #f3f4f6;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.10);
+            --shadow-xl: 0 16px 48px rgba(0,0,0,0.12);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --gradient-teal: linear-gradient(135deg, #0bbcb7 0%, #0e9aa0 40%, #1a8a9a 100%);
+            --gradient-hero: linear-gradient(135deg, #0bbcb7 0%, #0e9aa0 30%, #1a8a9a 60%, #0bbcb7 100%);
+            --red: #ef4444;
+            --red-light: #fef2f2;
+            --green: #22c55e;
+            --green-light: #f0fdf4;
+            --blue: #3b82f6;
+            --blue-light: #eff6ff;
+            --orange: #f97316;
+            --orange-light: #fff7ed;
+            --purple: #8b5cf6;
+            --purple-light: #f5f3ff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Navigation ── */
+        .navbar {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+        }
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+        .navbar-logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--primary);
+        }
+        .navbar-badge {
+            background: var(--white);
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 999px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        .navbar-back {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: color 0.2s;
+        }
+        .navbar-back:hover { color: var(--primary); }
+
+        /* ── Reading Progress ── */
+        .reading-progress {
+            position: fixed;
+            top: 64px;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: var(--gradient-teal);
+            z-index: 99;
+            transition: width 0.1s linear;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            background: var(--gradient-hero);
+            padding: 4rem 2rem 3.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -60%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -40%;
+            left: -5%;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.04);
+        }
+        .hero-content {
+            max-width: 860px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-category {
+            display: inline-block;
+            background: rgba(255,255,255,0.18);
+            color: var(--white);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 1.2rem;
+            backdrop-filter: blur(4px);
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.88);
+            max-width: 640px;
+            line-height: 1.7;
+        }
+        .hero-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .hero-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: rgba(255,255,255,0.75);
+            font-size: 0.82rem;
+            font-weight: 500;
+        }
+
+        /* ── Main Layout ── */
+        .main-container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* ── Table of Contents ── */
+        .toc {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+        }
+        .toc-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-lighter);
+            margin-bottom: 1rem;
+        }
+        .toc-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+        }
+        .toc-list a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            border-radius: var(--radius-sm);
+            transition: all 0.2s;
+        }
+        .toc-list a:hover {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+        }
+        .toc-num {
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 0.7rem;
+            font-weight: 700;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+
+        /* ── Section Cards ── */
+        .section-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease forwards;
+        }
+        .section-card:nth-child(2) { animation-delay: 0.1s; }
+        .section-card:nth-child(3) { animation-delay: 0.15s; }
+        .section-card:nth-child(4) { animation-delay: 0.2s; }
+        .section-card:nth-child(5) { animation-delay: 0.25s; }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        .section-card h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        .section-card h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark-soft);
+            margin: 1.5rem 0 0.75rem;
+        }
+        .section-card p {
+            color: var(--text);
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+        }
+
+        /* ── Quote Block ── */
+        .quote-block {
+            background: var(--gradient-teal);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            margin: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .quote-block::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 8rem;
+            color: rgba(255,255,255,0.1);
+            font-family: 'Playfair Display', serif;
+        }
+        .quote-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--white);
+            font-weight: 600;
+            line-height: 1.5;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ── Comparison Table ── */
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+        .comparison-table thead th {
+            background: var(--dark);
+            color: var(--white);
+            padding: 1rem 1.25rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: left;
+        }
+        .comparison-table tbody td {
+            padding: 1rem 1.25rem;
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border-light);
+            vertical-align: top;
+        }
+        .comparison-table tbody tr:last-child td { border-bottom: none; }
+        .comparison-table tbody tr:nth-child(even) { background: var(--border-light); }
+        .comparison-table .result-win {
+            color: var(--green);
+            font-weight: 600;
+        }
+        .comparison-table .result-lose {
+            color: var(--red);
+            font-weight: 600;
+        }
+
+        /* ── Info Cards Grid ── */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .info-card {
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            border: 1px solid var(--border-light);
+        }
+        .info-card-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.75rem;
+        }
+        .info-card h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+        .info-card p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0;
+        }
+        .info-card.red { background: var(--red-light); border-color: #fecaca; }
+        .info-card.green { background: var(--green-light); border-color: #bbf7d0; }
+        .info-card.blue { background: var(--blue-light); border-color: #bfdbfe; }
+        .info-card.orange { background: var(--orange-light); border-color: #fed7aa; }
+        .info-card.purple { background: var(--purple-light); border-color: #ddd6fe; }
+        .info-card.teal { background: var(--primary-light); border-color: #99f6e4; }
+
+        /* ── Stat Blocks ── */
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .stat-block {
+            text-align: center;
+            background: var(--primary-light);
+            border-radius: var(--radius-md);
+            padding: 1.5rem 1rem;
+        }
+        .stat-number {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-light);
+            margin-top: 0.4rem;
+            font-weight: 500;
+        }
+
+        /* ── Timeline / Flow ── */
+        .flow-container {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        .flow-step {
+            flex: 1;
+            text-align: center;
+            padding: 1.5rem 1rem;
+            position: relative;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            margin-right: -1px;
+        }
+        .flow-step:first-child { border-radius: var(--radius-md) 0 0 var(--radius-md); }
+        .flow-step:last-child { border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-right: 0; }
+        .flow-step-num {
+            width: 32px;
+            height: 32px;
+            background: var(--gradient-teal);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin: 0 auto 0.75rem;
+        }
+        .flow-step h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.3rem;
+        }
+        .flow-step p {
+            font-size: 0.78rem;
+            color: var(--text-light);
+            margin-bottom: 0;
+        }
+        .flow-arrow {
+            position: absolute;
+            right: -12px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        /* ── Bullet Points ── */
+        .bullet-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        .bullet-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.6rem 0;
+            font-size: 0.92rem;
+            color: var(--text);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .bullet-list li:last-child { border-bottom: none; }
+        .bullet-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            margin-top: 2px;
+        }
+        .bullet-icon.red { background: var(--red-light); color: var(--red); }
+        .bullet-icon.green { background: var(--green-light); color: var(--green); }
+        .bullet-icon.blue { background: var(--blue-light); color: var(--blue); }
+        .bullet-icon.teal { background: var(--primary-light); color: var(--primary); }
+
+        /* ── Interactive Quiz ── */
+        .quiz-container {
+            margin: 1.5rem 0;
+        }
+        .quiz-question {
+            background: var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .quiz-q-text {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-sm);
+            border: 2px solid var(--border);
+            background: var(--white);
+            cursor: pointer;
+            font-size: 0.88rem;
+            transition: all 0.2s;
+        }
+        .quiz-option:hover { border-color: var(--primary); background: var(--primary-light); }
+        .quiz-option.selected { border-color: var(--primary); background: var(--primary-light); }
+        .quiz-option.correct { border-color: var(--green); background: var(--green-light); }
+        .quiz-option.wrong { border-color: var(--red); background: var(--red-light); }
+        .quiz-radio {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2px solid var(--border);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        .quiz-option.selected .quiz-radio {
+            border-color: var(--primary);
+            background: var(--primary);
+        }
+        .quiz-option.selected .quiz-radio::after {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--white);
+            border-radius: 50%;
+        }
+        .quiz-feedback {
+            display: none;
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            margin-top: 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .quiz-feedback.show { display: block; }
+        .quiz-feedback.correct-feedback { background: var(--green-light); color: #166534; border: 1px solid #bbf7d0; }
+        .quiz-feedback.wrong-feedback { background: var(--red-light); color: #991b1b; border: 1px solid #fecaca; }
+        .quiz-result {
+            background: var(--gradient-teal);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            text-align: center;
+            color: var(--white);
+            display: none;
+        }
+        .quiz-result.show { display: block; }
+        .quiz-score {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+        }
+        .quiz-score-label { font-size: 0.9rem; opacity: 0.85; }
+
+        /* ── Calculator ── */
+        .calc-container {
+            background: var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            margin: 1.5rem 0;
+        }
+        .calc-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .calc-field label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 0.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .calc-field input, .calc-field select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-sm);
+            border: 2px solid var(--border);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.2s;
+            background: var(--white);
+        }
+        .calc-field input:focus, .calc-field select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .calc-btn {
+            background: var(--gradient-teal);
+            color: var(--white);
+            border: none;
+            padding: 0.85rem 2rem;
+            border-radius: var(--radius-sm);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+        .calc-btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+        .calc-result {
+            display: none;
+            margin-top: 1.5rem;
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            border: 2px solid var(--primary-light);
+        }
+        .calc-result.show { display: block; }
+        .calc-result-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .calc-result-item {
+            text-align: center;
+            padding: 1rem;
+            background: var(--primary-light);
+            border-radius: var(--radius-sm);
+        }
+        .calc-result-item .value {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .calc-result-item .label {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-top: 0.25rem;
+            font-weight: 500;
+        }
+
+        /* ── Checklist ── */
+        .checklist {
+            margin: 1.5rem 0;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+            margin-bottom: 0.5rem;
+            background: var(--white);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .checklist-item:hover { border-color: var(--primary); }
+        .checklist-item.checked {
+            background: var(--green-light);
+            border-color: #bbf7d0;
+        }
+        .checklist-check {
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            border: 2px solid var(--border);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            margin-top: 2px;
+        }
+        .checklist-item.checked .checklist-check {
+            background: var(--green);
+            border-color: var(--green);
+            color: var(--white);
+        }
+        .checklist-day {
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary);
+            margin-bottom: 0.15rem;
+        }
+        .checklist-text {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        .checklist-desc {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 0.2rem;
+        }
+        .checklist-progress {
+            background: var(--border-light);
+            border-radius: 999px;
+            height: 8px;
+            margin-top: 1rem;
+            overflow: hidden;
+        }
+        .checklist-progress-bar {
+            height: 100%;
+            background: var(--gradient-teal);
+            border-radius: 999px;
+            transition: width 0.4s ease;
+            width: 0%;
+        }
+        .checklist-progress-text {
+            font-size: 0.78rem;
+            color: var(--text-light);
+            margin-top: 0.4rem;
+            text-align: right;
+            font-weight: 500;
+        }
+
+        /* ── Scenario Cards ── */
+        .scenario-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .scenario-card {
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            border: 2px solid;
+        }
+        .scenario-card.slow {
+            background: var(--red-light);
+            border-color: #fca5a5;
+        }
+        .scenario-card.fast {
+            background: var(--green-light);
+            border-color: #86efac;
+        }
+        .scenario-card .scenario-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+        .scenario-card h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        .scenario-card.slow h4 { color: #991b1b; }
+        .scenario-card.fast h4 { color: #166534; }
+        .scenario-card .scenario-list {
+            list-style: none;
+        }
+        .scenario-card .scenario-list li {
+            font-size: 0.85rem;
+            padding: 0.35rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        .scenario-card.slow .scenario-list li { color: #991b1b; }
+        .scenario-card.fast .scenario-list li { color: #166534; }
+
+        /* ── Tip Box ── */
+        .tip-box {
+            display: flex;
+            gap: 1rem;
+            padding: 1.25rem;
+            border-radius: var(--radius-md);
+            margin: 1rem 0;
+            align-items: flex-start;
+        }
+        .tip-box.info { background: var(--blue-light); border: 1px solid #bfdbfe; }
+        .tip-box.warning { background: var(--orange-light); border: 1px solid #fed7aa; }
+        .tip-box.success { background: var(--green-light); border: 1px solid #bbf7d0; }
+        .tip-box-icon { font-size: 1.4rem; flex-shrink: 0; }
+        .tip-box-content { font-size: 0.88rem; color: var(--text); }
+        .tip-box-content strong { color: var(--dark); }
+
+        /* ── Response Time Tracker (Interactive) ── */
+        .tracker-container {
+            background: var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            margin: 1.5rem 0;
+        }
+        .tracker-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .tracker-header h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        .tracker-reset {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-light);
+            padding: 0.4rem 0.8rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .tracker-input-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr auto;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            align-items: end;
+        }
+        .tracker-input-row label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 0.3rem;
+        }
+        .tracker-input-row input, .tracker-input-row select {
+            width: 100%;
+            padding: 0.6rem 0.75rem;
+            border-radius: var(--radius-sm);
+            border: 2px solid var(--border);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            background: var(--white);
+        }
+        .tracker-input-row input:focus, .tracker-input-row select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .tracker-add-btn {
+            background: var(--gradient-teal);
+            color: var(--white);
+            border: none;
+            padding: 0.6rem 1rem;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: 'DM Sans', sans-serif;
+            white-space: nowrap;
+        }
+        .tracker-log {
+            max-height: 250px;
+            overflow-y: auto;
+        }
+        .tracker-entry {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1rem;
+            background: var(--white);
+            border-radius: var(--radius-sm);
+            margin-bottom: 0.5rem;
+            border: 1px solid var(--border-light);
+        }
+        .tracker-entry-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .tracker-badge {
+            padding: 0.2rem 0.6rem;
+            border-radius: 999px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+        .tracker-badge.fast { background: var(--green-light); color: #166534; }
+        .tracker-badge.medium { background: var(--orange-light); color: #9a3412; }
+        .tracker-badge.slow { background: var(--red-light); color: #991b1b; }
+        .tracker-entry-name { font-size: 0.88rem; font-weight: 500; }
+        .tracker-entry-time { font-size: 0.82rem; color: var(--text-light); }
+        .tracker-avg {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0.75rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+        .tracker-avg-item {
+            text-align: center;
+            padding: 0.75rem;
+            background: var(--white);
+            border-radius: var(--radius-sm);
+        }
+        .tracker-avg-item .val {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+        .tracker-avg-item .lbl {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            margin-top: 0.15rem;
+        }
+        .tracker-empty {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-lighter);
+            font-size: 0.88rem;
+        }
+
+        /* ── WhatsApp Templates ── */
+        .template-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        .template-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .template-header:hover { background: var(--border-light); }
+        .template-header h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .template-toggle { font-size: 1rem; color: var(--text-lighter); transition: transform 0.3s; }
+        .template-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .template-body.open { max-height: 500px; }
+        .template-content {
+            padding: 0 1.25rem 1.25rem;
+        }
+        .template-msg {
+            background: #dcf8c6;
+            border-radius: 0 var(--radius-md) var(--radius-md) var(--radius-md);
+            padding: 1rem;
+            font-size: 0.85rem;
+            color: #303030;
+            line-height: 1.6;
+            position: relative;
+            margin-bottom: 0.75rem;
+        }
+        .template-msg::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            border-width: 0 8px 8px 0;
+            border-style: solid;
+            border-color: transparent #dcf8c6 transparent transparent;
+        }
+        .template-copy-btn {
+            background: var(--primary-light);
+            color: var(--primary);
+            border: 1px solid #99f6e4;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.2s;
+        }
+        .template-copy-btn:hover { background: var(--primary); color: var(--white); }
+
+        /* ── Pipeline Visual ── */
+        .pipeline {
+            display: flex;
+            gap: 0;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+        }
+        .pipeline-stage {
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+            padding: 1.5rem 0.75rem;
+            position: relative;
+            background: var(--white);
+            clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%, 15px 50%);
+            margin-left: -2px;
+        }
+        .pipeline-stage:first-child {
+            clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%);
+        }
+        .pipeline-stage:nth-child(1) { background: #e0f2fe; }
+        .pipeline-stage:nth-child(2) { background: #dbeafe; }
+        .pipeline-stage:nth-child(3) { background: #c7d2fe; }
+        .pipeline-stage:nth-child(4) { background: #a5f3fc; }
+        .pipeline-stage:nth-child(5) { background: var(--green-light); }
+        .pipeline-stage .stage-icon { font-size: 1.3rem; margin-bottom: 0.4rem; }
+        .pipeline-stage .stage-name {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--dark);
+        }
+        .pipeline-stage .stage-time {
+            font-size: 0.68rem;
+            color: var(--text-light);
+            margin-top: 0.2rem;
+        }
+
+        /* ── Key Takeaway Box ── */
+        .takeaway-box {
+            background: var(--gradient-teal);
+            border-radius: var(--radius-xl);
+            padding: 2.5rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .takeaway-box::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+        }
+        .takeaway-box h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+        }
+        .takeaway-list {
+            list-style: none;
+        }
+        .takeaway-list li {
+            color: rgba(255,255,255,0.92);
+            font-size: 0.92rem;
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+        .takeaway-list li span {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-lighter);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+            margin-top: 1rem;
+        }
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .hero { padding: 3rem 1.5rem 2.5rem; }
+            .main-container { padding: 1.5rem; }
+            .section-card { padding: 1.75rem; }
+            .toc-list { grid-template-columns: 1fr; }
+            .info-grid { grid-template-columns: 1fr; }
+            .stat-row { grid-template-columns: 1fr; }
+            .scenario-container { grid-template-columns: 1fr; }
+            .calc-row { grid-template-columns: 1fr; }
+            .calc-result-grid { grid-template-columns: 1fr; }
+            .flow-container { flex-direction: column; }
+            .flow-step { border-radius: var(--radius-md) !important; margin-right: 0; margin-bottom: -1px; }
+            .flow-arrow { display: none; }
+            .tracker-input-row { grid-template-columns: 1fr 1fr; }
+            .tracker-avg { grid-template-columns: 1fr; }
+            .pipeline { flex-direction: column; }
+            .pipeline-stage { clip-path: none !important; border-radius: var(--radius-sm); margin: 0 0 4px 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="https://civiltech-ai.github.io/knowledge-portal/" class="navbar-brand">
+            <span class="navbar-logo">Civil-Tech.ai</span>
+            <span class="navbar-badge">Knowledge Portal</span>
+        </a>
+        <a href="https://civiltech-ai.github.io/knowledge-portal/" class="navbar-back">
+            ← Back to Library
+        </a>
+    </nav>
+
+    <!-- Reading Progress -->
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-category">💰 Sales & Revenue</span>
+            <h1>Fast Follow-Up Wins More Sales Than Better Products</h1>
+            <p class="hero-subtitle">In Dubai's construction market, the company that responds first almost always wins the order. Learn why speed beats perfection — and how to build a follow-up system that turns enquiries into revenue.</p>
+            <div class="hero-meta">
+                <span class="hero-meta-item">📖 12 min read</span>
+                <span class="hero-meta-item">🧩 Interactive exercises</span>
+                <span class="hero-meta-item">🛠️ Ready-to-use templates</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="main-container">
+
+        <!-- Table of Contents -->
+        <nav class="toc">
+            <div class="toc-title">📑 Table of Contents</div>
+            <ul class="toc-list">
+                <li><a href="#core-concept"><span class="toc-num">01</span> The Core Concept</a></li>
+                <li><a href="#real-scenario"><span class="toc-num">02</span> Real-World Scenario</a></li>
+                <li><a href="#why-speed-matters"><span class="toc-num">03</span> Why Speed Wins in Construction</a></li>
+                <li><a href="#cost-of-slow"><span class="toc-num">04</span> The True Cost of Slow Follow-Up</a></li>
+                <li><a href="#follow-up-system"><span class="toc-num">05</span> Build Your Follow-Up System</a></li>
+                <li><a href="#whatsapp-templates"><span class="toc-num">06</span> WhatsApp Response Templates</a></li>
+                <li><a href="#response-tracker"><span class="toc-num">07</span> Response Time Tracker</a></li>
+                <li><a href="#quiz"><span class="toc-num">08</span> Test Your Knowledge</a></li>
+                <li><a href="#revenue-calculator"><span class="toc-num">09</span> Lost Revenue Calculator</a></li>
+                <li><a href="#action-plan"><span class="toc-num">10</span> 5-Day Action Plan</a></li>
+            </ul>
+        </nav>
+
+        <!-- Section 1: Core Concept -->
+        <section class="section-card" id="core-concept">
+            <span class="section-label">Section 01</span>
+            <h2>The Core Concept — Speed Creates Trust</h2>
+            <p>Many construction businesses in Dubai lose projects not because their pricing is wrong or their work quality is poor — but simply because they took too long to respond. In a market where clients send enquiries to multiple contractors simultaneously, <strong>the first company to reply with a clear, professional response almost always wins the job.</strong></p>
+
+            <div class="quote-block">
+                <div class="quote-text">"Fast Follow-Up Wins More Sales Than Better Products."</div>
+            </div>
+
+            <h3>What does this really mean?</h3>
+            <ul class="bullet-list">
+                <li>
+                    <span class="bullet-icon teal">⚡</span>
+                    <div><strong>Speed signals professionalism.</strong> When you respond quickly to a fit-out enquiry or structural consulting request, the client immediately assumes your operations are well-organised.</div>
+                </li>
+                <li>
+                    <span class="bullet-icon teal">🎯</span>
+                    <div><strong>First responder advantage.</strong> Clients form early loyalty to the first company that acknowledges their need — even before comparing BOQs or pricing.</div>
+                </li>
+                <li>
+                    <span class="bullet-icon teal">🔄</span>
+                    <div><strong>Consistent follow-up closes deals.</strong> A single reply isn't enough. It takes an average of 3–5 follow-ups before a client commits to a contractor in the UAE market.</div>
+                </li>
+                <li>
+                    <span class="bullet-icon teal">💡</span>
+                    <div><strong>Responsiveness replaces discounting.</strong> Instead of cutting your rate to win a project, respond faster and follow up more consistently. Clients pay premium rates to contractors who feel reliable.</div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Section 2: Real-World Scenario -->
+        <section class="section-card" id="real-scenario">
+            <span class="section-label">Section 02</span>
+            <h2>Real-World Scenario — Two Contractors, One Enquiry</h2>
+            <p>A property developer in Business Bay sends an RFQ (Request for Quotation) for a 3-floor commercial fit-out to five contractors. Here's how two of them handled it:</p>
+
+            <div class="scenario-container">
+                <div class="scenario-card slow">
+                    <div class="scenario-icon">🐢</div>
+                    <h4>Al Noor Construction LLC</h4>
+                    <ul class="scenario-list">
+                        <li>❌ Saw the email on Sunday, responded on Wednesday</li>
+                        <li>❌ Sent a generic PDF capability statement</li>
+                        <li>❌ No follow-up call or WhatsApp message</li>
+                        <li>❌ Waited for the client to ask questions</li>
+                        <li>❌ <strong>Result: Never heard back</strong></li>
+                    </ul>
+                </div>
+                <div class="scenario-card fast">
+                    <div class="scenario-icon">🚀</div>
+                    <h4>BuildRight Engineering LLC</h4>
+                    <ul class="scenario-list">
+                        <li>✅ Replied within 20 minutes via WhatsApp</li>
+                        <li>✅ Asked 3 specific clarification questions</li>
+                        <li>✅ Followed up next morning with a site visit offer</li>
+                        <li>✅ Sent preliminary scope estimate within 48 hours</li>
+                        <li>✅ <strong>Result: Awarded the AED 2.8M contract</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Al Noor (Slow)</th>
+                        <th>BuildRight (Fast)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Response Time</td>
+                        <td class="result-lose">3 days</td>
+                        <td class="result-win">20 minutes</td>
+                    </tr>
+                    <tr>
+                        <td>Follow-Up Actions</td>
+                        <td class="result-lose">0 follow-ups</td>
+                        <td class="result-win">3 follow-ups in 48 hours</td>
+                    </tr>
+                    <tr>
+                        <td>Personalisation</td>
+                        <td class="result-lose">Generic PDF</td>
+                        <td class="result-win">Project-specific questions</td>
+                    </tr>
+                    <tr>
+                        <td>Client Perception</td>
+                        <td class="result-lose">"Not interested"</td>
+                        <td class="result-win">"Professional and eager"</td>
+                    </tr>
+                    <tr>
+                        <td>Outcome</td>
+                        <td class="result-lose">Lost opportunity</td>
+                        <td class="result-win">Won AED 2.8M project</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="tip-box info">
+                <span class="tip-box-icon">💡</span>
+                <div class="tip-box-content">
+                    <strong>Key Insight:</strong> BuildRight didn't have a lower price. Their estimate was actually 8% higher. But speed and professionalism created the trust that won them the contract.
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Why Speed Matters -->
+        <section class="section-card" id="why-speed-matters">
+            <span class="section-label">Section 03</span>
+            <h2>Why Speed Wins in Dubai's Construction Market</h2>
+            <p>The UAE construction sector has unique characteristics that make follow-up speed even more critical than in other industries:</p>
+
+            <div class="stat-row">
+                <div class="stat-block">
+                    <div class="stat-number">78%</div>
+                    <div class="stat-label">of clients choose the first contractor who responds with a clear plan</div>
+                </div>
+                <div class="stat-block">
+                    <div class="stat-number">5–10</div>
+                    <div class="stat-label">contractors receive the same RFQ in Dubai — your competition is immediate</div>
+                </div>
+                <div class="stat-block">
+                    <div class="stat-number">30 min</div>
+                    <div class="stat-label">is the ideal maximum response time for high-value enquiries</div>
+                </div>
+            </div>
+
+            <h3>The 6 Reasons Speed Matters Here</h3>
+            <div class="info-grid">
+                <div class="info-card teal">
+                    <div class="info-card-icon">🏗️</div>
+                    <h4>Multiple Quotes Culture</h4>
+                    <p>Clients send the same scope to 5–10 contractors simultaneously. The first professional reply gets the edge.</p>
+                </div>
+                <div class="info-card blue">
+                    <div class="info-card-icon">📱</div>
+                    <h4>WhatsApp-First Communication</h4>
+                    <p>Most initial enquiries come via WhatsApp. Clients expect real-time responses, not email replies after 2 days.</p>
+                </div>
+                <div class="info-card orange">
+                    <div class="info-card-icon">⏰</div>
+                    <h4>Tight Project Timelines</h4>
+                    <p>Fit-out deadlines, DM inspection schedules, and handover dates mean clients need contractors who move fast.</p>
+                </div>
+                <div class="info-card green">
+                    <div class="info-card-icon">🤝</div>
+                    <h4>Relationship-Driven Decisions</h4>
+                    <p>In the UAE, trust is built in the early interaction. A fast reply signals reliability for the entire project.</p>
+                </div>
+                <div class="info-card purple">
+                    <div class="info-card-icon">💰</div>
+                    <h4>High Project Values</h4>
+                    <p>A single fit-out or structural project in Dubai can be worth AED 500K–5M+. Delayed response means real revenue loss.</p>
+                </div>
+                <div class="info-card red">
+                    <div class="info-card-icon">🏢</div>
+                    <h4>Consultant & Developer Networks</h4>
+                    <p>One delayed response to a consultant can mean losing referrals for multiple future projects — not just this one.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Cost of Slow Follow-Up -->
+        <section class="section-card" id="cost-of-slow">
+            <span class="section-label">Section 04</span>
+            <h2>The True Cost of Slow Follow-Up</h2>
+            <p>Most construction company owners don't realise how much revenue they're losing through slow or inconsistent follow-up. Let's break it down:</p>
+
+            <h3>🔴 What Slow Follow-Up Actually Costs You</h3>
+            <div class="info-grid">
+                <div class="info-card red">
+                    <div class="info-card-icon">📉</div>
+                    <h4>Lost Sales Opportunities</h4>
+                    <p>Every enquiry you don't respond to within 30 minutes has a 60% lower chance of conversion. That's real money walking to your competitor.</p>
+                </div>
+                <div class="info-card red">
+                    <div class="info-card-icon">💸</div>
+                    <h4>Wasted Marketing Spend</h4>
+                    <p>You spent AED 5,000–15,000/month on Google Ads, LinkedIn, and referrals to generate those leads. Slow follow-up means that investment goes to zero.</p>
+                </div>
+                <div class="info-card red">
+                    <div class="info-card-icon">🔗</div>
+                    <h4>Broken Referral Chains</h4>
+                    <p>A consultant who refers you to a developer expects you to respond quickly. One slow response and they'll stop recommending you.</p>
+                </div>
+                <div class="info-card red">
+                    <div class="info-card-icon">📊</div>
+                    <h4>Higher Cost Per Acquisition</h4>
+                    <p>When you lose warm leads, you need more new leads to hit the same revenue — increasing your cost per project won by 3–5x.</p>
+                </div>
+            </div>
+
+            <h3>🟢 What Fast Follow-Up Delivers</h3>
+            <ul class="bullet-list">
+                <li>
+                    <span class="bullet-icon green">↗️</span>
+                    <div><strong>2–3x higher conversion rates</strong> — Same leads, more projects won, just by responding faster</div>
+                </li>
+                <li>
+                    <span class="bullet-icon green">💰</span>
+                    <div><strong>Premium pricing power</strong> — Clients pay 5–15% more for contractors they perceive as responsive and organised</div>
+                </li>
+                <li>
+                    <span class="bullet-icon green">🔄</span>
+                    <div><strong>Repeat business without discounts</strong> — Clients come back to contractors who kept them informed throughout</div>
+                </li>
+                <li>
+                    <span class="bullet-icon green">📣</span>
+                    <div><strong>Stronger word-of-mouth</strong> — "They replied in 10 minutes" becomes a referral story that brings new clients</div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Section 5: Follow-Up System -->
+        <section class="section-card" id="follow-up-system">
+            <span class="section-label">Section 05</span>
+            <h2>Build Your Follow-Up System — The 5-Stage Pipeline</h2>
+            <p>Don't rely on memory or sticky notes. Build a structured follow-up pipeline that ensures every enquiry gets the right number of touches at the right time.</p>
+
+            <div class="pipeline">
+                <div class="pipeline-stage">
+                    <div class="stage-icon">📩</div>
+                    <div class="stage-name">Enquiry In</div>
+                    <div class="stage-time">0–15 min</div>
+                </div>
+                <div class="pipeline-stage">
+                    <div class="stage-icon">⚡</div>
+                    <div class="stage-name">First Response</div>
+                    <div class="stage-time">&lt; 30 min</div>
+                </div>
+                <div class="pipeline-stage">
+                    <div class="stage-icon">📋</div>
+                    <div class="stage-name">Scope & Follow-Up</div>
+                    <div class="stage-time">24 hrs</div>
+                </div>
+                <div class="pipeline-stage">
+                    <div class="stage-icon">📑</div>
+                    <div class="stage-name">Quote Sent</div>
+                    <div class="stage-time">48–72 hrs</div>
+                </div>
+                <div class="pipeline-stage">
+                    <div class="stage-icon">✅</div>
+                    <div class="stage-name">Close / LPO</div>
+                    <div class="stage-time">Follow-up #3–5</div>
+                </div>
+            </div>
+
+            <h3>The 3-Follow-Up Minimum Rule</h3>
+            <p>Before marking any lead as "dead," ensure you've completed at least three follow-up touches:</p>
+
+            <div class="flow-container">
+                <div class="flow-step">
+                    <div class="flow-step-num">1</div>
+                    <h4>Same Day</h4>
+                    <p>Acknowledge the enquiry. Ask clarifying questions. Confirm scope interest.</p>
+                    <span class="flow-arrow">→</span>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-step-num">2</div>
+                    <h4>Next Day</h4>
+                    <p>Share a preliminary estimate or offer a site visit. Add value — don't just say "checking in."</p>
+                    <span class="flow-arrow">→</span>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-step-num">3</div>
+                    <h4>Day 3–5</h4>
+                    <p>Send the full BOQ/quotation. Reference previous conversation. Give a clear deadline for pricing validity.</p>
+                </div>
+            </div>
+
+            <div class="tip-box warning">
+                <span class="tip-box-icon">⚠️</span>
+                <div class="tip-box-content">
+                    <strong>Common Mistake:</strong> Most Dubai contractors give up after one follow-up. Studies show that 80% of sales require at least 5 follow-ups, but 44% of businesses stop after just one. Don't be in that 44%.
+                </div>
+            </div>
+
+            <h3>Tools to Automate Your Follow-Up</h3>
+            <div class="info-grid">
+                <div class="info-card teal">
+                    <div class="info-card-icon">📱</div>
+                    <h4>WhatsApp Business Labels</h4>
+                    <p>Tag enquiries as "New Lead," "Quoted," "Follow-Up Needed," "Won," or "Lost." Review labels daily.</p>
+                </div>
+                <div class="info-card blue">
+                    <div class="info-card-icon">📅</div>
+                    <h4>Google Calendar Reminders</h4>
+                    <p>For every quote sent, set a reminder for 48 hours and 5 days later to follow up. No lead falls through the cracks.</p>
+                </div>
+                <div class="info-card green">
+                    <div class="info-card-icon">📊</div>
+                    <h4>Simple CRM / Spreadsheet</h4>
+                    <p>Track: Client Name → Enquiry Date → Response Time → Follow-Ups Done → Status. Even a Google Sheet works.</p>
+                </div>
+                <div class="info-card orange">
+                    <div class="info-card-icon">🤖</div>
+                    <h4>WhatsApp Auto-Reply</h4>
+                    <p>Set an automatic "Thank you, we've received your message" reply outside business hours so no enquiry feels ignored.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: WhatsApp Templates -->
+        <section class="section-card" id="whatsapp-templates">
+            <span class="section-label">Section 06</span>
+            <h2>Ready-to-Use WhatsApp Response Templates</h2>
+            <p>Copy these messages directly into your WhatsApp Business quick replies. Customise the brackets [  ] with your details.</p>
+
+            <div class="template-card">
+                <div class="template-header" onclick="toggleTemplate(this)">
+                    <h4>⚡ Template 1: Instant Acknowledgement (0–15 min)</h4>
+                    <span class="template-toggle">▼</span>
+                </div>
+                <div class="template-body">
+                    <div class="template-content">
+                        <div class="template-msg">
+                            Salaam / Hi [Client Name],<br><br>
+                            Thank you for reaching out to [Your Company Name]. We've received your enquiry for [project type, e.g. "fit-out works at your Business Bay location"].<br><br>
+                            To prepare an accurate quotation, could you share:<br>
+                            1. Approximate area (sqft/sqm)?<br>
+                            2. Preferred timeline?<br>
+                            3. Any drawings or scope documents available?<br><br>
+                            I'm [Your Name], and I'll personally handle this enquiry. Happy to arrange a site visit at your convenience.<br><br>
+                            Best regards 🏗️
+                        </div>
+                        <button class="template-copy-btn" onclick="copyTemplate(this)">📋 Copy to Clipboard</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <div class="template-header" onclick="toggleTemplate(this)">
+                    <h4>📋 Template 2: Next-Day Follow-Up (24 hrs)</h4>
+                    <span class="template-toggle">▼</span>
+                </div>
+                <div class="template-body">
+                    <div class="template-content">
+                        <div class="template-msg">
+                            Hi [Client Name],<br><br>
+                            Following up on your [project type] enquiry from yesterday. We've started reviewing the scope and can share a preliminary estimate by [day/time].<br><br>
+                            If you have any drawings or additional details, please share them — it'll help us give you a more accurate figure.<br><br>
+                            Would you like to schedule a quick site visit this week? We can come at a time that suits you.<br><br>
+                            Looking forward to working with you on this. 🏗️
+                        </div>
+                        <button class="template-copy-btn" onclick="copyTemplate(this)">📋 Copy to Clipboard</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <div class="template-header" onclick="toggleTemplate(this)">
+                    <h4>📑 Template 3: Quote Follow-Up (48–72 hrs after sending BOQ)</h4>
+                    <span class="template-toggle">▼</span>
+                </div>
+                <div class="template-body">
+                    <div class="template-content">
+                        <div class="template-msg">
+                            Hi [Client Name],<br><br>
+                            Just checking in regarding the quotation we shared for your [project type] project. Have you had a chance to review it?<br><br>
+                            A few quick notes:<br>
+                            ✅ Our pricing is valid until [date]<br>
+                            ✅ We can mobilise within [X] days of LPO<br>
+                            ✅ Happy to discuss any adjustments to the scope<br><br>
+                            Let me know if you have any questions — I'm available for a quick call anytime today.<br><br>
+                            Best regards 🏗️
+                        </div>
+                        <button class="template-copy-btn" onclick="copyTemplate(this)">📋 Copy to Clipboard</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <div class="template-header" onclick="toggleTemplate(this)">
+                    <h4>🔄 Template 4: Final Check-In (Day 7–10)</h4>
+                    <span class="template-toggle">▼</span>
+                </div>
+                <div class="template-body">
+                    <div class="template-content">
+                        <div class="template-msg">
+                            Hi [Client Name],<br><br>
+                            Hope all is well. Wanted to do a final follow-up on the [project type] quotation.<br><br>
+                            I understand timelines can shift — if the project scope or requirements have changed, we're happy to revise our proposal accordingly.<br><br>
+                            If you've already moved forward with another contractor, no worries at all. We'd appreciate any feedback to improve our service for future opportunities.<br><br>
+                            Wishing you all the best with the project. 🙏
+                        </div>
+                        <button class="template-copy-btn" onclick="copyTemplate(this)">📋 Copy to Clipboard</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box success">
+                <span class="tip-box-icon">✅</span>
+                <div class="tip-box-content">
+                    <strong>Pro Tip:</strong> Save these as Quick Replies in WhatsApp Business. Go to Settings → Business Tools → Quick Replies → Add (+). Assign shortcuts like "/newlead", "/followup1", "/quotecheck".
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: Response Time Tracker -->
+        <section class="section-card" id="response-tracker">
+            <span class="section-label">Section 07</span>
+            <h2>📊 Response Time Tracker</h2>
+            <p>Use this interactive tool to log and track your team's response times. See where you stand and identify improvement areas.</p>
+
+            <div class="tracker-container">
+                <div class="tracker-header">
+                    <h4>📋 Log Your Enquiry Response Times</h4>
+                    <button class="tracker-reset" onclick="resetTracker()">🔄 Reset All</button>
+                </div>
+                <div class="tracker-input-row">
+                    <div>
+                        <label>Client / Project Name</label>
+                        <input type="text" id="trackerName" placeholder="e.g. Marina Towers Fit-Out">
+                    </div>
+                    <div>
+                        <label>Response Time</label>
+                        <input type="number" id="trackerTime" placeholder="e.g. 25" min="1">
+                    </div>
+                    <div>
+                        <label>Unit</label>
+                        <select id="trackerUnit">
+                            <option value="min">Minutes</option>
+                            <option value="hr">Hours</option>
+                            <option value="day">Days</option>
+                        </select>
+                    </div>
+                    <div style="padding-top:22px;">
+                        <button class="tracker-add-btn" onclick="addTrackerEntry()">+ Add</button>
+                    </div>
+                </div>
+                <div class="tracker-log" id="trackerLog">
+                    <div class="tracker-empty" id="trackerEmpty">No entries yet. Start logging your response times above.</div>
+                </div>
+                <div class="tracker-avg" id="trackerStats" style="display:none;">
+                    <div class="tracker-avg-item">
+                        <div class="val" id="statAvg">—</div>
+                        <div class="lbl">Avg Response (min)</div>
+                    </div>
+                    <div class="tracker-avg-item">
+                        <div class="val" id="statFastest">—</div>
+                        <div class="lbl">Fastest (min)</div>
+                    </div>
+                    <div class="tracker-avg-item">
+                        <div class="val" id="statGrade">—</div>
+                        <div class="lbl">Performance Grade</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 8: Quiz -->
+        <section class="section-card" id="quiz">
+            <span class="section-label">Section 08</span>
+            <h2>🧩 Test Your Follow-Up Knowledge</h2>
+            <p>Answer these 5 questions to check how well you understand the follow-up principles covered in this guide.</p>
+
+            <div class="quiz-container" id="quizContainer">
+                <!-- Q1 -->
+                <div class="quiz-question" data-correct="1">
+                    <div class="quiz-q-text">1. A developer sends an RFQ to 6 contractors. What gives you the biggest advantage?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectOption(this, 0)">
+                            <div class="quiz-radio"></div>
+                            <span>Offering the lowest price</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 1)">
+                            <div class="quiz-radio"></div>
+                            <span>Responding first with specific, relevant questions</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 2)">
+                            <div class="quiz-radio"></div>
+                            <span>Sending a detailed company profile PDF</span>
+                        </div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="quiz-question" data-correct="2">
+                    <div class="quiz-q-text">2. What is the minimum number of follow-ups you should do before marking a lead as "dead"?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectOption(this, 0)">
+                            <div class="quiz-radio"></div>
+                            <span>1 follow-up is enough</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 1)">
+                            <div class="quiz-radio"></div>
+                            <span>2 follow-ups</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 2)">
+                            <div class="quiz-radio"></div>
+                            <span>At least 3 follow-ups, ideally 5</span>
+                        </div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="quiz-question" data-correct="0">
+                    <div class="quiz-q-text">3. What's the ideal maximum response time for a high-value construction enquiry in Dubai?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectOption(this, 0)">
+                            <div class="quiz-radio"></div>
+                            <span>Within 30 minutes</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 1)">
+                            <div class="quiz-radio"></div>
+                            <span>Within 24 hours</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 2)">
+                            <div class="quiz-radio"></div>
+                            <span>Within the same week</span>
+                        </div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="quiz-question" data-correct="1">
+                    <div class="quiz-q-text">4. Which of these is the biggest hidden cost of slow follow-up?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectOption(this, 0)">
+                            <div class="quiz-radio"></div>
+                            <span>Increased staff workload</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 1)">
+                            <div class="quiz-radio"></div>
+                            <span>Your marketing spend is wasted — leads generated but never converted</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 2)">
+                            <div class="quiz-radio"></div>
+                            <span>Higher office rent</span>
+                        </div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <!-- Q5 -->
+                <div class="quiz-question" data-correct="2">
+                    <div class="quiz-q-text">5. What's more effective than discounting to win a project?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectOption(this, 0)">
+                            <div class="quiz-radio"></div>
+                            <span>Adding more services to the scope</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 1)">
+                            <div class="quiz-radio"></div>
+                            <span>Increasing your marketing budget</span>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 2)">
+                            <div class="quiz-radio"></div>
+                            <span>Responding faster and following up consistently</span>
+                        </div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+            </div>
+
+            <button class="calc-btn" onclick="submitQuiz()" id="quizSubmitBtn" style="margin-top:1rem;">Submit Answers</button>
+
+            <div class="quiz-result" id="quizResult">
+                <div class="quiz-score" id="quizScore">0/5</div>
+                <div class="quiz-score-label">Your Follow-Up Knowledge Score</div>
+                <p style="margin-top:1rem;opacity:0.85;font-size:0.9rem;" id="quizMessage"></p>
+            </div>
+        </section>
+
+        <!-- Section 9: Revenue Calculator -->
+        <section class="section-card" id="revenue-calculator">
+            <span class="section-label">Section 09</span>
+            <h2>💰 Lost Revenue Calculator</h2>
+            <p>Calculate how much revenue your company might be losing due to slow or inconsistent follow-up. Enter your numbers below.</p>
+
+            <div class="calc-container">
+                <div class="calc-row">
+                    <div class="calc-field">
+                        <label>Enquiries Received per Month</label>
+                        <input type="number" id="calcEnquiries" placeholder="e.g. 20" value="20">
+                    </div>
+                    <div class="calc-field">
+                        <label>Average Project Value (AED)</label>
+                        <input type="number" id="calcValue" placeholder="e.g. 250000" value="250000">
+                    </div>
+                </div>
+                <div class="calc-row">
+                    <div class="calc-field">
+                        <label>Current Conversion Rate (%)</label>
+                        <input type="number" id="calcCurrentRate" placeholder="e.g. 10" value="10" min="0" max="100">
+                    </div>
+                    <div class="calc-field">
+                        <label>Target Conversion with Fast Follow-Up (%)</label>
+                        <input type="number" id="calcTargetRate" placeholder="e.g. 25" value="25" min="0" max="100">
+                    </div>
+                </div>
+                <button class="calc-btn" onclick="calculateRevenue()">Calculate Lost Revenue →</button>
+                <div class="calc-result" id="calcResult">
+                    <h4 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;margin-bottom:1rem;color:var(--dark);">📊 Your Revenue Analysis</h4>
+                    <div class="calc-result-grid">
+                        <div class="calc-result-item">
+                            <div class="value" id="resultCurrent">—</div>
+                            <div class="label">Current Monthly Revenue</div>
+                        </div>
+                        <div class="calc-result-item">
+                            <div class="value" id="resultTarget">—</div>
+                            <div class="label">Potential Revenue (Fast Follow-Up)</div>
+                        </div>
+                        <div class="calc-result-item">
+                            <div class="value" id="resultLost" style="color:var(--red);">—</div>
+                            <div class="label">Revenue You're Leaving on the Table</div>
+                        </div>
+                        <div class="calc-result-item">
+                            <div class="value" id="resultAnnual" style="color:var(--green);">—</div>
+                            <div class="label">Annual Revenue Opportunity</div>
+                        </div>
+                    </div>
+                    <div class="tip-box success" style="margin-top:1.25rem;">
+                        <span class="tip-box-icon">🎯</span>
+                        <div class="tip-box-content" id="resultInsight"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 10: Action Plan -->
+        <section class="section-card" id="action-plan">
+            <span class="section-label">Section 10</span>
+            <h2>🚀 Your 5-Day Follow-Up Transformation Plan</h2>
+            <p>Implement these steps this week. Check each one off as you complete it — track your progress toward a better follow-up system.</p>
+
+            <div class="checklist" id="actionChecklist">
+                <div class="checklist-item" onclick="toggleCheck(this)">
+                    <div class="checklist-check">✓</div>
+                    <div>
+                        <div class="checklist-day">Day 1 — Monday</div>
+                        <div class="checklist-text">Set the 30-Minute Rule</div>
+                        <div class="checklist-desc">Announce to your team: all new enquiries must get an acknowledgement within 30 minutes during business hours. Assign a dedicated person for initial responses.</div>
+                    </div>
+                </div>
+                <div class="checklist-item" onclick="toggleCheck(this)">
+                    <div class="checklist-check">✓</div>
+                    <div>
+                        <div class="checklist-day">Day 2 — Tuesday</div>
+                        <div class="checklist-text">Set Up WhatsApp Quick Replies</div>
+                        <div class="checklist-desc">Save 4 templates (from Section 6) as Quick Replies in WhatsApp Business. Set up auto-reply for after-hours messages.</div>
+                    </div>
+                </div>
+                <div class="checklist-item" onclick="toggleCheck(this)">
+                    <div class="checklist-check">✓</div>
+                    <div>
+                        <div class="checklist-day">Day 3 — Wednesday</div>
+                        <div class="checklist-text">Create Your Lead Tracking Sheet</div>
+                        <div class="checklist-desc">Set up a Google Sheet or CRM with columns: Client Name, Enquiry Date, Response Time, Follow-Up Count, Status, Project Value. Log all current open enquiries.</div>
+                    </div>
+                </div>
+                <div class="checklist-item" onclick="toggleCheck(this)">
+                    <div class="checklist-check">✓</div>
+                    <div>
+                        <div class="checklist-day">Day 4 — Thursday</div>
+                        <div class="checklist-text">Follow Up on All Open Leads</div>
+                        <div class="checklist-desc">Go through every quoted project from the past 30 days. Send a follow-up to anyone who hasn't received at least 3 touches. Use Template 3 or 4.</div>
+                    </div>
+                </div>
+                <div class="checklist-item" onclick="toggleCheck(this)">
+                    <div class="checklist-check">✓</div>
+                    <div>
+                        <div class="checklist-day">Day 5 — Friday</div>
+                        <div class="checklist-text">Set Weekly Review Calendar Block</div>
+                        <div class="checklist-desc">Block 30 minutes every Sunday/Monday to review: How many enquiries came in? What was our average response time? How many leads need follow-up this week?</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="checklist-progress">
+                <div class="checklist-progress-bar" id="actionProgressBar"></div>
+            </div>
+            <div class="checklist-progress-text" id="actionProgressText">0 of 5 completed</div>
+        </section>
+
+        <!-- Key Takeaways -->
+        <div class="takeaway-box">
+            <h3>🎯 Key Takeaways — Remember This</h3>
+            <ul class="takeaway-list">
+                <li><span>⚡</span> Respond to every enquiry within 30 minutes — speed signals professionalism and wins trust</li>
+                <li><span>🔄</span> Follow up at least 3 times before closing any lead — persistence wins projects, not just talent</li>
+                <li><span>📱</span> Use WhatsApp templates and CRM reminders for consistency — systems beat memory every time</li>
+                <li><span>💰</span> Improving follow-up is the fastest way to increase revenue without increasing ad spend</li>
+                <li><span>🏗️</span> In Dubai's competitive construction market, the company that replies first often wins — even at a higher price</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Civil-Tech.ai Knowledge Portal — Practical Business Education for Dubai SME Owners</p>
+        <p style="margin-top:0.3rem;"><a href="https://civiltech-ai.github.io/knowledge-portal/">← Back to Knowledge Library</a></p>
+    </footer>
+
+    <script>
+        // ── Reading Progress ──
+        window.addEventListener('scroll', () => {
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrolled = (window.scrollY / docHeight) * 100;
+            document.getElementById('readingProgress').style.width = scrolled + '%';
+        });
+
+        // ── Smooth Scroll ──
+        document.querySelectorAll('.toc-list a').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // ── Scroll Animations ──
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.section-card').forEach(card => {
+            card.style.animationPlayState = 'paused';
+            observer.observe(card);
+        });
+
+        // ── WhatsApp Template Toggle ──
+        function toggleTemplate(header) {
+            const body = header.nextElementSibling;
+            const toggle = header.querySelector('.template-toggle');
+            body.classList.toggle('open');
+            toggle.style.transform = body.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0)';
+        }
+
+        // ── Copy Template ──
+        function copyTemplate(btn) {
+            const msg = btn.previousElementSibling.innerText;
+            navigator.clipboard.writeText(msg).then(() => {
+                btn.textContent = '✅ Copied!';
+                setTimeout(() => { btn.textContent = '📋 Copy to Clipboard'; }, 2000);
+            }).catch(() => {
+                btn.textContent = '⚠️ Copy manually';
+                setTimeout(() => { btn.textContent = '📋 Copy to Clipboard'; }, 2000);
+            });
+        }
+
+        // ── Response Time Tracker ──
+        let trackerEntries = [];
+
+        function addTrackerEntry() {
+            const name = document.getElementById('trackerName').value.trim();
+            const time = parseFloat(document.getElementById('trackerTime').value);
+            const unit = document.getElementById('trackerUnit').value;
+            if (!name || !time || time <= 0) return;
+
+            let minutes = time;
+            if (unit === 'hr') minutes = time * 60;
+            if (unit === 'day') minutes = time * 1440;
+
+            trackerEntries.push({ name, minutes, display: time + ' ' + (unit === 'min' ? 'min' : unit === 'hr' ? 'hr(s)' : 'day(s)') });
+            document.getElementById('trackerName').value = '';
+            document.getElementById('trackerTime').value = '';
+            renderTracker();
+        }
+
+        function renderTracker() {
+            const log = document.getElementById('trackerLog');
+            const empty = document.getElementById('trackerEmpty');
+            const stats = document.getElementById('trackerStats');
+
+            if (trackerEntries.length === 0) {
+                empty.style.display = 'block';
+                stats.style.display = 'none';
+                log.innerHTML = '<div class="tracker-empty" id="trackerEmpty">No entries yet. Start logging your response times above.</div>';
+                return;
+            }
+
+            empty.style.display = 'none';
+            stats.style.display = 'grid';
+
+            let html = '';
+            trackerEntries.forEach(entry => {
+                let badge = 'fast';
+                let label = '< 30 min';
+                if (entry.minutes > 30 && entry.minutes <= 240) { badge = 'medium'; label = '30 min – 4 hrs'; }
+                if (entry.minutes > 240) { badge = 'slow'; label = '> 4 hrs'; }
+
+                html += `<div class="tracker-entry">
+                    <div class="tracker-entry-info">
+                        <span class="tracker-badge ${badge}">${label}</span>
+                        <span class="tracker-entry-name">${entry.name}</span>
+                    </div>
+                    <span class="tracker-entry-time">${entry.display}</span>
+                </div>`;
+            });
+            log.innerHTML = html;
+
+            const allMin = trackerEntries.map(e => e.minutes);
+            const avg = Math.round(allMin.reduce((a, b) => a + b, 0) / allMin.length);
+            const fastest = Math.min(...allMin);
+            let grade = '🟢 Excellent';
+            if (avg > 30 && avg <= 120) grade = '🟡 Good';
+            if (avg > 120 && avg <= 480) grade = '🟠 Needs Work';
+            if (avg > 480) grade = '🔴 Critical';
+
+            document.getElementById('statAvg').textContent = avg;
+            document.getElementById('statFastest').textContent = fastest;
+            document.getElementById('statGrade').textContent = grade;
+        }
+
+        function resetTracker() {
+            trackerEntries = [];
+            renderTracker();
+        }
+
+        // ── Quiz ──
+        let quizAnswered = {};
+        function selectOption(el, idx) {
+            const question = el.closest('.quiz-question');
+            const qIdx = Array.from(document.querySelectorAll('.quiz-question')).indexOf(question);
+            if (quizAnswered[qIdx] !== undefined) return;
+
+            question.querySelectorAll('.quiz-option').forEach(opt => opt.classList.remove('selected'));
+            el.classList.add('selected');
+            quizAnswered[qIdx] = idx;
+        }
+
+        function submitQuiz() {
+            const questions = document.querySelectorAll('.quiz-question');
+            let score = 0;
+
+            questions.forEach((q, i) => {
+                const correct = parseInt(q.dataset.correct);
+                const feedback = q.querySelector('.quiz-feedback');
+                const options = q.querySelectorAll('.quiz-option');
+
+                if (quizAnswered[i] === undefined) return;
+
+                if (quizAnswered[i] === correct) {
+                    score++;
+                    options[quizAnswered[i]].classList.add('correct');
+                    feedback.className = 'quiz-feedback show correct-feedback';
+                    feedback.textContent = '✅ Correct! Well done.';
+                } else {
+                    options[quizAnswered[i]].classList.add('wrong');
+                    options[correct].classList.add('correct');
+                    feedback.className = 'quiz-feedback show wrong-feedback';
+                    feedback.textContent = '❌ Incorrect. The correct answer is highlighted in green.';
+                }
+            });
+
+            const result = document.getElementById('quizResult');
+            document.getElementById('quizScore').textContent = score + '/5';
+            const messages = {
+                5: "Perfect score! You're a follow-up master. Now implement these principles.",
+                4: "Great knowledge! You understand the fundamentals. Focus on consistent execution.",
+                3: "Good start. Re-read the sections you missed and try the action plan.",
+                2: "Room for improvement. Review the guide again — especially the system-building section.",
+                1: "Your follow-up knowledge needs work. Re-read this guide and implement the 5-day plan.",
+                0: "Don't worry — that's what this guide is for. Start with the 5-Day Action Plan below."
+            };
+            document.getElementById('quizMessage').textContent = messages[score];
+            result.classList.add('show');
+            document.getElementById('quizSubmitBtn').style.display = 'none';
+        }
+
+        // ── Revenue Calculator ──
+        function calculateRevenue() {
+            const enquiries = parseFloat(document.getElementById('calcEnquiries').value) || 0;
+            const value = parseFloat(document.getElementById('calcValue').value) || 0;
+            const currentRate = parseFloat(document.getElementById('calcCurrentRate').value) || 0;
+            const targetRate = parseFloat(document.getElementById('calcTargetRate').value) || 0;
+
+            const currentRevenue = enquiries * (currentRate / 100) * value;
+            const targetRevenue = enquiries * (targetRate / 100) * value;
+            const lostRevenue = targetRevenue - currentRevenue;
+            const annualOpportunity = lostRevenue * 12;
+
+            const fmt = (n) => 'AED ' + n.toLocaleString('en-AE', { maximumFractionDigits: 0 });
+
+            document.getElementById('resultCurrent').textContent = fmt(currentRevenue);
+            document.getElementById('resultTarget').textContent = fmt(targetRevenue);
+            document.getElementById('resultLost').textContent = fmt(lostRevenue);
+            document.getElementById('resultAnnual').textContent = fmt(annualOpportunity);
+
+            document.getElementById('resultInsight').innerHTML = `<strong>Insight:</strong> By improving your follow-up from ${currentRate}% to ${targetRate}% conversion, you could capture an additional <strong>${fmt(annualOpportunity)}</strong> per year — without spending a single extra dirham on marketing. That's ${Math.round(targetRate/currentRate)}x your current conversion.`;
+
+            document.getElementById('calcResult').classList.add('show');
+        }
+
+        // ── Checklist ──
+        function toggleCheck(item) {
+            item.classList.toggle('checked');
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const total = document.querySelectorAll('.checklist-item').length;
+            const checked = document.querySelectorAll('.checklist-item.checked').length;
+            const pct = Math.round((checked / total) * 100);
+            document.getElementById('actionProgressBar').style.width = pct + '%';
+            document.getElementById('actionProgressText').textContent = checked + ' of ' + total + ' completed';
+        }
+    </script>
+</body>
+</html>
